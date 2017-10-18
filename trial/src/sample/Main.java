@@ -2,9 +2,13 @@ package sample;
 
 import javafx.animation.*;
 import javafx.application.Application;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.*;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -16,6 +20,8 @@ import javafx.scene.shape.Sphere;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import java.util.ArrayList;
 
 public class Main extends Application {
 
@@ -41,11 +47,11 @@ public class Main extends Application {
         for(int j=0;j<numColumns;j++) {
             root.getColumnConstraints().add(cc);
         }
-        for(int i=0;i<9;i++){
-            for(int j=0;j<6;j++){
+        for(int i=0;i<numRows;i++){
+            for(int j=0;j<numColumns;j++){
 
                 StackPane cellContainer = new StackPane();
-                cellContainer.setBorder(getBorderColor(color));
+                cellContainer.setBorder(makeBorder(color));
                 Group cell = new Group();
                 StackPane.setMargin(cell, new Insets(2,2,2,2));
                 cellContainer.getChildren().add(cell);
@@ -53,28 +59,39 @@ public class Main extends Application {
 
             }
         }
+
     }
 
-    public Border getBorderColor(Color color){
+    public Border makeBorder(Color color){
         // changes colour of the stackpane
         return new Border(new BorderStroke(color, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
     }
 
     public void changeGridColor(GridPane grid, Color color){
         //To be done when we store the Array of the grid objects so that we can retrieve the current orbs and then change the colour
+
+        ObservableList<Node> cells = grid.getChildren();
+        System.out.println(color.toString());
+        for (int i = 1; i < cells.size(); i++) {
+            cells.get(i).setStyle("-fx-border-color: #" + color.toString().substring(2));
+        }
+
+
     }
 
-    public void addOrbandAnimate(GridPane root, int row, int column, int numSpheres, Color color){
+    public void addOrbAndAnimate(GridPane root, int row, int column, int numSpheres, Color color){
         //To be done when we store the Array of the grid objects so that we can retrieve the current orbs and then replace it
         //To test it on the present situation only
         StackPane cellContainer = new StackPane();
-        cellContainer.setBorder(getBorderColor(Color.RED));
+        cellContainer.setBorder(makeBorder(Color.RED));
         Group cell = new Group();
 
 
         //To set the Sphere color
         PhongMaterial smaterial = new PhongMaterial();
         smaterial.setDiffuseColor(color);
+
+
 
         switch (numSpheres){
             case 1:
@@ -126,7 +143,6 @@ public class Main extends Application {
         GridPane.setValignment(cell, VPos.CENTER);
         StackPane.setMargin(cell, new Insets(2,2,2,2));
         cellContainer.getChildren().add(cell);
-
         root.add(cellContainer, column, row);
 
 
@@ -165,12 +181,13 @@ public class Main extends Application {
         setEmptyGrid(root, 9, 6, Color.RED);
 
 
-        addOrbandAnimate(root, 0, 0, 3, Color.RED);
+        addOrbAndAnimate(root, 0, 0, 2, Color.RED);
 
 
-        addOrbandAnimate(root, 1, 1, 2, Color.RED);
+        addOrbAndAnimate(root, 1, 1, 3, Color.RED);
+        // addOrbAndAnimate(root, 1, 1, 3, Color.RED);
 
-
+        changeGridColor(root, Color.ROSYBROWN);
 
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 800, 1000, Color.BLACK));
@@ -179,7 +196,20 @@ public class Main extends Application {
     }
 
 
+
     public static void main(String[] args) {
         launch(args);
     }
+}
+
+class turnGUI implements EventHandler<ActionEvent> {
+
+    @Override
+    public void handle(ActionEvent e) {
+
+
+
+    }
+
+
 }
