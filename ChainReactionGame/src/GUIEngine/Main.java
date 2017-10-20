@@ -6,7 +6,6 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -15,6 +14,7 @@ import javafx.geometry.VPos;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
@@ -54,7 +54,9 @@ public class Main extends Application {
 
                 StackPane cellContainer = new StackPane();
                 cellContainer.setBorder(makeBorder(color));
+                cellContainer.setOnMouseClicked(new turnGUI());
                 Group cell = new Group();
+                cell.setPickOnBounds(false);
                 StackPane.setMargin(cell, new Insets(2,2,2,2));
                 cellContainer.getChildren().add(cell);
                 root.add(cellContainer, j,i);
@@ -86,7 +88,9 @@ public class Main extends Application {
         //To test it on the present situation only
         StackPane cellContainer = new StackPane();
         cellContainer.setBorder(makeBorder(Color.RED));
+        cellContainer.setOnMouseClicked(new turnGUI());
         Group cell = new Group();
+        cell.setPickOnBounds(false);
 
 
         //To set the Sphere color
@@ -203,15 +207,38 @@ public class Main extends Application {
     }
 }
 
-class turnGUI implements EventHandler<ActionEvent> {
-
-    @Override
-    public void handle(ActionEvent e) {
+class turnGUI implements EventHandler<MouseEvent> {
 
 
 
+     @Override
+     public void handle(MouseEvent e) {
 
-    }
+
+        /**
+         *  Type reference:
+         *
+         *  0 - Corner
+         *  1 - Edge
+         *  2 - Normal
+         *
+         * **/
+
+        System.out.println("Mouse click detected");
+
+        StackPane source = (StackPane) e.getSource();
+        GridPane grid = (GridPane) source.getParent();
+
+        int cur_orbs = source.getChildren().size();
+        int new_orbs = cur_orbs + 1;
+
+        ObservableList<Node> cells = grid.getChildren();
+
+        int position = cells.indexOf(source);
+        int gridSize = cells.size();
+
+
+     }
 
 
 }
