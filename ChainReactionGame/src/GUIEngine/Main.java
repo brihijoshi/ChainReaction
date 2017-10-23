@@ -13,9 +13,7 @@ import javafx.geometry.VPos;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -54,8 +52,9 @@ public class Main extends Application {
 
     // for help on transitions : https://gist.github.com/jewelsea/1475424
 
-    public void setEmptyGrid(GridPane root, int numRows, int numColumns, Color color){
+    public BorderPane setEmptyGrid(GridPane root, int numRows, int numColumns, Color color){
 
+        BorderPane bp = new BorderPane();
         root.setAlignment(Pos.CENTER);
         root.setHgap(5);
         root.setVgap(5);
@@ -89,6 +88,22 @@ public class Main extends Application {
             }
         }
 
+        bp.setCenter(root);
+
+        MenuButton dd = new MenuButton("Options");
+        dd.getItems().addAll(new MenuItem("Restart"), new MenuItem("Exit"));
+        dd.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white; -fx-text-fill: white;");
+        //dd.se
+
+        bp.setTop(dd);
+
+        Button redoButton = new Button("Undo");
+        redoButton.setStyle("-fx-background-color: forestgreen; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold;");
+
+        bp.setRight(redoButton);
+        bp.setStyle("-fx-background-color: black;");
+        return bp;
+
     }
 
     public Border makeBorder(Color color){
@@ -104,6 +119,55 @@ public class Main extends Application {
             cells.get(i).setStyle("-fx-border-color: #" + color.toString().substring(2));
         }
 
+
+    }
+
+
+    public ParallelTransition addTransition(GridPane root){
+        StackPane cellContainer = new StackPane();
+        cellContainer.setBorder(makeBorder(Color.RED));
+        cellContainer.setOnMouseClicked(new turnGUI());
+        Group cell = new Group();
+        cell.setPickOnBounds(false);
+
+        PhongMaterial smaterial = new PhongMaterial();
+        smaterial.setDiffuseColor(Color.RED);
+
+
+        Sphere a = new Sphere(12);
+        Sphere b = new Sphere(12);
+
+        b.setTranslateX(12);
+        b.setTranslateZ(12);
+
+        a.setMaterial(smaterial);
+        b.setMaterial(smaterial);
+        cell.getChildren().addAll(a, b);
+
+        rotateOrbs(cell);
+
+        GridPane.setHalignment(cell, HPos.CENTER);
+        GridPane.setValignment(cell, VPos.CENTER);
+        StackPane.setMargin(cell, new Insets(2,2,2,2));
+        cellContainer.getChildren().add(cell);
+        root.add(cellContainer, 0, 0);
+
+        final Duration time = Duration.millis(1000);
+
+        FadeTransition ft=new FadeTransition(time);
+        ft.setFromValue(1.0f);
+        ft.setToValue(0.3f);
+        ft.setAutoReverse(true);
+
+        TranslateTransition tt = new TranslateTransition(time);
+        tt.setFromX(-100f);
+        tt.setToX(100f);
+        tt.setAutoReverse(true);
+
+        Sphere c = new Sphere(12);
+        c.setMaterial(smaterial);
+
+        return new ParallelTransition(c,ft, tt);
 
     }
 
@@ -431,25 +495,25 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
 
 
-        primaryStage.setScene(createSettingsPage());
-        primaryStage.show();
-
-
-//        GridPane root = new GridPane();
-//
-//        setEmptyGrid(root, 9, 6, Color.RED);
-//
-//
-//        addOrbAndAnimate(root, 0, 0, 2, Color.RED);
-//
-//
-//        addOrbAndAnimate(root, 1, 1, 3, Color.RED);
-//
-//        changeGridColor(root, Color.ROSYBROWN);
-//
-//        primaryStage.setTitle("Hello World");
-//        primaryStage.setScene(new Scene(root, 800, 1000, Color.BLACK));
+//        primaryStage.setScene(createSettingsPage());
 //        primaryStage.show();
+
+
+        GridPane root = new GridPane();
+
+        BorderPane bp = setEmptyGrid(root, 9, 6, Color.RED);
+
+
+        addOrbAndAnimate(root, 0, 0, 2, Color.RED);
+
+
+        addOrbAndAnimate(root, 1, 1, 3, Color.RED);
+
+        changeGridColor(root, Color.ROSYBROWN);
+
+        primaryStage.setTitle("Hello World");
+        primaryStage.setScene(new Scene(bp, 800, 1000, Color.BLACK));
+        primaryStage.show();
 
     }
 
