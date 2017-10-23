@@ -33,6 +33,7 @@ public class Main extends Application {
     private static Button startButton;
     private static Button resumeButton;
     private static Button settingsButton;
+    private static Button saveButton;
 
 
     public static Button getStartButton() {
@@ -47,6 +48,9 @@ public class Main extends Application {
         return settingsButton;
     }
 
+    public static Button getSaveButton() {
+        return saveButton;
+    }
 
     // for help on transitions : https://gist.github.com/jewelsea/1475424
 
@@ -274,10 +278,152 @@ public class Main extends Application {
 
     public Scene createSettingsPage() {
 
-        GridPane root = new GridPane();
+        //Instantiating the Buttons
+        saveButton=new Button("Save");
+
+        StackPane root = new StackPane();
+
+        //Making the drop down menus for each player
+        ObservableList<String> player_1 = FXCollections.observableArrayList("Red","Blue","Green","Yellow","White","Pink","Orange","Purple");
+        ComboBox comboBox_1=new ComboBox(player_1);
+
+        ObservableList<String> player_2 = FXCollections.observableArrayList("Red","Blue","Green","Yellow","White","Pink","Orange","Purple");
+        ComboBox comboBox_2=new ComboBox(player_2);
+
+        ObservableList<String> player_3 = FXCollections.observableArrayList("Red","Blue","Green","Yellow","White","Pink","Orange","Purple");
+        ComboBox comboBox_3=new ComboBox(player_3);
+
+        ObservableList<String> player_4 = FXCollections.observableArrayList("Red","Blue","Green","Yellow","White","Pink","Orange","Purple");
+        ComboBox comboBox_4=new ComboBox(player_4);
+
+        ObservableList<String> player_5 = FXCollections.observableArrayList("Red","Blue","Green","Yellow","White","Pink","Orange","Purple");
+        ComboBox comboBox_5=new ComboBox(player_5);
+
+        ObservableList<String> player_6 = FXCollections.observableArrayList("Red","Blue","Green","Yellow","White","Pink","Orange","Purple");
+        ComboBox comboBox_6=new ComboBox(player_6);
+
+        ObservableList<String> player_7 = FXCollections.observableArrayList("Red","Blue","Green","Yellow","White","Pink","Orange","Purple");
+        ComboBox comboBox_7=new ComboBox(player_7);
+
+        ObservableList<String> player_8 = FXCollections.observableArrayList("Red","Blue","Green","Yellow","White","Pink","Orange","Purple");
+        ComboBox comboBox_8=new ComboBox(player_8);
 
 
-        return null;
+        //Making the Grid for the settings page
+        GridPane setting_grid=new GridPane();
+
+        RowConstraints rc = new RowConstraints(70);
+        rc.setVgrow(Priority.ALWAYS);
+        rc.setValignment(VPos.CENTER);
+        ColumnConstraints cc = new ColumnConstraints(80);
+        cc.setHgrow(Priority.ALWAYS);
+        cc.setHalignment(HPos.CENTER);
+        root.setAlignment(Pos.CENTER);
+        setting_grid.setAlignment(Pos.CENTER);
+        setting_grid.setHgap(5);
+        setting_grid.setVgap(5);
+
+        for(int i=0;i<12;i++){
+            setting_grid.getRowConstraints().add(rc);
+
+        }
+
+        for(int j=0;j<14;j++) {
+            setting_grid.getColumnConstraints().add(cc);
+        }
+
+        //Adding the Labels and changing the style of the respective players
+
+
+
+        Label title = new Label("Settings");
+        title.setStyle("-fx-background-color: black; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 70px; -fx-font-weight: bold; -fx-text-fill: red;");
+
+
+        comboBox_1.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
+        Label player1_label = new Label("Player 1:");
+        player1_label.setStyle("-fx-background-color: black; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: red;");
+
+
+        comboBox_2.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
+
+        Label player2_label = new Label("Player 2:");
+        player2_label.setStyle("-fx-background-color: black; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: red;");
+
+
+        comboBox_3.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
+
+        Label player3_label = new Label("Player 3:");
+        player3_label.setStyle("-fx-background-color: black; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: red;");
+
+
+        comboBox_4.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
+
+        Label player4_label = new Label("Player 4:");
+        player4_label.setStyle("-fx-background-color: black; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: red;");
+
+
+        comboBox_5.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
+
+        Label player5_label = new Label("Player 5:");
+        player5_label.setStyle("-fx-background-color: black; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: red;");
+
+
+        comboBox_6.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
+
+        Label player6_label = new Label("Player 6:");
+        player6_label.setStyle("-fx-background-color: black; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: red;");
+
+
+        comboBox_7.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
+
+        Label player7_label = new Label("Player 7:");
+        player7_label.setStyle("-fx-background-color: black; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: red;");
+
+
+        comboBox_8.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
+
+        Label player8_label = new Label("Player 8:");
+        player8_label.setStyle("-fx-background-color: black; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: red;");
+
+
+        //Adding elements to the grid
+        setting_grid.setStyle("-fx-background-color: black; -fx-text-alignment: center;");
+        setting_grid.add(title, 2, 0, 10,2);
+
+        setting_grid.add(player1_label,3,2,2,1);
+        setting_grid.add(comboBox_1,8,2,2,1);
+
+        setting_grid.add(player2_label,3,3,2,1);
+        setting_grid.add(comboBox_2,8,3,2,1);
+
+        setting_grid.add(player3_label,3,4,2,1);
+        setting_grid.add(comboBox_3,8,4,2,1);
+
+        setting_grid.add(player4_label,3,5,2,1);
+        setting_grid.add(comboBox_4,8,5,2,1);
+
+        setting_grid.add(player5_label,3,6,2,1);
+        setting_grid.add(comboBox_5,8,6,2,1);
+
+        setting_grid.add(player6_label,3,7,2,1);
+        setting_grid.add(comboBox_6,8,7,2,1);
+
+        setting_grid.add(player7_label,3,8,2,1);
+        setting_grid.add(comboBox_7,8,8,2,1);
+
+        setting_grid.add(player8_label,3,9,2,1);
+        setting_grid.add(comboBox_8,8,9,2,1);
+
+        saveButton.setStyle("-fx-background-color: lightcoral; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold;");
+
+        setting_grid.add(saveButton,6,10,2,2);
+
+
+
+        return new Scene(setting_grid, 1200, 1000, Color.BLACK);
+
+
     }
 
 
@@ -285,7 +431,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
 
 
-        primaryStage.setScene(createStartPage());
+        primaryStage.setScene(createSettingsPage());
         primaryStage.show();
 
 
@@ -319,8 +465,8 @@ class turnGUI implements EventHandler<MouseEvent> {
 
 
 
-     @Override
-     public void handle(MouseEvent e) {
+    @Override
+    public void handle(MouseEvent e) {
 
 
         /**
@@ -349,7 +495,7 @@ class turnGUI implements EventHandler<MouseEvent> {
         PathTransition pt = new PathTransition();
 
 
-     }
+    }
 
 
 }
