@@ -1,5 +1,6 @@
 package GUIEngine;
 
+import GameEngine.Grid;
 import javafx.animation.*;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -252,8 +253,8 @@ public class Main extends Application {
         GridPane.setHalignment(comboBox_grid, HPos.CENTER);
 
 
-        comboBox_grid.setStyle("-fx-font-size: 20px;");
-        comboBox_player.setStyle("-fx-font-size: 20px;");
+        comboBox_grid.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
+        comboBox_player.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
         home_grid.add(startButton_sp,2,5,2,1);
         home_grid.add(comboBox_grid,5,5,2,1);
         home_grid.add(comboBox_player,8,5,2,1);
@@ -271,6 +272,13 @@ public class Main extends Application {
 
     }
 
+    public Scene createSettingsPage() {
+
+        GridPane root = new GridPane();
+
+
+        return null;
+    }
 
 
     @Override
