@@ -92,7 +92,7 @@ public class Main extends Application {
 
         MenuButton dd = new MenuButton("Options");
         dd.getItems().addAll(new MenuItem("Restart"), new MenuItem("Exit"));
-        dd.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white; -fx-text-fill: white;");
+        dd.setStyle("-fx-font-size: 20px; -fx-background-color: whitesmoke; -fx-border-color: white; -fx-text-fill: white;");
         //dd.se
 
         bp.setTop(dd);
@@ -315,6 +315,12 @@ public class Main extends Application {
         Label title = new Label("Chain Reaction");
         title.setStyle("-fx-background-color: black; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 100px; -fx-font-weight: bold; -fx-text-fill: red;");
 
+        Label gridstyle_label = new Label("Grid Size:");
+        gridstyle_label.setStyle("-fx-background-color: black; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: red;");
+
+        Label numplayers_label = new Label("Number of Players:");
+        numplayers_label.setStyle("-fx-background-color: black; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: red;");
+
         GridPane.setHalignment(startButton_sp, HPos.CENTER);
         GridPane.setHalignment(resumeButton_sp, HPos.CENTER);
         GridPane.setHalignment(settingsButton_sp, HPos.CENTER);
@@ -324,7 +330,9 @@ public class Main extends Application {
         comboBox_grid.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
         comboBox_player.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
         home_grid.add(startButton_sp,2,5,2,1);
+        home_grid.add(gridstyle_label,5,4,2,1);
         home_grid.add(comboBox_grid,5,5,2,1);
+        home_grid.add(numplayers_label,8,4,3,1);
         home_grid.add(comboBox_player,8,5,2,1);
         home_grid.add(resumeButton_sp,4,7,2,1);
         home_grid.add(settingsButton_sp, 6, 7,2,1);
@@ -511,9 +519,19 @@ public class Main extends Application {
 
         changeGridColor(root, Color.ROSYBROWN);
 
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Game");
         primaryStage.setScene(new Scene(bp, 800, 1000, Color.BLACK));
         primaryStage.show();
+
+        Stage primaryStage2=new Stage();
+        primaryStage2.setTitle("Home");
+        primaryStage2.setScene(createStartPage());
+        primaryStage2.show();
+
+        Stage primaryStage3=new Stage();
+        primaryStage3.setTitle("Settings");
+        primaryStage3.setScene(createSettingsPage());
+        primaryStage3.show();
 
     }
 
