@@ -1,8 +1,9 @@
 package GameEngine;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Grid {
+public class Grid implements Serializable {
 
 
     private ArrayList<ArrayList<Cell>> _grid;

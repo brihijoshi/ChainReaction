@@ -24,7 +24,4 @@ public class GameState implements Serializable {
         this._grid = _grid;
     }
 
-
-
-
 }
