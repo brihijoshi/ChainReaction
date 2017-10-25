@@ -41,4 +41,34 @@ public class GameController {
         this._resume = _resume;
     }
 
+    public void loadGameState() {
+
+
+
+    }
+
+    public void saveGameState() {
+
+
+
+    }
+
+    public boolean checkActivePlayer() {
+
+        return true;
+
+    }
+
+    public void takeTurn(Player p) {
+
+
+
+    }
+
+    public void handleGame() {
+
+
+
+    }
+
 }

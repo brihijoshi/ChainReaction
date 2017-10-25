@@ -24,35 +24,7 @@ public class GameState implements Serializable {
         this._grid = _grid;
     }
 
-    public void loadGameState() {
 
-
-
-    }
-
-    public void saveGameState() {
-
-
-
-    }
-
-    public boolean checkActivePlayer() {
-
-        return true;
-
-    }
-
-    public void takeTurn(Player p) {
-
-
-
-    }
-
-    public void handleGame() {
-
-
-        
-    }
 
 
 }
