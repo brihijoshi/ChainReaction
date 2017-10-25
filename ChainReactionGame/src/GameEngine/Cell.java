@@ -1,5 +1,7 @@
 package GameEngine;
 
+import javafx.scene.layout.StackPane;
+
 public class Cell {
 
     //Changing _TYPE in the original UML with _color
@@ -10,10 +12,14 @@ public class Cell {
 
     private int _currmass;
 
-    public Cell(String _color, int _CRITMASS, int _currmass) {
+    private final StackPane _GUI;
+
+
+    public Cell(String _color, int _CRITMASS, int _currmass, StackPane _GUI) {
         this._color = _color;
         this._CRITMASS = _CRITMASS;
         this._currmass = _currmass;
+        this._GUI = _GUI;
     }
 
     public String get_color() {
@@ -35,6 +41,8 @@ public class Cell {
     public void set_currmass(int _currmass) {
         this._currmass = _currmass;
     }
+
+    public StackPane get_GUI() { return _GUI; }
 
 
 }

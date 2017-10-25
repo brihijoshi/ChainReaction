@@ -124,6 +124,7 @@ public class Main extends Application {
 
 
     public ParallelTransition addTransition(GridPane root){
+
         StackPane cellContainer = new StackPane();
         cellContainer.setBorder(makeBorder(Color.RED));
         cellContainer.setOnMouseClicked(new turnGUI());
@@ -136,7 +137,7 @@ public class Main extends Application {
 
         Sphere a = new Sphere(12);
         Sphere b = new Sphere(12);
-
+        
         b.setTranslateX(12);
         b.setTranslateZ(12);
 
@@ -542,6 +543,8 @@ public class Main extends Application {
     }
 
 }
+
+
 
 class turnGUI implements EventHandler<MouseEvent> {
 
