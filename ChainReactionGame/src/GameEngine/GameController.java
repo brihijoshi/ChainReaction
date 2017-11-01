@@ -1,5 +1,6 @@
 package GameEngine;
 
+import java.io.*;
 import java.util.ArrayList;
 
 public class GameController {
@@ -41,15 +42,25 @@ public class GameController {
         this._resume = _resume;
     }
 
-    public void loadGameState() {
+    public void loadGameState() throws IOException, ClassNotFoundException {
 
-
+        FileInputStream fis=new FileInputStream("game.ser");
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        GameState g= (GameState) ois.readObject();
+        set_gameState(g);
+        ois.close();
+        fis.close();
 
     }
 
-    public void saveGameState() {
+    public void saveGameState() throws IOException {
 
-
+        GameState g = get_gameState();
+        FileOutputStream fos = new FileOutputStream("game.ser");
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(g);
+        oos.close();
+        fos.close();
 
     }
 
@@ -68,6 +79,12 @@ public class GameController {
     public void handleGame() {
 
 
+
+    }
+
+    public static void main(String args[]){
+
+        
 
     }
 
