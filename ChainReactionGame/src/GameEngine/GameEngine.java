@@ -39,8 +39,15 @@ public class GameEngine {
         this._gc = _gc;
     }
 
-    public boolean checkResume() {
+    /*
 
+    Will check if "grid.ser" is empty or doesn't exist. If it exists, load the state of
+    game and continue, else create a new file"
+
+     */
+
+    public boolean checkResume() {
+        
         return true;
 
     }

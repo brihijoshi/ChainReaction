@@ -10,6 +10,13 @@ public class GameController {
     private GameState _gameState;
     private boolean _resume;
 
+    public GameController(ArrayList<Player> _players, Grid _grid, GameState _gameState, boolean _resume) {
+        this._players = _players;
+        this._grid = _grid;
+        this._gameState = _gameState;
+        this._resume = _resume;
+    }
+
     public ArrayList<Player> get_players() {
         return _players;
     }
@@ -71,6 +78,7 @@ public class GameController {
     }
 
     public void takeTurn(Player p) {
+
 
 
 

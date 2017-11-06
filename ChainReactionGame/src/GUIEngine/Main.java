@@ -175,6 +175,18 @@ public class Main extends Application {
     public void addOrbAndAnimate(GridPane root, int row, int column, int numSpheres, Color color){
         //To be done when we store the Array of the grid objects so that we can retrieve the current orbs and then replace it
         //To test it on the present situation only
+        int size = root.getChildren().size();
+        int rowsize=0;
+
+        if ( size == 55 ){
+            rowsize=6;
+        }
+        else{
+            rowsize=10;
+        }
+
+        int removal = ( row * rowsize ) + column + 1;
+
         StackPane cellContainer = new StackPane();
         cellContainer.setBorder(makeBorder(Color.RED));
         cellContainer.setOnMouseClicked(new turnGUI());
@@ -239,6 +251,11 @@ public class Main extends Application {
         StackPane.setMargin(cell, new Insets(2,2,2,2));
         cellContainer.getChildren().add(cell);
         root.add(cellContainer, column, row);
+        root.getChildren().remove(cellContainer);
+        root.getChildren().set(removal, cellContainer);
+
+        System.out.println(removal);
+        //root.getChildren().add(removal,cellContainer);
 
 
     }
@@ -513,10 +530,12 @@ public class Main extends Application {
         BorderPane bp = setEmptyGrid(root, 9, 6, Color.RED);
 
 
-        addOrbAndAnimate(root, 0, 0, 2, Color.RED);
+       addOrbAndAnimate(root, 0, 0 ,2, Color.RED);
 
 
         addOrbAndAnimate(root, 1, 1, 3, Color.RED);
+
+        addOrbAndAnimate(root, 1, 1, 2, Color.RED);
 
         changeGridColor(root, Color.ROSYBROWN);
 
@@ -567,6 +586,7 @@ class turnGUI implements EventHandler<MouseEvent> {
 
         StackPane source = (StackPane) e.getSource();
         GridPane grid = (GridPane) source.getParent();
+        System.out.println(grid.getChildren().indexOf(source));
 
         int cur_orbs = source.getChildren().size();
         int new_orbs = cur_orbs + 1;
