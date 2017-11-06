@@ -9,6 +9,7 @@ public class GameController {
     private Grid _grid;
     private GameState _gameState;
     private boolean _resume;
+    private static int _index;
 
     public GameController(ArrayList<Player> _players, Grid _grid, GameState _gameState, boolean _resume) {
         this._players = _players;
@@ -77,8 +78,26 @@ public class GameController {
 
     }
 
-    public void takeTurn(Player p) {
+    public static int get_index(){
+        return _index;
+    }
 
+    public static void set_index(int _i){
+        _index=_i;
+    }
+
+    public int[] convert_index(){
+        int numRows = GameEngine.get_gridSize();
+        int[] arr = {_index/numRows,_index%numRows};
+        return arr;
+    }
+
+
+    public void takeTurn(Player p) {
+        int[] pos = convert_index();
+        Cell clicked=_grid.get_grid().get(pos[0]).get(pos[1]);
+
+        
 
 
 

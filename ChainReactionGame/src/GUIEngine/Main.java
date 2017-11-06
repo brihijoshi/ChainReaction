@@ -1,5 +1,6 @@
 package GUIEngine;
 
+import GameEngine.GameController;
 import GameEngine.Grid;
 import javafx.animation.*;
 import javafx.application.Application;
@@ -49,6 +50,8 @@ public class Main extends Application {
     public static Button getSaveButton() {
         return saveButton;
     }
+
+
 
     // for help on transitions : https://gist.github.com/jewelsea/1475424
 
@@ -587,6 +590,7 @@ class turnGUI implements EventHandler<MouseEvent> {
         StackPane source = (StackPane) e.getSource();
         GridPane grid = (GridPane) source.getParent();
         System.out.println(grid.getChildren().indexOf(source));
+        GameController.set_index(grid.getChildren().indexOf(source));
 
         int cur_orbs = source.getChildren().size();
         int new_orbs = cur_orbs + 1;
