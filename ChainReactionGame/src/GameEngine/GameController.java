@@ -86,8 +86,9 @@ public class GameController {
         _index=_i;
     }
 
-    public int[] convert_index(){
-        int numRows = GameEngine.get_gridSize();
+    public static int[] convert_index(){
+        //int numRows = GameEngine.get_gridSize();
+        int numRows=6;
         int[] arr = {_index/numRows,_index%numRows};
         return arr;
     }
