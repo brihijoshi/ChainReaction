@@ -10,12 +10,14 @@ public class GameController {
     private GameState _gameState;
     private boolean _resume;
     private static int _index;
+    private boolean _endGame;
 
     public GameController(ArrayList<Player> _players, Grid _grid, GameState _gameState, boolean _resume) {
         this._players = _players;
         this._grid = _grid;
         this._gameState = _gameState;
         this._resume = _resume;
+        this._endGame = false;
     }
 
     public ArrayList<Player> get_players() {
@@ -94,26 +96,36 @@ public class GameController {
     }
 
 
+    // Obtains the index of stackPane of the clicked cell
+    // and outputs the index of the cell in the 2D array
+
     public void takeTurn(Player p) {
+
         int[] pos = convert_index();
-        Cell clicked=_grid.get_grid().get(pos[0]).get(pos[1]);
+        Cell clicked =_grid.get_grid().get(pos[0]).get(pos[1]);
+
         if (clicked.get_color().equals(p.get_colour())){
+
             clicked.set_currmass(clicked.get_currmass()+1);
             //Add in the GUI as well
-            if (clicked.get_currmass()>clicked.get_CRITMASS()){
+            if ( clicked.get_currmass() > clicked.get_CRITMASS() ){
                 clicked.set_currmass(0);
                 explode(pos[0],pos[1]);
                 //Clear the Cell
 
             }
+
+
         }
         else{
             //Need to make an error "Sound" or no reaction
         }
     }
 
+
+
     public boolean isValid(int x_index, int y_index){
-        if ((x_index< _grid.get_grid().size()) && (x_index>=0) && (y_index<_grid.get_grid().get(0).size()) && (y_index>=0)){
+        if ((x_index < _grid.get_grid().size()) && (x_index>=0) && (y_index<_grid.get_grid().get(0).size()) && (y_index>=0)){
             return true;
         }
         return false;
