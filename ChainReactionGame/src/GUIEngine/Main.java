@@ -1,5 +1,6 @@
 package GUIEngine;
 
+import GameEngine.GameController;
 import GameEngine.Grid;
 import javafx.animation.*;
 import javafx.application.Application;
@@ -32,6 +33,7 @@ public class Main extends Application {
     private static Button resumeButton;
     private static Button settingsButton;
     private static Button saveButton;
+    private GameController game;
 
 
     public static Button getStartButton() {
@@ -50,9 +52,11 @@ public class Main extends Application {
         return saveButton;
     }
 
+
+
     // for help on transitions : https://gist.github.com/jewelsea/1475424
 
-    public BorderPane setEmptyGrid(GridPane root, int numRows, int numColumns, Color color){
+    public static BorderPane setEmptyGrid(GridPane root, int numRows, int numColumns, Color color){
 
         BorderPane bp = new BorderPane();
         root.setAlignment(Pos.CENTER);
@@ -106,12 +110,12 @@ public class Main extends Application {
 
     }
 
-    public Border makeBorder(Color color){
+    public static Border makeBorder(Color color){
         // changes colour of the stackpane
         return new Border(new BorderStroke(color, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
     }
 
-    public void changeGridColor(GridPane grid, Color color){
+    public static void changeGridColor(GridPane grid, Color color){
         //To be done when we store the Array of the grid objects so that we can retrieve the current orbs and then change the colour
 
         ObservableList<Node> cells = grid.getChildren();
@@ -123,58 +127,22 @@ public class Main extends Application {
     }
 
 
-    public ParallelTransition addTransition(GridPane root){
 
-        StackPane cellContainer = new StackPane();
-        cellContainer.setBorder(makeBorder(Color.RED));
-        cellContainer.setOnMouseClicked(new turnGUI());
-        Group cell = new Group();
-        cell.setPickOnBounds(false);
-
-        PhongMaterial smaterial = new PhongMaterial();
-        smaterial.setDiffuseColor(Color.RED);
-
-
-        Sphere a = new Sphere(12);
-        Sphere b = new Sphere(12);
-        
-        b.setTranslateX(12);
-        b.setTranslateZ(12);
-
-        a.setMaterial(smaterial);
-        b.setMaterial(smaterial);
-        cell.getChildren().addAll(a, b);
-
-        rotateOrbs(cell);
-
-        GridPane.setHalignment(cell, HPos.CENTER);
-        GridPane.setValignment(cell, VPos.CENTER);
-        StackPane.setMargin(cell, new Insets(2,2,2,2));
-        cellContainer.getChildren().add(cell);
-        root.add(cellContainer, 0, 0);
-
-        final Duration time = Duration.millis(1000);
-
-        FadeTransition ft=new FadeTransition(time);
-        ft.setFromValue(1.0f);
-        ft.setToValue(0.3f);
-        ft.setAutoReverse(true);
-
-        TranslateTransition tt = new TranslateTransition(time);
-        tt.setFromX(-100f);
-        tt.setToX(100f);
-        tt.setAutoReverse(true);
-
-        Sphere c = new Sphere(12);
-        c.setMaterial(smaterial);
-
-        return new ParallelTransition(c,ft, tt);
-
-    }
-
-    public void addOrbAndAnimate(GridPane root, int row, int column, int numSpheres, Color color){
+    public static void addOrbAndAnimate(GridPane root, int row, int column, int numSpheres, Color color){
         //To be done when we store the Array of the grid objects so that we can retrieve the current orbs and then replace it
         //To test it on the present situation only
+        int size = root.getChildren().size();
+        int rowsize=0;
+
+        if ( size == 55 ){
+            rowsize=6;
+        }
+        else{
+            rowsize=10;
+        }
+
+        int removal = ( row * rowsize ) + column + 1;
+
         StackPane cellContainer = new StackPane();
         cellContainer.setBorder(makeBorder(Color.RED));
         cellContainer.setOnMouseClicked(new turnGUI());
@@ -239,11 +207,16 @@ public class Main extends Application {
         StackPane.setMargin(cell, new Insets(2,2,2,2));
         cellContainer.getChildren().add(cell);
         root.add(cellContainer, column, row);
+        root.getChildren().remove(cellContainer);
+        root.getChildren().set(removal, cellContainer);
+
+        System.out.println(removal);
+        //root.getChildren().add(removal,cellContainer);
 
 
     }
 
-    public void rotateOrbs(Group cell){
+    public static void rotateOrbs(Group cell){
 
         final Rotate rotationTransform = new Rotate(0, 0, 0);
         cell.getTransforms().add(rotationTransform);
@@ -264,7 +237,7 @@ public class Main extends Application {
         rotationAnimation.play();
     }
 
-    public Scene createStartPage() {
+    public static Scene createStartPage() {
 
         // Instantiating the buttons
         startButton = new Button("  Start  ");
@@ -349,7 +322,7 @@ public class Main extends Application {
 
     }
 
-    public Scene createSettingsPage() {
+    public static Scene createSettingsPage() {
 
         //Instantiating the Buttons
         saveButton=new Button("Save");
@@ -512,27 +485,17 @@ public class Main extends Application {
 
         BorderPane bp = setEmptyGrid(root, 9, 6, Color.RED);
 
-
-        addOrbAndAnimate(root, 0, 0, 2, Color.RED);
-
+        addOrbAndAnimate(root, 0, 0 ,2, Color.RED);
 
         addOrbAndAnimate(root, 1, 1, 3, Color.RED);
+
+        addOrbAndAnimate(root, 1, 1, 2, Color.RED);
 
         changeGridColor(root, Color.ROSYBROWN);
 
         primaryStage.setTitle("Game");
         primaryStage.setScene(new Scene(bp, 800, 1000, Color.BLACK));
         primaryStage.show();
-
-        Stage primaryStage2=new Stage();
-        primaryStage2.setTitle("Home");
-        primaryStage2.setScene(createStartPage());
-        primaryStage2.show();
-
-        Stage primaryStage3=new Stage();
-        primaryStage3.setTitle("Settings");
-        primaryStage3.setScene(createSettingsPage());
-        primaryStage3.show();
 
     }
 
@@ -542,6 +505,13 @@ public class Main extends Application {
         launch(args);
     }
 
+    public GameController getGame() {
+        return game;
+    }
+
+    public void setGame(GameController game) {
+        this.game = game;
+    }
 }
 
 
@@ -567,18 +537,11 @@ class turnGUI implements EventHandler<MouseEvent> {
 
         StackPane source = (StackPane) e.getSource();
         GridPane grid = (GridPane) source.getParent();
+        System.out.println(grid.getChildren().indexOf(source));
+        GameController.set_index(grid.getChildren().indexOf(source)-1);
+        int[] index = GameController.convert_index();
 
-        int cur_orbs = source.getChildren().size();
-        int new_orbs = cur_orbs + 1;
-
-        ObservableList<Node> cells = grid.getChildren();
-
-        int position = cells.indexOf(source);
-        int gridSize = cells.size();
-
-        ObservableList<Node> orbs = source.getChildren();
-        PathTransition pt = new PathTransition();
-
+        Main.addOrbAndAnimate(grid, index[0], index[1],3, Color.RED);
 
     }
 
