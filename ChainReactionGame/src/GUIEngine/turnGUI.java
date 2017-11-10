@@ -33,21 +33,22 @@ class turnGUI implements EventHandler<MouseEvent> {
         GridPane grid = (GridPane) source.getParent();
         //System.out.println(grid.getChildren().indexOf(source));
         GameController.set_index(grid.getChildren().indexOf(source)-1);
+        // gives row and column
         int[] index = GameController.convert_index();
         System.out.println(Integer.toString(index[0]) + " " + Integer.toString(index[1]));
         Group cellGroup = (Group) source.getChildren().get(0);
         int currMass = cellGroup.getChildren().size();
 
-        Main.addOrbAndAnimate(grid, index[0], index[1],currMass + 1, Color.RED);
+        GUIMain.addOrbAndAnimate(grid, index[0], index[1],currMass + 1, Color.RED);
         if(currMass + 1 == get_CritMass(index[0], index[1])) {
-            Main.addOrbAndAnimate(grid, index[0], index[1],0, Color.RED);
+            GUIMain.addOrbAndAnimate(grid, index[0], index[1],0, Color.RED);
             handleTurn(index[0], index[1], grid);
         }
 
     }
 
     public boolean areValidCoord(int row, int col){
-        if (row < Main.get_numRows() && row >= 0 && col < Main.get_numCols() && col >= 0){
+        if (row < GUIMain.get_numRows() && row >= 0 && col < GUIMain.get_numCols() && col >= 0){
             return true;
         }
         return false;
@@ -55,11 +56,11 @@ class turnGUI implements EventHandler<MouseEvent> {
 
     public int get_CritMass(int row, int col) {
 
-        if((row == Main.get_numRows() - 1 || row == 0) && (col == Main.get_numCols() - 1 || col == 0)) {
+        if((row == GUIMain.get_numRows() - 1 || row == 0) && (col == GUIMain.get_numCols() - 1 || col == 0)) {
             return 2;
         }
 
-        else if((row == 0 || row == Main.get_numRows() - 1) || (col == Main.get_numCols() - 1 || col == 0)) {
+        else if((row == 0 || row == GUIMain.get_numRows() - 1) || (col == GUIMain.get_numCols() - 1 || col == 0)) {
             return 3;
         }
         else {
@@ -77,7 +78,7 @@ class turnGUI implements EventHandler<MouseEvent> {
         }
 
         else{
-            ans = (row) * Main.get_numCols() + col;
+            ans = (row) * GUIMain.get_numCols() + col;
         }
 
         return ans + 1; // because childrenArray of gridPane starts at 1
@@ -91,10 +92,10 @@ class turnGUI implements EventHandler<MouseEvent> {
             Group grp = (Group) sp.getChildren().get(0);
             int currMass = grp.getChildren().size();
             System.out.println(currMass);
-            Main.addOrbAndAnimate(gp, row - 1, col, currMass + 1, Color.RED);
+            GUIMain.addOrbAndAnimate(gp, row - 1, col, currMass + 1, Color.RED);
             int critMass = get_CritMass(row - 1, col);
             if (currMass + 1 == critMass) {
-                Main.addOrbAndAnimate(gp, row - 1, col, 0, Color.RED);
+                GUIMain.addOrbAndAnimate(gp, row - 1, col, 0, Color.RED);
                 handleTurn(row - 1, col, gp);
             }
         }
@@ -108,10 +109,10 @@ class turnGUI implements EventHandler<MouseEvent> {
             int currMass = grp.getChildren().size();
             System.out.println(grp.getChildren());
             System.out.println(currMass);
-            Main.addOrbAndAnimate(gp, row, col - 1, currMass + 1, Color.RED);
+            GUIMain.addOrbAndAnimate(gp, row, col - 1, currMass + 1, Color.RED);
             int critMass = get_CritMass(row, col - 1);
             if (currMass + 1 == critMass) {
-                Main.addOrbAndAnimate(gp, row, col - 1, 0, Color.RED);
+                GUIMain.addOrbAndAnimate(gp, row, col - 1, 0, Color.RED);
                 handleTurn(row, col - 1, gp);
             }
         }
@@ -122,10 +123,10 @@ class turnGUI implements EventHandler<MouseEvent> {
             Group grp = (Group) sp.getChildren().get(0);
             int currMass = grp.getChildren().size();
             System.out.println(currMass);
-            Main.addOrbAndAnimate(gp, row + 1, col, currMass + 1, Color.RED);
+            GUIMain.addOrbAndAnimate(gp, row + 1, col, currMass + 1, Color.RED);
             int critMass = get_CritMass(row + 1, col);
             if (currMass + 1 == critMass) {
-                Main.addOrbAndAnimate(gp, row + 1, col, 0, Color.RED);
+                GUIMain.addOrbAndAnimate(gp, row + 1, col, 0, Color.RED);
                 handleTurn(row + 1, col, gp);
             }
         }
@@ -136,10 +137,10 @@ class turnGUI implements EventHandler<MouseEvent> {
             Group grp = (Group) sp.getChildren().get(0);
             int currMass = grp.getChildren().size();
             System.out.println(currMass);
-            Main.addOrbAndAnimate(gp, row, col + 1, currMass + 1, Color.RED);
+            GUIMain.addOrbAndAnimate(gp, row, col + 1, currMass + 1, Color.RED);
             int critMass = get_CritMass(row, col + 1);
             if (currMass + 1 == critMass) {
-                Main.addOrbAndAnimate(gp, row, col + 1, 0, Color.RED);
+                GUIMain.addOrbAndAnimate(gp, row, col + 1, 0, Color.RED);
                 handleTurn(row, col + 1, gp);
             }
         }

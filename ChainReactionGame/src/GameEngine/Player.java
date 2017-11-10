@@ -8,6 +8,12 @@ public class Player implements Serializable {
     private boolean _isAlive;
     private boolean _isActive;
 
+    public Player(String _colour, boolean _isAlive, boolean _isActive) {
+        this._colour = _colour;
+        this._isAlive = _isAlive;
+        this._isActive = _isActive;
+    }
+
 
     public String get_colour() {
         return _colour;

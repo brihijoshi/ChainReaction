@@ -1,13 +1,10 @@
 package GUIEngine;
 
-import GameEngine.GameController;
 import GameEngine.GameEngine;
-import GameEngine.Grid;
 import javafx.animation.*;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -16,7 +13,6 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
@@ -26,9 +22,10 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 
-public class Main extends Application {
+public class GUIMain extends Application {
 
 
+    // enable choice in grids and for index conversion
     private static int _numRows;
     private static int _numCols;
 
@@ -43,11 +40,11 @@ public class Main extends Application {
 
 
 
-    private static int get_numRows() {
+    public static int get_numRows() {
         return _numRows;
     }
 
-    private static int get_numCols() {
+    public static int get_numCols() {
         return _numCols;
     }
 
@@ -97,8 +94,8 @@ public class Main extends Application {
         root.setVgap(5);
         root.setGridLinesVisible(true);
 
-        Main._numRows = numRows;
-        Main._numCols = numColumns;
+        GUIMain._numRows = numRows;
+        GUIMain._numCols = numColumns;
 
         RowConstraints rc = new RowConstraints(80);
         rc.setVgrow(Priority.ALWAYS);
@@ -146,12 +143,12 @@ public class Main extends Application {
 
     }
 
-    private static Border makeBorder(Color color){
+    public static Border makeBorder(Color color){
         // changes colour of the stackpane
         return new Border(new BorderStroke(color, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
     }
 
-    private static void changeGridColor(GridPane grid, Color color){
+    public static void changeGridColor(GridPane grid, Color color){
         //To be done when we store the Array of the grid objects so that we can retrieve the current orbs and then change the colour
 
         ObservableList<Node> cells = grid.getChildren();
@@ -164,7 +161,7 @@ public class Main extends Application {
 
 
 
-    private static void addOrbAndAnimate(GridPane root, int row, int column, int numSpheres, Color color){
+    public static void addOrbAndAnimate(GridPane root, int row, int column, int numSpheres, Color color){
         //To be done when we store the Array of the grid objects so that we can retrieve the current orbs and then replace it
         //To test it on the present situation only
         int size = root.getChildren().size();
@@ -277,6 +274,7 @@ public class Main extends Application {
 
         // Instantiating the buttons
         startButton = new Button("  Start  ");
+        startButton.setOnAction(new startButtonGUI());
         resumeButton = new Button("Resume");
         settingsButton = new Button("Settings");
 
@@ -509,14 +507,7 @@ public class Main extends Application {
     }
 
 
-    @Override
-    public void start(Stage primaryStage) throws Exception{
-
-
-//        primaryStage.setScene(createSettingsPage());
-//        primaryStage.show();
-
-
+    public static Scene createGamePage() {
 
         GridPane root = new GridPane();
 
@@ -525,15 +516,19 @@ public class Main extends Application {
         addOrbAndAnimate(root, 0, 0 ,1, Color.RED);
         addOrbAndAnimate(root, 1, 1, 2, Color.RED);
 
-        changeGridColor(root, Color.ROSYBROWN);
+        changeGridColor(root, Color.RED);
 
-        primaryStage.setTitle("Game");
-        primaryStage.setScene(new Scene(bp, 800, 1000, Color.BLACK));
+        Scene sc = new Scene(bp, 800, 1000, Color.BLACK);
+
+        return sc;
+
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception{
+
+        primaryStage.setScene(createStartPage());
         primaryStage.show();
-
-        Stage newStage = new Stage();
-        newStage.setScene(createStartPage());
-        newStage.show();
 
     }
 

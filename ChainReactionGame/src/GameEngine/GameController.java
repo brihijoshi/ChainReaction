@@ -5,12 +5,16 @@ import java.util.ArrayList;
 
 public class GameController {
 
+
     private ArrayList<Player> _players;
     private Grid _grid;
     private GameState _gameState;
     private boolean _resume;
     private static int _index;
     private boolean _endGame;
+
+    public GameController() {
+    }
 
     public GameController(ArrayList<Player> _players, Grid _grid, GameState _gameState, boolean _resume) {
         this._players = _players;
@@ -50,6 +54,14 @@ public class GameController {
 
     public void set_resume(boolean _resume) {
         this._resume = _resume;
+    }
+
+    public boolean is_endGame() {
+        return _endGame;
+    }
+
+    public void set_endGame(boolean _endGame) {
+        this._endGame = _endGame;
     }
 
     public void loadGameState() throws IOException, ClassNotFoundException {

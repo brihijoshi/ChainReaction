@@ -8,6 +8,11 @@ public class GameState implements Serializable {
     private ArrayList<Player> _players;
     private Grid _grid;
 
+    public GameState(ArrayList<Player> _players, Grid _grid) {
+        this._players = _players;
+        this._grid = _grid;
+    }
+
     public ArrayList<Player> get_players() {
         return _players;
     }

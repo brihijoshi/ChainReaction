@@ -1,5 +1,8 @@
 package GameEngine;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 public class GameEngine {
 
     private int _numPlayers;
@@ -48,15 +51,39 @@ public class GameEngine {
 
     public boolean checkResume() {
 
-        return true;
+        return false;
 
     }
 
-    public void startGame() {
+    public void startGame() throws IOException, ClassNotFoundException {
+
+        if(!checkResume()) {
 
 
+            ArrayList<Player> players = new ArrayList<Player>();
+
+            for (int i = 0; i < _numPlayers; i++) {
+                players.add(new Player("Red", true, false));
+            }
+
+            Grid grid = new Grid(_gridSize);
+
+            GameState gs = new GameState(players, grid);
+
+            _gc = new GameController(players, grid, gs, false);
+
+        }
+
+        else {
+
+            // resume button handler will set some things here
+
+            _gc = new GameController();
+            _gc.loadGameState();
+            this.set_numPlayers(_gc.get_players().size());
 
 
+        }
 
     }
 
