@@ -35,8 +35,22 @@ public class GUIMain extends Application {
     private static Button resumeButton;
     private static Button settingsButton;
     private static Button saveButton;
+
+
+
+    private static Button homeButton; //Made it to specifically return to the home page
     private static ComboBox numPlayersCB;
     private static ComboBox gridChoiceCB;
+
+    private static ColorPicker player_1;
+    private static ColorPicker player_2;
+    private static ColorPicker player_3;
+    private static ColorPicker player_4;
+    private static ColorPicker player_5;
+    private static ColorPicker player_6;
+    private static ColorPicker player_7;
+    private static ColorPicker player_8;
+
 
 
 
@@ -64,6 +78,14 @@ public class GUIMain extends Application {
         return saveButton;
     }
 
+    public static Button getHomeButton() {
+        return homeButton;
+    }
+
+    public static void setHomeButton(Button homeButton) {
+        GUIMain.homeButton = homeButton;
+    }
+
 
     public static ComboBox getNumPlayersCB() {
         return numPlayersCB;
@@ -71,6 +93,70 @@ public class GUIMain extends Application {
 
     public static ComboBox getGridChoiceCB() {
         return gridChoiceCB;
+    }
+
+    public static ColorPicker getPlayer_1() {
+        return player_1;
+    }
+
+    public static void setPlayer_1(ColorPicker player_1) {
+        GUIMain.player_1 = player_1;
+    }
+
+    public static ColorPicker getPlayer_2() {
+        return player_2;
+    }
+
+    public static void setPlayer_2(ColorPicker player_2) {
+        GUIMain.player_2 = player_2;
+    }
+
+    public static ColorPicker getPlayer_3() {
+        return player_3;
+    }
+
+    public static void setPlayer_3(ColorPicker player_3) {
+        GUIMain.player_3 = player_3;
+    }
+
+    public static ColorPicker getPlayer_4() {
+        return player_4;
+    }
+
+    public static void setPlayer_4(ColorPicker player_4) {
+        GUIMain.player_4 = player_4;
+    }
+
+    public static ColorPicker getPlayer_5() {
+        return player_5;
+    }
+
+    public static void setPlayer_5(ColorPicker player_5) {
+        GUIMain.player_5 = player_5;
+    }
+
+    public static ColorPicker getPlayer_6() {
+        return player_6;
+    }
+
+    public static void setPlayer_6(ColorPicker player_6) {
+        GUIMain.player_6 = player_6;
+    }
+
+    public static ColorPicker getPlayer_7() {
+        return player_7;
+    }
+
+    public static void setPlayer_7(ColorPicker player_7) {
+        GUIMain.player_7 = player_7;
+    }
+
+    public static ColorPicker getPlayer_8() {
+        return player_8;
+    }
+
+    public static void setPlayer_8(ColorPicker player_8) {
+        GUIMain.player_8 = player_8;
     }
 
 
@@ -276,6 +362,7 @@ public class GUIMain extends Application {
         startButton.setOnAction(new startButtonGUI());
         resumeButton = new Button("Resume");
         settingsButton = new Button("Settings");
+        settingsButton.setOnAction(new settingsButtonGUI());
 
         // Customising the buttons
         startButton.setStyle("-fx-background-color: chartreuse; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold;");
@@ -359,33 +446,47 @@ public class GUIMain extends Application {
 
         //Instantiating the Buttons
         saveButton=new Button("Save");
+        homeButton=new Button ("Back");
+        homeButton.setOnAction(new homeButtonGUI());
+
+        StackPane homeButton_sp = new StackPane(homeButton);
+
 
         StackPane root = new StackPane();
 
-        //Making the drop down menus for each player
-        ObservableList<String> player_1 = FXCollections.observableArrayList("Red","Blue","Green","Yellow","White","Pink","Orange","Purple");
-        ComboBox comboBox_1=new ComboBox(player_1);
+        //Making the Player Color pickers
 
-        ObservableList<String> player_2 = FXCollections.observableArrayList("Red","Blue","Green","Yellow","White","Pink","Orange","Purple");
-        ComboBox comboBox_2=new ComboBox(player_2);
+        player_1 = new ColorPicker();
+        player_1.setValue(Color.RED);
+        player_1.setOnAction(new colorPickerGUI());
 
-        ObservableList<String> player_3 = FXCollections.observableArrayList("Red","Blue","Green","Yellow","White","Pink","Orange","Purple");
-        ComboBox comboBox_3=new ComboBox(player_3);
+        player_2 = new ColorPicker();
+        player_2.setValue(Color.AZURE);
+        player_2.setOnAction(new colorPickerGUI());
 
-        ObservableList<String> player_4 = FXCollections.observableArrayList("Red","Blue","Green","Yellow","White","Pink","Orange","Purple");
-        ComboBox comboBox_4=new ComboBox(player_4);
+        player_3 = new ColorPicker();
+        player_3.setValue(Color.LEMONCHIFFON);
+        player_3.setOnAction(new colorPickerGUI());
 
-        ObservableList<String> player_5 = FXCollections.observableArrayList("Red","Blue","Green","Yellow","White","Pink","Orange","Purple");
-        ComboBox comboBox_5=new ComboBox(player_5);
+        player_4 = new ColorPicker();
+        player_4.setValue(Color.FORESTGREEN);
+        player_4.setOnAction(new colorPickerGUI());
 
-        ObservableList<String> player_6 = FXCollections.observableArrayList("Red","Blue","Green","Yellow","White","Pink","Orange","Purple");
-        ComboBox comboBox_6=new ComboBox(player_6);
+        player_5 = new ColorPicker();
+        player_5.setValue(Color.BLANCHEDALMOND);
+        player_5.setOnAction(new colorPickerGUI());
 
-        ObservableList<String> player_7 = FXCollections.observableArrayList("Red","Blue","Green","Yellow","White","Pink","Orange","Purple");
-        ComboBox comboBox_7=new ComboBox(player_7);
+        player_6 = new ColorPicker();
+        player_6.setValue(Color.PALEVIOLETRED);
+        player_6.setOnAction(new colorPickerGUI());
 
-        ObservableList<String> player_8 = FXCollections.observableArrayList("Red","Blue","Green","Yellow","White","Pink","Orange","Purple");
-        ComboBox comboBox_8=new ComboBox(player_8);
+        player_7 = new ColorPicker();
+        player_7.setValue(Color.DARKKHAKI);
+        player_7.setOnAction(new colorPickerGUI());
+
+        player_8 = new ColorPicker();
+        player_8.setValue(Color.IVORY);
+        player_8.setOnAction(new colorPickerGUI());
 
 
         //Making the Grid for the settings page
@@ -419,48 +520,48 @@ public class GUIMain extends Application {
         title.setStyle("-fx-background-color: black; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 70px; -fx-font-weight: bold; -fx-text-fill: red;");
 
 
-        comboBox_1.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
+       // comboBox_1.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
         Label player1_label = new Label("Player 1:");
         player1_label.setStyle("-fx-background-color: black; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: red;");
 
 
-        comboBox_2.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
+       // comboBox_2.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
 
         Label player2_label = new Label("Player 2:");
         player2_label.setStyle("-fx-background-color: black; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: red;");
 
 
-        comboBox_3.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
+       // comboBox_3.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
 
         Label player3_label = new Label("Player 3:");
         player3_label.setStyle("-fx-background-color: black; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: red;");
 
 
-        comboBox_4.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
+       // comboBox_4.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
 
         Label player4_label = new Label("Player 4:");
         player4_label.setStyle("-fx-background-color: black; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: red;");
 
 
-        comboBox_5.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
+       // comboBox_5.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
 
         Label player5_label = new Label("Player 5:");
         player5_label.setStyle("-fx-background-color: black; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: red;");
 
 
-        comboBox_6.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
+       // comboBox_6.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
 
         Label player6_label = new Label("Player 6:");
         player6_label.setStyle("-fx-background-color: black; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: red;");
 
 
-        comboBox_7.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
+       // comboBox_7.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
 
         Label player7_label = new Label("Player 7:");
         player7_label.setStyle("-fx-background-color: black; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: red;");
 
 
-        comboBox_8.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
+       // comboBox_8.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
 
         Label player8_label = new Label("Player 8:");
         player8_label.setStyle("-fx-background-color: black; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: red;");
@@ -471,32 +572,36 @@ public class GUIMain extends Application {
         setting_grid.add(title, 2, 0, 10,2);
 
         setting_grid.add(player1_label,3,2,2,1);
-        setting_grid.add(comboBox_1,8,2,2,1);
+        setting_grid.add(player_1,8,2,2,1);
 
         setting_grid.add(player2_label,3,3,2,1);
-        setting_grid.add(comboBox_2,8,3,2,1);
+        setting_grid.add(player_2,8,3,2,1);
 
         setting_grid.add(player3_label,3,4,2,1);
-        setting_grid.add(comboBox_3,8,4,2,1);
+        setting_grid.add(player_3,8,4,2,1);
 
         setting_grid.add(player4_label,3,5,2,1);
-        setting_grid.add(comboBox_4,8,5,2,1);
+        setting_grid.add(player_4,8,5,2,1);
 
         setting_grid.add(player5_label,3,6,2,1);
-        setting_grid.add(comboBox_5,8,6,2,1);
+        setting_grid.add(player_5,8,6,2,1);
 
         setting_grid.add(player6_label,3,7,2,1);
-        setting_grid.add(comboBox_6,8,7,2,1);
+        setting_grid.add(player_6,8,7,2,1);
 
         setting_grid.add(player7_label,3,8,2,1);
-        setting_grid.add(comboBox_7,8,8,2,1);
+        setting_grid.add(player_7,8,8,2,1);
 
         setting_grid.add(player8_label,3,9,2,1);
-        setting_grid.add(comboBox_8,8,9,2,1);
+        setting_grid.add(player_8,8,9,2,1);
 
         saveButton.setStyle("-fx-background-color: lightcoral; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold;");
 
         setting_grid.add(saveButton,6,10,2,2);
+
+        homeButton.setStyle("-fx-background-color: lightcoral; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold;");
+
+        setting_grid.add(homeButton_sp, 10, 10, 2, 2);
 
 
 
