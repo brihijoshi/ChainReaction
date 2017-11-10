@@ -100,10 +100,10 @@ public class GameController {
         _index=_i;
     }
 
-    public static int[] convert_index(){
+    public static int[] convert_index(int numCols){
         //int numRows = GameEngine.get_gridSize();
-        int numRows=6;
-        int[] arr = {_index/numRows,_index%numRows};
+
+        int[] arr = {_index/numCols,_index%numCols};
         return arr;
     }
 
@@ -113,7 +113,7 @@ public class GameController {
 
     public void takeTurn(Player p) {
 
-        int[] pos = convert_index();
+        int[] pos = convert_index(_grid.get_grid().get(0).size());
         Cell clicked =_grid.get_grid().get(pos[0]).get(pos[1]);
 
         if (clicked.get_color().equals(p.get_colour())){

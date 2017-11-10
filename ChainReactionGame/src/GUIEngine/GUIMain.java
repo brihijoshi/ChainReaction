@@ -94,8 +94,7 @@ public class GUIMain extends Application {
         root.setVgap(5);
         root.setGridLinesVisible(true);
 
-        GUIMain._numRows = numRows;
-        GUIMain._numCols = numColumns;
+
 
         RowConstraints rc = new RowConstraints(80);
         rc.setVgrow(Priority.ALWAYS);
@@ -511,7 +510,17 @@ public class GUIMain extends Application {
 
         GridPane root = new GridPane();
 
-        BorderPane bp = setEmptyGrid(root, 9, 6, Color.RED);
+        if(_gameEngine.get_gridSize() == 0) {
+            _numRows = 9;
+            _numCols = 6;
+        }
+
+        else {
+            _numRows = 15;
+            _numCols = 10;
+        }
+
+        BorderPane bp = setEmptyGrid(root, _numRows, _numCols, Color.RED);
 
         addOrbAndAnimate(root, 0, 0 ,1, Color.RED);
         addOrbAndAnimate(root, 1, 1, 2, Color.RED);

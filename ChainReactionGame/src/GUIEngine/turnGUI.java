@@ -34,7 +34,7 @@ class turnGUI implements EventHandler<MouseEvent> {
         //System.out.println(grid.getChildren().indexOf(source));
         GameController.set_index(grid.getChildren().indexOf(source)-1);
         // gives row and column
-        int[] index = GameController.convert_index();
+        int[] index = GameController.convert_index(GUIMain.get_numCols());
         System.out.println(Integer.toString(index[0]) + " " + Integer.toString(index[1]));
         Group cellGroup = (Group) source.getChildren().get(0);
         int currMass = cellGroup.getChildren().size();
