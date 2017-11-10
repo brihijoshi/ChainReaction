@@ -3,7 +3,7 @@ package GameEngine;
 public class GameEngine {
 
     private int _numPlayers;
-    private static int _gridSize;
+    private int _gridSize;
     private int _choice;
     private GameController _gc;
 
@@ -15,11 +15,11 @@ public class GameEngine {
         this._numPlayers = _numPlayers;
     }
 
-    public static int get_gridSize() {
+    public int get_gridSize() {
         return _gridSize;
     }
 
-    public static void set_gridSize(int _gs) {
+    public void set_gridSize(int _gs) {
         _gridSize = _gs;
     }
 

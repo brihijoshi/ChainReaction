@@ -1,6 +1,7 @@
 package GUIEngine;
 
 import GameEngine.GameController;
+import GameEngine.GameEngine;
 import GameEngine.Grid;
 import javafx.animation.*;
 import javafx.application.Application;
@@ -31,19 +32,22 @@ public class Main extends Application {
     private static int _numRows;
     private static int _numCols;
 
+    private static GameEngine _gameEngine;
 
     private static Button startButton;
     private static Button resumeButton;
     private static Button settingsButton;
     private static Button saveButton;
-    private GameController game;
+    private static ComboBox numPlayersCB;
+    private static ComboBox gridChoiceCB;
 
 
-    public static int get_numRows() {
+
+    private static int get_numRows() {
         return _numRows;
     }
 
-    public static int get_numCols() {
+    private static int get_numCols() {
         return _numCols;
     }
 
@@ -61,6 +65,24 @@ public class Main extends Application {
 
     public static Button getSaveButton() {
         return saveButton;
+    }
+
+
+    public static ComboBox getNumPlayersCB() {
+        return numPlayersCB;
+    }
+
+    public static ComboBox getGridChoiceCB() {
+        return gridChoiceCB;
+    }
+
+
+    public static GameEngine get_gameEngine() {
+        return _gameEngine;
+    }
+
+    public static void set_gameEngine(GameEngine gameEngine) {
+        _gameEngine = gameEngine;
     }
 
 
@@ -124,12 +146,12 @@ public class Main extends Application {
 
     }
 
-    public static Border makeBorder(Color color){
+    private static Border makeBorder(Color color){
         // changes colour of the stackpane
         return new Border(new BorderStroke(color, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
     }
 
-    public static void changeGridColor(GridPane grid, Color color){
+    private static void changeGridColor(GridPane grid, Color color){
         //To be done when we store the Array of the grid objects so that we can retrieve the current orbs and then change the colour
 
         ObservableList<Node> cells = grid.getChildren();
@@ -142,7 +164,7 @@ public class Main extends Application {
 
 
 
-    public static void addOrbAndAnimate(GridPane root, int row, int column, int numSpheres, Color color){
+    private static void addOrbAndAnimate(GridPane root, int row, int column, int numSpheres, Color color){
         //To be done when we store the Array of the grid objects so that we can retrieve the current orbs and then replace it
         //To test it on the present situation only
         int size = root.getChildren().size();
@@ -267,11 +289,11 @@ public class Main extends Application {
 
         //Making the drop down menus
         ObservableList<String> grid_options = FXCollections.observableArrayList("9x6", "15x10");
-        ComboBox comboBox_grid=new ComboBox(grid_options);
+        gridChoiceCB=new ComboBox(grid_options);
 
 
         ObservableList<String> player_options = FXCollections.observableArrayList("2", "3", "4", "5", "6", "7", "8");
-        ComboBox comboBox_player=new ComboBox(player_options);
+        numPlayersCB = new ComboBox<>(player_options);
 
         //Making the Grid for the home page
         GridPane home_grid=new GridPane();
@@ -312,16 +334,16 @@ public class Main extends Application {
         GridPane.setHalignment(startButton_sp, HPos.CENTER);
         GridPane.setHalignment(resumeButton_sp, HPos.CENTER);
         GridPane.setHalignment(settingsButton_sp, HPos.CENTER);
-        GridPane.setHalignment(comboBox_grid, HPos.CENTER);
+        GridPane.setHalignment(gridChoiceCB, HPos.CENTER);
 
 
-        comboBox_grid.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
-        comboBox_player.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
+        gridChoiceCB.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
+        numPlayersCB.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
         home_grid.add(startButton_sp,2,5,2,1);
         home_grid.add(gridstyle_label,5,4,2,1);
-        home_grid.add(comboBox_grid,5,5,2,1);
+        home_grid.add(gridChoiceCB,5,5,2,1);
         home_grid.add(numplayers_label,8,4,3,1);
-        home_grid.add(comboBox_player,8,5,2,1);
+        home_grid.add(numPlayersCB,8,5,2,1);
         home_grid.add(resumeButton_sp,4,7,2,1);
         home_grid.add(settingsButton_sp, 6, 7,2,1);
         home_grid.setStyle("-fx-background-color: black");
@@ -509,6 +531,10 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(bp, 800, 1000, Color.BLACK));
         primaryStage.show();
 
+        Stage newStage = new Stage();
+        newStage.setScene(createStartPage());
+        newStage.show();
+
     }
 
 
@@ -517,13 +543,6 @@ public class Main extends Application {
         launch(args);
     }
 
-    public GameController getGame() {
-        return game;
-    }
-
-    public void setGame(GameController game) {
-        this.game = game;
-    }
 }
 
 
