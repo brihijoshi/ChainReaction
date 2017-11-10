@@ -21,6 +21,9 @@ import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 
 public class GUIMain extends Application {
 
@@ -456,37 +459,51 @@ public class GUIMain extends Application {
 
         //Making the Player Color pickers
 
+        HashMap<Integer,String> playercolor= new HashMap<Integer, String>();
+
+
         player_1 = new ColorPicker();
         player_1.setValue(Color.RED);
         player_1.setOnAction(new colorPickerGUI());
+        playercolor.put(1,player_1.getValue().toString());
+        //System.out.println(player_1.getValue().toString());
 
         player_2 = new ColorPicker();
         player_2.setValue(Color.AZURE);
         player_2.setOnAction(new colorPickerGUI());
+        playercolor.put(2,player_2.getValue().toString());
 
         player_3 = new ColorPicker();
         player_3.setValue(Color.LEMONCHIFFON);
         player_3.setOnAction(new colorPickerGUI());
+        playercolor.put(3,player_3.getValue().toString());
 
         player_4 = new ColorPicker();
         player_4.setValue(Color.FORESTGREEN);
         player_4.setOnAction(new colorPickerGUI());
+        playercolor.put(4,player_4.getValue().toString());
 
         player_5 = new ColorPicker();
         player_5.setValue(Color.BLANCHEDALMOND);
         player_5.setOnAction(new colorPickerGUI());
+        playercolor.put(5,player_5.getValue().toString());
 
         player_6 = new ColorPicker();
         player_6.setValue(Color.PALEVIOLETRED);
         player_6.setOnAction(new colorPickerGUI());
+        playercolor.put(6,player_6.getValue().toString());
 
         player_7 = new ColorPicker();
         player_7.setValue(Color.DARKKHAKI);
         player_7.setOnAction(new colorPickerGUI());
+        playercolor.put(7,player_7.getValue().toString());
 
         player_8 = new ColorPicker();
         player_8.setValue(Color.IVORY);
         player_8.setOnAction(new colorPickerGUI());
+        playercolor.put(8,player_8.getValue().toString());
+
+        //_gameEngine.setplayer_colors(playercolor); //-- Giving null pointer error cuz players havent been selected yet
 
 
         //Making the Grid for the settings page
@@ -603,6 +620,9 @@ public class GUIMain extends Application {
 
         setting_grid.add(homeButton_sp, 10, 10, 2, 2);
 
+
+
+        //Gonna send the player colors to the GameEngine to create new players
 
 
         return new Scene(setting_grid, 1200, 1000, Color.BLACK);

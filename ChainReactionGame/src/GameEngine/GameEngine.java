@@ -2,6 +2,9 @@ package GameEngine;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class GameEngine {
 
@@ -9,6 +12,7 @@ public class GameEngine {
     private int _gridSize;
     private int _choice;
     private GameController _gc;
+    private Map player_colors;
 
     public int get_numPlayers() {
         return _numPlayers;
@@ -42,6 +46,10 @@ public class GameEngine {
         this._gc = _gc;
     }
 
+    public void setplayer_colors(HashMap p){
+        player_colors=p;
+    }
+
     /*
 
     Will check if "grid.ser" is empty or doesn't exist. If it exists, load the state of
@@ -59,12 +67,17 @@ public class GameEngine {
 
         if(!checkResume()) {
 
-
+            for (Object key: player_colors.keySet()){
+                System.out.println(key);
+                System.out.println(player_colors.get(key));
+            }
             ArrayList<Player> players = new ArrayList<Player>();
 
             for (int i = 0; i < _numPlayers; i++) {
-                players.add(new Player("Red", true, false));
+                players.add(new Player(player_colors.get(i+1).toString(), true, false));
+                System.out.println(player_colors.get(i+1).toString());
             }
+
 
             Grid grid = new Grid(_gridSize);
 
@@ -86,6 +99,7 @@ public class GameEngine {
         }
 
     }
+
 
 
 }

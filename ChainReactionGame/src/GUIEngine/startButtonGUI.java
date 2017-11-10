@@ -12,12 +12,18 @@ public class startButtonGUI implements EventHandler<ActionEvent>{
 
     private int numPlayers = 2;
     private int choiceOfGrid = 0;
+    GameEngine gameEngine;
 
     @Override
     public void handle(ActionEvent e) {
 
-        GameEngine gameEngine = new GameEngine();
-        GUIMain.set_gameEngine(gameEngine);
+        if (GUIMain.get_gameEngine()==null){
+            gameEngine = new GameEngine();
+            GUIMain.set_gameEngine(gameEngine);
+        }
+        else{
+            gameEngine = GUIMain.get_gameEngine();
+        }
 
         if(GUIMain.getNumPlayersCB().getValue()!=null) {
             numPlayers = Integer.parseInt(GUIMain.getNumPlayersCB().getValue().toString());
