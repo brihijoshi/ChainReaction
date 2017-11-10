@@ -42,7 +42,7 @@ public class GameEngine {
     /*
 
     Will check if "grid.ser" is empty or doesn't exist. If it exists, load the state of
-    game and continue, else create a new file"
+    game and continue, else create a new file
 
      */
 
@@ -53,6 +53,8 @@ public class GameEngine {
     }
 
     public void startGame() {
+
+
 
 
 
