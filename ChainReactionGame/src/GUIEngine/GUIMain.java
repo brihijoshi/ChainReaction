@@ -39,8 +39,6 @@ public class GUIMain extends Application {
     private static Button settingsButton;
     private static Button saveButton;
 
-
-
     private static Button homeButton; //Made it to specifically return to the home page
     private static ComboBox numPlayersCB;
     private static ComboBox gridChoiceCB;
@@ -54,12 +52,7 @@ public class GUIMain extends Application {
     private static ColorPicker player_7 = new ColorPicker(Color.BEIGE);
     private static ColorPicker player_8 = new ColorPicker(Color.LAVENDER);
 
-
-
-    private static HashMap<Integer,String> playercolor;
-
-
-
+    private static HashMap<Integer, String> playercolor;
 
 
     public static int get_numRows() {

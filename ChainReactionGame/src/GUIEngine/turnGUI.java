@@ -11,6 +11,7 @@ import javafx.scene.paint.Color;
 class turnGUI implements EventHandler<MouseEvent> {
 
 
+    String currentColorHEX;
 
     @Override
     public void handle(MouseEvent e) {

@@ -190,17 +190,12 @@ public class GameController {
     }
 
     public void handleGame() {
-       
 
 
 
 
-    }
-
-    public static void main(String args[]){
-
-        
 
     }
+
 
 }
