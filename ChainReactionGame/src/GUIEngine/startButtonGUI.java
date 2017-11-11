@@ -34,14 +34,14 @@ public class startButtonGUI implements EventHandler<ActionEvent>{
 
         //Populating the HashMap with the default values
 
-        GUIMain.getPlayercolor().put(1,"#" + Integer.toHexString(GUIMain.getPlayer_1().getValue().hashCode()));
-        GUIMain.getPlayercolor().put(2,"#" + Integer.toHexString(GUIMain.getPlayer_2().getValue().hashCode()));
-        GUIMain.getPlayercolor().put(3,"#" + Integer.toHexString(GUIMain.getPlayer_3().getValue().hashCode()));
-        GUIMain.getPlayercolor().put(4,"#" + Integer.toHexString(GUIMain.getPlayer_4().getValue().hashCode()));
-        GUIMain.getPlayercolor().put(5,"#" + Integer.toHexString(GUIMain.getPlayer_5().getValue().hashCode()));
-        GUIMain.getPlayercolor().put(6,"#" + Integer.toHexString(GUIMain.getPlayer_6().getValue().hashCode()));
-        GUIMain.getPlayercolor().put(7,"#" + Integer.toHexString(GUIMain.getPlayer_7().getValue().hashCode()));
-        GUIMain.getPlayercolor().put(8,"#" + Integer.toHexString(GUIMain.getPlayer_8().getValue().hashCode()));
+        GUIMain.getPlayercolor().put(1,ColorUtil.colorToHex(GUIMain.getPlayer_1().getValue()));
+        GUIMain.getPlayercolor().put(2,ColorUtil.colorToHex(GUIMain.getPlayer_2().getValue()));
+        GUIMain.getPlayercolor().put(3,ColorUtil.colorToHex(GUIMain.getPlayer_3().getValue()));
+        GUIMain.getPlayercolor().put(4,ColorUtil.colorToHex(GUIMain.getPlayer_4().getValue()));
+        GUIMain.getPlayercolor().put(5,ColorUtil.colorToHex(GUIMain.getPlayer_5().getValue()));
+        GUIMain.getPlayercolor().put(6,ColorUtil.colorToHex(GUIMain.getPlayer_6().getValue()));
+        GUIMain.getPlayercolor().put(7,ColorUtil.colorToHex(GUIMain.getPlayer_7().getValue()));
+        GUIMain.getPlayercolor().put(8,ColorUtil.colorToHex(GUIMain.getPlayer_8().getValue()));
 
         GUIMain.get_gameEngine().setplayer_colors(GUIMain.getPlayercolor());
 

@@ -283,7 +283,7 @@ public class GUIMain extends Application {
         int removal = ( row * rowsize ) + column + 1;
 
         StackPane cellContainer = new StackPane();
-        cellContainer.setBorder(makeBorder(Color.RED));
+        cellContainer.setBorder(makeBorder(color));
         cellContainer.setOnMouseClicked(new turnGUI());
         Group cell = new Group();
         cell.setPickOnBounds(false);
@@ -681,12 +681,13 @@ public class GUIMain extends Application {
 
         BorderPane bp = setEmptyGrid(root, _numRows, _numCols, firstplayer);
 
-        addOrbAndAnimate(root, 0, 0 ,1, firstplayer);
-        addOrbAndAnimate(root, 1, 1, 2, firstplayer);
+        //addOrbAndAnimate(root, 0, 0 ,1, firstplayer);
+        //addOrbAndAnimate(root, 1, 1, 2, firstplayer);
 
         // changeGridColor(root, Color.RED);
 
         GUIMain.setCurrentPlayer(GUIMain.get_gameEngine().get_gc().get_players().get(0).get_colour());
+        System.out.println("First Player: " + GUIMain.getCurrentPlayer());
 
         Scene sc = new Scene(bp, 800, 1000, Color.BLACK);
 

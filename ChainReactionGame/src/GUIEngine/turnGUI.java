@@ -5,10 +5,13 @@ import GameEngine.GameEngine;
 import GameEngine.Player;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.PhongMaterial;
+import javafx.scene.shape.Sphere;
 
 import java.util.ArrayList;
 
@@ -50,22 +53,43 @@ class turnGUI implements EventHandler<MouseEvent> {
         int[] index = GameController.convert_index(GUIMain.get_numCols());
         System.out.println(Integer.toString(index[0]) + " " + Integer.toString(index[1]));
         Group cellGroup = (Group) source.getChildren().get(0);
-        int currMass = cellGroup.getChildren().size();
 
+        Group grp = (Group) source.getChildren().get(0);
 
-
-        GUIMain.addOrbAndAnimate(grid, index[0], index[1],currMass + 1, Color.web(currentColorHEX));
-        if(currMass + 1 == get_CritMass(index[0], index[1])) {
-            GUIMain.addOrbAndAnimate(grid, index[0], index[1],0, Color.web(currentColorHEX));
-            handleTurn(index[0], index[1], grid);
-        }
+        Sphere s = (grp.getChildren().size() == 0) ? null : (Sphere) grp.getChildren().get(0);
+        PhongMaterial ph = (s == null) ? null : (PhongMaterial) s.getMaterial();
+        Color clr = (ph == null) ? null : ph.getDiffuseColor();
 
         Player nextPlayer = fetchNextPlayer(currentColorHEX);
 
-        GUIMain.changeGridColor(grid, Color.web(nextPlayer.get_colour()));
+        String oldColor = clr == null? null : ColorUtil.colorToHex(clr);
 
-        GUIMain.setCurrentPlayer(nextPlayer.get_colour());
+        if(oldColor==null || oldColor.equals(currentColorHEX)) {
 
+            System.out.println("Existing color: " + oldColor );
+            System.out.println("Given color: " + currentColorHEX);
+            System.out.println("code should work");
+
+            int currMass = cellGroup.getChildren().size();
+
+            GUIMain.addOrbAndAnimate(grid, index[0], index[1], currMass + 1, Color.web(currentColorHEX));
+            if (currMass + 1 == get_CritMass(index[0], index[1])) {
+                GUIMain.addOrbAndAnimate(grid, index[0], index[1], 0, Color.web(currentColorHEX));
+                handleTurn(index[0], index[1], grid);
+            }
+
+
+
+            GUIMain.changeGridColor(grid, Color.web(nextPlayer.get_colour()));
+
+            GUIMain.setCurrentPlayer(nextPlayer.get_colour());
+        }
+
+        else {
+            System.out.println("Existing color: " + oldColor );
+            System.out.println("Given color: " + currentColorHEX);
+            System.out.println("code for sound effects");
+        }
         //gGUIMain.changeGridColor(grid, ;
 
     }
@@ -129,6 +153,8 @@ class turnGUI implements EventHandler<MouseEvent> {
         return ans + 1; // because childrenArray of gridPane starts at 1
 
     }
+
+
 
     public void handleTurn(int row, int col, GridPane gp) {
 
