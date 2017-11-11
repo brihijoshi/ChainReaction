@@ -1,6 +1,7 @@
 package GUIEngine;
 
 import GameEngine.GameController;
+import GameEngine.GameEngine;
 import GameEngine.Player;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -15,12 +16,13 @@ class turnGUI implements EventHandler<MouseEvent> {
 
 
     String currentColorHEX;
-    public ArrayList<Player> players;
+
+
 
     @Override
     public void handle(MouseEvent e) {
 
-        players = GUIMain.get_gameEngine().get_gc().get_players();
+        ArrayList<Player> players = GUIMain.get_gameEngine().get_gc().get_players();
         int numPlayers = GUIMain.get_gameEngine().get_numPlayers();
 
 
@@ -34,6 +36,7 @@ class turnGUI implements EventHandler<MouseEvent> {
          *
          * **/
 
+        currentColorHEX = GUIMain.getCurrentPlayer();
 
 
         System.out.println("Mouse click detected");
@@ -49,14 +52,44 @@ class turnGUI implements EventHandler<MouseEvent> {
         Group cellGroup = (Group) source.getChildren().get(0);
         int currMass = cellGroup.getChildren().size();
 
-        GUIMain.addOrbAndAnimate(grid, index[0], index[1],currMass + 1, Color.RED);
+
+
+        GUIMain.addOrbAndAnimate(grid, index[0], index[1],currMass + 1, Color.web(currentColorHEX));
         if(currMass + 1 == get_CritMass(index[0], index[1])) {
-            GUIMain.addOrbAndAnimate(grid, index[0], index[1],0, Color.RED);
+            GUIMain.addOrbAndAnimate(grid, index[0], index[1],0, Color.web(currentColorHEX));
             handleTurn(index[0], index[1], grid);
         }
 
+        Player nextPlayer = fetchNextPlayer(currentColorHEX);
+
+        GUIMain.changeGridColor(grid, Color.web(nextPlayer.get_colour()));
+
+        GUIMain.setCurrentPlayer(nextPlayer.get_colour());
+
         //gGUIMain.changeGridColor(grid, ;
 
+    }
+
+    public Player fetchNextPlayer(String currentColor){
+
+        ArrayList<Player> players = GUIMain.get_gameEngine().get_gc().get_players();
+        int numPlayers = GUIMain.get_gameEngine().get_numPlayers();
+        for (int i = 0; i < players.size(); i++) {
+            if (players.get(i).get_colour().equals(currentColor)){
+               int j=(i+1)%numPlayers;
+               //aaj mai bathroom me phasa reh gaya
+               while (i!=j){
+                   if (players.get(j).get_isAlive()) {
+                       return players.get(j);
+                   }
+                   else {
+                       j = (j+1)%numPlayers;
+                   }
+               }
+            }
+
+        }
+        return null;
     }
 
     public boolean areValidCoord(int row, int col){
@@ -104,10 +137,10 @@ class turnGUI implements EventHandler<MouseEvent> {
             Group grp = (Group) sp.getChildren().get(0);
             int currMass = grp.getChildren().size();
             System.out.println(currMass);
-            GUIMain.addOrbAndAnimate(gp, row - 1, col, currMass + 1, Color.RED);
+            GUIMain.addOrbAndAnimate(gp, row - 1, col, currMass + 1, Color.web(currentColorHEX));
             int critMass = get_CritMass(row - 1, col);
             if (currMass + 1 == critMass) {
-                GUIMain.addOrbAndAnimate(gp, row - 1, col, 0, Color.RED);
+                GUIMain.addOrbAndAnimate(gp, row - 1, col, 0, Color.web(currentColorHEX));
                 handleTurn(row - 1, col, gp);
             }
         }
@@ -121,10 +154,10 @@ class turnGUI implements EventHandler<MouseEvent> {
             int currMass = grp.getChildren().size();
             System.out.println(grp.getChildren());
             System.out.println(currMass);
-            GUIMain.addOrbAndAnimate(gp, row, col - 1, currMass + 1, Color.RED);
+            GUIMain.addOrbAndAnimate(gp, row, col - 1, currMass + 1, Color.web(currentColorHEX));
             int critMass = get_CritMass(row, col - 1);
             if (currMass + 1 == critMass) {
-                GUIMain.addOrbAndAnimate(gp, row, col - 1, 0, Color.RED);
+                GUIMain.addOrbAndAnimate(gp, row, col - 1, 0, Color.web(currentColorHEX));
                 handleTurn(row, col - 1, gp);
             }
         }
@@ -135,13 +168,14 @@ class turnGUI implements EventHandler<MouseEvent> {
             Group grp = (Group) sp.getChildren().get(0);
             int currMass = grp.getChildren().size();
             System.out.println(currMass);
-            GUIMain.addOrbAndAnimate(gp, row + 1, col, currMass + 1, Color.RED);
+            GUIMain.addOrbAndAnimate(gp, row + 1, col, currMass + 1, Color.web(currentColorHEX));
             int critMass = get_CritMass(row + 1, col);
             if (currMass + 1 == critMass) {
-                GUIMain.addOrbAndAnimate(gp, row + 1, col, 0, Color.RED);
+                GUIMain.addOrbAndAnimate(gp, row + 1, col, 0, Color.web(currentColorHEX));
                 handleTurn(row + 1, col, gp);
             }
         }
+
         //System.out.println("Right " + row + " "+ (col+1));
         //Handle Right
         if (areValidCoord(row, col + 1)){
@@ -149,10 +183,10 @@ class turnGUI implements EventHandler<MouseEvent> {
             Group grp = (Group) sp.getChildren().get(0);
             int currMass = grp.getChildren().size();
             System.out.println(currMass);
-            GUIMain.addOrbAndAnimate(gp, row, col + 1, currMass + 1, Color.RED);
+            GUIMain.addOrbAndAnimate(gp, row, col + 1, currMass + 1, Color.web(currentColorHEX));
             int critMass = get_CritMass(row, col + 1);
             if (currMass + 1 == critMass) {
-                GUIMain.addOrbAndAnimate(gp, row, col + 1, 0, Color.RED);
+                GUIMain.addOrbAndAnimate(gp, row, col + 1, 0, Color.web(currentColorHEX));
                 handleTurn(row, col + 1, gp);
             }
         }

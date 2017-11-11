@@ -52,6 +52,9 @@ public class GUIMain extends Application {
     private static ColorPicker player_7 = new ColorPicker(Color.BEIGE);
     private static ColorPicker player_8 = new ColorPicker(Color.LAVENDER);
 
+
+    private static String currentPlayer;
+
     private static HashMap<Integer, String> playercolor;
 
 
@@ -158,6 +161,15 @@ public class GUIMain extends Application {
 
     public static void setPlayer_8(ColorPicker player_8) {
         GUIMain.player_8 = player_8;
+    }
+
+
+    public static String getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public static void setCurrentPlayer(String currentPlayer) {
+        GUIMain.currentPlayer = currentPlayer;
     }
 
     public static HashMap<Integer, String> getPlayercolor() {
@@ -663,12 +675,18 @@ public class GUIMain extends Application {
             _numCols = 10;
         }
 
-        BorderPane bp = setEmptyGrid(root, _numRows, _numCols, Color.web(GUIMain.playercolor.get(1)));
+        Color firstplayer= Color.web(GUIMain.get_gameEngine().get_gc().get_players().get(0).get_colour());
+        //System.out.println(firstplayer);
+        //System.out.println(firstplayer.toString());
 
-        addOrbAndAnimate(root, 0, 0 ,1, Color.RED);
-        addOrbAndAnimate(root, 1, 1, 2, Color.RED);
+        BorderPane bp = setEmptyGrid(root, _numRows, _numCols, firstplayer);
 
-        changeGridColor(root, Color.RED);
+        addOrbAndAnimate(root, 0, 0 ,1, firstplayer);
+        addOrbAndAnimate(root, 1, 1, 2, firstplayer);
+
+        // changeGridColor(root, Color.RED);
+
+        GUIMain.setCurrentPlayer(GUIMain.get_gameEngine().get_gc().get_players().get(0).get_colour());
 
         Scene sc = new Scene(bp, 800, 1000, Color.BLACK);
 

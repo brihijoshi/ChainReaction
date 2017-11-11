@@ -3,7 +3,6 @@ package GameEngine;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 public class GameEngine {
@@ -78,7 +77,7 @@ public class GameEngine {
                 System.out.println(player_colors.get(i+1).toString());
             }
 
-            players.get(0).set_isActive(true);
+            players.get(0).set_isKillable(true);
 
 
             Grid grid = new Grid(_gridSize);
