@@ -684,6 +684,10 @@ public class GUIMain extends Application {
             cp_array.get(i).setDisable(true);
         }
 
+        for (int i = 0; i < _gameEngine.get_numPlayers(); i++) {
+            cp_array.get(i).setDisable(false);
+        }
+
 
 
         //Gonna send the player colors to the GameEngine to create new players
