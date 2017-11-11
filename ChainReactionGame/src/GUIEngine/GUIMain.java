@@ -14,6 +14,8 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Sphere;
@@ -21,6 +23,7 @@ import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -264,7 +267,21 @@ public class GUIMain extends Application {
 
 
     }
+    public static void playExplode(){
+        String musicFile = "assets/explode.mp3";     // For example
 
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+    }
+
+    public static void playError(){
+        String musicFile = "assets/error.mp3";     // For example
+
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+    }
 
 
     public static void addOrbAndAnimate(GridPane root, int row, int column, int numSpheres, Color color){
@@ -348,6 +365,7 @@ public class GUIMain extends Application {
         root.add(cellContainer, column, row);
         root.getChildren().remove(cellContainer);
         root.getChildren().set(removal, cellContainer);
+        //playExplode();
 
 //        System.out.println(removal);
         //root.getChildren().add(removal,cellContainer);
@@ -649,6 +667,22 @@ public class GUIMain extends Application {
         homeButton.setStyle("-fx-background-color: lightcoral; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold;");
 
         setting_grid.add(homeButton_sp, 10, 10, 2, 2);
+
+        ArrayList<ColorPicker> cp_array = new ArrayList<>();
+        cp_array.add(player_1);
+        cp_array.add(player_2);
+        cp_array.add(player_3);
+        cp_array.add(player_4);
+        cp_array.add(player_5);
+        cp_array.add(player_6);
+        cp_array.add(player_7);
+        cp_array.add(player_8);
+
+        //player_1.setDisable(true);
+
+        for (int i = 7; i > _gameEngine.get_numPlayers()-1; i--) {
+            cp_array.get(i).setDisable(true);
+        }
 
 
 

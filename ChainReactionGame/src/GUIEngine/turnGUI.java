@@ -9,10 +9,13 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Sphere;
 
+import java.io.File;
 import java.util.ArrayList;
 
 class turnGUI implements EventHandler<MouseEvent> {
@@ -73,8 +76,10 @@ class turnGUI implements EventHandler<MouseEvent> {
             int currMass = cellGroup.getChildren().size();
 
             GUIMain.addOrbAndAnimate(grid, index[0], index[1], currMass + 1, Color.web(currentColorHEX));
+            GUIMain.playExplode();
             if (currMass + 1 == get_CritMass(index[0], index[1])) {
                 GUIMain.addOrbAndAnimate(grid, index[0], index[1], 0, Color.web(currentColorHEX));
+
                 handleTurn(index[0], index[1], grid);
             }
 
@@ -89,10 +94,14 @@ class turnGUI implements EventHandler<MouseEvent> {
             System.out.println("Existing color: " + oldColor );
             System.out.println("Given color: " + currentColorHEX);
             System.out.println("code for sound effects");
+
+            GUIMain.playError();
         }
         //gGUIMain.changeGridColor(grid, ;
 
     }
+
+
 
     public Player fetchNextPlayer(String currentColor){
 
