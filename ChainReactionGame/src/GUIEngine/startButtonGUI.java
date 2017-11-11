@@ -15,7 +15,8 @@ public class startButtonGUI implements EventHandler<ActionEvent>{
 
 
     @Override
-    public void handle(ActionEvent e) {
+    public void handle(ActionEvent e)
+    {
 
 
 
@@ -44,10 +45,12 @@ public class startButtonGUI implements EventHandler<ActionEvent>{
 
         GUIMain.get_gameEngine().setplayer_colors(GUIMain.getPlayercolor());
 
-        try {
+        try
+        {
             GUIMain.get_gameEngine().startGame();
         }
-        catch (Exception e1) {
+        catch (Exception e1)
+        {
             e1.printStackTrace();
         }
 

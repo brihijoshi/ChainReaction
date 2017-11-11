@@ -78,6 +78,8 @@ public class GameEngine {
                 System.out.println(player_colors.get(i+1).toString());
             }
 
+            players.get(0).set_isActive(true);
+
 
             Grid grid = new Grid(_gridSize);
 

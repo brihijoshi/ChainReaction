@@ -23,7 +23,7 @@ public class Player implements Serializable {
         this._colour = _colour;
     }
 
-    public boolean is_isAlive() {
+    public boolean get_isAlive() {
         return _isAlive;
     }
 

@@ -663,7 +663,7 @@ public class GUIMain extends Application {
             _numCols = 10;
         }
 
-        BorderPane bp = setEmptyGrid(root, _numRows, _numCols, Color.RED);
+        BorderPane bp = setEmptyGrid(root, _numRows, _numCols, Color.web(GUIMain.playercolor.get(1)));
 
         addOrbAndAnimate(root, 0, 0 ,1, Color.RED);
         addOrbAndAnimate(root, 1, 1, 2, Color.RED);

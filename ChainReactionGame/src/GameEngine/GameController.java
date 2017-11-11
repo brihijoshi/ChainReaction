@@ -191,7 +191,25 @@ public class GameController {
 
     public void handleGame() {
 
+        _endGame = false;
 
+        if(!_resume) {
+
+            while(!is_endGame()) {
+
+
+                for (int i = 0; i < _players.size(); i++) {
+                    Player p = _players.get(i);
+                    if(p.get_isAlive()) {
+                        takeTurn(p);
+                    }
+
+
+                }
+
+            }
+
+        }
 
 
 

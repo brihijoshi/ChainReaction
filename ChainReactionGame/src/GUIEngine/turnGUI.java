@@ -1,6 +1,7 @@
 package GUIEngine;
 
 import GameEngine.GameController;
+import GameEngine.Player;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.input.MouseEvent;
@@ -8,13 +9,19 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
+
 class turnGUI implements EventHandler<MouseEvent> {
 
 
     String currentColorHEX;
+    public ArrayList<Player> players;
 
     @Override
     public void handle(MouseEvent e) {
+
+        players = GUIMain.get_gameEngine().get_gc().get_players();
+        int numPlayers = GUIMain.get_gameEngine().get_numPlayers();
 
 
         /**
@@ -26,6 +33,8 @@ class turnGUI implements EventHandler<MouseEvent> {
          *
          *
          * **/
+
+
 
         System.out.println("Mouse click detected");
 
@@ -45,6 +54,8 @@ class turnGUI implements EventHandler<MouseEvent> {
             GUIMain.addOrbAndAnimate(grid, index[0], index[1],0, Color.RED);
             handleTurn(index[0], index[1], grid);
         }
+
+        //gGUIMain.changeGridColor(grid, ;
 
     }
 
