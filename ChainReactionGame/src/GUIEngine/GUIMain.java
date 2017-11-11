@@ -45,14 +45,19 @@ public class GUIMain extends Application {
     private static ComboBox numPlayersCB;
     private static ComboBox gridChoiceCB;
 
-    private static ColorPicker player_1;
-    private static ColorPicker player_2;
-    private static ColorPicker player_3;
-    private static ColorPicker player_4;
-    private static ColorPicker player_5;
-    private static ColorPicker player_6;
-    private static ColorPicker player_7;
-    private static ColorPicker player_8;
+    private static ColorPicker player_1 = new ColorPicker(Color.RED);
+    private static ColorPicker player_2 = new ColorPicker(Color.BLUE);
+    private static ColorPicker player_3 = new ColorPicker(Color.GREEN);
+    private static ColorPicker player_4 = new ColorPicker(Color.YELLOW);
+    private static ColorPicker player_5 = new ColorPicker(Color.ORANGE);
+    private static ColorPicker player_6 = new ColorPicker(Color.HOTPINK);
+    private static ColorPicker player_7 = new ColorPicker(Color.BEIGE);
+    private static ColorPicker player_8 = new ColorPicker(Color.LAVENDER);
+
+
+
+    private static HashMap<Integer,String> playercolor;
+
 
 
 
@@ -160,6 +165,14 @@ public class GUIMain extends Application {
 
     public static void setPlayer_8(ColorPicker player_8) {
         GUIMain.player_8 = player_8;
+    }
+
+    public static HashMap<Integer, String> getPlayercolor() {
+        return playercolor;
+    }
+
+    public static void setPlayercolor(HashMap<Integer, String> playercolor) {
+        GUIMain.playercolor = playercolor;
     }
 
 
@@ -360,6 +373,10 @@ public class GUIMain extends Application {
 
     public static Scene createStartPage() {
 
+        //In case a person clicks on start, default colours should come.
+
+
+
         // Instantiating the buttons
         startButton = new Button("  Start  ");
         startButton.setOnAction(new startButtonGUI());
@@ -459,51 +476,59 @@ public class GUIMain extends Application {
 
         //Making the Player Color pickers
 
-        HashMap<Integer,String> playercolor= new HashMap<Integer, String>();
 
 
-        player_1 = new ColorPicker();
+        //player_1 = new ColorPicker();
         player_1.setValue(Color.RED);
         player_1.setOnAction(new colorPickerGUI());
-        playercolor.put(1,player_1.getValue().toString());
+        //playercolor.put(1,player_1.getValue().toString());
         //System.out.println(player_1.getValue().toString());
 
-        player_2 = new ColorPicker();
+        //player_2 = new ColorPicker();
         player_2.setValue(Color.AZURE);
         player_2.setOnAction(new colorPickerGUI());
-        playercolor.put(2,player_2.getValue().toString());
+        //playercolor.put(2,player_2.getValue().toString());
 
-        player_3 = new ColorPicker();
+        //player_3 = new ColorPicker();
         player_3.setValue(Color.LEMONCHIFFON);
         player_3.setOnAction(new colorPickerGUI());
-        playercolor.put(3,player_3.getValue().toString());
+        //playercolor.put(3,player_3.getValue().toString());
 
-        player_4 = new ColorPicker();
+        //player_4 = new ColorPicker();
         player_4.setValue(Color.FORESTGREEN);
         player_4.setOnAction(new colorPickerGUI());
-        playercolor.put(4,player_4.getValue().toString());
+        //playercolor.put(4,player_4.getValue().toString());
 
-        player_5 = new ColorPicker();
+        //player_5 = new ColorPicker();
         player_5.setValue(Color.BLANCHEDALMOND);
         player_5.setOnAction(new colorPickerGUI());
-        playercolor.put(5,player_5.getValue().toString());
+        //playercolor.put(5,player_5.getValue().toString());
 
-        player_6 = new ColorPicker();
+        //player_6 = new ColorPicker();
         player_6.setValue(Color.PALEVIOLETRED);
         player_6.setOnAction(new colorPickerGUI());
-        playercolor.put(6,player_6.getValue().toString());
+        //playercolor.put(6,player_6.getValue().toString());
 
-        player_7 = new ColorPicker();
+        //player_7 = new ColorPicker();
         player_7.setValue(Color.DARKKHAKI);
         player_7.setOnAction(new colorPickerGUI());
-        playercolor.put(7,player_7.getValue().toString());
+        //playercolor.put(7,player_7.getValue().toString());
 
-        player_8 = new ColorPicker();
+        //player_8 = new ColorPicker();
         player_8.setValue(Color.IVORY);
         player_8.setOnAction(new colorPickerGUI());
-        playercolor.put(8,player_8.getValue().toString());
+        //playercolor.put(8,player_8.getValue().toString());
 
-        //_gameEngine.setplayer_colors(playercolor); //-- Giving null pointer error cuz players havent been selected yet
+        playercolor.put(1,"#" + Integer.toHexString(player_1.getValue().hashCode()));
+        playercolor.put(2,"#" + Integer.toHexString(player_2.getValue().hashCode()));
+        playercolor.put(3,"#" + Integer.toHexString(player_3.getValue().hashCode()));
+        playercolor.put(4,"#" + Integer.toHexString(player_4.getValue().hashCode()));
+        playercolor.put(5,"#" + Integer.toHexString(player_5.getValue().hashCode()));
+        playercolor.put(6,"#" + Integer.toHexString(player_6.getValue().hashCode()));
+        playercolor.put(7,"#" + Integer.toHexString(player_7.getValue().hashCode()));
+        playercolor.put(8,"#" + Integer.toHexString(player_8.getValue().hashCode()));
+
+        _gameEngine.setplayer_colors(playercolor); //-- Giving null pointer error cuz players havent been selected yet
 
 
         //Making the Grid for the settings page
@@ -660,6 +685,9 @@ public class GUIMain extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+
+        _gameEngine = new GameEngine();
+        playercolor= new HashMap<Integer, String>();
 
         primaryStage.setScene(createStartPage());
         primaryStage.show();

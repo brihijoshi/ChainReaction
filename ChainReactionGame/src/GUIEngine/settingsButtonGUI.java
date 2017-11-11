@@ -14,9 +14,8 @@ public class settingsButtonGUI implements EventHandler<ActionEvent>{
 
     @Override
     public void handle(ActionEvent e) {
-        GameEngine gameEngine = new GameEngine();
-        GUIMain.set_gameEngine(gameEngine);
 
+        // In the event that person goes to Settings before pressing Start
         if(GUIMain.getNumPlayersCB().getValue()!=null) {
             numPlayers = Integer.parseInt(GUIMain.getNumPlayersCB().getValue().toString());
         }
@@ -26,8 +25,8 @@ public class settingsButtonGUI implements EventHandler<ActionEvent>{
             choiceOfGrid = recordedValue.equals("9x6")?0:1;
         }
 
-        gameEngine.set_numPlayers(numPlayers);
-        gameEngine.set_gridSize(choiceOfGrid);
+        GUIMain.get_gameEngine().set_numPlayers(numPlayers);
+        GUIMain.get_gameEngine().set_gridSize(choiceOfGrid);
 
 
 
