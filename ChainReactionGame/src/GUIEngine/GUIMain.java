@@ -56,6 +56,11 @@ public class GUIMain extends Application {
     private static ColorPicker player_8 = new ColorPicker(Color.LAVENDER);
 
 
+    private static ArrayList<ColorPicker> array_CP = new ArrayList<>(8);
+
+
+
+
     private static String currentPlayer;
 
     private static HashMap<Integer, String> playercolor;
@@ -191,6 +196,15 @@ public class GUIMain extends Application {
     public static void set_gameEngine(GameEngine gameEngine) {
         _gameEngine = gameEngine;
     }
+
+    public static ArrayList<ColorPicker> getArray_CP() {
+        return array_CP;
+    }
+
+    public static void setArray_CP(ArrayList<ColorPicker> array_CP) {
+        GUIMain.array_CP = array_CP;
+    }
+
 
 
 
@@ -502,43 +516,35 @@ public class GUIMain extends Application {
 
 
         //player_1 = new ColorPicker();
-        player_1.setValue(Color.RED);
         player_1.setOnAction(new colorPickerGUI());
         //playercolor.put(1,player_1.getValue().toString());
         //System.out.println(player_1.getValue().toString());
 
         //player_2 = new ColorPicker();
-        player_2.setValue(Color.AZURE);
         player_2.setOnAction(new colorPickerGUI());
         //playercolor.put(2,player_2.getValue().toString());
 
         //player_3 = new ColorPicker();
-        player_3.setValue(Color.LEMONCHIFFON);
         player_3.setOnAction(new colorPickerGUI());
         //playercolor.put(3,player_3.getValue().toString());
 
         //player_4 = new ColorPicker();
-        player_4.setValue(Color.FORESTGREEN);
         player_4.setOnAction(new colorPickerGUI());
         //playercolor.put(4,player_4.getValue().toString());
 
         //player_5 = new ColorPicker();
-        player_5.setValue(Color.BLANCHEDALMOND);
         player_5.setOnAction(new colorPickerGUI());
         //playercolor.put(5,player_5.getValue().toString());
 
         //player_6 = new ColorPicker();
-        player_6.setValue(Color.PALEVIOLETRED);
         player_6.setOnAction(new colorPickerGUI());
         //playercolor.put(6,player_6.getValue().toString());
 
         //player_7 = new ColorPicker();
-        player_7.setValue(Color.DARKKHAKI);
         player_7.setOnAction(new colorPickerGUI());
         //playercolor.put(7,player_7.getValue().toString());
 
         //player_8 = new ColorPicker();
-        player_8.setValue(Color.IVORY);
         player_8.setOnAction(new colorPickerGUI());
         //playercolor.put(8,player_8.getValue().toString());
 
@@ -738,6 +744,15 @@ public class GUIMain extends Application {
 
         _gameEngine = new GameEngine();
         playercolor= new HashMap<Integer, String>();
+
+        array_CP.add(player_1);
+        array_CP.add(player_2);
+        array_CP.add(player_3);
+        array_CP.add(player_4);
+        array_CP.add(player_5);
+        array_CP.add(player_6);
+        array_CP.add(player_7);
+        array_CP.add(player_8);
 
         primaryStage.setScene(createStartPage());
         primaryStage.show();
