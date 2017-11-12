@@ -511,41 +511,7 @@ public class GUIMain extends Application {
         StackPane root = new StackPane();
 
         //Making the Player Color pickers
-
-
-
-        //player_1 = new ColorPicker();
-        player_1.setOnAction(new colorPickerGUI());
-        //playercolor.put(1,player_1.getValue().toString());
-        //System.out.println(player_1.getValue().toString());
-
-        //player_2 = new ColorPicker();
-        player_2.setOnAction(new colorPickerGUI());
-        //playercolor.put(2,player_2.getValue().toString());
-
-        //player_3 = new ColorPicker();
-        player_3.setOnAction(new colorPickerGUI());
-        //playercolor.put(3,player_3.getValue().toString());
-
-        //player_4 = new ColorPicker();
-        player_4.setOnAction(new colorPickerGUI());
-        //playercolor.put(4,player_4.getValue().toString());
-
-        //player_5 = new ColorPicker();
-        player_5.setOnAction(new colorPickerGUI());
-        //playercolor.put(5,player_5.getValue().toString());
-
-        //player_6 = new ColorPicker();
-        player_6.setOnAction(new colorPickerGUI());
-        //playercolor.put(6,player_6.getValue().toString());
-
-        //player_7 = new ColorPicker();
-        player_7.setOnAction(new colorPickerGUI());
-        //playercolor.put(7,player_7.getValue().toString());
-
-        //player_8 = new ColorPicker();
-        player_8.setOnAction(new colorPickerGUI());
-        //playercolor.put(8,player_8.getValue().toString());
+        
 
         playercolor.put(1,"#" + Integer.toHexString(player_1.getValue().hashCode()));
         playercolor.put(2,"#" + Integer.toHexString(player_2.getValue().hashCode()));
