@@ -57,7 +57,7 @@ public class undoButtonGUI implements EventHandler<ActionEvent> {
 
         stage.setScene(GUIMain.createGamePage());
 
-        stage.show();
+        //stage.show();
 
 
 

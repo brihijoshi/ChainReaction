@@ -2,10 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/GUIEngine/exitButtonGUI.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game.ser" afterPath="$PROJECT_DIR$/game.ser" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/undo.ser" afterPath="$PROJECT_DIR$/undo.ser" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/restartButtonGUI.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/restartButtonGUI.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUIEngine/GUIMain.java" afterPath="$PROJECT_DIR$/src/GUIEngine/GUIMain.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUIEngine/restartButtonGUI.java" afterPath="$PROJECT_DIR$/src/GUIEngine/restartButtonGUI.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUIEngine/resumeButtonGUI.java" afterPath="$PROJECT_DIR$/src/GUIEngine/resumeButtonGUI.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUIEngine/settingsButtonGUI.java" afterPath="$PROJECT_DIR$/src/GUIEngine/settingsButtonGUI.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUIEngine/startButtonGUI.java" afterPath="$PROJECT_DIR$/src/GUIEngine/startButtonGUI.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUIEngine/undoButtonGUI.java" afterPath="$PROJECT_DIR$/src/GUIEngine/undoButtonGUI.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -87,23 +93,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Grid.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GameEngine/Grid.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-222">
-              <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-              <folding>
-                <element signature="e#300#317#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="GUIMain.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUIEngine/GUIMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="781" column="44" lean-forward="false" selection-start-line="781" selection-start-column="44" selection-end-line="781" selection-end-column="44" />
+            <state relative-caret-position="182">
+              <caret line="256" column="60" lean-forward="false" selection-start-line="256" selection-start-column="60" selection-end-line="256" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2168#2169#0" expanded="true" />
@@ -174,18 +168,42 @@
                 <element signature="e#5093#5094#0" expanded="true" />
                 <element signature="e#5164#5165#0" expanded="true" />
                 <element signature="e#5207#5208#0" expanded="true" />
-                <marker date="1510524320000" expanded="false" signature="27557:27568" ph=" { " />
-                <marker date="1510524320000" expanded="false" signature="27581:27587" ph=" }" />
+                <marker date="1510525818000" expanded="false" signature="27620:27631" ph=" { " />
+                <marker date="1510525818000" expanded="false" signature="27644:27650" ph=" }" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="restartButtonGUI.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="restartButtonGUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUIEngine/restartButtonGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="498">
-              <caret line="44" column="55" lean-forward="false" selection-start-line="44" selection-start-column="55" selection-end-line="44" selection-end-column="55" />
+            <state relative-caret-position="128">
+              <caret line="41" column="56" lean-forward="true" selection-start-line="40" selection-start-column="7" selection-end-line="41" selection-end-column="56" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="exitButtonGUI.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GUIEngine/exitButtonGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="248">
+              <caret line="20" column="21" lean-forward="false" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="homeButtonGUI.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GUIEngine/homeButtonGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="32" column="12" lean-forward="false" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -196,8 +214,20 @@
       <file leaf-file-name="resumeButtonGUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUIEngine/resumeButtonGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="48" column="45" lean-forward="false" selection-start-line="48" selection-start-column="45" selection-end-line="48" selection-end-column="45" />
+            <state relative-caret-position="385">
+              <caret line="52" column="9" lean-forward="false" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settingsButtonGUI.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GUIEngine/settingsButtonGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="39" column="10" lean-forward="false" selection-start-line="39" selection-start-column="10" selection-end-line="39" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -212,86 +242,18 @@
               <caret line="79" column="66" lean-forward="false" selection-start-line="79" selection-start-column="66" selection-end-line="79" selection-end-column="66" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1510524320000" expanded="true" signature="6753:7864" ph="{...}" />
-                <marker date="1510524320000" expanded="true" signature="7411:7662" ph="//..." />
-                <marker date="1510524320000" expanded="true" signature="7922:8598" ph="{...}" />
-                <marker date="1510524320000" expanded="true" signature="8643:9857" ph="{...}" />
-                <marker date="1510524320000" expanded="true" signature="9897:10265" ph="{...}" />
-                <marker date="1510524320000" expanded="true" signature="10317:10478" ph="{...}" />
-                <marker date="1510524320000" expanded="true" signature="10526:10874" ph="{...}" />
-                <marker date="1510524320000" expanded="true" signature="10939:11180" ph="{...}" />
-                <marker date="1510524320000" expanded="true" signature="11242:14530" ph="{...}" />
-                <marker date="1510524320000" expanded="true" signature="13692:13767" ph="//..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameState.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GameEngine/GameState.java">
+      <file leaf-file-name="undoButtonGUI.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/GUIEngine/undoButtonGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="10" column="59" lean-forward="false" selection-start-line="10" selection-start-column="59" selection-end-line="10" selection-end-column="59" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GameEngine.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GameEngine/GameEngine.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="96" column="0" lean-forward="false" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+            <state relative-caret-position="426">
+              <caret line="59" column="10" lean-forward="false" selection-start-line="59" selection-start-column="10" selection-end-line="59" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#549#550#0" expanded="true" />
-                <element signature="e#583#584#0" expanded="true" />
-                <element signature="e#634#635#0" expanded="true" />
-                <element signature="e#680#681#0" expanded="true" />
-                <element signature="e#713#714#0" expanded="true" />
-                <element signature="e#745#746#0" expanded="true" />
-                <element signature="e#786#787#0" expanded="true" />
-                <element signature="e#817#818#0" expanded="true" />
-                <element signature="e#848#849#0" expanded="true" />
-                <element signature="e#878#879#0" expanded="true" />
-                <element signature="e#921#922#0" expanded="true" />
-                <element signature="e#959#960#0" expanded="true" />
-                <element signature="e#997#998#0" expanded="true" />
-                <element signature="e#1023#1024#0" expanded="true" />
-                <element signature="e#1069#1070#0" expanded="true" />
-                <element signature="e#1099#1100#0" expanded="true" />
-                <element signature="e#1145#1146#0" expanded="true" />
-                <element signature="e#1176#1177#0" expanded="true" />
-                <marker date="1510524320000" expanded="true" signature="1758:1992" ph="{...}" />
-                <marker date="1510524320000" expanded="true" signature="2076:2691" ph="{...}" />
-                <marker date="1510524320000" expanded="true" signature="2160:2168" ph="&lt;~&gt;" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GameEngine/Player.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="93" lean-forward="false" selection-start-line="11" selection-start-column="93" selection-end-line="11" selection-end-column="93" />
-              <folding>
-                <element signature="e#496#497#0" expanded="true" />
-                <element signature="e#526#527#0" expanded="true" />
-                <element signature="e#572#573#0" expanded="true" />
-                <element signature="e#610#611#0" expanded="true" />
-                <element signature="e#646#647#0" expanded="true" />
-                <element signature="e#677#678#0" expanded="true" />
-                <element signature="e#726#727#0" expanded="true" />
-                <element signature="e#766#767#0" expanded="true" />
-                <element signature="e#805#806#0" expanded="true" />
-                <element signature="e#839#840#0" expanded="true" />
-                <element signature="e#894#895#0" expanded="true" />
-                <element signature="e#940#941#0" expanded="true" />
-                <element signature="e#977#978#0" expanded="true" />
-                <element signature="e#1009#1010#0" expanded="true" />
-                <element signature="e#1060#1061#0" expanded="true" />
-                <element signature="e#1102#1103#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -301,7 +263,7 @@
         <entry file="file://$PROJECT_DIR$/src/GUIEngine/startButtonGUI.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="392">
-              <caret line="63" column="21" lean-forward="false" selection-start-line="56" selection-start-column="7" selection-end-line="63" selection-end-column="21" />
+              <caret line="63" column="10" lean-forward="false" selection-start-line="63" selection-start-column="10" selection-end-line="63" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -331,6 +293,7 @@
       <find>undo</find>
       <find>sav</find>
       <find>MenuB</find>
+      <find>setE</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -360,23 +323,24 @@
       <list>
         <option value="$PROJECT_DIR$/src/GUIEngine/Main.java" />
         <option value="$PROJECT_DIR$/src/GUIEngine/colorpickerGUI.java" />
-        <option value="$PROJECT_DIR$/src/GUIEngine/settingsButtonGUI.java" />
         <option value="$PROJECT_DIR$/src/GUIEngine/TestColor.java" />
         <option value="$PROJECT_DIR$/src/GUIEngine/ColorUtil.java" />
         <option value="$PROJECT_DIR$/src/GUIEngine/colorPickerGUI.java" />
-        <option value="$PROJECT_DIR$/src/GUIEngine/homeButtonGUI.java" />
         <option value="$PROJECT_DIR$/src/GameEngine/Cell.java" />
         <option value="$PROJECT_DIR$/src/GameEngine/Grid.java" />
-        <option value="$PROJECT_DIR$/src/GUIEngine/startButtonGUI.java" />
         <option value="$PROJECT_DIR$/src/GameEngine/Player.java" />
         <option value="$PROJECT_DIR$/src/GameEngine/GameState.java" />
-        <option value="$PROJECT_DIR$/src/GUIEngine/resumeButtonGUI.java" />
         <option value="$PROJECT_DIR$/src/GameEngine/GameEngine.java" />
         <option value="$PROJECT_DIR$/src/GUIEngine/turnGUI.java" />
         <option value="$PROJECT_DIR$/src/GameEngine/GameController.java" />
-        <option value="$PROJECT_DIR$/src/GUIEngine/undoButtonGUI.java" />
-        <option value="$PROJECT_DIR$/src/GUIEngine/GUIMain.java" />
         <option value="$PROJECT_DIR$/src/GUIEngine/restartButtonGUI.java" />
+        <option value="$PROJECT_DIR$/src/GUIEngine/GUIMain.java" />
+        <option value="$PROJECT_DIR$/src/GUIEngine/exitButtonGUI.java" />
+        <option value="$PROJECT_DIR$/src/GUIEngine/homeButtonGUI.java" />
+        <option value="$PROJECT_DIR$/src/GUIEngine/resumeButtonGUI.java" />
+        <option value="$PROJECT_DIR$/src/GUIEngine/settingsButtonGUI.java" />
+        <option value="$PROJECT_DIR$/src/GUIEngine/startButtonGUI.java" />
+        <option value="$PROJECT_DIR$/src/GUIEngine/undoButtonGUI.java" />
       </list>
     </option>
   </component>
@@ -717,14 +681,22 @@
       <option name="project" value="LOCAL" />
       <updated>1510514029573</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added Restart functionality">
+      <created>1510525008593</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1510525008597</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="137612000" />
+    <option name="totallyTimeSpent" value="138604000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="46" y="22" width="1394" height="878" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -735,7 +707,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24521072" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32694763" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31673053" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31673053" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -834,7 +806,8 @@
     <MESSAGE value="Added feature to manage states at the end of turns" />
     <MESSAGE value="Implemented event handler for Start Button&#10;&#10;Also added scene switching in start button" />
     <MESSAGE value="Added the isActive() attribute to Player" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added the isActive() attribute to Player" />
+    <MESSAGE value="Added Restart functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Restart functionality" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -847,37 +820,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/GameEngine/GameEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#549#550#0" expanded="true" />
-            <element signature="e#583#584#0" expanded="true" />
-            <element signature="e#634#635#0" expanded="true" />
-            <element signature="e#680#681#0" expanded="true" />
-            <element signature="e#713#714#0" expanded="true" />
-            <element signature="e#745#746#0" expanded="true" />
-            <element signature="e#786#787#0" expanded="true" />
-            <element signature="e#817#818#0" expanded="true" />
-            <element signature="e#848#849#0" expanded="true" />
-            <element signature="e#878#879#0" expanded="true" />
-            <element signature="e#921#922#0" expanded="true" />
-            <element signature="e#959#960#0" expanded="true" />
-            <element signature="e#997#998#0" expanded="true" />
-            <element signature="e#1023#1024#0" expanded="true" />
-            <element signature="e#1069#1070#0" expanded="true" />
-            <element signature="e#1099#1100#0" expanded="true" />
-            <element signature="e#1145#1146#0" expanded="true" />
-            <element signature="e#1176#1177#0" expanded="true" />
-            <marker date="1510524320000" expanded="true" signature="1758:1992" ph="{...}" />
-            <marker date="1510524320000" expanded="true" signature="2076:2691" ph="{...}" />
-            <marker date="1510524320000" expanded="true" signature="2160:2168" ph="&lt;~&gt;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUIEngine/GUIMain.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1650">
@@ -952,8 +894,8 @@
             <element signature="e#5093#5094#0" expanded="true" />
             <element signature="e#5164#5165#0" expanded="true" />
             <element signature="e#5207#5208#0" expanded="true" />
-            <marker date="1510524320000" expanded="false" signature="27557:27568" ph=" { " />
-            <marker date="1510524320000" expanded="false" signature="27581:27587" ph=" }" />
+            <marker date="1510525818000" expanded="false" signature="27620:27631" ph=" { " />
+            <marker date="1510525818000" expanded="false" signature="27644:27650" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -1115,8 +1057,8 @@
             <element signature="e#5093#5094#0" expanded="true" />
             <element signature="e#5164#5165#0" expanded="true" />
             <element signature="e#5207#5208#0" expanded="true" />
-            <marker date="1510524320000" expanded="false" signature="27557:27568" ph=" { " />
-            <marker date="1510524320000" expanded="false" signature="27581:27587" ph=" }" />
+            <marker date="1510525818000" expanded="false" signature="27620:27631" ph=" { " />
+            <marker date="1510525818000" expanded="false" signature="27644:27650" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -1211,8 +1153,8 @@
             <element signature="e#5093#5094#0" expanded="true" />
             <element signature="e#5164#5165#0" expanded="true" />
             <element signature="e#5207#5208#0" expanded="true" />
-            <marker date="1510524320000" expanded="false" signature="27557:27568" ph=" { " />
-            <marker date="1510524320000" expanded="false" signature="27581:27587" ph=" }" />
+            <marker date="1510525818000" expanded="false" signature="27620:27631" ph=" { " />
+            <marker date="1510525818000" expanded="false" signature="27644:27650" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -1307,8 +1249,8 @@
             <element signature="e#5093#5094#0" expanded="true" />
             <element signature="e#5164#5165#0" expanded="true" />
             <element signature="e#5207#5208#0" expanded="true" />
-            <marker date="1510524320000" expanded="false" signature="27557:27568" ph=" { " />
-            <marker date="1510524320000" expanded="false" signature="27581:27587" ph=" }" />
+            <marker date="1510525818000" expanded="false" signature="27620:27631" ph=" { " />
+            <marker date="1510525818000" expanded="false" signature="27644:27650" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -1403,8 +1345,8 @@
             <element signature="e#5093#5094#0" expanded="true" />
             <element signature="e#5164#5165#0" expanded="true" />
             <element signature="e#5207#5208#0" expanded="true" />
-            <marker date="1510524320000" expanded="false" signature="27557:27568" ph=" { " />
-            <marker date="1510524320000" expanded="false" signature="27581:27587" ph=" }" />
+            <marker date="1510525818000" expanded="false" signature="27620:27631" ph=" { " />
+            <marker date="1510525818000" expanded="false" signature="27644:27650" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -1419,13 +1361,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUIEngine/homeButtonGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="18" lean-forward="true" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -1483,56 +1418,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUIEngine/startButtonGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="63" column="21" lean-forward="false" selection-start-line="56" selection-start-column="7" selection-end-line="63" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUIEngine/resumeButtonGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="48" column="45" lean-forward="false" selection-start-line="48" selection-start-column="45" selection-end-line="48" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUIEngine/settingsButtonGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="33" lean-forward="false" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUIEngine/turnGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1529">
-          <caret line="79" column="66" lean-forward="false" selection-start-line="79" selection-start-column="66" selection-end-line="79" selection-end-column="66" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1510524320000" expanded="true" signature="6753:7864" ph="{...}" />
-            <marker date="1510524320000" expanded="true" signature="7411:7662" ph="//..." />
-            <marker date="1510524320000" expanded="true" signature="7922:8598" ph="{...}" />
-            <marker date="1510524320000" expanded="true" signature="8643:9857" ph="{...}" />
-            <marker date="1510524320000" expanded="true" signature="9897:10265" ph="{...}" />
-            <marker date="1510524320000" expanded="true" signature="10317:10478" ph="{...}" />
-            <marker date="1510524320000" expanded="true" signature="10526:10874" ph="{...}" />
-            <marker date="1510524320000" expanded="true" signature="10939:11180" ph="{...}" />
-            <marker date="1510524320000" expanded="true" signature="11242:14530" ph="{...}" />
-            <marker date="1510524320000" expanded="true" signature="13692:13767" ph="//..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GameEngine/GameEngine.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
@@ -1586,20 +1471,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUIEngine/undoButtonGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="713">
-          <caret line="60" column="0" lean-forward="true" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUIEngine/GUIMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="781" column="44" lean-forward="false" selection-start-line="781" selection-start-column="44" selection-end-line="781" selection-end-column="44" />
+        <state relative-caret-position="182">
+          <caret line="256" column="60" lean-forward="false" selection-start-line="256" selection-start-column="60" selection-end-line="256" selection-end-column="60" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2168#2169#0" expanded="true" />
@@ -1670,16 +1545,86 @@
             <element signature="e#5093#5094#0" expanded="true" />
             <element signature="e#5164#5165#0" expanded="true" />
             <element signature="e#5207#5208#0" expanded="true" />
-            <marker date="1510524320000" expanded="false" signature="27557:27568" ph=" { " />
-            <marker date="1510524320000" expanded="false" signature="27581:27587" ph=" }" />
+            <marker date="1510525818000" expanded="false" signature="27620:27631" ph=" { " />
+            <marker date="1510525818000" expanded="false" signature="27644:27650" ph=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUIEngine/exitButtonGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="20" column="21" lean-forward="false" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUIEngine/homeButtonGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="32" column="12" lean-forward="false" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GUIEngine/restartButtonGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="44" column="55" lean-forward="false" selection-start-line="44" selection-start-column="55" selection-end-line="44" selection-end-column="55" />
+        <state relative-caret-position="128">
+          <caret line="41" column="56" lean-forward="true" selection-start-line="40" selection-start-column="7" selection-end-line="41" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUIEngine/resumeButtonGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="52" column="9" lean-forward="false" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUIEngine/settingsButtonGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="39" column="10" lean-forward="false" selection-start-line="39" selection-start-column="10" selection-end-line="39" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUIEngine/startButtonGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="63" column="10" lean-forward="false" selection-start-line="63" selection-start-column="10" selection-end-line="63" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUIEngine/turnGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1529">
+          <caret line="79" column="66" lean-forward="false" selection-start-line="79" selection-start-column="66" selection-end-line="79" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUIEngine/undoButtonGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="426">
+          <caret line="59" column="10" lean-forward="false" selection-start-line="59" selection-start-column="10" selection-end-line="59" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

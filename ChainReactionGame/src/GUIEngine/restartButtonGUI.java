@@ -26,9 +26,6 @@ public class restartButtonGUI implements EventHandler<ActionEvent> {
         MenuItem source = (MenuItem) e.getSource();
 
 
-
-
-
         ArrayList<Player> players = GUIMain.get_gameEngine().get_gc().get_players();
 
         for (Player p:

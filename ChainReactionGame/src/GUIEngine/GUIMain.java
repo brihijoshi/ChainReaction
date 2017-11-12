@@ -254,6 +254,7 @@ public class GUIMain extends Application {
         MenuButton dd = new MenuButton("Options");
         dd.getItems().addAll(new MenuItem("Restart"), new MenuItem("Exit"));
         dd.getItems().get(0).setOnAction(new restartButtonGUI());
+        dd.getItems().get(1).setOnAction(new exitButtonGUI());
         dd.setStyle("-fx-font-size: 20px; -fx-background-color: whitesmoke; -fx-border-color: white; -fx-text-fill: white;");
         //dd.se
 

@@ -37,7 +37,7 @@ public class settingsButtonGUI implements EventHandler<ActionEvent>{
 
         stage.setScene(GUIMain.createSettingsPage());
 
-        stage.show();
+        //stage.show();
 
     }
 
