@@ -8,6 +8,9 @@ import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -17,9 +20,12 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Sphere;
+import javafx.stage.Stage;
+import org.controlsfx.control.action.Action;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Optional;
 
 class turnGUI implements EventHandler<MouseEvent> {
 
@@ -61,6 +67,7 @@ class turnGUI implements EventHandler<MouseEvent> {
 
             StackPane source = (StackPane) e.getSource();
             GridPane grid = (GridPane) source.getParent();
+            Stage stage = (Stage) grid.getScene().getWindow();
 
             //for resume state
             players_put = GUIMain.get_gameEngine().get_gc().get_players();
@@ -124,6 +131,37 @@ class turnGUI implements EventHandler<MouseEvent> {
                     Player nextPlayer = fetchNextPlayer(currentColorHEX);
                     GUIMain.changeGridColor(grid, Color.web(nextPlayer.get_colour()));
                     GUIMain.setCurrentPlayer(nextPlayer.get_colour());
+                }
+                else{
+                    int num = -1;
+
+                    for (int i = 0; i < players_put.size(); i++) {
+                        if (players_put.get(i).get_isAlive()){
+                            num = i+1;
+                            break;
+                        }
+                    }
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Game Over!");
+                    alert.setHeaderText("Player "+num+" has won the game!");
+                    alert.setContentText(null);
+                    alert.initOwner(stage);
+                    alert.setGraphic(null);
+
+
+                    ButtonType buttonTypeOne = new ButtonType("Start Again");
+                    ButtonType buttonTypeTwo = new ButtonType("Exit");
+
+
+                    alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo);
+
+                    Optional<ButtonType> result = alert.showAndWait();
+                    if (result.get() == buttonTypeOne) {
+                        // ... user chose "One"
+                    }
+                    else {
+                        // ... user chose CANCEL or closed the dialog
+                    }
                 }
 
 
