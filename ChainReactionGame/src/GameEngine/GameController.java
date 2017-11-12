@@ -69,7 +69,10 @@ public class GameController {
         FileInputStream fis=new FileInputStream("game.ser");
         ObjectInputStream ois = new ObjectInputStream(fis);
         GameState g= (GameState) ois.readObject();
+        System.out.println("Received the Game State!");
         set_gameState(g);
+        set_players(g.get_players());
+        set_grid(g.get_grid());
         ois.close();
         fis.close();
 
@@ -78,8 +81,11 @@ public class GameController {
     public void saveGameState() throws IOException {
 
         GameState g = get_gameState();
+        g.set_grid(_grid);
+        g.set_players(_players);
         FileOutputStream fos = new FileOutputStream("game.ser");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
+        System.out.println( "Game state saved!");
         oos.writeObject(g);
         oos.close();
         fos.close();

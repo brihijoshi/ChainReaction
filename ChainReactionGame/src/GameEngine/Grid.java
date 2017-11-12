@@ -13,10 +13,18 @@ public class Grid implements Serializable {
 
             ArrayList<ArrayList<Cell>> grid = new ArrayList<ArrayList<Cell>>(9);
 
-            for (ArrayList<Cell> row:
-                 grid) {
-                row = new ArrayList<Cell>(6);
+            for (int i = 0; i < 9; i++) {
+                ArrayList<Cell> row = new ArrayList<Cell>();
+                for (int j = 0; j < 6; j++) {
+                    Cell c = new Cell(null, 0, 0);
+                    row.add(j,c);
+                }
+                grid.add(i,row);
+
             }
+
+            System.out.println("in Grid class now... row - " + grid.size() + " col - " + grid.get(0).size());
+
 
             this._grid = grid;
 
@@ -24,12 +32,20 @@ public class Grid implements Serializable {
 
         else if(choiceOfGrid == 1) {
 
-            ArrayList<ArrayList<Cell>> grid = new ArrayList<ArrayList<Cell>>(10);
+            ArrayList<ArrayList<Cell>> grid = new ArrayList<ArrayList<Cell>>(15);
 
-            for (ArrayList<Cell> row:
-                    grid) {
-                row = new ArrayList<Cell>(15);
+            for (int i = 0; i < 15; i++) {
+                ArrayList<Cell> row = new ArrayList<Cell>();
+                for (int j = 0; j < 10; j++) {
+                    Cell c = new Cell(null, 0, 0);
+                    row.add(j,c);
+                }
+                grid.add(i,row);
+
             }
+
+            System.out.println("in Grid class now... row - " + grid.size() + " col - " + grid.get(0).size());
+
 
             this._grid = grid;
 

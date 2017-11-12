@@ -14,14 +14,14 @@ public class Cell implements Serializable {
 
     private int _currmass;
 
-    private final StackPane _GUI;
 
 
-    public Cell(String _color, int _CRITMASS, int _currmass, StackPane _GUI) {
+
+    public Cell(String _color, int _CRITMASS, int _currmass) {
         this._color = _color;
         this._CRITMASS = _CRITMASS;
         this._currmass = _currmass;
-        this._GUI = _GUI;
+
     }
 
     public String get_color() {
@@ -44,7 +44,7 @@ public class Cell implements Serializable {
         this._currmass = _currmass;
     }
 
-    public StackPane get_GUI() { return _GUI; }
+
 
 
 }

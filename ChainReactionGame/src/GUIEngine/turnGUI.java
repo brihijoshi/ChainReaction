@@ -1,10 +1,13 @@
 package GUIEngine;
 
 import GameEngine.GameController;
+import GameEngine.Grid;
 import GameEngine.GameEngine;
 import GameEngine.Player;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -22,6 +25,8 @@ class turnGUI implements EventHandler<MouseEvent> {
 
 
     String currentColorHEX;
+    Grid grid_put;
+    ArrayList<Player> players_put;
 
 
 
@@ -57,9 +62,8 @@ class turnGUI implements EventHandler<MouseEvent> {
         System.out.println(Integer.toString(index[0]) + " " + Integer.toString(index[1]));
         Group cellGroup = (Group) source.getChildren().get(0);
 
-        Group grp = (Group) source.getChildren().get(0);
 
-        Sphere s = (grp.getChildren().size() == 0) ? null : (Sphere) grp.getChildren().get(0);
+        Sphere s = (cellGroup.getChildren().size() == 0) ? null : (Sphere) cellGroup.getChildren().get(0);
         PhongMaterial ph = (s == null) ? null : (PhongMaterial) s.getMaterial();
         Color clr = (ph == null) ? null : ph.getDiffuseColor();
 
@@ -69,6 +73,12 @@ class turnGUI implements EventHandler<MouseEvent> {
 
         if(oldColor==null || oldColor.equals(currentColorHEX)) {
 
+            players_put=GUIMain.get_gameEngine().get_gc().get_players();
+            System.out.println("GUIMain.get_gameEngine().get_gridSize()!!!!!"+GUIMain.get_gameEngine().get_gridSize());
+
+            grid_put = new Grid(GUIMain.get_gameEngine().get_gridSize());
+            System.out.println("GRIDPUT SIZE!!!!!"+grid_put.get_grid().size());
+
             System.out.println("Existing color: " + oldColor );
             System.out.println("Given color: " + currentColorHEX);
             System.out.println("code should work");
@@ -76,14 +86,13 @@ class turnGUI implements EventHandler<MouseEvent> {
             int currMass = cellGroup.getChildren().size();
 
             GUIMain.addOrbAndAnimate(grid, index[0], index[1], currMass + 1, Color.web(currentColorHEX));
+            convertGUItoGrid(grid, grid_put);
             GUIMain.playExplode();
             if (currMass + 1 == get_CritMass(index[0], index[1])) {
                 GUIMain.addOrbAndAnimate(grid, index[0], index[1], 0, Color.web(currentColorHEX));
-
+                convertGUItoGrid(grid, grid_put);
                 handleTurn(index[0], index[1], grid);
             }
-
-
 
             GUIMain.changeGridColor(grid, Color.web(nextPlayer.get_colour()));
 
@@ -97,8 +106,44 @@ class turnGUI implements EventHandler<MouseEvent> {
 
             GUIMain.playError();
         }
+
+        GUIMain.get_gameEngine().get_gc().set_grid(grid_put);
+        GUIMain.get_gameEngine().get_gc().set_players(players_put);
+        try {
+            GUIMain.get_gameEngine().get_gc().saveGameState();
+        }
+        catch (Exception e2) {
+            e2.printStackTrace();
+        }
+
+
         //gGUIMain.changeGridColor(grid, ;
 
+    }
+
+    public void convertGUItoGrid(GridPane gp, Grid g){
+        ObservableList<Node> GUIlist = gp.getChildren();
+        System.out.println("GUIlist.size() - "+ GUIlist.size());
+        for (int i = 1; i < GUIlist.size(); i++) {
+            StackPane cell = (StackPane) GUIlist.get(i);
+            Group cell_grp = (Group) cell.getChildren().get(0);
+            Sphere s = (cell_grp.getChildren().size() == 0) ? null : (Sphere) cell_grp.getChildren().get(0);
+            PhongMaterial ph = (s == null) ? null : (PhongMaterial) s.getMaterial();
+            Color clr = (ph == null) ? null : ph.getDiffuseColor();
+
+            int x = (i-1)/GUIMain.get_numCols();
+            int y = (i-1)%GUIMain.get_numCols();
+
+            System.out.println("x - " + x);
+            System.out.println("y - " + y);
+
+            System.out.println("grid row num - " + g.get_grid().size());
+            System.out.println("grid col num - " + g.get_grid().get(0).size());
+
+            g.get_grid().get(x).get(y).set_currmass(cell_grp.getChildren().size());
+            g.get_grid().get(x).get(y).set_color((clr == null) ? null : ColorUtil.colorToHex(clr));
+
+        }
     }
 
 
@@ -173,9 +218,11 @@ class turnGUI implements EventHandler<MouseEvent> {
             int currMass = grp.getChildren().size();
             System.out.println(currMass);
             GUIMain.addOrbAndAnimate(gp, row - 1, col, currMass + 1, Color.web(currentColorHEX));
+            convertGUItoGrid(gp, grid_put);
             int critMass = get_CritMass(row - 1, col);
             if (currMass + 1 == critMass) {
                 GUIMain.addOrbAndAnimate(gp, row - 1, col, 0, Color.web(currentColorHEX));
+                convertGUItoGrid(gp, grid_put);
                 handleTurn(row - 1, col, gp);
             }
         }
@@ -190,9 +237,11 @@ class turnGUI implements EventHandler<MouseEvent> {
             System.out.println(grp.getChildren());
             System.out.println(currMass);
             GUIMain.addOrbAndAnimate(gp, row, col - 1, currMass + 1, Color.web(currentColorHEX));
+            convertGUItoGrid(gp, grid_put);
             int critMass = get_CritMass(row, col - 1);
             if (currMass + 1 == critMass) {
                 GUIMain.addOrbAndAnimate(gp, row, col - 1, 0, Color.web(currentColorHEX));
+                convertGUItoGrid(gp, grid_put);
                 handleTurn(row, col - 1, gp);
             }
         }
@@ -204,9 +253,11 @@ class turnGUI implements EventHandler<MouseEvent> {
             int currMass = grp.getChildren().size();
             System.out.println(currMass);
             GUIMain.addOrbAndAnimate(gp, row + 1, col, currMass + 1, Color.web(currentColorHEX));
+            convertGUItoGrid(gp, grid_put);
             int critMass = get_CritMass(row + 1, col);
             if (currMass + 1 == critMass) {
                 GUIMain.addOrbAndAnimate(gp, row + 1, col, 0, Color.web(currentColorHEX));
+                convertGUItoGrid(gp, grid_put);
                 handleTurn(row + 1, col, gp);
             }
         }
@@ -219,9 +270,11 @@ class turnGUI implements EventHandler<MouseEvent> {
             int currMass = grp.getChildren().size();
             System.out.println(currMass);
             GUIMain.addOrbAndAnimate(gp, row, col + 1, currMass + 1, Color.web(currentColorHEX));
+            convertGUItoGrid(gp, grid_put);
             int critMass = get_CritMass(row, col + 1);
             if (currMass + 1 == critMass) {
                 GUIMain.addOrbAndAnimate(gp, row, col + 1, 0, Color.web(currentColorHEX));
+                convertGUItoGrid(gp, grid_put);
                 handleTurn(row, col + 1, gp);
             }
         }

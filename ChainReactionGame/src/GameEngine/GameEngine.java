@@ -1,5 +1,8 @@
 package GameEngine;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,6 +20,7 @@ public class GameEngine {
         this._numPlayers = _numPlayers;
         this._gridSize = _gridSize;
     }
+
 
     public int get_numPlayers() {
         return _numPlayers;
@@ -56,18 +60,25 @@ public class GameEngine {
 
     /*
 
-    Will check if "grid.ser" is empty or doesn't exist. If it exists, load the state of
+    Will check if "gamestate.ser" is empty or doesn't exist. If it exists, load the state of
     game and continue, else create a new file
 
      */
 
-    public boolean checkResume() {
+    public boolean checkResume() throws Exception {
 
-        return false;
+        File file = new File("gamestate.ser");
+
+        boolean empty = !file.exists() || file.length() == 0;
+
+        String checkEmpty = empty ? "File is empty or doesn't exist" : "File is not empty";
+        System.out.println(checkEmpty);
+
+        return !empty;
 
     }
 
-    public void startGame() throws IOException, ClassNotFoundException {
+    public void startGame() throws IOException, ClassNotFoundException, Exception {
 
         if(!checkResume()) {
 

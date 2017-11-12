@@ -37,6 +37,7 @@ public class GUIMain extends Application {
 
     private static GameEngine _gameEngine;
 
+
     private static Button startButton;
     private static Button resumeButton;
     private static Button settingsButton;
