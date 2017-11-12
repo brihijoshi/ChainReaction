@@ -78,6 +78,19 @@ public class GameEngine {
 
     }
 
+    public static boolean checkUndo() throws Exception {
+
+        File file = new File("undo.ser");
+
+        boolean empty = !file.exists() || file.length() == 0;
+
+        String checkEmpty = empty ? "File is empty or doesn't exist" : "File is not empty";
+        System.out.println(checkEmpty);
+
+        return !empty;
+
+    }
+
     public void startGame() throws IOException, ClassNotFoundException, Exception {
 
         if(_choice == 0) {

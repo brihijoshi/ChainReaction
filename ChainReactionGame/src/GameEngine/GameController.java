@@ -79,10 +79,13 @@ public class GameController {
     }
 
     public GameState loadUndoState() throws IOException, ClassNotFoundException{
-        FileInputStream fis=new FileInputStream("resume.ser");
+        FileInputStream fis=new FileInputStream("undo.ser");
         ObjectInputStream ois = new ObjectInputStream(fis);
         GameState g= (GameState) ois.readObject();
         System.out.println("Received the Resume State!");
+        set_gameState(g);
+        set_players(g.get_players());
+        set_grid(g.get_grid());
         ois.close();
         fis.close();
         return g;
@@ -117,11 +120,6 @@ public class GameController {
 
     }
 
-    public boolean checkActivePlayer() {
-
-        return true;
-
-    }
 
     public static int get_index(){
         return _index;

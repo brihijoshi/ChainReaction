@@ -71,10 +71,11 @@ class turnGUI implements EventHandler<MouseEvent> {
 
             //for resume state
             players_put = GUIMain.get_gameEngine().get_gc().get_players();
+            System.out.println("here" + players_put.size());
             grid_put = new Grid(GUIMain.get_gameEngine().get_gridSize());
             convertGUItoGrid(grid, grid_put);
-            GUIMain.get_gameEngine().get_gc().set_grid(grid_put);
-            GUIMain.get_gameEngine().get_gc().set_players(players_put);
+//            GUIMain.get_gameEngine().get_gc().set_grid(grid_put);
+//            GUIMain.get_gameEngine().get_gc().set_players(players_put);
             try {
                 GUIMain.get_gameEngine().get_gc().saveUndoState();
             } catch (Exception e2) {

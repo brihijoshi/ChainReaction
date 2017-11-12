@@ -260,7 +260,19 @@ public class GUIMain extends Application {
 
         Button redoButton = new Button("Undo");
         redoButton.setStyle("-fx-background-color: forestgreen; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold;");
+        redoButton.setOnAction(new undoButtonGUI());
 
+        try {
+            if (!GameEngine.checkUndo()) {
+                redoButton.setDisable(true);
+            }
+            else{
+                redoButton.setDisable(false);
+            }
+        }
+        catch (Exception v){
+            v.printStackTrace();
+        }
         bp.setRight(redoButton);
         bp.setStyle("-fx-background-color: black;");
         return bp;
