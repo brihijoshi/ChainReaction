@@ -13,6 +13,7 @@ public class GameState implements Serializable {
         this._grid = _grid;
     }
 
+
     public ArrayList<Player> get_players() {
         return _players;
     }
@@ -28,5 +29,8 @@ public class GameState implements Serializable {
     public void set_grid(Grid _grid) {
         this._grid = _grid;
     }
+
+
+
 
 }

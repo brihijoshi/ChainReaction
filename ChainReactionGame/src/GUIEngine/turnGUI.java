@@ -30,9 +30,9 @@ import java.util.Optional;
 class turnGUI implements EventHandler<MouseEvent> {
 
 
-    String currentColorHEX;
-    Grid grid_put;
-    ArrayList<Player> players_put;
+    private String currentColorHEX;
+    private Grid grid_put;
+    private ArrayList<Player> players_put;
 
 
 
@@ -128,9 +128,12 @@ class turnGUI implements EventHandler<MouseEvent> {
                 checkAlivePlayers(fetchCurrentPlayer());
 
                 if (!GUIMain.checkEndGame()) {
+                    fetchCurrentPlayer().set_isActive(false);
                     Player nextPlayer = fetchNextPlayer(currentColorHEX);
                     GUIMain.changeGridColor(grid, Color.web(nextPlayer.get_colour()));
+                    nextPlayer.set_isActive(true);
                     GUIMain.setCurrentPlayer(nextPlayer.get_colour());
+
                 }
                 else{
                     int num = -1;

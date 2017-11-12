@@ -80,21 +80,21 @@ public class GameEngine {
 
     public void startGame() throws IOException, ClassNotFoundException, Exception {
 
-        if(!checkResume()) {
+        if(_choice == 0) {
 
-            for (Object key: player_colors.keySet()){
-                System.out.println(key);
-                System.out.println(player_colors.get(key));
-            }
+//            for (Object key: player_colors.keySet()){
+//                System.out.println(key);
+//                System.out.println(player_colors.get(key));
+//            }
             ArrayList<Player> players = new ArrayList<Player>();
 
             for (int i = 0; i < _numPlayers; i++) {
-                players.add(new Player(player_colors.get(i+1).toString(), true, false));
+                players.add(new Player(player_colors.get(i+1).toString(), true, false, false));
                 System.out.println(player_colors.get(i+1).toString());
             }
 
             players.get(0).set_isKillable(true);
-
+            players.get(0).set_isActive(true);
 
             Grid grid = new Grid(_gridSize);
 
@@ -107,10 +107,16 @@ public class GameEngine {
         else {
 
             // resume button handler will set some things here
-
             _gc = new GameController();
             _gc.loadGameState();
             this.set_numPlayers(_gc.get_players().size());
+
+            if(_gc.get_grid().get_grid().size() == 9) {
+                this.set_gridSize(0);
+            }
+            else {
+                this.set_gridSize(1);
+            }
 
 
         }

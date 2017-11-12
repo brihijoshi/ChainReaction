@@ -8,7 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class startButtonGUI implements EventHandler<ActionEvent>{
+public class startButtonGUI implements EventHandler<ActionEvent> {
 
     private int numPlayers = 2;
     private int choiceOfGrid = 0;
@@ -18,7 +18,7 @@ public class startButtonGUI implements EventHandler<ActionEvent>{
     public void handle(ActionEvent e)
     {
 
-
+        GUIMain.get_gameEngine().set_choice(0);     // means that you are starting a new game
 
         if(GUIMain.getNumPlayersCB().getValue()!=null) {
             numPlayers = Integer.parseInt(GUIMain.getNumPlayersCB().getValue().toString());

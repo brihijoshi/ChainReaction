@@ -7,11 +7,13 @@ public class Player implements Serializable {
     private String _colour;
     private boolean _isAlive;
     private boolean _isKillable;
+    private boolean _isActive;
 
-    public Player(String _colour, boolean _isAlive, boolean _isKillable) {
+    public Player(String _colour, boolean _isAlive, boolean _isKillable, boolean _isActive) {
         this._colour = _colour;
         this._isAlive = _isAlive;
         this._isKillable = _isKillable;
+        this._isActive = _isActive;
     }
 
 
@@ -37,6 +39,14 @@ public class Player implements Serializable {
 
     public void set_isKillable(boolean _isKillable) {
         this._isKillable = _isKillable;
+    }
+
+    public boolean get_isActive() {
+        return _isActive;
+    }
+
+    public void set_isActive(boolean _isActive) {
+        this._isActive = _isActive;
     }
 
 

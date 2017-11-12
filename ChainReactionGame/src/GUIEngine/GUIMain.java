@@ -409,6 +409,9 @@ public class GUIMain extends Application {
     }
 
     public static boolean checkEndGame(){
+
+        // TODO : remove the .ser files if game ends
+
         int count=0;
         for (int i = 0; i < get_gameEngine().get_gc().get_players().size(); i++) {
             if (get_gameEngine().get_gc().get_players().get(i).get_isAlive()){
@@ -416,9 +419,9 @@ public class GUIMain extends Application {
             }
         }
 
-        boolean endgame = count ==1 ? true : false;
 
-        return endgame;
+
+        return (count == 1);
     }
 
     public static Scene createStartPage() {
