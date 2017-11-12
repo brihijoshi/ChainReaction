@@ -1,6 +1,7 @@
 package GUIEngine;
 
 import GameEngine.GameEngine;
+import GameEngine.Grid;
 import javafx.animation.*;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -434,6 +435,7 @@ public class GUIMain extends Application {
         startButton = new Button("  Start  ");
         startButton.setOnAction(new startButtonGUI());
         resumeButton = new Button("Resume");
+        resumeButton.setOnAction(new resumeButtonGUI());
         settingsButton = new Button("Settings");
         settingsButton.setOnAction(new settingsButtonGUI());
 
@@ -692,35 +694,95 @@ public class GUIMain extends Application {
 
     public static Scene createGamePage() {
 
-        GridPane root = new GridPane();
+        if(_gameEngine.get_choice()==0) {
+            GridPane root = new GridPane();
 
-        if(_gameEngine.get_gridSize() == 0) {
-            _numRows = 9;
-            _numCols = 6;
+            if (_gameEngine.get_gridSize() == 0) {
+                _numRows = 9;
+                _numCols = 6;
+            } else {
+                _numRows = 15;
+                _numCols = 10;
+            }
+
+            Color firstplayer = Color.web(GUIMain.get_gameEngine().get_gc().get_players().get(0).get_colour());
+            //System.out.println(firstplayer);
+            //System.out.println(firstplayer.toString());
+
+            BorderPane bp = setEmptyGrid(root, _numRows, _numCols, firstplayer);
+
+            //addOrbAndAnimate(root, 0, 0 ,1, firstplayer);
+            //addOrbAndAnimate(root, 1, 1, 2, firstplayer);
+
+            // changeGridColor(root, Color.RED);
+
+            GUIMain.setCurrentPlayer(GUIMain.get_gameEngine().get_gc().get_players().get(0).get_colour());
+            System.out.println("First Player: " + GUIMain.getCurrentPlayer());
+
+            Scene sc = new Scene(bp, 800, 1000, Color.BLACK);
+
+            return sc;
         }
 
         else {
-            _numRows = 15;
-            _numCols = 10;
+
+            GridPane root = new GridPane();
+
+            if (_gameEngine.get_gridSize() == 0) {
+                _numRows = 9;
+                _numCols = 6;
+            } else {
+                _numRows = 15;
+                _numCols = 10;
+            }
+
+            Color firstplayer = null;
+
+            int i;
+            for (i = 0; i < _gameEngine.get_numPlayers(); i++) {
+                if(_gameEngine.get_gc().get_players().get(i).get_isActive()) {
+                    firstplayer = Color.web(_gameEngine.get_gc().get_players().get(i).get_colour());
+                    break;
+                }
+            }
+
+
+            BorderPane bp = setEmptyGrid(root, _numRows, _numCols, firstplayer);
+            Grid grid = _gameEngine.get_gc().get_grid();
+            convertGridToGUI(root, grid);
+
+            changeGridColor(root,firstplayer);
+
+
+
+            GUIMain.setCurrentPlayer(_gameEngine.get_gc().get_players().get(i).get_colour());
+            System.out.println("First Player: " + GUIMain.getCurrentPlayer());
+
+            Scene sc = new Scene(bp, 800, 1000, Color.BLACK);
+
+            return sc;
+
+
         }
 
-        Color firstplayer= Color.web(GUIMain.get_gameEngine().get_gc().get_players().get(0).get_colour());
-        //System.out.println(firstplayer);
-        //System.out.println(firstplayer.toString());
 
-        BorderPane bp = setEmptyGrid(root, _numRows, _numCols, firstplayer);
+    }
 
-        //addOrbAndAnimate(root, 0, 0 ,1, firstplayer);
-        //addOrbAndAnimate(root, 1, 1, 2, firstplayer);
 
-        // changeGridColor(root, Color.RED);
+    public static void convertGridToGUI(GridPane gp, Grid g) {
+        for (int i = 0; i < g.get_grid().size(); i++) {
+            for (int j = 0; j < g.get_grid().get(0).size(); j++) {
+                if (g.get_grid().get(i).get(j).get_currmass()!=0) {
+                    Color clr = Color.web(g.get_grid().get(i).get(j).get_color());
+                    int currmass = g.get_grid().get(i).get(j).get_currmass();
+                    addOrbAndAnimate(gp, i, j, currmass, clr);
+                }
 
-        GUIMain.setCurrentPlayer(GUIMain.get_gameEngine().get_gc().get_players().get(0).get_colour());
-        System.out.println("First Player: " + GUIMain.getCurrentPlayer());
+            }
+        }
 
-        Scene sc = new Scene(bp, 800, 1000, Color.BLACK);
 
-        return sc;
+
 
     }
 

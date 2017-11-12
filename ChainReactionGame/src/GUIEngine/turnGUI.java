@@ -76,7 +76,7 @@ class turnGUI implements EventHandler<MouseEvent> {
             GUIMain.get_gameEngine().get_gc().set_grid(grid_put);
             GUIMain.get_gameEngine().get_gc().set_players(players_put);
             try {
-                GUIMain.get_gameEngine().get_gc().saveResumeState();
+                GUIMain.get_gameEngine().get_gc().saveUndoState();
             } catch (Exception e2) {
                 e2.printStackTrace();
             }

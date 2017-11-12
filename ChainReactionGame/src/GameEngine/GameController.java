@@ -78,7 +78,7 @@ public class GameController {
 
     }
 
-    public GameState loadResumeState() throws IOException, ClassNotFoundException{
+    public GameState loadUndoState() throws IOException, ClassNotFoundException{
         FileInputStream fis=new FileInputStream("resume.ser");
         ObjectInputStream ois = new ObjectInputStream(fis);
         GameState g= (GameState) ois.readObject();
@@ -103,7 +103,7 @@ public class GameController {
 
     }
 
-    public void saveResumeState() throws IOException {
+    public void saveUndoState() throws IOException {
 
         GameState g = get_gameState();
         g.set_grid(_grid);
