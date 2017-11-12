@@ -33,117 +33,117 @@ class turnGUI implements EventHandler<MouseEvent> {
     @Override
     public void handle(MouseEvent e) {
 
-        ArrayList<Player> players = GUIMain.get_gameEngine().get_gc().get_players();
-        int numPlayers = GUIMain.get_gameEngine().get_numPlayers();
+        if (!GUIMain.checkEndGame()) {
+
+            ArrayList<Player> players = GUIMain.get_gameEngine().get_gc().get_players();
+            int numPlayers = GUIMain.get_gameEngine().get_numPlayers();
 
 
-        /**
-         *  Type reference:
-         *
-         *  0 - Corner
-         *  1 - Edge
-         *  2 - Normal
-         *
-         *
-         * **/
+            /**
+             *  Type reference:
+             *
+             *  0 - Corner
+             *  1 - Edge
+             *  2 - Normal
+             *
+             *
+             * **/
 
 //        GUIMain.get_gameEngine().get_gc().set_grid(grid_put);
 //        GUIMain.get_gameEngine().get_gc().set_players(players_put);
 
 
+            currentColorHEX = GUIMain.getCurrentPlayer();
 
 
+            System.out.println("Mouse click detected");
 
 
-        currentColorHEX = GUIMain.getCurrentPlayer();
+            StackPane source = (StackPane) e.getSource();
+            GridPane grid = (GridPane) source.getParent();
 
-
-        System.out.println("Mouse click detected");
-
-
-        StackPane source = (StackPane) e.getSource();
-        GridPane grid = (GridPane) source.getParent();
-
-        //for resume state
-        players_put=GUIMain.get_gameEngine().get_gc().get_players();
-        grid_put = new Grid(GUIMain.get_gameEngine().get_gridSize());
-        convertGUItoGrid(grid, grid_put);
-        GUIMain.get_gameEngine().get_gc().set_grid(grid_put);
-        GUIMain.get_gameEngine().get_gc().set_players(players_put);
-        try {
-            GUIMain.get_gameEngine().get_gc().saveResumeState();
-        }
-        catch (Exception e2) {
-            e2.printStackTrace();
-        }
-
-
-        //System.out.println(grid.getChildren().indexOf(source));
-        GameController.set_index(grid.getChildren().indexOf(source)-1);
-        // gives row and column
-        int[] index = GameController.convert_index(GUIMain.get_numCols());
-        System.out.println(Integer.toString(index[0]) + " " + Integer.toString(index[1]));
-        Group cellGroup = (Group) source.getChildren().get(0);
-
-
-        Sphere s = (cellGroup.getChildren().size() == 0) ? null : (Sphere) cellGroup.getChildren().get(0);
-        PhongMaterial ph = (s == null) ? null : (PhongMaterial) s.getMaterial();
-        Color clr = (ph == null) ? null : ph.getDiffuseColor();
-
-        Player nextPlayer = fetchNextPlayer(currentColorHEX);
-
-        String oldColor = clr == null? null : ColorUtil.colorToHex(clr);
-
-        if(oldColor==null || oldColor.equals(currentColorHEX)) {
-
-            players_put=GUIMain.get_gameEngine().get_gc().get_players();
-            System.out.println("GUIMain.get_gameEngine().get_gridSize()!!!!!"+GUIMain.get_gameEngine().get_gridSize());
-
+            //for resume state
+            players_put = GUIMain.get_gameEngine().get_gc().get_players();
             grid_put = new Grid(GUIMain.get_gameEngine().get_gridSize());
-
-
-            System.out.println("GRIDPUT SIZE!!!!!"+grid_put.get_grid().size());
-
-            System.out.println("Existing color: " + oldColor );
-            System.out.println("Given color: " + currentColorHEX);
-            System.out.println("code should work");
-
-            int currMass = cellGroup.getChildren().size();
-
-            GUIMain.addOrbAndAnimate(grid, index[0], index[1], currMass + 1, Color.web(currentColorHEX));
-            //convertGUItoGrid(grid, grid_put);
-            GUIMain.playExplode();
-            if (currMass + 1 == get_CritMass(index[0], index[1])) {
-                GUIMain.addOrbAndAnimate(grid, index[0], index[1], 0, Color.web(currentColorHEX));
-                //convertGUItoGrid(grid, grid_put);
-                handleTurn(index[0], index[1], grid);
+            convertGUItoGrid(grid, grid_put);
+            GUIMain.get_gameEngine().get_gc().set_grid(grid_put);
+            GUIMain.get_gameEngine().get_gc().set_players(players_put);
+            try {
+                GUIMain.get_gameEngine().get_gc().saveResumeState();
+            } catch (Exception e2) {
+                e2.printStackTrace();
             }
 
-            
-            GUIMain.changeGridColor(grid, Color.web(nextPlayer.get_colour()));
 
-            GUIMain.setCurrentPlayer(nextPlayer.get_colour());
+            //System.out.println(grid.getChildren().indexOf(source));
+            GameController.set_index(grid.getChildren().indexOf(source) - 1);
+            // gives row and column
+            int[] index = GameController.convert_index(GUIMain.get_numCols());
+            System.out.println(Integer.toString(index[0]) + " " + Integer.toString(index[1]));
+            Group cellGroup = (Group) source.getChildren().get(0);
+
+
+            Sphere s = (cellGroup.getChildren().size() == 0) ? null : (Sphere) cellGroup.getChildren().get(0);
+            PhongMaterial ph = (s == null) ? null : (PhongMaterial) s.getMaterial();
+            Color clr = (ph == null) ? null : ph.getDiffuseColor();
+
+
+            String oldColor = clr == null ? null : ColorUtil.colorToHex(clr);
+
+            if (oldColor == null || oldColor.equals(currentColorHEX)) {
+
+                players_put = GUIMain.get_gameEngine().get_gc().get_players();
+
+                grid_put = new Grid(GUIMain.get_gameEngine().get_gridSize());
+
+
+                System.out.println("Existing color: " + oldColor);
+                System.out.println("Given color: " + currentColorHEX);
+                System.out.println("code should work");
+
+                int currMass = cellGroup.getChildren().size();
+
+                GUIMain.addOrbAndAnimate(grid, index[0], index[1], currMass + 1, Color.web(currentColorHEX));
+                //convertGUItoGrid(grid, grid_put);
+                GUIMain.playExplode();
+                if (currMass + 1 == get_CritMass(index[0], index[1])) {
+                    GUIMain.addOrbAndAnimate(grid, index[0], index[1], 0, Color.web(currentColorHEX));
+                    //convertGUItoGrid(grid, grid_put);
+                    handleTurn(index[0], index[1], grid);
+                }
+
+                fetchCurrentPlayer().set_isKillable(true);
+
+
+                convertGUItoGrid(grid, grid_put);
+                GUIMain.get_gameEngine().get_gc().set_grid(grid_put);
+                GUIMain.get_gameEngine().get_gc().set_players(players_put);
+                checkAlivePlayers(fetchCurrentPlayer());
+
+                if (!GUIMain.checkEndGame()) {
+                    Player nextPlayer = fetchNextPlayer(currentColorHEX);
+                    GUIMain.changeGridColor(grid, Color.web(nextPlayer.get_colour()));
+                    GUIMain.setCurrentPlayer(nextPlayer.get_colour());
+                }
+
+
+            } else {
+                System.out.println("Existing color: " + oldColor);
+                System.out.println("Given color: " + currentColorHEX);
+                System.out.println("code for sound effects");
+
+                GUIMain.playError();
+            }
+
+
+            try {
+                GUIMain.get_gameEngine().get_gc().saveGameState();
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+
         }
 
-        else {
-            System.out.println("Existing color: " + oldColor );
-            System.out.println("Given color: " + currentColorHEX);
-            System.out.println("code for sound effects");
-
-            GUIMain.playError();
-        }
-        convertGUItoGrid(grid, grid_put);
-        GUIMain.get_gameEngine().get_gc().set_grid(grid_put);
-        GUIMain.get_gameEngine().get_gc().set_players(players_put);
-        try {
-            GUIMain.get_gameEngine().get_gc().saveGameState();
-        }
-        catch (Exception e2) {
-            e2.printStackTrace();
-        }
-
-
-        //gGUIMain.changeGridColor(grid, ;
 
     }
 
@@ -160,11 +160,11 @@ class turnGUI implements EventHandler<MouseEvent> {
             int x = (i-1)/GUIMain.get_numCols();
             int y = (i-1)%GUIMain.get_numCols();
 
-            System.out.println("x - " + x);
-            System.out.println("y - " + y);
-
-            System.out.println("grid row num - " + g.get_grid().size());
-            System.out.println("grid col num - " + g.get_grid().get(0).size());
+//            System.out.println("x - " + x);
+//            System.out.println("y - " + y);
+//
+//            System.out.println("grid row num - " + g.get_grid().size());
+//            System.out.println("grid col num - " + g.get_grid().get(0).size());
 
             g.get_grid().get(x).get(y).set_currmass(cell_grp.getChildren().size());
             g.get_grid().get(x).get(y).set_color((clr == null) ? null : ColorUtil.colorToHex(clr));
@@ -194,6 +194,49 @@ class turnGUI implements EventHandler<MouseEvent> {
 
         }
         return null;
+    }
+
+    public void checkAlivePlayers(Player p){
+        ArrayList<Player> players = GUIMain.get_gameEngine().get_gc().get_players();
+
+        System.out.println("checkAlivePlayers size of payers array - " + players.size());
+        Grid g = GUIMain.get_gameEngine().get_gc().get_grid();
+        System.out.println("Current player color - "+ p.get_colour());
+        for (int i = 0; i < players.size(); i++) {
+            int count=0;
+            if (!players.get(i).equals(p)) {
+                System.out.println("inside the loop. Color - " + players.get(i).get_colour());
+                for (int j = 0; j < g.get_grid().size(); j++) {
+                    for (int k = 0; k < g.get_grid().get(0).size(); k++) {
+                        if (g.get_grid().get(j).get(k).get_color() != null) {
+                            if (g.get_grid().get(j).get(k).get_color().equals(players.get(i).get_colour())) {
+                                count++;
+                            }
+                        }
+                    }
+                }
+                if (count == 0) {
+                    if (players.get(i).get_isKillable()) {
+                        players.get(i).set_isAlive(false);
+                    }
+                }
+            }
+
+        }
+    }
+
+    public Player fetchCurrentPlayer(){
+
+        ArrayList<Player> players = GUIMain.get_gameEngine().get_gc().get_players();
+        int numPlayers = GUIMain.get_gameEngine().get_numPlayers();
+        for (int i = 0; i < players.size(); i++) {
+            if (players.get(i).get_colour().equals(currentColorHEX)){
+                return players.get(i);
+            }
+
+        }
+        return null;
+
     }
 
     public boolean areValidCoord(int row, int col){

@@ -408,6 +408,19 @@ public class GUIMain extends Application {
         rotationAnimation.play();
     }
 
+    public static boolean checkEndGame(){
+        int count=0;
+        for (int i = 0; i < get_gameEngine().get_gc().get_players().size(); i++) {
+            if (get_gameEngine().get_gc().get_players().get(i).get_isAlive()){
+                count++;
+            }
+        }
+
+        boolean endgame = count ==1 ? true : false;
+
+        return endgame;
+    }
+
     public static Scene createStartPage() {
 
         //In case a person clicks on start, default colours should come.

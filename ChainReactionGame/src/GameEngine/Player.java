@@ -31,7 +31,7 @@ public class Player implements Serializable {
         this._isAlive = _isAlive;
     }
 
-    public boolean is_isKillable() {
+    public boolean get_isKillable() {
         return _isKillable;
     }
 
