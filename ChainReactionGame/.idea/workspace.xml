@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/GUIEngine/restartButtonGUI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game.ser" afterPath="$PROJECT_DIR$/game.ser" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUIEngine/GUIMain.java" afterPath="$PROJECT_DIR$/src/GUIEngine/GUIMain.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUIEngine/restartButtonGUI.java" afterPath="$PROJECT_DIR$/src/GUIEngine/restartButtonGUI.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/undo.ser" afterPath="$PROJECT_DIR$/undo.ser" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -123,8 +125,8 @@
       <file leaf-file-name="restartButtonGUI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GUIEngine/restartButtonGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state relative-caret-position="152">
+              <caret line="22" column="47" lean-forward="true" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -136,9 +138,9 @@
         <entry file="file://$PROJECT_DIR$/src/GUIEngine/GUIMain.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="208">
-              <caret line="253" column="13" lean-forward="false" selection-start-line="253" selection-start-column="8" selection-end-line="253" selection-end-column="13" />
+              <caret line="255" column="63" lean-forward="false" selection-start-line="255" selection-start-column="63" selection-end-line="255" selection-end-column="63" />
               <folding>
-                <marker date="1510523340000" expanded="true" signature="26922:26929" ph="{...}" />
+                <marker date="1510525948000" expanded="true" signature="26988:26995" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -220,10 +222,10 @@
         <option value="$PROJECT_DIR$/src/GameEngine/GameState.java" />
         <option value="$PROJECT_DIR$/src/GUIEngine/resumeButtonGUI.java" />
         <option value="$PROJECT_DIR$/src/GameEngine/GameEngine.java" />
-        <option value="$PROJECT_DIR$/src/GUIEngine/GUIMain.java" />
         <option value="$PROJECT_DIR$/src/GUIEngine/turnGUI.java" />
         <option value="$PROJECT_DIR$/src/GameEngine/GameController.java" />
         <option value="$PROJECT_DIR$/src/GUIEngine/undoButtonGUI.java" />
+        <option value="$PROJECT_DIR$/src/GUIEngine/GUIMain.java" />
         <option value="$PROJECT_DIR$/src/GUIEngine/restartButtonGUI.java" />
       </list>
     </option>
@@ -521,7 +523,7 @@
       <workItem from="1510442729239" duration="1136000" />
       <workItem from="1510478937517" duration="1706000" />
       <workItem from="1510484125546" duration="22213000" />
-      <workItem from="1510522002256" duration="3134000" />
+      <workItem from="1510522002256" duration="3995000" />
     </task>
     <task id="LOCAL-00001" summary="Added classes to the GameEngine pAckage">
       <created>1508931981361</created>
@@ -569,7 +571,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="136183000" />
+    <option name="totallyTimeSpent" value="137044000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="808" extended-state="6" />
@@ -689,7 +691,7 @@
         <state relative-caret-position="1650">
           <caret line="139" column="8" lean-forward="false" selection-start-line="139" selection-start-column="8" selection-end-line="139" selection-end-column="8" />
           <folding>
-            <marker date="1510523340000" expanded="true" signature="26922:26929" ph="{...}" />
+            <marker date="1510525948000" expanded="true" signature="26988:26995" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -750,7 +752,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1510523340000" expanded="true" signature="26922:26929" ph="{...}" />
+            <marker date="1510525948000" expanded="true" signature="26988:26995" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -776,7 +778,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1510523340000" expanded="true" signature="26922:26929" ph="{...}" />
+            <marker date="1510525948000" expanded="true" signature="26988:26995" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -802,7 +804,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1510523340000" expanded="true" signature="26922:26929" ph="{...}" />
+            <marker date="1510525948000" expanded="true" signature="26988:26995" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -828,7 +830,7 @@
         <state relative-caret-position="60">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
-            <marker date="1510523340000" expanded="true" signature="26922:26929" ph="{...}" />
+            <marker date="1510525948000" expanded="true" signature="26988:26995" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -963,17 +965,17 @@
     <entry file="file://$PROJECT_DIR$/src/GUIEngine/GUIMain.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
-          <caret line="253" column="13" lean-forward="false" selection-start-line="253" selection-start-column="8" selection-end-line="253" selection-end-column="13" />
+          <caret line="255" column="63" lean-forward="false" selection-start-line="255" selection-start-column="63" selection-end-line="255" selection-end-column="63" />
           <folding>
-            <marker date="1510523340000" expanded="true" signature="26922:26929" ph="{...}" />
+            <marker date="1510525948000" expanded="true" signature="26988:26995" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GUIEngine/restartButtonGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        <state relative-caret-position="152">
+          <caret line="22" column="47" lean-forward="true" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
