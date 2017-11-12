@@ -430,10 +430,13 @@ public class GUIMain extends Application {
         //Making the drop down menus
         ObservableList<String> grid_options = FXCollections.observableArrayList("9x6", "15x10");
         gridChoiceCB=new ComboBox(grid_options);
+        String gridChoiceCBValue = GUIMain.get_gameEngine().get_gridSize() == 0 ? "9x6" : "15x10";
+        gridChoiceCB.setValue(gridChoiceCBValue);
 
 
         ObservableList<String> player_options = FXCollections.observableArrayList("2", "3", "4", "5", "6", "7", "8");
         numPlayersCB = new ComboBox<>(player_options);
+        numPlayersCB.setValue(GUIMain.get_gameEngine().get_numPlayers());
 
         //Making the Grid for the home page
         GridPane home_grid=new GridPane();
@@ -511,7 +514,7 @@ public class GUIMain extends Application {
         StackPane root = new StackPane();
 
         //Making the Player Color pickers
-        
+
 
         playercolor.put(1,"#" + Integer.toHexString(player_1.getValue().hashCode()));
         playercolor.put(2,"#" + Integer.toHexString(player_2.getValue().hashCode()));
@@ -707,7 +710,7 @@ public class GUIMain extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        _gameEngine = new GameEngine();
+        _gameEngine = new GameEngine(2,0);
         playercolor= new HashMap<Integer, String>();
 
         array_CP.add(player_1);

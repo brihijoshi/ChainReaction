@@ -13,6 +13,11 @@ public class GameEngine {
     private GameController _gc;
     private Map player_colors;
 
+    public GameEngine(int _numPlayers, int _gridSize) {
+        this._numPlayers = _numPlayers;
+        this._gridSize = _gridSize;
+    }
+
     public int get_numPlayers() {
         return _numPlayers;
     }
