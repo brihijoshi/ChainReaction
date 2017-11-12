@@ -439,6 +439,21 @@ public class GUIMain extends Application {
         settingsButton = new Button("Settings");
         settingsButton.setOnAction(new settingsButtonGUI());
 
+        try {
+            System.out.println(GameEngine.checkResume());
+            if (!GameEngine.checkResume()){
+
+                resumeButton.setDisable(true);
+            }
+            else{
+                resumeButton.setDisable(false);
+            }
+        }
+        catch (Exception v){
+            v.printStackTrace();
+        }
+
+
         // Customising the buttons
         startButton.setStyle("-fx-background-color: chartreuse; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold;");
         resumeButton.setStyle("-fx-background-color: cornflowerblue; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold;");

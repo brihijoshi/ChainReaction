@@ -65,9 +65,9 @@ public class GameEngine {
 
      */
 
-    public boolean checkResume() throws Exception {
+    public static boolean checkResume() throws Exception {
 
-        File file = new File("gamestate.ser");
+        File file = new File("game.ser");
 
         boolean empty = !file.exists() || file.length() == 0;
 

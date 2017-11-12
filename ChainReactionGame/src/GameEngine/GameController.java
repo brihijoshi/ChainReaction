@@ -108,7 +108,7 @@ public class GameController {
         GameState g = get_gameState();
         g.set_grid(_grid);
         g.set_players(_players);
-        FileOutputStream fos = new FileOutputStream("resume.ser");
+        FileOutputStream fos = new FileOutputStream("undo.ser");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         System.out.println( "Resume state saved!");
         oos.writeObject(g);
