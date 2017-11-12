@@ -51,10 +51,9 @@ public class GUIMain extends Application {
     private static ColorPicker player_3 = new ColorPicker(Color.GREEN);
     private static ColorPicker player_4 = new ColorPicker(Color.YELLOW);
     private static ColorPicker player_5 = new ColorPicker(Color.ORANGE);
-    private static ColorPicker player_6 = new ColorPicker(Color.HOTPINK);
-    private static ColorPicker player_7 = new ColorPicker(Color.BEIGE);
-    private static ColorPicker player_8 = new ColorPicker(Color.LAVENDER);
-
+    private static ColorPicker player_6 = new ColorPicker(Color.PINK);
+    private static ColorPicker player_7 = new ColorPicker(Color.BROWN);
+    private static ColorPicker player_8 = new ColorPicker(Color.PURPLE);
 
     private static ArrayList<ColorPicker> array_CP = new ArrayList<>(8);
 
