@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -12,8 +13,10 @@ import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
+
 
 public class restartButtonGUI implements EventHandler<ActionEvent> {
 
@@ -22,9 +25,9 @@ public class restartButtonGUI implements EventHandler<ActionEvent> {
 
         MenuItem source = (MenuItem) e.getSource();
 
-        Menu mb = source.getParentMenu();
 
-        Parent parent = mb.;
+
+
 
         ArrayList<Player> players = GUIMain.get_gameEngine().get_gc().get_players();
 
@@ -38,7 +41,8 @@ public class restartButtonGUI implements EventHandler<ActionEvent> {
         players.get(0).set_isActive(true);
         players.get(0).set_isKillable(true);
 
-        BorderPane bp = (BorderPane) parent;
+        MenuButton parent = (MenuButton) source.getParentPopup().getOwnerNode();
+        BorderPane bp = (BorderPane) parent.getParent();
         GridPane grid = (GridPane) bp.getCenter();
 
         Color firstColor = Color.web(players.get(0).get_colour());
