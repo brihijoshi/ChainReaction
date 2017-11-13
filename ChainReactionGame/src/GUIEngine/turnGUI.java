@@ -205,6 +205,23 @@ class turnGUI implements EventHandler<MouseEvent> {
                 e2.printStackTrace();
             }
 
+//            try {
+//                System.out.println(GameEngine.checkUndo());
+//                if (!GameEngine.checkUndo()){
+//
+//                    GUIMain.getRedoButton().setDisable(true);
+//                }
+//                else{
+//                    GUIMain.getRedoButton().setDisable(false);
+//                }
+//            }
+//            catch (Exception v){
+//                v.printStackTrace();
+//            }
+            GUIMain.getRedoButton().setDisable(false);
+
+
+
         }
 
 

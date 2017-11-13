@@ -44,6 +44,10 @@ public class GUIMain extends Application {
     private static Button settingsButton;
     private static Button saveButton;
 
+
+
+    private static Button redoButton;
+
     private static Button homeButton; //Made it to specifically return to the home page
     private static ComboBox numPlayersCB;
     private static ComboBox gridChoiceCB;
@@ -93,6 +97,14 @@ public class GUIMain extends Application {
 
     public static Button getHomeButton() {
         return homeButton;
+    }
+
+    public static Button getRedoButton() {
+        return redoButton;
+    }
+
+    public static void setRedoButton(Button redoButton) {
+        GUIMain.redoButton = redoButton;
     }
 
     public static void setHomeButton(Button homeButton) {
@@ -260,21 +272,26 @@ public class GUIMain extends Application {
 
         bp.setTop(dd);
 
-        Button redoButton = new Button("Undo");
-        redoButton.setStyle("-fx-background-color: forestgreen; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold;");
+        redoButton = new Button("Undo");
+        redoButton.setStyle("-fx-background-color: fuchsia; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold;");
         redoButton.setOnAction(new undoButtonGUI());
 
-        try {
-            if (!GameEngine.checkUndo()) {
-                redoButton.setDisable(true);
-            }
-            else{
-                redoButton.setDisable(false);
-            }
-        }
-        catch (Exception v){
-            v.printStackTrace();
-        }
+//        try {
+//            System.out.println(GameEngine.checkUndo());
+//            if (!GameEngine.checkUndo()){
+//
+//                redoButton.setDisable(true);
+//            }
+//            else{
+//                redoButton.setDisable(false);
+//            }
+//        }
+//        catch (Exception v){
+//            v.printStackTrace();
+//        }
+
+        redoButton.setDisable(true);
+
         bp.setRight(redoButton);
         bp.setStyle("-fx-background-color: black;");
         return bp;

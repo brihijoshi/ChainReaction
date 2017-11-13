@@ -82,7 +82,7 @@ public class GameController {
         FileInputStream fis=new FileInputStream("undo.ser");
         ObjectInputStream ois = new ObjectInputStream(fis);
         GameState g= (GameState) ois.readObject();
-        System.out.println("Received the Resume State!");
+        System.out.println("Received the Undo State!");
         set_gameState(g);
         set_players(g.get_players());
         set_grid(g.get_grid());
@@ -113,7 +113,7 @@ public class GameController {
         g.set_players(_players);
         FileOutputStream fos = new FileOutputStream("undo.ser");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
-        System.out.println( "Resume state saved!");
+        System.out.println( "Undo state saved!");
         oos.writeObject(g);
         oos.close();
         fos.close();

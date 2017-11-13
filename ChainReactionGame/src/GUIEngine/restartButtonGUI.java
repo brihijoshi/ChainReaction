@@ -35,6 +35,12 @@ public class restartButtonGUI implements EventHandler<ActionEvent> {
             p.set_isActive(false);
         }
 
+//        for (int i = 0; i < players.size(); i++) {
+//            players.get(i).set_isAlive(true);
+//            players.get(i).set_isKillable(false);
+//            players.get(i).set_isActive(false);
+//        }
+
         players.get(0).set_isActive(true);
         players.get(0).set_isKillable(true);
 

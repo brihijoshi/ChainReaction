@@ -71,7 +71,7 @@ public class GameEngine {
 
         boolean empty = !file.exists() || file.length() == 0;
 
-        String checkEmpty = empty ? "File is empty or doesn't exist" : "File is not empty";
+        String checkEmpty = empty ? "Game File is empty or doesn't exist" : "Game File is not empty";
         System.out.println(checkEmpty);
 
         return !empty;
@@ -82,12 +82,10 @@ public class GameEngine {
 
         File file = new File("undo.ser");
 
-        boolean empty = !file.exists() || file.length() == 0;
-
-        String checkEmpty = empty ? "File is empty or doesn't exist" : "File is not empty";
-        System.out.println(checkEmpty);
-
-        return !empty;
+        if (file.exists()){
+            return true;
+        }
+        return false;
 
     }
 
