@@ -8,11 +8,9 @@ import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ColorPicker;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
@@ -161,10 +159,33 @@ class turnGUI implements EventHandler<MouseEvent> {
 
                     Optional<ButtonType> result = alert.showAndWait();
                     if (result.get() == buttonTypeOne) {
-                        // ... user chose "One"
+                        ArrayList<Player> player_list = GUIMain.get_gameEngine().get_gc().get_players();
+
+                        for (Player p:
+                                player_list) {
+                            p.set_isAlive(true);
+                            p.set_isKillable(false);
+                            p.set_isActive(false);
+                        }
+
+                        player_list.get(0).set_isActive(true);
+                        player_list.get(0).set_isKillable(true);
+
+                        Color firstColor = Color.web(player_list.get(0).get_colour());
+
+                        for(int i = 0; i < GUIMain.get_numRows(); i++) {
+                            for (int j = 0; j < GUIMain.get_numCols(); j++) {
+
+                                GUIMain.addOrbAndAnimate(grid, i, j, 0, firstColor);
+
+                            }
+                        }
+
+                        GUIMain.changeGridColor(grid, firstColor);
+
                     }
                     else {
-                        // ... user chose CANCEL or closed the dialog
+                        stage.setScene(GUIMain.createStartPage());
                     }
                 }
 
