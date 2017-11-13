@@ -13,6 +13,8 @@ import javafx.stage.Stage;
 public class undoButtonGUI implements EventHandler<ActionEvent> {
 
 
+    //TODO When we press undo, state of game becomes equal to undo state
+
     @Override
     public void handle(ActionEvent e) {
 
@@ -34,6 +36,10 @@ public class undoButtonGUI implements EventHandler<ActionEvent> {
                 } catch (Exception e2) {
                     e2.printStackTrace();
                 }
+
+                //solving the TODO in the line below!
+                GUIMain.get_gameEngine().get_gc().saveGameState();
+
 
                 System.out.println("-----------------------");
                 System.out.println(GUIMain.get_gameEngine());
