@@ -65,6 +65,8 @@ public class restartButtonGUI implements EventHandler<ActionEvent> {
                     for (int j = 0; j < GUIMain.get_numCols(); j++) {
 
                         GUIMain.addOrbAndAnimate(grid, i, j, 0, firstColor);
+                        GUIMain.get_gameEngine().get_gc().get_grid().get_grid().get(i).get(j).set_currmass(0);
+
 
                     }
                 }
