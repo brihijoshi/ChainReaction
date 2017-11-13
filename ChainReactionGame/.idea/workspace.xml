@@ -4,17 +4,11 @@
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/game.ser" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/undo.ser" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/startButtonGUI.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/startButtonGUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/undoButtonGUI.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/undoButtonGUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GameEngine/GameEngine.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GameEngine/GameEngine.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/restartButtonGUI.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/restartButtonGUI.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/turnGUI.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/turnGUI.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUIEngine/GUIMain.java" afterPath="$PROJECT_DIR$/src/GUIEngine/GUIMain.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUIEngine/restartButtonGUI.java" afterPath="$PROJECT_DIR$/src/GUIEngine/restartButtonGUI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUIEngine/startButtonGUI.java" afterPath="$PROJECT_DIR$/src/GUIEngine/startButtonGUI.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUIEngine/turnGUI.java" afterPath="$PROJECT_DIR$/src/GUIEngine/turnGUI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUIEngine/undoButtonGUI.java" afterPath="$PROJECT_DIR$/src/GUIEngine/undoButtonGUI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameEngine/GameController.java" afterPath="$PROJECT_DIR$/src/GameEngine/GameController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameEngine/GameEngine.java" afterPath="$PROJECT_DIR$/src/GameEngine/GameEngine.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -87,8 +81,8 @@
       <file leaf-file-name="GUIMain.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUIEngine/GUIMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="467">
-              <caret line="266" column="50" lean-forward="false" selection-start-line="266" selection-start-column="43" selection-end-line="266" selection-end-column="50" />
+            <state relative-caret-position="380">
+              <caret line="804" column="66" lean-forward="false" selection-start-line="804" selection-start-column="58" selection-end-line="804" selection-end-column="66" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2753#2754#0" expanded="true" />
@@ -100,21 +94,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="restartButtonGUI.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="restartButtonGUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUIEngine/restartButtonGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="56" column="0" lean-forward="true" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+            <state relative-caret-position="345">
+              <caret line="42" column="25" lean-forward="true" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="turnGUI.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="turnGUI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GUIEngine/turnGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="214" column="43" lean-forward="true" selection-start-line="214" selection-start-column="43" selection-end-line="214" selection-end-column="43" />
+            <state relative-caret-position="453">
+              <caret line="99" column="0" lean-forward="true" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -125,7 +119,7 @@
       <file leaf-file-name="undoButtonGUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUIEngine/undoButtonGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
+            <state relative-caret-position="92">
               <caret line="16" column="16" lean-forward="false" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -149,8 +143,8 @@
       <file leaf-file-name="startButtonGUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUIEngine/startButtonGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-137">
-              <caret line="70" column="12" lean-forward="false" selection-start-line="70" selection-start-column="12" selection-end-line="70" selection-end-column="12" />
+            <state relative-caret-position="240">
+              <caret line="24" column="8" lean-forward="true" selection-start-line="24" selection-start-column="8" selection-end-line="25" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -181,6 +175,8 @@
       <find>setE</find>
       <find>redo</find>
       <find>restart</find>
+      <find>getcurre</find>
+      <find>e</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -225,8 +221,8 @@
         <option value="$PROJECT_DIR$/src/GameEngine/GameEngine.java" />
         <option value="$PROJECT_DIR$/src/GameEngine/GameController.java" />
         <option value="$PROJECT_DIR$/src/GUIEngine/undoButtonGUI.java" />
-        <option value="$PROJECT_DIR$/src/GUIEngine/turnGUI.java" />
         <option value="$PROJECT_DIR$/src/GUIEngine/GUIMain.java" />
+        <option value="$PROJECT_DIR$/src/GUIEngine/turnGUI.java" />
         <option value="$PROJECT_DIR$/src/GUIEngine/restartButtonGUI.java" />
       </list>
     </option>
@@ -526,7 +522,7 @@
       <workItem from="1510484125546" duration="22213000" />
       <workItem from="1510522002256" duration="3995000" />
       <workItem from="1510531250284" duration="1919000" />
-      <workItem from="1510603614152" duration="2166000" />
+      <workItem from="1510603614152" duration="4070000" />
     </task>
     <task id="LOCAL-00001" summary="Added classes to the GameEngine pAckage">
       <created>1508931981361</created>
@@ -581,7 +577,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="142689000" />
+    <option name="totallyTimeSpent" value="144593000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="302" y="22" width="1121" height="808" extended-state="0" />
@@ -595,7 +591,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24546553" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09375" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26086956" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="22" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="21" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -968,30 +964,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUIEngine/undoButtonGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="16" column="16" lean-forward="false" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUIEngine/turnGUI.java">
+    <entry file="file://$PROJECT_DIR$/src/GUIEngine/startButtonGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="214" column="43" lean-forward="true" selection-start-line="214" selection-start-column="43" selection-end-line="214" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <caret line="24" column="8" lean-forward="true" selection-start-line="24" selection-start-column="8" selection-end-line="25" selection-end-column="46" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GUIEngine/GUIMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="266" column="50" lean-forward="false" selection-start-line="266" selection-start-column="43" selection-end-line="266" selection-end-column="50" />
+        <state relative-caret-position="380">
+          <caret line="804" column="66" lean-forward="false" selection-start-line="804" selection-start-column="58" selection-end-line="804" selection-end-column="66" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2753#2754#0" expanded="true" />
@@ -1002,19 +986,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUIEngine/startButtonGUI.java">
+    <entry file="file://$PROJECT_DIR$/src/GUIEngine/restartButtonGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-137">
-          <caret line="70" column="12" lean-forward="false" selection-start-line="70" selection-start-column="12" selection-end-line="70" selection-end-column="12" />
+        <state relative-caret-position="345">
+          <caret line="42" column="25" lean-forward="true" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUIEngine/restartButtonGUI.java">
+    <entry file="file://$PROJECT_DIR$/src/GUIEngine/undoButtonGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="56" column="0" lean-forward="true" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="92">
+          <caret line="16" column="16" lean-forward="false" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUIEngine/turnGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="453">
+          <caret line="99" column="0" lean-forward="true" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
