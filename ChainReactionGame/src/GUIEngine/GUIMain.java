@@ -27,6 +27,7 @@ import javafx.util.Duration;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.function.DoubleUnaryOperator;
 
 
 public class GUIMain extends Application {
@@ -438,6 +439,34 @@ public class GUIMain extends Application {
                 );
         rotationAnimation.setCycleCount(Animation.INDEFINITE);
         rotationAnimation.play();
+    }
+
+    public static void transitionOrbs(Node node, Double x, Double y){
+
+        System.out.println("THIS IS INSIDE TRANSITION ORBSSSSS");
+
+        TranslateTransition translateTransition = new TranslateTransition();
+
+        //Setting the duration of the transition
+        translateTransition.setDuration(Duration.millis(2000));
+
+        //Setting the node for the transition
+        translateTransition.setNode(node);
+
+        //Setting the value of the transition along the x axis.
+        translateTransition.setByX(x);
+
+        translateTransition.setByY(y);
+
+        //Setting the cycle count for the transition
+        translateTransition.setCycleCount(50);
+
+        //Setting auto reverse value to false
+        translateTransition.setAutoReverse(false);
+
+        //Playing the animation
+        translateTransition.play();
+
     }
 
     public static boolean checkEndGame(){

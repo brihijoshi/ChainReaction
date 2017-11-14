@@ -22,7 +22,7 @@ public class startButtonGUI implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent e)
     {
-        
+
         try {
 
             Files.deleteIfExists(Paths.get("game.ser"));
