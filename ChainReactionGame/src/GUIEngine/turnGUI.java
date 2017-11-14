@@ -5,7 +5,9 @@ import GameEngine.Grid;
 import GameEngine.GameEngine;
 import GameEngine.Player;
 import javafx.animation.ParallelTransition;
+import javafx.animation.SequentialTransition;
 import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -34,8 +36,9 @@ class turnGUI implements EventHandler<MouseEvent> {
     private String currentColorHEX;
     private Grid grid_put;
     private ArrayList<Player> players_put;
+    boolean play_complete = false;
     ParallelTransition p = new ParallelTransition();
-    boolean p_played = false;
+    //SequentialTransition st = new SequentialTransition();
 
 
 
@@ -65,7 +68,7 @@ class turnGUI implements EventHandler<MouseEvent> {
             currentColorHEX = GUIMain.getCurrentPlayer();
 
 
-            System.out.println("Mouse click detected");
+            //System.out.println("Mouse click detected");
 
 
             StackPane source = (StackPane) e.getSource();
@@ -110,134 +113,20 @@ class turnGUI implements EventHandler<MouseEvent> {
 
                 System.out.println("Existing color: " + oldColor);
                 System.out.println("Given color: " + currentColorHEX);
-                System.out.println("code should work");
+                //System.out.println("code should work");
 
-                int currMass = cellGroup.getChildren().size();
-
-                GUIMain.addOrbAndAnimate(grid, index[0], index[1], currMass + 1, Color.web(currentColorHEX));
-                //convertGUItoGrid(grid, grid_put);
-                GUIMain.playExplode();
-                if (currMass + 1 == get_CritMass(index[0], index[1])) {
-                    GUIMain.addOrbAndAnimate(grid, index[0], index[1], 0, Color.web(currentColorHEX));
-                    //convertGUItoGrid(grid, grid_put);
-                    p.play();
-                    handleTurn(index[0], index[1], grid);
-                }
-
-                fetchCurrentPlayer().set_isKillable(true);
+                handleTurn(index[0], index[1], grid);
 
 
-                convertGUItoGrid(grid, grid_put);
-                GUIMain.get_gameEngine().get_gc().set_grid(grid_put);
-                GUIMain.get_gameEngine().get_gc().set_players(players_put);
-                checkAlivePlayers(fetchCurrentPlayer());
-
-                if (!GUIMain.checkEndGame()) {
-                    fetchCurrentPlayer().set_isActive(false);
-                    Player nextPlayer = fetchNextPlayer(currentColorHEX);
-                    if (p_played) {
-                        p.setOnFinished(u -> {
-
-                            GUIMain.changeGridColor(grid, Color.web(nextPlayer.get_colour()));
-                        });
-                    }
-                    else{
-                        GUIMain.changeGridColor(grid, Color.web((nextPlayer.get_colour())));
-                    }
-                    nextPlayer.set_isActive(true);
-                    GUIMain.setCurrentPlayer(nextPlayer.get_colour());
-
-                }
-                else{
-                    int num = -1;
-
-                    for (int i = 0; i < players_put.size(); i++) {
-                        if (players_put.get(i).get_isAlive()){
-                            num = i+1;
-                            break;
-                        }
-                    }
-                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                    alert.setTitle("Game Over!");
-                    alert.setHeaderText("Player "+num+" has won the game!");
-                    alert.setContentText(null);
-                    alert.initOwner(stage);
-                    alert.setGraphic(null);
 
 
-                    ButtonType buttonTypeOne = new ButtonType("Start Again");
-                    ButtonType buttonTypeTwo = new ButtonType("Exit");
-
-
-                    alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo);
-
-                    Optional<ButtonType> result = alert.showAndWait();
-                    if (result.get() == buttonTypeOne) {
-
-
-                        File file_game = new File("game.ser");
-                        File file_undo = new File("undo.ser");
-
-                        try {
-
-                            if (file_game.delete() && file_undo.delete()) {
-
-
-                                for (int i = 0; i < players.size(); i++) {
-                                    players.get(i).set_isAlive(true);
-                                    players.get(i).set_isKillable(false);
-                                    players.get(i).set_isActive(false);
-                                }
-
-                                players.get(0).set_isActive(true);
-                                players.get(0).set_isKillable(true);
-
-                                Color firstColor = Color.web(players.get(0).get_colour());
-
-                                for (int i = 0; i < GUIMain.get_numRows(); i++) {
-                                    for (int j = 0; j < GUIMain.get_numCols(); j++) {
-
-                                        GUIMain.addOrbAndAnimate(grid, i, j, 0, firstColor);
-                                        GUIMain.get_gameEngine().get_gc().get_grid().get_grid().get(i).get(j).set_currmass(0);
-
-
-                                    }
-                                }
-
-                                GUIMain.changeGridColor(grid, firstColor);
-
-                                GUIMain.setCurrentPlayer(ColorUtil.colorToHex(firstColor));
-                                GUIMain.getRedoButton().setDisable(true);
-                                GUIMain.getRedoButton().setDisable(true);
-
-                            }
-                        } catch (Exception v) {
-                            v.printStackTrace();
-                        }
-                    }
-                    else {
-                        try {
-                            File file_game = new File("game.ser");
-
-                            File file_undo = new File("undo.ser");
-
-                            if (file_game.delete() && file_undo.delete()) {
-
-                                stage.setScene(GUIMain.createStartPage());
-                            }
-
-                        }
-                        catch (Exception o){
-                            o.printStackTrace();
-                        }
-                    }
-                }
+               //////////----------
 
 
             } else {
                 System.out.println("Existing color: " + oldColor);
                 System.out.println("Given color: " + currentColorHEX);
-                System.out.println("code for sound effects");
+                //System.out.println("code for sound effects");
 
                 GUIMain.playError();
             }
@@ -261,7 +150,7 @@ class turnGUI implements EventHandler<MouseEvent> {
 
     public void convertGUItoGrid(GridPane gp, Grid g){
         ObservableList<Node> GUIlist = gp.getChildren();
-        System.out.println("GUIlist.size() - "+ GUIlist.size());
+        //System.out.println("GUIlist.size() - "+ GUIlist.size());
         for (int i = 1; i < GUIlist.size(); i++) {
             StackPane cell = (StackPane) GUIlist.get(i);
             Group cell_grp = (Group) cell.getChildren().get(0);
@@ -390,358 +279,682 @@ class turnGUI implements EventHandler<MouseEvent> {
     }
 
 
-
-    public void handleTurn(int row, int col, GridPane gp) {
-
-
-
-
-        if (areValidCoord(row - 1, col)){
-            StackPane sp = (StackPane) gp.getChildren().get(getIndexOfStackPaneFromCoords(row - 1, col));
-            Group grp = (Group) sp.getChildren().get(0);
-            int currMass = grp.getChildren().size();
-            System.out.println(currMass);
-
-            StackPane sp1 = (StackPane) gp.getChildren().get(getIndexOfStackPaneFromCoords(row , col));
-
-            Sphere s = new Sphere(12);
-            sp1.getChildren().add(s);
-            TranslateTransition translateTransition = new TranslateTransition();
-
-            //Setting the duration of the transition
-            translateTransition.setDuration(Duration.millis(500));
-
-            //Setting the node for the transition
-            translateTransition.setNode(s);
-
-            //Setting the value of the transition along the x axis.
-            translateTransition.setToX(0);
-            System.out.println("grp.getTranslateX()" + grp.getTranslateX());
-
-            translateTransition.setToY(-80);
-
-            System.out.println("grp.getTranslateY()"+grp.getTranslateY());
-
-            translateTransition.setFromX(0);
-            System.out.println("s.getTranslateX()" + s.getTranslateX());
-
-            translateTransition.setFromY(0);
-
-            System.out.println("s.getTranslateY()" + s.getTranslateY());
-
-            //Setting the cycle count for the transition
-            translateTransition.setCycleCount(0);
-
-            //Setting auto reverse value to false
-            translateTransition.setAutoReverse(false);
-
-            //Playing the animation
-            p.getChildren().add(translateTransition);
-
-            translateTransition.setOnFinished(o->{
-                sp1.getChildren().remove(s);
-                GUIMain.addOrbAndAnimate(gp, row - 1, col, currMass + 1, Color.web(currentColorHEX));
-            });
-
-
-            //p.getChildren().add(tt);
-            convertGUItoGrid(gp, grid_put);
-            int critMass = get_CritMass(row - 1, col);
-            if (currMass + 1 == critMass) {
-                GUIMain.addOrbAndAnimate(gp, row - 1, col, 0, Color.web(currentColorHEX));
-                convertGUItoGrid(gp, grid_put);
-                played(row - 1, col, gp);
-            }
-        }
-
-        //Handle Left
-
-        if (areValidCoord(row, col - 1)){
-            System.out.println(getIndexOfStackPaneFromCoords(row, col - 1));
-            StackPane sp = (StackPane) gp.getChildren().get(getIndexOfStackPaneFromCoords(row, col- 1));
-            Group grp = (Group) sp.getChildren().get(0);
-
-            StackPane sp1 = (StackPane) gp.getChildren().get(getIndexOfStackPaneFromCoords(row , col));
-
-            Sphere s = new Sphere(12);
-            sp1.getChildren().add(s);
-            TranslateTransition translateTransition = new TranslateTransition();
-
-            //Setting the duration of the transition
-            translateTransition.setDuration(Duration.millis(500));
-
-            //Setting the node for the transition
-            translateTransition.setNode(s);
-
-            //Setting the value of the transition along the x axis.
-            translateTransition.setToX(-80);
-            System.out.println("grp.getTranslateX()" + grp.getTranslateX());
-
-            translateTransition.setToY(0);
-
-            System.out.println("grp.getTranslateY()"+grp.getTranslateY());
-
-            translateTransition.setFromX(0);
-            System.out.println("s.getTranslateX()" + s.getTranslateX());
-
-            translateTransition.setFromY(0);
-
-            System.out.println("s.getTranslateY()" + s.getTranslateY());
-
-            //Setting the cycle count for the transition
-            translateTransition.setCycleCount(0);
-
-            //Setting auto reverse value to false
-            translateTransition.setAutoReverse(false);
-
-            //Playing the animation
-            p.getChildren().add(translateTransition);
-
-            int currMass = grp.getChildren().size();
-
-            translateTransition.setOnFinished(o->{
-                sp1.getChildren().remove(s);
-                GUIMain.addOrbAndAnimate(gp, row - 1, col, currMass + 1, Color.web(currentColorHEX));
-            });
-
-
-            System.out.println(grp.getChildren());
-            System.out.println(currMass);
-            GUIMain.addOrbAndAnimate(gp, row, col - 1, currMass + 1, Color.web(currentColorHEX));
-            convertGUItoGrid(gp, grid_put);
-            int critMass = get_CritMass(row, col - 1);
-            if (currMass + 1 == critMass) {
-                GUIMain.addOrbAndAnimate(gp, row, col - 1, 0, Color.web(currentColorHEX));
-                //convertGUItoGrid(gp, grid_put);
-                played(row, col - 1, gp);
-            }
-        }
-
-        //Handle Bottom
-        if (areValidCoord(row + 1, col)){
-            StackPane sp = (StackPane) gp.getChildren().get(getIndexOfStackPaneFromCoords(row + 1, col));
-            Group grp = (Group) sp.getChildren().get(0);
-
-
-            StackPane sp1 = (StackPane) gp.getChildren().get(getIndexOfStackPaneFromCoords(row , col));
-
-            Sphere s = new Sphere(12);
-            sp1.getChildren().add(s);
-            TranslateTransition translateTransition = new TranslateTransition();
-
-            //Setting the duration of the transition
-            translateTransition.setDuration(Duration.millis(500));
-
-            //Setting the node for the transition
-            translateTransition.setNode(s);
-
-            //Setting the value of the transition along the x axis.
-            translateTransition.setToX(0);
-            System.out.println("grp.getTranslateX()" + grp.getTranslateX());
-
-            translateTransition.setToY(80);
-
-            System.out.println("grp.getTranslateY()"+grp.getTranslateY());
-
-            translateTransition.setFromX(0);
-            System.out.println("s.getTranslateX()" + s.getTranslateX());
-
-            translateTransition.setFromY(0);
-
-            System.out.println("s.getTranslateY()" + s.getTranslateY());
-
-            //Setting the cycle count for the transition
-            translateTransition.setCycleCount(0);
-
-            //Setting auto reverse value to false
-            translateTransition.setAutoReverse(false);
-
-            //Playing the animation
-            p.getChildren().add(translateTransition);
-
-            int currMass = grp.getChildren().size();
-
-            translateTransition.setOnFinished(o->{
-                sp1.getChildren().remove(s);
-                GUIMain.addOrbAndAnimate(gp, row - 1, col, currMass + 1, Color.web(currentColorHEX));
-            });
-            System.out.println(currMass);
-            GUIMain.addOrbAndAnimate(gp, row + 1, col, currMass + 1, Color.web(currentColorHEX));
-            convertGUItoGrid(gp, grid_put);
-            int critMass = get_CritMass(row + 1, col);
-            if (currMass + 1 == critMass) {
-                GUIMain.addOrbAndAnimate(gp, row + 1, col, 0, Color.web(currentColorHEX));
-                //convertGUItoGrid(gp, grid_put);
-                played(row + 1, col, gp);
-            }
-        }
-
-        //System.out.println("Right " + row + " "+ (col+1));
-        //Handle Right
-        if (areValidCoord(row, col + 1)){
-            StackPane sp = (StackPane) gp.getChildren().get(getIndexOfStackPaneFromCoords(row, col + 1));
-            Group grp = (Group) sp.getChildren().get(0);
-
-
-            StackPane sp1 = (StackPane) gp.getChildren().get(getIndexOfStackPaneFromCoords(row , col));
-
-            Sphere s = new Sphere(12);
-            sp1.getChildren().add(s);
-            TranslateTransition translateTransition = new TranslateTransition();
-
-            //Setting the duration of the transition
-            translateTransition.setDuration(Duration.millis(500));
-
-            //Setting the node for the transition
-            translateTransition.setNode(s);
-
-            //Setting the value of the transition along the x axis.
-            translateTransition.setToX(80);
-            System.out.println("grp.getTranslateX()" + grp.getTranslateX());
-
-            translateTransition.setToY(0);
-
-            System.out.println("grp.getTranslateY()"+grp.getTranslateY());
-
-            translateTransition.setFromX(0);
-            System.out.println("s.getTranslateX()" + s.getTranslateX());
-
-            translateTransition.setFromY(0);
-
-            System.out.println("s.getTranslateY()" + s.getTranslateY());
-
-            //Setting the cycle count for the transition
-            translateTransition.setCycleCount(0);
-
-            //Setting auto reverse value to false
-            translateTransition.setAutoReverse(false);
-
-            //Playing the animation
-            p.getChildren().add(translateTransition);
-
-            int currMass = grp.getChildren().size();
-
-            translateTransition.setOnFinished(o->{
-                sp1.getChildren().remove(s);
-                GUIMain.addOrbAndAnimate(gp, row - 1, col, currMass + 1, Color.web(currentColorHEX));
-            });
-
-            System.out.println(currMass);
-            GUIMain.addOrbAndAnimate(gp, row, col + 1, currMass + 1, Color.web(currentColorHEX));
-            convertGUItoGrid(gp, grid_put);
-            int critMass = get_CritMass(row, col + 1);
-            if (currMass + 1 == critMass) {
-                GUIMain.addOrbAndAnimate(gp, row, col + 1, 0, Color.web(currentColorHEX));
-                //convertGUItoGrid(gp, grid_put);
-
-                played(row, col + 1, gp);
-            }
-        }
-
 //
-//        p.setOnFinished(z -> {
-//
-//            if (areValidCoord(row - 1, col)) {
-//
-//                StackPane sp = (StackPane) gp.getChildren().get(getIndexOfStackPaneFromCoords(row - 1, col));
-//                Group grp = (Group) sp.getChildren().get(0);
-//
-//                int currMass = grp.getChildren().size();
+//    public void handleTurn(int row, int col, GridPane gp) {
 //
 //
-//                int critMass = get_CritMass(row - 1, col);
-//                if (currMass + 1 == critMass) {
-//                    GUIMain.addOrbAndAnimate(gp, row - 1, col, 0, Color.web(currentColorHEX));
-//                    //convertGUItoGrid(gp, grid_put);
-//                    handleTurn(row - 1, col, gp);
-//                }
 //
+//
+//        if (areValidCoord(row - 1, col)){
+//            StackPane sp = (StackPane) gp.getChildren().get(getIndexOfStackPaneFromCoords(row - 1, col));
+//            Group grp = (Group) sp.getChildren().get(0);
+//            int currMass = grp.getChildren().size();
+//            System.out.println(currMass);
+//
+//            StackPane sp1 = (StackPane) gp.getChildren().get(getIndexOfStackPaneFromCoords(row , col));
+//
+//            Sphere s = new Sphere(12);
+//            sp1.getChildren().add(s);
+//            TranslateTransition translateTransition = new TranslateTransition();
+//
+//            //Setting the duration of the transition
+//            translateTransition.setDuration(Duration.millis(500));
+//
+//            //Setting the node for the transition
+//            translateTransition.setNode(s);
+//
+//            //Setting the value of the transition along the x axis.
+//            translateTransition.setToX(0);
+//            System.out.println("grp.getTranslateX()" + grp.getTranslateX());
+//
+//            translateTransition.setToY(-80);
+//
+//            System.out.println("grp.getTranslateY()"+grp.getTranslateY());
+//
+//            translateTransition.setFromX(0);
+//            System.out.println("s.getTranslateX()" + s.getTranslateX());
+//
+//            translateTransition.setFromY(0);
+//
+//            System.out.println("s.getTranslateY()" + s.getTranslateY());
+//
+//            //Setting the cycle count for the transition
+//            translateTransition.setCycleCount(0);
+//
+//            //Setting auto reverse value to false
+//            translateTransition.setAutoReverse(false);
+//
+//            //Playing the animation
+//            p.getChildren().add(translateTransition);
+//
+//            translateTransition.setOnFinished(o->{
+//                sp1.getChildren().remove(s);
+//                GUIMain.addOrbAndAnimate(gp, row - 1, col, currMass + 1, Color.web(currentColorHEX));
+//            });
+//
+//
+//            //p.getChildren().add(tt);
+//            convertGUItoGrid(gp, grid_put);
+//            int critMass = get_CritMass(row - 1, col);
+//            if (currMass + 1 == critMass) {
+//                GUIMain.addOrbAndAnimate(gp, row - 1, col, 0, Color.web(currentColorHEX));
+//                convertGUItoGrid(gp, grid_put);
+//                played(row - 1, col, gp);
 //            }
+//        }
 //
-//            if (areValidCoord(row, col - 1)) {
+//        //Handle Left
 //
-//                StackPane sp = (StackPane) gp.getChildren().get(getIndexOfStackPaneFromCoords(row, col - 1));
-//                Group grp = (Group) sp.getChildren().get(0);
+//        if (areValidCoord(row, col - 1)){
+//            System.out.println(getIndexOfStackPaneFromCoords(row, col - 1));
+//            StackPane sp = (StackPane) gp.getChildren().get(getIndexOfStackPaneFromCoords(row, col- 1));
+//            Group grp = (Group) sp.getChildren().get(0);
 //
-//                int currMass = grp.getChildren().size();
+//            StackPane sp1 = (StackPane) gp.getChildren().get(getIndexOfStackPaneFromCoords(row , col));
+//
+//            Sphere s = new Sphere(12);
+//            sp1.getChildren().add(s);
+//            TranslateTransition translateTransition = new TranslateTransition();
+//
+//            //Setting the duration of the transition
+//            translateTransition.setDuration(Duration.millis(500));
+//
+//            //Setting the node for the transition
+//            translateTransition.setNode(s);
+//
+//            //Setting the value of the transition along the x axis.
+//            translateTransition.setToX(-80);
+//            System.out.println("grp.getTranslateX()" + grp.getTranslateX());
+//
+//            translateTransition.setToY(0);
+//
+//            System.out.println("grp.getTranslateY()"+grp.getTranslateY());
+//
+//            translateTransition.setFromX(0);
+//            System.out.println("s.getTranslateX()" + s.getTranslateX());
+//
+//            translateTransition.setFromY(0);
+//
+//            System.out.println("s.getTranslateY()" + s.getTranslateY());
+//
+//            //Setting the cycle count for the transition
+//            translateTransition.setCycleCount(0);
+//
+//            //Setting auto reverse value to false
+//            translateTransition.setAutoReverse(false);
+//
+//            //Playing the animation
+//            p.getChildren().add(translateTransition);
+//
+//            int currMass = grp.getChildren().size();
+//
+//            translateTransition.setOnFinished(o->{
+//                sp1.getChildren().remove(s);
+//                GUIMain.addOrbAndAnimate(gp, row - 1, col, currMass + 1, Color.web(currentColorHEX));
+//            });
 //
 //
-//                int critMass = get_CritMass(row, col - 1);
-//                if (currMass + 1 == critMass) {
-//                    GUIMain.addOrbAndAnimate(gp, row, col - 1, 0, Color.web(currentColorHEX));
-//                    //convertGUItoGrid(gp, grid_put);
-//                    handleTurn(row, col - 1, gp);
-//                }
-//
+//            System.out.println(grp.getChildren());
+//            System.out.println(currMass);
+//            GUIMain.addOrbAndAnimate(gp, row, col - 1, currMass + 1, Color.web(currentColorHEX));
+//            convertGUItoGrid(gp, grid_put);
+//            int critMass = get_CritMass(row, col - 1);
+//            if (currMass + 1 == critMass) {
+//                GUIMain.addOrbAndAnimate(gp, row, col - 1, 0, Color.web(currentColorHEX));
+//                //convertGUItoGrid(gp, grid_put);
+//                played(row, col - 1, gp);
 //            }
+//        }
+//
+//        //Handle Bottom
+//        if (areValidCoord(row + 1, col)){
+//            StackPane sp = (StackPane) gp.getChildren().get(getIndexOfStackPaneFromCoords(row + 1, col));
+//            Group grp = (Group) sp.getChildren().get(0);
 //
 //
-//            if (areValidCoord(row + 1, col)) {
+//            StackPane sp1 = (StackPane) gp.getChildren().get(getIndexOfStackPaneFromCoords(row , col));
 //
-//                StackPane sp = (StackPane) gp.getChildren().get(getIndexOfStackPaneFromCoords(row + 1, col));
-//                Group grp = (Group) sp.getChildren().get(0);
+//            Sphere s = new Sphere(12);
+//            sp1.getChildren().add(s);
+//            TranslateTransition translateTransition = new TranslateTransition();
 //
-//                int currMass = grp.getChildren().size();
+//            //Setting the duration of the transition
+//            translateTransition.setDuration(Duration.millis(500));
 //
+//            //Setting the node for the transition
+//            translateTransition.setNode(s);
 //
-//                int critMass = get_CritMass(row + 1, col);
-//                if (currMass + 1 == critMass) {
-//                    GUIMain.addOrbAndAnimate(gp, row + 1, col, 0, Color.web(currentColorHEX));
-//                    //convertGUItoGrid(gp, grid_put);
-//                    handleTurn(row + 1, col, gp);
-//                }
+//            //Setting the value of the transition along the x axis.
+//            translateTransition.setToX(0);
+//            System.out.println("grp.getTranslateX()" + grp.getTranslateX());
 //
+//            translateTransition.setToY(80);
+//
+//            System.out.println("grp.getTranslateY()"+grp.getTranslateY());
+//
+//            translateTransition.setFromX(0);
+//            System.out.println("s.getTranslateX()" + s.getTranslateX());
+//
+//            translateTransition.setFromY(0);
+//
+//            System.out.println("s.getTranslateY()" + s.getTranslateY());
+//
+//            //Setting the cycle count for the transition
+//            translateTransition.setCycleCount(0);
+//
+//            //Setting auto reverse value to false
+//            translateTransition.setAutoReverse(false);
+//
+//            //Playing the animation
+//            p.getChildren().add(translateTransition);
+//
+//            int currMass = grp.getChildren().size();
+//
+//            translateTransition.setOnFinished(o->{
+//                sp1.getChildren().remove(s);
+//                GUIMain.addOrbAndAnimate(gp, row - 1, col, currMass + 1, Color.web(currentColorHEX));
+//            });
+//            System.out.println(currMass);
+//            GUIMain.addOrbAndAnimate(gp, row + 1, col, currMass + 1, Color.web(currentColorHEX));
+//            convertGUItoGrid(gp, grid_put);
+//            int critMass = get_CritMass(row + 1, col);
+//            if (currMass + 1 == critMass) {
+//                GUIMain.addOrbAndAnimate(gp, row + 1, col, 0, Color.web(currentColorHEX));
+//                //convertGUItoGrid(gp, grid_put);
+//                played(row + 1, col, gp);
 //            }
+//        }
+//
+//        //System.out.println("Right " + row + " "+ (col+1));
+//        //Handle Right
+//        if (areValidCoord(row, col + 1)){
+//            StackPane sp = (StackPane) gp.getChildren().get(getIndexOfStackPaneFromCoords(row, col + 1));
+//            Group grp = (Group) sp.getChildren().get(0);
 //
 //
-//            if (areValidCoord(row, col + 1)) {
+//            StackPane sp1 = (StackPane) gp.getChildren().get(getIndexOfStackPaneFromCoords(row , col));
 //
-//                StackPane sp = (StackPane) gp.getChildren().get(getIndexOfStackPaneFromCoords(row, col + 1));
-//                Group grp = (Group) sp.getChildren().get(0);
+//            Sphere s = new Sphere(12);
+//            sp1.getChildren().add(s);
+//            TranslateTransition translateTransition = new TranslateTransition();
 //
-//                int currMass = grp.getChildren().size();
+//            //Setting the duration of the transition
+//            translateTransition.setDuration(Duration.millis(500));
 //
+//            //Setting the node for the transition
+//            translateTransition.setNode(s);
 //
-//                int critMass = get_CritMass(row, col + 1);
-//                if (currMass + 1 == critMass) {
-//                    GUIMain.addOrbAndAnimate(gp, row, col + 1, 0, Color.web(currentColorHEX));
-//                    //convertGUItoGrid(gp, grid_put);
-//                    handleTurn(row, col + 1, gp);
-//                }
+//            //Setting the value of the transition along the x axis.
+//            translateTransition.setToX(80);
+//            System.out.println("grp.getTranslateX()" + grp.getTranslateX());
 //
+//            translateTransition.setToY(0);
+//
+//            System.out.println("grp.getTranslateY()"+grp.getTranslateY());
+//
+//            translateTransition.setFromX(0);
+//            System.out.println("s.getTranslateX()" + s.getTranslateX());
+//
+//            translateTransition.setFromY(0);
+//
+//            System.out.println("s.getTranslateY()" + s.getTranslateY());
+//
+//            //Setting the cycle count for the transition
+//            translateTransition.setCycleCount(0);
+//
+//            //Setting auto reverse value to false
+//            translateTransition.setAutoReverse(false);
+//
+//            //Playing the animation
+//            p.getChildren().add(translateTransition);
+//
+//            int currMass = grp.getChildren().size();
+//
+//            translateTransition.setOnFinished(o->{
+//                sp1.getChildren().remove(s);
+//                GUIMain.addOrbAndAnimate(gp, row - 1, col, currMass + 1, Color.web(currentColorHEX));
+//            });
+//
+//            System.out.println(currMass);
+//            GUIMain.addOrbAndAnimate(gp, row, col + 1, currMass + 1, Color.web(currentColorHEX));
+//            convertGUItoGrid(gp, grid_put);
+//            int critMass = get_CritMass(row, col + 1);
+//            if (currMass + 1 == critMass) {
+//                GUIMain.addOrbAndAnimate(gp, row, col + 1, 0, Color.web(currentColorHEX));
+//                //convertGUItoGrid(gp, grid_put);
+//
+//                played(row, col + 1, gp);
 //            }
+//        }
+//
+////
+////        p.setOnFinished(z -> {
+////
+////            if (areValidCoord(row - 1, col)) {
+////
+////                StackPane sp = (StackPane) gp.getChildren().get(getIndexOfStackPaneFromCoords(row - 1, col));
+////                Group grp = (Group) sp.getChildren().get(0);
+////
+////                int currMass = grp.getChildren().size();
+////
+////
+////                int critMass = get_CritMass(row - 1, col);
+////                if (currMass + 1 == critMass) {
+////                    GUIMain.addOrbAndAnimate(gp, row - 1, col, 0, Color.web(currentColorHEX));
+////                    //convertGUItoGrid(gp, grid_put);
+////                    handleTurn(row - 1, col, gp);
+////                }
+////
+////            }
+////
+////            if (areValidCoord(row, col - 1)) {
+////
+////                StackPane sp = (StackPane) gp.getChildren().get(getIndexOfStackPaneFromCoords(row, col - 1));
+////                Group grp = (Group) sp.getChildren().get(0);
+////
+////                int currMass = grp.getChildren().size();
+////
+////
+////                int critMass = get_CritMass(row, col - 1);
+////                if (currMass + 1 == critMass) {
+////                    GUIMain.addOrbAndAnimate(gp, row, col - 1, 0, Color.web(currentColorHEX));
+////                    //convertGUItoGrid(gp, grid_put);
+////                    handleTurn(row, col - 1, gp);
+////                }
+////
+////            }
+////
+////
+////            if (areValidCoord(row + 1, col)) {
+////
+////                StackPane sp = (StackPane) gp.getChildren().get(getIndexOfStackPaneFromCoords(row + 1, col));
+////                Group grp = (Group) sp.getChildren().get(0);
+////
+////                int currMass = grp.getChildren().size();
+////
+////
+////                int critMass = get_CritMass(row + 1, col);
+////                if (currMass + 1 == critMass) {
+////                    GUIMain.addOrbAndAnimate(gp, row + 1, col, 0, Color.web(currentColorHEX));
+////                    //convertGUItoGrid(gp, grid_put);
+////                    handleTurn(row + 1, col, gp);
+////                }
+////
+////            }
+////
+////
+////            if (areValidCoord(row, col + 1)) {
+////
+////                StackPane sp = (StackPane) gp.getChildren().get(getIndexOfStackPaneFromCoords(row, col + 1));
+////                Group grp = (Group) sp.getChildren().get(0);
+////
+////                int currMass = grp.getChildren().size();
+////
+////
+////                int critMass = get_CritMass(row, col + 1);
+////                if (currMass + 1 == critMass) {
+////                    GUIMain.addOrbAndAnimate(gp, row, col + 1, 0, Color.web(currentColorHEX));
+////                    //convertGUItoGrid(gp, grid_put);
+////                    handleTurn(row, col + 1, gp);
+////                }
+////
+////            }
+////
+////
+////        });
 //
 //
-//        });
+//
+//
+//    }
+//
+//    public void played(int row, int col, GridPane gp){
+//        p_played= true;
+//        p.play();
+//
+//        p.getChildren().removeAll();
+//
+//        if (areValidCoord(row-1,col)) {
+//            handleTurn(row - 1, col, gp);
+//        }
+//
+//        if (areValidCoord(row, col-1)) {
+//            handleTurn(row, col - 1, gp);
+//        }
+//        if (areValidCoord(row+1, col)) {
+//            handleTurn(row + 1, col, gp);
+//        }
+//        if (areValidCoord(row, col+1)) {
+//            handleTurn(row, col + 1, gp);
+//        }
+//
+//    }
+
+    public void handleTurn(int row, int col, GridPane gp){
 
 
+        StackPane sp = (StackPane) gp.getChildren().get(getIndexOfStackPaneFromCoords(row, col));
+        Group cellGroup = (Group) sp.getChildren().get(0);
+
+        int currMass = cellGroup.getChildren().size();
+
+        GUIMain.addOrbAndAnimate(gp, row, col, currMass + 1, Color.web(currentColorHEX));
+
+
+        //convertGUItoGrid(grid, grid_put);
+        GUIMain.playExplode();
+        if (currMass + 1 == get_CritMass(row, col)) {
+            GUIMain.addOrbAndAnimate(gp, row, col, 0, Color.web(currentColorHEX));
+            //convertGUItoGrid(grid, grid_put);
+            handleAnimation(row, col, gp);
+
+        }
+        else {
+            //GridPane grid = (GridPane) sp.getParent();
+            Stage stage = (Stage) gp.getScene().getWindow();
+            ArrayList<Player> players = GUIMain.get_gameEngine().get_gc().get_players();
+            afterAnimation(gp, stage, players);
+        }
 
 
     }
 
-    public void played(int row, int col, GridPane gp){
-        p_played= true;
+    public void handleAnimation(int row, int col, GridPane gp){
+
+
+        ParallelTransition p = new ParallelTransition();
+
+        StackPane sp = (StackPane) gp.getChildren().get(getIndexOfStackPaneFromCoords(row, col));
+        Group cellGroup = (Group) sp.getChildren().get(0);
+
+
+        int currMass = cellGroup.getChildren().size();
+
+        int critMass = get_CritMass(row, col);
+
+        PhongMaterial nph;
+
+        //Adding spheres to stackpane and animating to valid neighbours. STEP 1 - VERBOSE
+
+
+        //TOP
+
+        if (areValidCoord(row-1,col)){
+            Sphere ns = new Sphere(12);
+            nph = new PhongMaterial(Color.web(currentColorHEX));
+            ns.setMaterial(nph);
+            sp.getChildren().add(ns);
+
+            TranslateTransition nt = new TranslateTransition(Duration.millis(1000),ns);
+            nt.setCycleCount(1);
+            nt.setAutoReverse(false);
+            nt.setToY(-80);
+            nt.setToX(0);
+            nt.setFromY(0);
+            nt.setFromX(0);
+            p.getChildren().add(nt);
+
+        }
+
+        //LEFT
+
+        if (areValidCoord(row,col-1)){
+            Sphere ns = new Sphere(12);
+            nph = new PhongMaterial(Color.web(currentColorHEX));
+            ns.setMaterial(nph);
+            sp.getChildren().add(ns);
+
+
+            TranslateTransition nt = new TranslateTransition(Duration.millis(1000),ns);
+            nt.setCycleCount(1);
+            nt.setAutoReverse(false);
+            nt.setToY(0);
+            nt.setToX(-80);
+            nt.setFromY(0);
+            nt.setFromX(0);
+            p.getChildren().add(nt);
+
+        }
+
+        //RIGHT
+
+        if (areValidCoord(row,col+1)){
+            Sphere ns = new Sphere(12);
+            nph = new PhongMaterial(Color.web(currentColorHEX));
+            ns.setMaterial(nph);
+            sp.getChildren().add(ns);
+
+            TranslateTransition nt = new TranslateTransition(Duration.millis(1000),ns);
+            nt.setCycleCount(1);
+            nt.setAutoReverse(false);
+            nt.setToY(0);
+            nt.setToX(80);
+            nt.setFromY(0);
+            nt.setFromX(0);
+            p.getChildren().add(nt);
+
+        }
+
+        //BOTTOM
+
+        if (areValidCoord(row+1,col)){
+            Sphere ns = new Sphere(12);
+            nph = new PhongMaterial(Color.web(currentColorHEX));
+            ns.setMaterial(nph);
+            sp.getChildren().add(ns);
+
+            TranslateTransition nt = new TranslateTransition(Duration.millis(1000),ns);
+            nt.setCycleCount(1);
+            nt.setAutoReverse(false);
+            nt.setToY(80);
+            nt.setToX(0);
+            nt.setFromY(0);
+            nt.setFromX(0);
+            p.getChildren().add(nt);
+
+        }
+
+        p.setOnFinished(o->{
+
+            //p.getChildren().removeAll();
+
+            //Just an extra POS
+            checkAlivePlayers(fetchCurrentPlayer());
+
+
+            if (areValidCoord(row-1,col)){
+                StackPane sp1 = (StackPane) gp.getChildren().get(getIndexOfStackPaneFromCoords(row-1, col));
+                Group cellGroup1 = (Group) sp1.getChildren().get(0);
+
+                int currMass1 = cellGroup1.getChildren().size();
+
+                handleTurn(row-1, col, gp);
+
+            }
+
+            if (areValidCoord(row+1,col)){
+                StackPane sp1 = (StackPane) gp.getChildren().get(getIndexOfStackPaneFromCoords(row+1, col));
+                Group cellGroup1 = (Group) sp1.getChildren().get(0);
+
+                int currMass1 = cellGroup1.getChildren().size();
+
+                handleTurn(row+1, col, gp);
+
+            }
+
+            if (areValidCoord(row,col-1)){
+                StackPane sp1 = (StackPane) gp.getChildren().get(getIndexOfStackPaneFromCoords(row, col-1));
+                Group cellGroup1 = (Group) sp1.getChildren().get(0);
+
+                int currMass1 = cellGroup1.getChildren().size();
+
+                handleTurn(row, col-1, gp);
+
+            }
+
+            if (areValidCoord(row,col+1)){
+                StackPane sp1 = (StackPane) gp.getChildren().get(getIndexOfStackPaneFromCoords(row, col+1));
+                Group cellGroup1 = (Group) sp1.getChildren().get(0);
+
+                int currMass1 = cellGroup1.getChildren().size();
+
+                handleTurn(row, col+1, gp);
+
+            }
+
+            //GridPane grid = (GridPane) sp.getParent();
+//            Stage stage = (Stage) gp.getScene().getWindow();
+//            ArrayList<Player> players = GUIMain.get_gameEngine().get_gc().get_players();
+//            afterAnimation(gp, stage, players);
+
+
+
+            sp.getChildren().remove(1, sp.getChildren().size());
+        });
+
         p.play();
+        //p.getChildren().removeAll();
 
-        p.getChildren().removeAll();
 
-        if (areValidCoord(row-1,col)) {
-            handleTurn(row - 1, col, gp);
+    }
+
+    public void afterAnimation(GridPane grid, Stage stage, ArrayList<Player> players ){
+        fetchCurrentPlayer().set_isKillable(true);
+
+
+        convertGUItoGrid(grid, grid_put);
+        GUIMain.get_gameEngine().get_gc().set_grid(grid_put);
+        GUIMain.get_gameEngine().get_gc().set_players(players_put);
+        checkAlivePlayers(fetchCurrentPlayer());
+
+        if (!GUIMain.checkEndGame()) {
+            fetchCurrentPlayer().set_isActive(false);
+            Player nextPlayer = fetchNextPlayer(currentColorHEX);
+
+//                    while(true) {
+//                        if(play_complete == true) {
+            GUIMain.changeGridColor(grid, Color.web(nextPlayer.get_colour()));
+//                            break;
+//                        }
+//                    }
+//                    if (p.getChildren().size()==0) {
+//                        p.setOnFinished(u -> {
+//                            GUIMain.changeGridColor(grid, Color.web(nextPlayer.get_colour()));
+//                        });
+//
+//                        GUIMain.changeGridColor(grid, Color.web(nextPlayer.get_colour()));
+//                    }
+//                    else{
+//                        GUIMain.changeGridColor(grid, Color.web((nextPlayer.get_colour())));
+//                    }
+
+//                    p.setOnFinished(u->{
+//                        GUIMain.changeGridColor(grid, Color.web(nextPlayer.get_colour()));
+//                    });
+
+//                    while (true){
+//                        if (p.getChildren().size()==0){
+//                            GUIMain.changeGridColor(grid, Color.web(nextPlayer.get_colour()));
+//                            break;
+//
+//                        }
+//                    }
+
+
+
+
+            nextPlayer.set_isActive(true);
+            GUIMain.setCurrentPlayer(nextPlayer.get_colour());
+
         }
+        else{
+            int num = -1;
 
-        if (areValidCoord(row, col-1)) {
-            handleTurn(row, col - 1, gp);
+            for (int i = 0; i < players_put.size(); i++) {
+                if (players_put.get(i).get_isAlive()){
+                    num = i+1;
+                    break;
+                }
+            }
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Game Over!");
+            alert.setHeaderText("Player "+num+" has won the game!");
+            alert.setContentText(null);
+            alert.initOwner(stage);
+            alert.setGraphic(null);
+
+
+            ButtonType buttonTypeOne = new ButtonType("Start Again");
+            ButtonType buttonTypeTwo = new ButtonType("Exit");
+
+
+            alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo);
+
+
+
+            //Platform.runLater(alert::showAndWait);
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == buttonTypeOne) {
+
+
+                File file_game = new File("game.ser");
+                File file_undo = new File("undo.ser");
+
+                try {
+
+                    if (file_game.delete() && file_undo.delete()) {
+
+
+                        for (int i = 0; i < players.size(); i++) {
+                            players.get(i).set_isAlive(true);
+                            players.get(i).set_isKillable(false);
+                            players.get(i).set_isActive(false);
+                        }
+
+                        players.get(0).set_isActive(true);
+                        players.get(0).set_isKillable(true);
+
+                        Color firstColor = Color.web(players.get(0).get_colour());
+
+                        for (int i = 0; i < GUIMain.get_numRows(); i++) {
+                            for (int j = 0; j < GUIMain.get_numCols(); j++) {
+
+                                GUIMain.addOrbAndAnimate(grid, i, j, 0, firstColor);
+                                GUIMain.get_gameEngine().get_gc().get_grid().get_grid().get(i).get(j).set_currmass(0);
+
+
+                            }
+                        }
+
+                        GUIMain.changeGridColor(grid, firstColor);
+
+                        GUIMain.setCurrentPlayer(ColorUtil.colorToHex(firstColor));
+                        GUIMain.getRedoButton().setDisable(true);
+                        GUIMain.getRedoButton().setDisable(true);
+
+                    }
+                } catch (Exception v) {
+                    v.printStackTrace();
+                }
+            }
+            else {
+                try {
+                    File file_game = new File("game.ser");
+
+                    File file_undo = new File("undo.ser");
+
+                    if (file_game.delete() && file_undo.delete()) {
+
+                        stage.setScene(GUIMain.createStartPage());
+                    }
+
+                }
+                catch (Exception o){
+                    o.printStackTrace();
+                }
+            }
         }
-        if (areValidCoord(row+1, col)) {
-            handleTurn(row + 1, col, gp);
-        }
-        if (areValidCoord(row, col+1)) {
-            handleTurn(row, col + 1, gp);
-        }
-
-
-
-
     }
 
 }
