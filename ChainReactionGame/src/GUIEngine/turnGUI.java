@@ -39,6 +39,8 @@ class turnGUI implements EventHandler<MouseEvent> {
     private ArrayList<Player> players_put;
     boolean play_complete = false;
     ParallelTransition p = new ParallelTransition();
+    long startTime;
+    long endTime;
     //SequentialTransition st = new SequentialTransition();
 
 
@@ -50,17 +52,6 @@ class turnGUI implements EventHandler<MouseEvent> {
 
             ArrayList<Player> players = GUIMain.get_gameEngine().get_gc().get_players();
             int numPlayers = GUIMain.get_gameEngine().get_numPlayers();
-
-
-            /**
-             *  Type reference:
-             *
-             *  0 - Corner
-             *  1 - Edge
-             *  2 - Normal
-             *
-             *
-             * **/
 
 //        GUIMain.get_gameEngine().get_gc().set_grid(grid_put);
 //        GUIMain.get_gameEngine().get_gc().set_players(players_put);
@@ -117,6 +108,8 @@ class turnGUI implements EventHandler<MouseEvent> {
                 //System.out.println("code should work");
 
                 handleTurn(index[0], index[1], grid);
+
+                //afterAnimation(grid, stage, players);
 
 
 
@@ -296,8 +289,11 @@ class turnGUI implements EventHandler<MouseEvent> {
         //convertGUItoGrid(grid, grid_put);
         GUIMain.playExplode();
         if (currMass + 1 == get_CritMass(row, col)) {
+
+            //startTime = System.currentTimeMillis();
             GUIMain.addOrbAndAnimate(gp, row, col, 0, Color.web(currentColorHEX));
             //convertGUItoGrid(grid, grid_put);
+
             handleAnimation(row, col, gp);
 
         }
@@ -307,7 +303,7 @@ class turnGUI implements EventHandler<MouseEvent> {
             ArrayList<Player> players = GUIMain.get_gameEngine().get_gc().get_players();
 
 
-
+            //endTime = System.currentTimeMillis();
             afterAnimation(gp, stage, players);
         }
 
@@ -340,10 +336,10 @@ class turnGUI implements EventHandler<MouseEvent> {
             ns.setMaterial(nph);
             sp.getChildren().add(ns);
 
-            TranslateTransition nt = new TranslateTransition(Duration.millis(1000),ns);
+            TranslateTransition nt = new TranslateTransition(Duration.millis(500),ns);
             nt.setCycleCount(1);
             nt.setAutoReverse(false);
-            nt.setToY(-80);
+            nt.setToY(-45);
             nt.setToX(0);
             nt.setFromY(0);
             nt.setFromX(0);
@@ -360,11 +356,11 @@ class turnGUI implements EventHandler<MouseEvent> {
             sp.getChildren().add(ns);
 
 
-            TranslateTransition nt = new TranslateTransition(Duration.millis(1000),ns);
+            TranslateTransition nt = new TranslateTransition(Duration.millis(500),ns);
             nt.setCycleCount(1);
             nt.setAutoReverse(false);
             nt.setToY(0);
-            nt.setToX(-80);
+            nt.setToX(-45);
             nt.setFromY(0);
             nt.setFromX(0);
             p.getChildren().add(nt);
@@ -379,11 +375,11 @@ class turnGUI implements EventHandler<MouseEvent> {
             ns.setMaterial(nph);
             sp.getChildren().add(ns);
 
-            TranslateTransition nt = new TranslateTransition(Duration.millis(1000),ns);
+            TranslateTransition nt = new TranslateTransition(Duration.millis(500),ns);
             nt.setCycleCount(1);
             nt.setAutoReverse(false);
             nt.setToY(0);
-            nt.setToX(80);
+            nt.setToX(45);
             nt.setFromY(0);
             nt.setFromX(0);
             p.getChildren().add(nt);
@@ -398,10 +394,10 @@ class turnGUI implements EventHandler<MouseEvent> {
             ns.setMaterial(nph);
             sp.getChildren().add(ns);
 
-            TranslateTransition nt = new TranslateTransition(Duration.millis(1000),ns);
+            TranslateTransition nt = new TranslateTransition(Duration.millis(500),ns);
             nt.setCycleCount(1);
             nt.setAutoReverse(false);
-            nt.setToY(80);
+            nt.setToY(45);
             nt.setToX(0);
             nt.setFromY(0);
             nt.setFromX(0);
@@ -474,6 +470,8 @@ class turnGUI implements EventHandler<MouseEvent> {
     }
 
     public void afterAnimation(GridPane grid, Stage stage, ArrayList<Player> players ){
+
+
         fetchCurrentPlayer().set_isKillable(true);
 
 
@@ -534,18 +532,12 @@ class turnGUI implements EventHandler<MouseEvent> {
 
             System.out.println("huieuhfieufghieufgeiufgie");
 
-            Popup popup = new Popup();
-            //popup.setAutoHide(false);
-
-            StackPane popUpPane = new StackPane();
-            Button exitButton = new Button("Exit");
-            Button restartButton = new Button("Restart");
-
-            exitButton.setOnAction(new exitButtonGUI());
-            restartButton.setOnAction(new restartButtonGUI());
-
-            popUpPane.getChildren().addAll(exitButton, restartButton);
-            popup.show(stage);
+            try {
+                stage.setScene(GUIMain.createEndPage(grid, stage, num));
+            }
+            catch (NullPointerException n){
+                System.out.println("Out of the Game");
+            }
 
 
 //            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

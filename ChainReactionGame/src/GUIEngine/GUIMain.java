@@ -2,14 +2,14 @@ package GUIEngine;
 
 import GameEngine.GameEngine;
 import GameEngine.Grid;
+import GameEngine.Player;
 import javafx.animation.*;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.geometry.HPos;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.geometry.VPos;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.*;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -21,6 +21,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Sphere;
 import javafx.scene.transform.Rotate;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -61,6 +62,16 @@ public class GUIMain extends Application {
     private static ColorPicker player_6 = new ColorPicker(Color.PINK);
     private static ColorPicker player_7 = new ColorPicker(Color.BROWN);
     private static ColorPicker player_8 = new ColorPicker(Color.PURPLE);
+
+    public static MediaPlayer getMediaPlayer() {
+        return mediaPlayer;
+    }
+
+    public static void setMediaPlayer(MediaPlayer mediaPlayer) {
+        GUIMain.mediaPlayer = mediaPlayer;
+    }
+
+    private static MediaPlayer mediaPlayer;
 
     private static ArrayList<ColorPicker> array_CP = new ArrayList<>(8);
 
@@ -235,8 +246,12 @@ public class GUIMain extends Application {
 
 
         RowConstraints rc = new RowConstraints(80);
+        rc.setMaxHeight(45);
+        //rc.setPercentHeight(30);
         rc.setVgrow(Priority.ALWAYS);
         ColumnConstraints cc = new ColumnConstraints(80);
+        cc.setMaxWidth(45);
+        //cc.setPercentWidth(30);
         cc.setHgrow(Priority.ALWAYS);
 
         for(int i=0;i<numRows;i++){
@@ -318,7 +333,8 @@ public class GUIMain extends Application {
         String musicFile = "assets/explode.mp3";     // For example
 
         Media sound = new Media(new File(musicFile).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        //mediaPlayer.setVolume(200);
+        mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
     }
 
@@ -326,8 +342,10 @@ public class GUIMain extends Application {
         String musicFile = "assets/error.mp3";     // For example
 
         Media sound = new Media(new File(musicFile).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+       // mediaPlayer.setVolume(200);
+        mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
+
     }
 
 
@@ -598,7 +616,7 @@ public class GUIMain extends Application {
     public static Scene createSettingsPage() {
 
         //Instantiating the Buttons
-        saveButton=new Button("Save");
+        //saveButton=new Button("Save");
         homeButton=new Button ("Back");
         homeButton.setOnAction(new homeButtonGUI());
 
@@ -766,6 +784,105 @@ public class GUIMain extends Application {
 
     }
 
+    public static Scene createEndPage(GridPane grid,Stage stage, int winner){
+
+        ArrayList<Player> players = get_gameEngine().get_gc().get_players();
+
+        Button restartButton = new Button("Play Again");
+        restartButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                File file_game = new File("game.ser");
+                File file_undo = new File("undo.ser");
+
+                try {
+
+                    if (file_game.delete() && file_undo.delete()) {
+
+
+                        for (int i = 0; i < players.size(); i++) {
+                            players.get(i).set_isAlive(true);
+                            players.get(i).set_isKillable(false);
+                            players.get(i).set_isActive(false);
+                        }
+
+                        players.get(0).set_isActive(true);
+                        players.get(0).set_isKillable(true);
+
+                        Color firstColor = Color.web(players.get(0).get_colour());
+
+                        for (int i = 0; i < get_numRows(); i++) {
+                            for (int j = 0; j < get_numCols(); j++) {
+
+                                addOrbAndAnimate(grid, i, j, 0, firstColor);
+                                get_gameEngine().get_gc().get_grid().get_grid().get(i).get(j).set_currmass(0);
+
+
+                            }
+                        }
+
+                        changeGridColor(grid, firstColor);
+
+                        System.out.println("_____ inside restart handler _______");
+                        System.out.println("color of the guy that goes first" + firstColor);
+                        System.out.println(" ________ end restart handler ________");
+
+                        setCurrentPlayer(ColorUtil.colorToHex(firstColor));
+                        getRedoButton().setDisable(true);
+                        getRedoButton().setDisable(true);
+
+                        stage.setScene(createGamePage());
+
+
+
+
+                    }
+                } catch (Exception v) {
+                    v.printStackTrace();
+                }
+            }
+        });
+
+        Button exitButton = new Button("Back to Home Page");
+        exitButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    File file_game = new File("game.ser");
+
+                    File file_undo = new File("undo.ser");
+
+                    if (file_game.delete() && file_undo.delete()) {
+
+                        stage.setScene(createStartPage());
+                    }
+
+                }
+                catch (Exception o){
+                    o.printStackTrace();
+                }
+            }
+        });
+
+        Label winner_label = new Label("Player "+ winner + " won the game!");
+
+
+
+        GridPane endgame_grid=new GridPane();
+
+        endgame_grid.add(restartButton, 3, 6, 2, 2);
+        endgame_grid.add(exitButton, 9, 6, 2, 2);
+        endgame_grid.add(winner_label, 6, 2, 2, 2);
+
+        mediaPlayer.setVolume(0);
+
+
+        return new Scene(endgame_grid, 1200, 1000, Color.RED);
+
+
+    }
+
 
     public static Scene createGamePage() {
 
@@ -865,6 +982,10 @@ public class GUIMain extends Application {
     public void start(Stage primaryStage) throws Exception{
 
         _gameEngine = new GameEngine(2,0);
+        Screen screen = Screen.getPrimary();
+
+        Rectangle2D bounds = screen.getVisualBounds();
+
         playercolor= new HashMap<Integer, String>();
 
         array_CP.add(player_1);
@@ -877,6 +998,10 @@ public class GUIMain extends Application {
         array_CP.add(player_8);
 
         primaryStage.setScene(createStartPage());
+        primaryStage.setX(bounds.getMinX());
+        primaryStage.setY(bounds.getMinY());
+        primaryStage.setWidth(bounds.getWidth());
+        primaryStage.setHeight(bounds.getHeight());
         primaryStage.show();
 
     }

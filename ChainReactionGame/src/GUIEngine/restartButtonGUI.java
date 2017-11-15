@@ -80,6 +80,8 @@ public class restartButtonGUI implements EventHandler<ActionEvent> {
                 GUIMain.setCurrentPlayer(ColorUtil.colorToHex(firstColor));
                 GUIMain.getRedoButton().setDisable(true);
 
+
+
             }
 
 
