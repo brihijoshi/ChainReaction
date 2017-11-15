@@ -746,9 +746,9 @@ public class GUIMain extends Application {
         setting_grid.add(player8_label,3,9,2,1);
         setting_grid.add(player_8,8,9,2,1);
 
-        saveButton.setStyle("-fx-background-color: lightcoral; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold;");
+        //saveButton.setStyle("-fx-background-color: lightcoral; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold;");
 
-        setting_grid.add(saveButton,6,10,2,2);
+        //setting_grid.add(saveButton,6,10,2,2);
 
         homeButton.setStyle("-fx-background-color: lightcoral; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold;");
 
@@ -785,6 +785,11 @@ public class GUIMain extends Application {
     }
 
     public static Scene createEndPage(GridPane grid,Stage stage, int winner){
+        String musicFile = "assets/win.mp3";     // For example
+
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer1= new MediaPlayer(sound);
+        mediaPlayer1.play();
 
         ArrayList<Player> players = get_gameEngine().get_gc().get_players();
 
