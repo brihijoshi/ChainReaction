@@ -331,7 +331,7 @@ class turnGUI implements EventHandler<MouseEvent> {
         //TOP
 
         if (areValidCoord(row-1,col)){
-            Sphere ns = new Sphere(12);
+            Sphere ns = new Sphere(7.5);
             nph = new PhongMaterial(Color.web(currentColorHEX));
             ns.setMaterial(nph);
             sp.getChildren().add(ns);
@@ -350,7 +350,7 @@ class turnGUI implements EventHandler<MouseEvent> {
         //LEFT
 
         if (areValidCoord(row,col-1)){
-            Sphere ns = new Sphere(12);
+            Sphere ns = new Sphere(7.5);
             nph = new PhongMaterial(Color.web(currentColorHEX));
             ns.setMaterial(nph);
             sp.getChildren().add(ns);
@@ -370,7 +370,7 @@ class turnGUI implements EventHandler<MouseEvent> {
         //RIGHT
 
         if (areValidCoord(row,col+1)){
-            Sphere ns = new Sphere(12);
+            Sphere ns = new Sphere(7.5);
             nph = new PhongMaterial(Color.web(currentColorHEX));
             ns.setMaterial(nph);
             sp.getChildren().add(ns);
@@ -389,7 +389,7 @@ class turnGUI implements EventHandler<MouseEvent> {
         //BOTTOM
 
         if (areValidCoord(row+1,col)){
-            Sphere ns = new Sphere(12);
+            Sphere ns = new Sphere(7.5);
             nph = new PhongMaterial(Color.web(currentColorHEX));
             ns.setMaterial(nph);
             sp.getChildren().add(ns);

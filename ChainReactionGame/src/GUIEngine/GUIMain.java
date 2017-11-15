@@ -380,18 +380,18 @@ public class GUIMain extends Application {
         switch (numSpheres){
             case 1:
 
-                Sphere a = new Sphere(12);
+                Sphere a = new Sphere(7.5);
                 a.setMaterial(smaterial);
                 cell.getChildren().addAll(a);
                 break;
 
             case 2:
 
-                a = new Sphere(12);
-                Sphere b = new Sphere(12);
+                a = new Sphere(7.5);
+                Sphere b = new Sphere(7.5);
 
-                b.setTranslateX(12);
-                b.setTranslateZ(12);
+                b.setTranslateX(7.5);
+                b.setTranslateZ(7.5);
 
                 a.setMaterial(smaterial);
                 b.setMaterial(smaterial);
@@ -403,14 +403,14 @@ public class GUIMain extends Application {
 
             case  3:
 
-                a = new Sphere(12);
-                b = new Sphere(12);
-                Sphere c = new Sphere(12);
+                a = new Sphere(7.5);
+                b = new Sphere(7.5);
+                Sphere c = new Sphere(7.5);
 
-                b.setTranslateX(12);
-                b.setTranslateZ(12);
-                c.setTranslateX(6);
-                c.setTranslateY(-12);
+                b.setTranslateX(7.5);
+                b.setTranslateZ(7.5);
+                c.setTranslateX(3.75);
+                c.setTranslateY(-7.5);
 
                 a.setMaterial(smaterial);
                 b.setMaterial(smaterial);
