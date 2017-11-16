@@ -15,6 +15,13 @@ public class exitButtonGUI implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent e) {
 
+        try {
+            GUIMain.get_gameEngine().get_gc().saveGameState();
+        } catch (Exception e2) {
+            e2.printStackTrace();
+        }
+
+
         MenuItem source = (MenuItem) e.getSource();
         MenuButton parent = (MenuButton) source.getParentPopup().getOwnerNode();
         BorderPane bp = (BorderPane) parent.getParent();

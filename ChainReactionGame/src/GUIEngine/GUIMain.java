@@ -29,6 +29,7 @@ import javafx.scene.transform.Rotate;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 import org.controlsfx.control.cell.ImageGridCell;
 
@@ -51,7 +52,16 @@ public class GUIMain extends Application {
     private static Button startButton;
     private static Button resumeButton;
     private static Button settingsButton;
-    private static Button saveButton;
+
+    private static Button instructionsButton;
+
+    public static Button getInstructionsButton() {
+        return instructionsButton;
+    }
+
+    public static void setInstructionsButton(Button instructionsButton) {
+        GUIMain.instructionsButton = instructionsButton;
+    }
 
 
 
@@ -118,10 +128,6 @@ public class GUIMain extends Application {
 
     public static Button getSettingsButton() {
         return settingsButton;
-    }
-
-    public static Button getSaveButton() {
-        return saveButton;
     }
 
     public static Button getHomeButton() {
@@ -538,6 +544,9 @@ public class GUIMain extends Application {
         resumeButton.setOnAction(new resumeButtonGUI());
         settingsButton = new Button("Settings");
         settingsButton.setOnAction(new settingsButtonGUI());
+        instructionsButton = new Button ("How to Play?");
+        instructionsButton.setOnAction(new instructionsButtonGUI());
+
 
         DropShadow shadow = new DropShadow();
 
@@ -611,6 +620,20 @@ public class GUIMain extends Application {
                         settingsButton.setEffect(null);
                     }
                 });
+        instructionsButton.setStyle("-fx-background-color: #fff587; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder;");
+        instructionsButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
+                new EventHandler<MouseEvent>() {
+                    @Override public void handle(MouseEvent e) {
+                        instructionsButton.setEffect(shadow);
+                    }
+                });
+        //Removing the shadow when the mouse cursor is off
+        instructionsButton.addEventHandler(MouseEvent.MOUSE_EXITED,
+                new EventHandler<MouseEvent>() {
+                    @Override public void handle(MouseEvent e) {
+                        instructionsButton.setEffect(null);
+                    }
+                });
 
         StackPane root = new StackPane();
 
@@ -651,6 +674,7 @@ public class GUIMain extends Application {
         StackPane startButton_sp = new StackPane(startButton);
         StackPane resumeButton_sp = new StackPane(resumeButton);
         StackPane settingsButton_sp = new StackPane(settingsButton);
+        StackPane instructionsButton_sp = new StackPane(instructionsButton);
 
         Label title = new Label("Chain Reaction");
         title.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Press Start 2P\"; -fx-font-size: 60px; -fx-font-weight: bolder; -fx-text-fill: #f4ab15;");
@@ -678,6 +702,7 @@ public class GUIMain extends Application {
         home_grid.add(numPlayersCB,8,5,2,1);
         home_grid.add(resumeButton_sp,4,7,2,1);
         home_grid.add(settingsButton_sp, 6, 7,2,1);
+        home_grid.add(instructionsButton_sp, 4, 8, 4, 1);
 
         ImageUtil img_util = new ImageUtil();
         Image bg_image = img_util.getImage("assets/startpage1.jpg");
@@ -740,14 +765,14 @@ public class GUIMain extends Application {
         homeButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
                 new EventHandler<MouseEvent>() {
                     @Override public void handle(MouseEvent e) {
-                        startButton.setEffect(shadow);
+                        homeButton.setEffect(shadow);
                     }
                 });
         //Removing the shadow when the mouse cursor is off
         homeButton.addEventHandler(MouseEvent.MOUSE_EXITED,
                 new EventHandler<MouseEvent>() {
                     @Override public void handle(MouseEvent e) {
-                        startButton.setEffect(null);
+                        homeButton.setEffect(null);
                     }
                 });
 
@@ -1226,6 +1251,20 @@ public class GUIMain extends Application {
         primaryStage.setY(bounds.getMinY());
         primaryStage.setWidth(bounds.getWidth());
         primaryStage.setHeight(bounds.getHeight());
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                try {
+                    if (_gameEngine.get_gc() != null) {
+                        GUIMain.get_gameEngine().get_gc().saveGameState();
+                    }
+
+                } catch (Exception e2) {
+                    e2.printStackTrace();
+                }
+
+            }
+        });
         primaryStage.show();
 
     }

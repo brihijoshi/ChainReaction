@@ -118,6 +118,12 @@ class turnGUI implements EventHandler<MouseEvent> {
                 //afterAnimation(grid, stage, players);
 
 
+                try {
+                    GUIMain.get_gameEngine().get_gc().saveGameState();
+                } catch (Exception e2) {
+                    e2.printStackTrace();
+                }
+
 
 
                //////////----------
@@ -483,11 +489,6 @@ class turnGUI implements EventHandler<MouseEvent> {
 
     public void afterAnimation(GridPane grid, Stage stage, ArrayList<Player> players ){
 
-        try {
-            GUIMain.get_gameEngine().get_gc().saveGameState();
-        } catch (Exception e2) {
-            e2.printStackTrace();
-        }
 
         fetchCurrentPlayer().set_isKillable(true);
 
