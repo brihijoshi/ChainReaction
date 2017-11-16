@@ -14,6 +14,8 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -24,6 +26,7 @@ import javafx.scene.transform.Rotate;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.controlsfx.control.cell.ImageGridCell;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -288,7 +291,10 @@ public class GUIMain extends Application {
 
         bp.setTop(dd);
 
-        redoButton = new Button("Undo");
+        redoButton = new Button();
+        ImageUtil img_util = new ImageUtil();
+        Image redo_img = img_util.getImage("/assets/undo.png");
+        redoButton.setGraphic(new ImageView(redo_img));
         redoButton.setStyle("-fx-background-color: fuchsia; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold;");
         redoButton.setOnAction(new undoButtonGUI());
 
@@ -792,9 +798,7 @@ public class GUIMain extends Application {
 
         String musicFile = "assets/win.mp3";     // For example
 
-        Media sound = new Media(new File(musicFile).toURI().toString());
-        MediaPlayer mediaPlayer1= new MediaPlayer(sound);
-        mediaPlayer1.play();
+
 
         ArrayList<Player> players = get_gameEngine().get_gc().get_players();
 
@@ -845,6 +849,9 @@ public class GUIMain extends Application {
 
                         stage.setScene(createGamePage());
 
+                        Button btn = (Button) event.getSource();
+                        btn.getScene().getWindow().hide();
+
 
 
 
@@ -886,7 +893,7 @@ public class GUIMain extends Application {
         endgame_grid.add(exitButton, 9, 6, 2, 2);
         endgame_grid.add(winner_label, 6, 2, 2, 2);
 
-        mediaPlayer.setVolume(0);
+
 
 
         Scene winnerScene = new Scene(endgame_grid, 1200, 1000, Color.RED);
@@ -894,6 +901,10 @@ public class GUIMain extends Application {
         winnerDialog.initOwner(stage);
         if(!end_shown) {
             winnerDialog.show();
+            Media sound = new Media(new File(musicFile).toURI().toString());
+            MediaPlayer mediaPlayer1= new MediaPlayer(sound);
+            mediaPlayer1.play();
+            mediaPlayer.setVolume(0);
             end_shown = true;
         }
 

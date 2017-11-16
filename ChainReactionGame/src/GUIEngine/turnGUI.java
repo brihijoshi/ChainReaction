@@ -38,7 +38,7 @@ class turnGUI implements EventHandler<MouseEvent> {
     private Grid grid_put;
     private ArrayList<Player> players_put;
     boolean play_complete = false;
-    ParallelTransition p = new ParallelTransition();
+    //ParallelTransition p = new ParallelTransition();
     long startTime;
     long endTime;
     //SequentialTransition st = new SequentialTransition();
@@ -98,6 +98,9 @@ class turnGUI implements EventHandler<MouseEvent> {
 
             if (oldColor == null || oldColor.equals(currentColorHEX)) {
 
+                GUIMain.getRedoButton().setDisable(false);
+
+
                 players_put = GUIMain.get_gameEngine().get_gc().get_players();
 
                 grid_put = new Grid(GUIMain.get_gameEngine().get_gridSize());
@@ -107,7 +110,10 @@ class turnGUI implements EventHandler<MouseEvent> {
                 System.out.println("Given color: " + currentColorHEX);
                 //System.out.println("code should work");
 
+                GUIMain.playExplode();
+
                 handleTurn(index[0], index[1], grid);
+
 
                 //afterAnimation(grid, stage, players);
 
@@ -118,6 +124,8 @@ class turnGUI implements EventHandler<MouseEvent> {
 
 
             } else {
+                GUIMain.getRedoButton().setDisable(true);
+
                 System.out.println("Existing color: " + oldColor);
                 System.out.println("Given color: " + currentColorHEX);
                 //System.out.println("code for sound effects");
@@ -133,7 +141,6 @@ class turnGUI implements EventHandler<MouseEvent> {
             }
 
 
-            GUIMain.getRedoButton().setDisable(false);
 
 
 
@@ -287,7 +294,7 @@ class turnGUI implements EventHandler<MouseEvent> {
 
 
         //convertGUItoGrid(grid, grid_put);
-        GUIMain.playExplode();
+        //GUIMain.playExplode();
         if (currMass + 1 == get_CritMass(row, col)) {
 
             //startTime = System.currentTimeMillis();
@@ -298,6 +305,8 @@ class turnGUI implements EventHandler<MouseEvent> {
 
         }
         else {
+
+            //GUIMain.addOrbAndAnimate(gp, row, col, currMass + 1, Color.web(currentColorHEX));
             //GridPane grid = (GridPane) sp.getParent();
             Stage stage = (Stage) gp.getScene().getWindow();
             ArrayList<Player> players = GUIMain.get_gameEngine().get_gc().get_players();
@@ -313,7 +322,7 @@ class turnGUI implements EventHandler<MouseEvent> {
     public void handleAnimation(int row, int col, GridPane gp){
 
 
-        p = new ParallelTransition();
+        ParallelTransition p = new ParallelTransition();
 
         StackPane sp = (StackPane) gp.getChildren().get(getIndexOfStackPaneFromCoords(row, col));
         Group cellGroup = (Group) sp.getChildren().get(0);
@@ -335,6 +344,8 @@ class turnGUI implements EventHandler<MouseEvent> {
             nph = new PhongMaterial(Color.web(currentColorHEX));
             ns.setMaterial(nph);
             sp.getChildren().add(ns);
+
+
 
             TranslateTransition nt = new TranslateTransition(Duration.millis(700),ns);
             nt.setCycleCount(1);
@@ -533,7 +544,21 @@ class turnGUI implements EventHandler<MouseEvent> {
             System.out.println("huieuhfieufghieufgeiufgie");
 
             try {
-                GUIMain.createEndPage(grid, stage, num);
+
+                File file_game = new File("game.ser");
+                File file_undo = new File("undo.ser");
+
+                try{
+                    if (file_game.delete() && file_undo.delete()){
+                        GUIMain.createEndPage(grid, stage, num);
+                        GUIMain.getRedoButton().setDisable(true);
+                    }
+                }
+                catch (Exception y){
+                    y.printStackTrace();
+                }
+
+
             }
             catch (NullPointerException n){
                 System.out.println("Out of the Game");
