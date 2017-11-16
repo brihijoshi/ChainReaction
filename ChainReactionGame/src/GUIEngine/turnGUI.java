@@ -336,7 +336,7 @@ class turnGUI implements EventHandler<MouseEvent> {
             ns.setMaterial(nph);
             sp.getChildren().add(ns);
 
-            TranslateTransition nt = new TranslateTransition(Duration.millis(500),ns);
+            TranslateTransition nt = new TranslateTransition(Duration.millis(700),ns);
             nt.setCycleCount(1);
             nt.setAutoReverse(false);
             nt.setToY(-45);
@@ -356,7 +356,7 @@ class turnGUI implements EventHandler<MouseEvent> {
             sp.getChildren().add(ns);
 
 
-            TranslateTransition nt = new TranslateTransition(Duration.millis(500),ns);
+            TranslateTransition nt = new TranslateTransition(Duration.millis(700),ns);
             nt.setCycleCount(1);
             nt.setAutoReverse(false);
             nt.setToY(0);
@@ -375,7 +375,7 @@ class turnGUI implements EventHandler<MouseEvent> {
             ns.setMaterial(nph);
             sp.getChildren().add(ns);
 
-            TranslateTransition nt = new TranslateTransition(Duration.millis(500),ns);
+            TranslateTransition nt = new TranslateTransition(Duration.millis(700),ns);
             nt.setCycleCount(1);
             nt.setAutoReverse(false);
             nt.setToY(0);
@@ -394,7 +394,7 @@ class turnGUI implements EventHandler<MouseEvent> {
             ns.setMaterial(nph);
             sp.getChildren().add(ns);
 
-            TranslateTransition nt = new TranslateTransition(Duration.millis(500),ns);
+            TranslateTransition nt = new TranslateTransition(Duration.millis(700),ns);
             nt.setCycleCount(1);
             nt.setAutoReverse(false);
             nt.setToY(45);

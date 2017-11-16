@@ -364,8 +364,10 @@ public class GUIMain extends Application {
 
         int removal = ( row * rowsize ) + column + 1;
 
+        StackPane oldStackPane = (StackPane) root.getChildren().get(removal);
+
         StackPane cellContainer = new StackPane();
-        cellContainer.setBorder(makeBorder(color));
+        cellContainer.setBorder(oldStackPane.getBorder());
         cellContainer.setOnMouseClicked(new turnGUI());
         Group cell = new Group();
         cell.setPickOnBounds(false);
