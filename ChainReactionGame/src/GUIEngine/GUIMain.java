@@ -726,9 +726,30 @@ public class GUIMain extends Application {
         homeButton=new Button ();
         ImageUtil img_util = new ImageUtil();
         Image back_img = img_util.getImage("assets/back.png");
-        homeButton.setGraphic(new ImageView(back_img));
+        ImageView backimg_view = new ImageView(back_img);
+        backimg_view.setFitHeight(50);
+        backimg_view.setFitWidth(50);
+
+
+        DropShadow shadow = new DropShadow();
+
+        homeButton.setGraphic(backimg_view);
         homeButton.setOnAction(new homeButtonGUI());
         homeButton.setBackground(Background.EMPTY);
+
+        homeButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
+                new EventHandler<MouseEvent>() {
+                    @Override public void handle(MouseEvent e) {
+                        startButton.setEffect(shadow);
+                    }
+                });
+        //Removing the shadow when the mouse cursor is off
+        homeButton.addEventHandler(MouseEvent.MOUSE_EXITED,
+                new EventHandler<MouseEvent>() {
+                    @Override public void handle(MouseEvent e) {
+                        startButton.setEffect(null);
+                    }
+                });
 
         StackPane homeButton_sp = new StackPane(homeButton);
 
@@ -881,7 +902,7 @@ public class GUIMain extends Application {
 
         //homeButton.setStyle("-fx-background-color: lightcoral; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold;");
 
-        setting_grid.add(homeButton_sp, 0, 0, 2, 2);
+        setting_grid.add(homeButton_sp, 0, 1, 1, 1);
 
         ArrayList<ColorPicker> cp_array = new ArrayList<>();
         cp_array.add(player_1);
