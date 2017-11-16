@@ -29,6 +29,8 @@ public class startButtonGUI implements EventHandler<ActionEvent> {
             Files.deleteIfExists(Paths.get("undo.ser"));
             //System.out.println("INSIDE ---- 4");
 
+            GUIMain.setEnd_shown(false);
+
             GUIMain.get_gameEngine().set_choice(0);     // means that you are starting a new game
 
             if (GUIMain.getNumPlayersCB().getValue() != null) {

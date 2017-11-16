@@ -14,8 +14,10 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -26,6 +28,7 @@ import javafx.scene.shape.Sphere;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import org.controlsfx.control.cell.ImageGridCell;
 
@@ -50,7 +53,17 @@ public class GUIMain extends Application {
     private static Button settingsButton;
     private static Button saveButton;
 
+
+
     private static boolean end_shown = false;
+
+    public static boolean isEnd_shown() {
+        return end_shown;
+    }
+
+    public static void setEnd_shown(boolean end_shown) {
+        GUIMain.end_shown = end_shown;
+    }
 
     private static Button redoButton;
 
@@ -526,6 +539,9 @@ public class GUIMain extends Application {
         settingsButton = new Button("Settings");
         settingsButton.setOnAction(new settingsButtonGUI());
 
+        DropShadow shadow = new DropShadow();
+
+
         try {
             System.out.println(GameEngine.checkResume());
             if (!GameEngine.checkResume()){
@@ -542,9 +558,59 @@ public class GUIMain extends Application {
 
 
         // Customising the buttons
-        startButton.setStyle("-fx-background-color: chartreuse; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold;");
-        resumeButton.setStyle("-fx-background-color: cornflowerblue; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold;");
-        settingsButton.setStyle("-fx-background-color: coral; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold;");
+        startButton.setStyle("-fx-background-color: #b2d969; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder;");
+
+        startButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
+                new EventHandler<MouseEvent>() {
+                    @Override public void handle(MouseEvent e) {
+                        startButton.setEffect(shadow);
+                    }
+                });
+        //Removing the shadow when the mouse cursor is off
+        startButton.addEventHandler(MouseEvent.MOUSE_EXITED,
+                new EventHandler<MouseEvent>() {
+                    @Override public void handle(MouseEvent e) {
+                        startButton.setEffect(null);
+                    }
+                });
+
+
+
+
+
+        resumeButton.setStyle("-fx-background-color: #6069a3; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder;");
+
+        resumeButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
+                new EventHandler<MouseEvent>() {
+                    @Override public void handle(MouseEvent e) {
+                       resumeButton.setEffect(shadow);
+                    }
+                });
+        //Removing the shadow when the mouse cursor is off
+        resumeButton.addEventHandler(MouseEvent.MOUSE_EXITED,
+                new EventHandler<MouseEvent>() {
+                    @Override public void handle(MouseEvent e) {
+                        resumeButton.setEffect(null);
+                    }
+                });
+
+
+
+        settingsButton.setStyle("-fx-background-color: coral; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder;");
+
+        settingsButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
+                new EventHandler<MouseEvent>() {
+                    @Override public void handle(MouseEvent e) {
+                        settingsButton.setEffect(shadow);
+                    }
+                });
+        //Removing the shadow when the mouse cursor is off
+        settingsButton.addEventHandler(MouseEvent.MOUSE_EXITED,
+                new EventHandler<MouseEvent>() {
+                    @Override public void handle(MouseEvent e) {
+                        settingsButton.setEffect(null);
+                    }
+                });
 
         StackPane root = new StackPane();
 
@@ -590,10 +656,10 @@ public class GUIMain extends Application {
         title.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Press Start 2P\"; -fx-font-size: 60px; -fx-font-weight: bolder; -fx-text-fill: #f4ab15;");
 
         Label gridstyle_label = new Label("Grid Size:");
-        gridstyle_label.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Press Start 2P\"; -fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: red;");
+        gridstyle_label.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder; -fx-text-fill: #ffcbf0;");
 
         Label numplayers_label = new Label("Number of Players:");
-        numplayers_label.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Press Start 2P\"; -fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: red;");
+        numplayers_label.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder; -fx-text-fill: #ffcbf0;");
 
         GridPane.setHalignment(startButton_sp, HPos.CENTER);
         GridPane.setHalignment(resumeButton_sp, HPos.CENTER);
@@ -601,8 +667,8 @@ public class GUIMain extends Application {
         GridPane.setHalignment(gridChoiceCB, HPos.CENTER);
 
 
-        gridChoiceCB.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
-        numPlayersCB.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
+        gridChoiceCB.setStyle("-fx-font-size: 20px; -fx-background-color: #fffded; -fx-border-color: #ffbe6b;");
+        numPlayersCB.setStyle("-fx-font-size: 20px; -fx-background-color: #fffded; -fx-border-color: #ffbe6b;");
         gridChoiceCB.setVisibleRowCount(3);
         numPlayersCB.setVisibleRowCount(3);
         home_grid.add(startButton_sp,2,5,2,1);
@@ -634,6 +700,7 @@ public class GUIMain extends Application {
         Scene scene = new Scene(home_grid, 1200, 1000);
 
         scene.getStylesheets().add("https://fonts.googleapis.com/css?family=Press+Start+2P");
+        scene.getStylesheets().add("https://fonts.googleapis.com/css?family=Oxygen+Mono");
         //String css = getClass().getResource("double_slider.css").toExternalForm();
 
        // File f = new File("stylesheets/startPage.css");
@@ -829,8 +896,6 @@ public class GUIMain extends Application {
 
         String musicFile = "assets/win.mp3";     // For example
 
-
-
         ArrayList<Player> players = get_gameEngine().get_gc().get_players();
 
         Button restartButton = new Button("Play Again");
@@ -839,57 +904,97 @@ public class GUIMain extends Application {
             @Override
             public void handle(ActionEvent event) {
 
-                File file_game = new File("game.ser");
-                File file_undo = new File("undo.ser");
+                System.out.println("BUTTON PLAY CLICKED");
 
-                try {
+//                File file_game = new File("game.ser");
+//                File file_undo = new File("undo.ser");
+//
+//                try {
+//
+//                    if (file_game.delete() && file_undo.delete()) {
+//
+//                        for (int i = 0; i < players.size(); i++) {
+//                            players.get(i).set_isAlive(true);
+//                            players.get(i).set_isKillable(false);
+//                            players.get(i).set_isActive(false);
+//                        }
+//
+//                        players.get(0).set_isActive(true);
+//                        players.get(0).set_isKillable(true);
+//
+//                        Color firstColor = Color.web(players.get(0).get_colour());
+//
+//                        for (int i = 0; i < get_numRows(); i++) {
+//                            for (int j = 0; j < get_numCols(); j++) {
+//
+//                                addOrbAndAnimate(grid, i, j, 0, firstColor);
+//                                get_gameEngine().get_gc().get_grid().get_grid().get(i).get(j).set_currmass(0);
+//
+//
+//                            }
+//                        }
+//
+//                        changeGridColor(grid, firstColor);
+//
+//                        System.out.println("_____ inside restart handler _______");
+//                        System.out.println("color of the guy that goes first" + firstColor);
+//                        System.out.println(" ________ end restart handler ________");
+//
+//                        setCurrentPlayer(ColorUtil.colorToHex(firstColor));
+//                        getRedoButton().setDisable(true);
+//                        getRedoButton().setDisable(true);
+//
+//                        stage.setScene(createGamePage());
+//
+//                        Button btn = (Button) event.getSource();
+//                        btn.getScene().getWindow().hide();
+//
+//
+//
+//
+//                    }
+//                } catch (Exception v) {
+//                    v.printStackTrace();
+//                }
 
-                    if (file_game.delete() && file_undo.delete()) {
 
+                for (int i = 0; i < players.size(); i++) {
+                    players.get(i).set_isAlive(true);
+                    players.get(i).set_isKillable(false);
+                    players.get(i).set_isActive(false);
+                }
 
-                        for (int i = 0; i < players.size(); i++) {
-                            players.get(i).set_isAlive(true);
-                            players.get(i).set_isKillable(false);
-                            players.get(i).set_isActive(false);
-                        }
+                players.get(0).set_isActive(true);
+                players.get(0).set_isKillable(true);
 
-                        players.get(0).set_isActive(true);
-                        players.get(0).set_isKillable(true);
+                Color firstColor = Color.web(players.get(0).get_colour());
 
-                        Color firstColor = Color.web(players.get(0).get_colour());
+                for (int i = 0; i < get_numRows(); i++) {
+                    for (int j = 0; j < get_numCols(); j++) {
 
-                        for (int i = 0; i < get_numRows(); i++) {
-                            for (int j = 0; j < get_numCols(); j++) {
-
-                                addOrbAndAnimate(grid, i, j, 0, firstColor);
-                                get_gameEngine().get_gc().get_grid().get_grid().get(i).get(j).set_currmass(0);
-
-
-                            }
-                        }
-
-                        changeGridColor(grid, firstColor);
-
-                        System.out.println("_____ inside restart handler _______");
-                        System.out.println("color of the guy that goes first" + firstColor);
-                        System.out.println(" ________ end restart handler ________");
-
-                        setCurrentPlayer(ColorUtil.colorToHex(firstColor));
-                        getRedoButton().setDisable(true);
-                        getRedoButton().setDisable(true);
-
-                        stage.setScene(createGamePage());
-
-                        Button btn = (Button) event.getSource();
-                        btn.getScene().getWindow().hide();
-
-
+                        addOrbAndAnimate(grid, i, j, 0, firstColor);
+                        get_gameEngine().get_gc().get_grid().get_grid().get(i).get(j).set_currmass(0);
 
 
                     }
-                } catch (Exception v) {
-                    v.printStackTrace();
                 }
+
+                changeGridColor(grid, firstColor);
+
+                System.out.println("_____ inside restart handler _______");
+                System.out.println("color of the guy that goes first" + firstColor);
+                System.out.println(" ________ end restart handler ________");
+
+                setCurrentPlayer(ColorUtil.colorToHex(firstColor));
+                getRedoButton().setDisable(true);
+                getRedoButton().setDisable(true);
+
+                stage.setScene(createGamePage());
+
+                Button btn = (Button) event.getSource();
+                btn.getScene().getWindow().hide();
+
+
             }
         });
 
@@ -897,20 +1002,29 @@ public class GUIMain extends Application {
         exitButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                try {
-                    File file_game = new File("game.ser");
 
-                    File file_undo = new File("undo.ser");
+                System.out.println("BUTTON HOME PAGE CLICKED");
 
-                    if (file_game.delete() && file_undo.delete()) {
 
-                        stage.setScene(createStartPage());
-                    }
+//                try {
+//                    File file_game = new File("game.ser");
+//
+//                    File file_undo = new File("undo.ser");
+//
+//                    if (file_game.delete() && file_undo.delete()) {
+//
+//                        stage.setScene(createStartPage());
+//                    }
+//
+//                }
+//                catch (Exception o){
+//                    o.printStackTrace();
+//                }
 
-                }
-                catch (Exception o){
-                    o.printStackTrace();
-                }
+                stage.setScene(createStartPage());
+
+                Button btn = (Button) event.getSource();
+                btn.getScene().getWindow().hide();
             }
         });
 
@@ -928,6 +1042,8 @@ public class GUIMain extends Application {
 
 
         Scene winnerScene = new Scene(endgame_grid, 1200, 1000, Color.RED);
+        //winnerDialog.initStyle(StageStyle.UNDECORATED);
+
         winnerDialog.setScene(winnerScene);
         winnerDialog.initOwner(stage);
         if(!end_shown) {
@@ -938,6 +1054,8 @@ public class GUIMain extends Application {
             mediaPlayer.setVolume(0);
             end_shown = true;
         }
+        setEnd_shown(false);
+
 
 
     }

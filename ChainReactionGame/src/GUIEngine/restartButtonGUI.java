@@ -27,6 +27,10 @@ public class restartButtonGUI implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent e) {
 
+        System.out.println("GUIMain.isEnd_shown()"+GUIMain.isEnd_shown());
+        GUIMain.setEnd_shown(false);
+        System.out.println("GUIMain.isEnd_shown()" + GUIMain.isEnd_shown());
+
         File file_game = new File("game.ser");
         File file_undo = new File("undo.ser");
 
