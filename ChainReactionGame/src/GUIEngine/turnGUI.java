@@ -141,9 +141,6 @@ class turnGUI implements EventHandler<MouseEvent> {
             }
 
 
-
-
-
         }
 
 
@@ -298,10 +295,14 @@ class turnGUI implements EventHandler<MouseEvent> {
         if (currMass + 1 == get_CritMass(row, col)) {
 
             //startTime = System.currentTimeMillis();
-            GUIMain.addOrbAndAnimate(gp, row, col, 0, Color.web(currentColorHEX));
             //convertGUItoGrid(grid, grid_put);
 
+            GUIMain.addOrbAndAnimate(gp, row, col, 0, Color.web(currentColorHEX));
+
+
             handleAnimation(row, col, gp);
+
+
 
         }
         else {
@@ -482,6 +483,11 @@ class turnGUI implements EventHandler<MouseEvent> {
 
     public void afterAnimation(GridPane grid, Stage stage, ArrayList<Player> players ){
 
+        try {
+            GUIMain.get_gameEngine().get_gc().saveGameState();
+        } catch (Exception e2) {
+            e2.printStackTrace();
+        }
 
         fetchCurrentPlayer().set_isKillable(true);
 

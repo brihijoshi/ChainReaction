@@ -15,9 +15,12 @@ public class resumeButtonGUI implements EventHandler<ActionEvent> {
 
         GUIMain.get_gameEngine().set_choice(1);
 
+
+
         GameController gc = new GameController();
 
         GUIMain.get_gameEngine().set_gc(gc);
+
 
         try {
 

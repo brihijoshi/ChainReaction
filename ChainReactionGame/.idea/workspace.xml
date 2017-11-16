@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUIEngine/GUIMain.java" afterPath="$PROJECT_DIR$/src/GUIEngine/GUIMain.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUIEngine/restartButtonGUI.java" afterPath="$PROJECT_DIR$/src/GUIEngine/restartButtonGUI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUIEngine/startButtonGUI.java" afterPath="$PROJECT_DIR$/src/GUIEngine/startButtonGUI.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUIEngine/resumeButtonGUI.java" afterPath="$PROJECT_DIR$/src/GUIEngine/resumeButtonGUI.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUIEngine/turnGUI.java" afterPath="$PROJECT_DIR$/src/GUIEngine/turnGUI.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -63,11 +62,53 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GUIMain.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="turnGUI.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/GUIEngine/turnGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="494" column="41" lean-forward="true" selection-start-line="494" selection-start-column="41" selection-end-line="494" selection-end-column="41" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="resumeButtonGUI.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GUIEngine/resumeButtonGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="exitButtonGUI.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GUIEngine/exitButtonGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GameEngine/GameController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="111" column="0" lean-forward="false" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GUIMain.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUIEngine/GUIMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-11">
-              <caret line="721" column="34" lean-forward="false" selection-start-line="721" selection-start-column="24" selection-end-line="721" selection-end-column="34" />
+            <state relative-caret-position="348">
+              <caret line="738" column="0" lean-forward="true" selection-start-line="738" selection-start-column="0" selection-end-line="738" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1640#1641#0" expanded="true" />
@@ -86,7 +127,7 @@
                 <element signature="e#17762#17763#0" expanded="true" />
                 <element signature="e#18019#18020#0" expanded="true" />
                 <element signature="e#18097#18098#0" expanded="true" />
-                <marker date="1510858406000" expanded="true" signature="35715:35723" ph="{...}" />
+                <marker date="1510860829000" expanded="true" signature="37394:37402" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -112,21 +153,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ImageUtil.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GUIEngine/ImageUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#147#148#0" expanded="true" />
-                <element signature="e#219#220#0" expanded="true" />
-                <element signature="e#346#347#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -141,8 +167,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>menul</find>
-      <find>transi</find>
       <find>hui</find>
       <find>create</find>
       <find>endga</find>
@@ -171,6 +195,8 @@
       <find>creategame</find>
       <find>addorb</find>
       <find>createend</find>
+      <find>createsett</find>
+      <find>createset</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -213,14 +239,12 @@
         <option value="$PROJECT_DIR$/src/GameEngine/GameState.java" />
         <option value="$PROJECT_DIR$/src/GUIEngine/exitButtonGUI.java" />
         <option value="$PROJECT_DIR$/src/GUIEngine/homeButtonGUI.java" />
-        <option value="$PROJECT_DIR$/src/GUIEngine/resumeButtonGUI.java" />
         <option value="$PROJECT_DIR$/src/GUIEngine/settingsButtonGUI.java" />
         <option value="$PROJECT_DIR$/src/GameEngine/GameEngine.java" />
         <option value="$PROJECT_DIR$/src/GameEngine/GameController.java" />
         <option value="$PROJECT_DIR$/src/GUIEngine/undoButtonGUI.java" />
         <option value="$PROJECT_DIR$/src/GUIEngine/TranslateTransitionExample.java" />
         <option value="$PROJECT_DIR$/src/GUIEngine/Main.java" />
-        <option value="$PROJECT_DIR$/src/GUIEngine/turnGUI.java" />
         <option value="$PROJECT_DIR$/src/startPage.css" />
         <option value="$PROJECT_DIR$/stylesheets/startPage.css" />
         <option value="$PROJECT_DIR$/src/GUIEngine/start_page.fxml" />
@@ -228,6 +252,8 @@
         <option value="$PROJECT_DIR$/src/GUIEngine/startButtonGUI.java" />
         <option value="$PROJECT_DIR$/src/GUIEngine/restartButtonGUI.java" />
         <option value="$PROJECT_DIR$/src/GUIEngine/GUIMain.java" />
+        <option value="$PROJECT_DIR$/src/GUIEngine/resumeButtonGUI.java" />
+        <option value="$PROJECT_DIR$/src/GUIEngine/turnGUI.java" />
       </list>
     </option>
   </component>
@@ -580,7 +606,7 @@
       <workItem from="1510823463148" duration="302000" />
       <workItem from="1510833386804" duration="1154000" />
       <workItem from="1510836104100" duration="12919000" />
-      <workItem from="1510854982585" duration="3412000" />
+      <workItem from="1510854982585" duration="6873000" />
     </task>
     <task id="LOCAL-00001" summary="Added classes to the GameEngine pAckage">
       <created>1508931981361</created>
@@ -635,7 +661,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="208055000" />
+    <option name="totallyTimeSpent" value="211516000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="808" extended-state="6" />
@@ -643,13 +669,13 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32880434" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15625" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24546553" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.05706522" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26494566" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -762,7 +788,7 @@
             <element signature="e#17762#17763#0" expanded="true" />
             <element signature="e#18019#18020#0" expanded="true" />
             <element signature="e#18097#18098#0" expanded="true" />
-            <marker date="1510858406000" expanded="true" signature="35715:35723" ph="{...}" />
+            <marker date="1510860829000" expanded="true" signature="37394:37402" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -805,7 +831,7 @@
             <element signature="e#17762#17763#0" expanded="true" />
             <element signature="e#18019#18020#0" expanded="true" />
             <element signature="e#18097#18098#0" expanded="true" />
-            <marker date="1510858406000" expanded="true" signature="35715:35723" ph="{...}" />
+            <marker date="1510860829000" expanded="true" signature="37394:37402" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -848,7 +874,7 @@
             <element signature="e#17762#17763#0" expanded="true" />
             <element signature="e#18019#18020#0" expanded="true" />
             <element signature="e#18097#18098#0" expanded="true" />
-            <marker date="1510858406000" expanded="true" signature="35715:35723" ph="{...}" />
+            <marker date="1510860829000" expanded="true" signature="37394:37402" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -891,7 +917,7 @@
             <element signature="e#17762#17763#0" expanded="true" />
             <element signature="e#18019#18020#0" expanded="true" />
             <element signature="e#18097#18098#0" expanded="true" />
-            <marker date="1510858406000" expanded="true" signature="35715:35723" ph="{...}" />
+            <marker date="1510860829000" expanded="true" signature="37394:37402" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -936,13 +962,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GUIEngine/TranslateTransitionExample.java" />
-    <entry file="file://$PROJECT_DIR$/src/GameEngine/GameController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="114" column="61" lean-forward="false" selection-start-line="114" selection-start-column="61" selection-end-line="114" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/javafx-src.zip!/javafx/scene/control/HeavyweightDialog.java" />
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/javafx-src.zip!/javafx/scene/control/Dialog.java" />
     <entry file="file://$PROJECT_DIR$/src/GameEngine/GameEngine.java">
@@ -960,24 +979,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUIEngine/exitButtonGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUIEngine/homeButtonGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="32" column="12" lean-forward="false" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUIEngine/resumeButtonGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="569">
-          <caret line="52" column="9" lean-forward="false" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -996,27 +1001,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUIEngine/turnGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="305" column="9" lean-forward="false" selection-start-line="305" selection-start-column="9" selection-end-line="305" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/startPage.css" />
     <entry file="file://$PROJECT_DIR$/src/GUIEngine/start_page.fxml" />
     <entry file="file://$PROJECT_DIR$/stylesheets/startPage.css" />
+    <entry file="file://$PROJECT_DIR$/src/GUIEngine/restartButtonGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="30" column="32" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUIEngine/ImageUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
+        <state relative-caret-position="180">
           <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#147#148#0" expanded="true" />
-            <element signature="e#219#220#0" expanded="true" />
             <element signature="e#346#347#0" expanded="true" />
           </folding>
         </state>
@@ -1030,18 +1031,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUIEngine/restartButtonGUI.java">
+    <entry file="file://$PROJECT_DIR$/src/GameEngine/GameController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="30" column="32" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        <state relative-caret-position="112">
+          <caret line="111" column="0" lean-forward="false" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUIEngine/resumeButtonGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUIEngine/exitButtonGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GUIEngine/GUIMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-11">
-          <caret line="721" column="34" lean-forward="false" selection-start-line="721" selection-start-column="24" selection-end-line="721" selection-end-column="34" />
+        <state relative-caret-position="348">
+          <caret line="738" column="0" lean-forward="true" selection-start-line="738" selection-start-column="0" selection-end-line="738" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1640#1641#0" expanded="true" />
@@ -1060,7 +1077,17 @@
             <element signature="e#17762#17763#0" expanded="true" />
             <element signature="e#18019#18020#0" expanded="true" />
             <element signature="e#18097#18098#0" expanded="true" />
-            <marker date="1510858406000" expanded="true" signature="35715:35723" ph="{...}" />
+            <marker date="1510860829000" expanded="true" signature="37394:37402" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUIEngine/turnGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="494" column="41" lean-forward="true" selection-start-line="494" selection-start-column="41" selection-end-line="494" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -723,8 +723,12 @@ public class GUIMain extends Application {
 
         //Instantiating the Buttons
         //saveButton=new Button("Save");
-        homeButton=new Button ("Back");
+        homeButton=new Button ();
+        ImageUtil img_util = new ImageUtil();
+        Image back_img = img_util.getImage("assets/back.png");
+        homeButton.setGraphic(new ImageView(back_img));
         homeButton.setOnAction(new homeButtonGUI());
+        homeButton.setBackground(Background.EMPTY);
 
         StackPane homeButton_sp = new StackPane(homeButton);
 
@@ -735,13 +739,21 @@ public class GUIMain extends Application {
 
 
         playercolor.put(1,"#" + Integer.toHexString(player_1.getValue().hashCode()));
+        player_1.setStyle("-fx-background-color: #669999 ;-fx-background-radius: 0 15 15 0;");
         playercolor.put(2,"#" + Integer.toHexString(player_2.getValue().hashCode()));
+        player_2.setStyle("-fx-background-color: #669999 ;-fx-background-radius: 0 15 15 0;");
         playercolor.put(3,"#" + Integer.toHexString(player_3.getValue().hashCode()));
+        player_3.setStyle("-fx-background-color: #669999 ;-fx-background-radius: 0 15 15 0;");
         playercolor.put(4,"#" + Integer.toHexString(player_4.getValue().hashCode()));
+        player_4.setStyle("-fx-background-color: #669999 ;-fx-background-radius: 0 15 15 0;");
         playercolor.put(5,"#" + Integer.toHexString(player_5.getValue().hashCode()));
+        player_5.setStyle("-fx-background-color: #669999 ;-fx-background-radius: 0 15 15 0;");
         playercolor.put(6,"#" + Integer.toHexString(player_6.getValue().hashCode()));
+        player_6.setStyle("-fx-background-color: #669999 ;-fx-background-radius: 0 15 15 0;");
         playercolor.put(7,"#" + Integer.toHexString(player_7.getValue().hashCode()));
+        player_7.setStyle("-fx-background-color: #669999 ;-fx-background-radius: 0 15 15 0;");
         playercolor.put(8,"#" + Integer.toHexString(player_8.getValue().hashCode()));
+        player_8.setStyle("-fx-background-color: #669999 ;-fx-background-radius: 0 15 15 0;");
 
         _gameEngine.setplayer_colors(playercolor); //-- Giving null pointer error cuz players havent been selected yet
 
@@ -773,92 +785,103 @@ public class GUIMain extends Application {
 
 
 
-        Label title = new Label("Settings");
-        title.setStyle("-fx-background-color: black; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 70px; -fx-font-weight: bold; -fx-text-fill: red;");
+        Label title = new Label("SETTINGS");
+        title.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 70px; -fx-font-weight: bolder; -fx-text-fill: #328009;");
 
 
        // comboBox_1.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
         Label player1_label = new Label("Player 1:");
-        player1_label.setStyle("-fx-background-color: black; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: red;");
+        player1_label.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder; -fx-text-fill: #08807b;");
 
 
        // comboBox_2.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
 
         Label player2_label = new Label("Player 2:");
-        player2_label.setStyle("-fx-background-color: black; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: red;");
+        player2_label.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder; -fx-text-fill: #08807b;");
 
 
        // comboBox_3.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
 
         Label player3_label = new Label("Player 3:");
-        player3_label.setStyle("-fx-background-color: black; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: red;");
+        player3_label.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder; -fx-text-fill: #08807b;");
 
 
        // comboBox_4.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
 
         Label player4_label = new Label("Player 4:");
-        player4_label.setStyle("-fx-background-color: black; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: red;");
+        player4_label.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder; -fx-text-fill: #08807b;");
 
 
        // comboBox_5.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
 
         Label player5_label = new Label("Player 5:");
-        player5_label.setStyle("-fx-background-color: black; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: red;");
+        player5_label.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder; -fx-text-fill: #08807b;");
 
 
        // comboBox_6.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
 
         Label player6_label = new Label("Player 6:");
-        player6_label.setStyle("-fx-background-color: black; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: red;");
+        player6_label.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder; -fx-text-fill: #08807b;");
 
 
        // comboBox_7.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
 
         Label player7_label = new Label("Player 7:");
-        player7_label.setStyle("-fx-background-color: black; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: red;");
+        player7_label.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder; -fx-text-fill: #08807b;");
 
 
        // comboBox_8.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
 
         Label player8_label = new Label("Player 8:");
-        player8_label.setStyle("-fx-background-color: black; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: red;");
+        player8_label.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder; -fx-text-fill: #08807b;");
 
 
         //Adding elements to the grid
-        setting_grid.setStyle("-fx-background-color: black; -fx-text-alignment: center;");
-        setting_grid.add(title, 2, 0, 10,2);
+        //setting_grid.setStyle("-fx-background-color: black; -fx-text-alignment: center;");
 
-        setting_grid.add(player1_label,3,2,2,1);
-        setting_grid.add(player_1,8,2,2,1);
+        //ImageUtil img_util = new ImageUtil();
+        Image bg_image = img_util.getImage("assets/settingspage.jpg");
 
-        setting_grid.add(player2_label,3,3,2,1);
-        setting_grid.add(player_2,8,3,2,1);
+        Screen screen = Screen.getPrimary();
 
-        setting_grid.add(player3_label,3,4,2,1);
-        setting_grid.add(player_3,8,4,2,1);
+        Rectangle2D bounds = screen.getVisualBounds();
 
-        setting_grid.add(player4_label,3,5,2,1);
-        setting_grid.add(player_4,8,5,2,1);
+        setting_grid.setBackground(new Background(new BackgroundImage(bg_image, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, new BackgroundSize(bounds.getWidth(), bounds.getHeight(), false, false, true, true))));
 
-        setting_grid.add(player5_label,3,6,2,1);
-        setting_grid.add(player_5,8,6,2,1);
 
-        setting_grid.add(player6_label,3,7,2,1);
-        setting_grid.add(player_6,8,7,2,1);
+        setting_grid.add(title, 2, 1, 10,2);
 
-        setting_grid.add(player7_label,3,8,2,1);
-        setting_grid.add(player_7,8,8,2,1);
+        setting_grid.add(player1_label,3,3,2,1);
+        setting_grid.add(player_1,8,3,2,1);
 
-        setting_grid.add(player8_label,3,9,2,1);
-        setting_grid.add(player_8,8,9,2,1);
+        setting_grid.add(player2_label,3,4,2,1);
+        setting_grid.add(player_2,8,4,2,1);
+
+        setting_grid.add(player3_label,3,5,2,1);
+        setting_grid.add(player_3,8,5,2,1);
+
+        setting_grid.add(player4_label,3,6,2,1);
+        setting_grid.add(player_4,8,6,2,1);
+
+        setting_grid.add(player5_label,3,7,2,1);
+        setting_grid.add(player_5,8,7,2,1);
+
+        setting_grid.add(player6_label,3,8,2,1);
+        setting_grid.add(player_6,8,8,2,1);
+
+        setting_grid.add(player7_label,3,9,2,1);
+        setting_grid.add(player_7,8,9,2,1);
+
+        setting_grid.add(player8_label,3,10,2,1);
+        setting_grid.add(player_8,8,10,2,1);
 
         //saveButton.setStyle("-fx-background-color: lightcoral; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold;");
 
         //setting_grid.add(saveButton,6,10,2,2);
 
-        homeButton.setStyle("-fx-background-color: lightcoral; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold;");
+        //homeButton.setStyle("-fx-background-color: lightcoral; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold;");
 
-        setting_grid.add(homeButton_sp, 10, 10, 2, 2);
+        setting_grid.add(homeButton_sp, 0, 0, 2, 2);
 
         ArrayList<ColorPicker> cp_array = new ArrayList<>();
         cp_array.add(player_1);
@@ -881,11 +904,14 @@ public class GUIMain extends Application {
         }
 
 
-
         //Gonna send the player colors to the GameEngine to create new players
 
+        Scene scene = new Scene(setting_grid, 1200, 1000);
+        scene.getStylesheets().add("https://fonts.googleapis.com/css?family=Oxygen+Mono");
 
-        return new Scene(setting_grid, 1200, 1000, Color.BLACK);
+
+
+        return scene;
 
 
     }
