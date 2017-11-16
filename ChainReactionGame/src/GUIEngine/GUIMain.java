@@ -46,7 +46,7 @@ public class GUIMain extends Application {
     private static Button settingsButton;
     private static Button saveButton;
 
-
+    private static boolean end_shown = false;
 
     private static Button redoButton;
 
@@ -786,7 +786,10 @@ public class GUIMain extends Application {
 
     }
 
-    public static Scene createEndPage(GridPane grid,Stage stage, int winner){
+    public static void createEndPage(GridPane grid,Stage stage, int winner){
+
+        Stage winnerDialog = new Stage();
+
         String musicFile = "assets/win.mp3";     // For example
 
         Media sound = new Media(new File(musicFile).toURI().toString());
@@ -797,6 +800,7 @@ public class GUIMain extends Application {
 
         Button restartButton = new Button("Play Again");
         restartButton.setOnAction(new EventHandler<ActionEvent>() {
+
             @Override
             public void handle(ActionEvent event) {
 
@@ -885,7 +889,13 @@ public class GUIMain extends Application {
         mediaPlayer.setVolume(0);
 
 
-        return new Scene(endgame_grid, 1200, 1000, Color.RED);
+        Scene winnerScene = new Scene(endgame_grid, 1200, 1000, Color.RED);
+        winnerDialog.setScene(winnerScene);
+        winnerDialog.initOwner(stage);
+        if(!end_shown) {
+            winnerDialog.show();
+            end_shown = true;
+        }
 
 
     }

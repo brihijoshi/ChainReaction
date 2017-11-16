@@ -533,7 +533,7 @@ class turnGUI implements EventHandler<MouseEvent> {
             System.out.println("huieuhfieufghieufgeiufgie");
 
             try {
-                stage.setScene(GUIMain.createEndPage(grid, stage, num));
+                GUIMain.createEndPage(grid, stage, num);
             }
             catch (NullPointerException n){
                 System.out.println("Out of the Game");
