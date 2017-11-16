@@ -287,6 +287,8 @@ class turnGUI implements EventHandler<MouseEvent> {
 
     public void handleTurn(int row, int col, GridPane gp){
 
+        System.out.println("CHOICE - "+ gp.getChildren().size());
+
 
         StackPane sp = (StackPane) gp.getChildren().get(getIndexOfStackPaneFromCoords(row, col));
         Group cellGroup = (Group) sp.getChildren().get(0);
@@ -347,79 +349,152 @@ class turnGUI implements EventHandler<MouseEvent> {
         //TOP
 
         if (areValidCoord(row-1,col)){
-            Sphere ns = new Sphere(7.5);
-            nph = new PhongMaterial(Color.web(currentColorHEX));
-            ns.setMaterial(nph);
-            sp.getChildren().add(ns);
+
+            if (gp.getChildren().size() == 151) {
+                Sphere ns = new Sphere(7.5);
+                nph = new PhongMaterial(Color.web(currentColorHEX));
+                ns.setMaterial(nph);
+                sp.getChildren().add(ns);
 
 
+                TranslateTransition nt = new TranslateTransition(Duration.millis(700), ns);
+                nt.setCycleCount(1);
+                nt.setAutoReverse(false);
+                nt.setToY(-45);
+                nt.setToX(0);
+                nt.setFromY(0);
+                nt.setFromX(0);
+                p.getChildren().add(nt);
+            }
+            else{
+                Sphere ns = new Sphere(12);
+                nph = new PhongMaterial(Color.web(currentColorHEX));
+                ns.setMaterial(nph);
+                sp.getChildren().add(ns);
 
-            TranslateTransition nt = new TranslateTransition(Duration.millis(700),ns);
-            nt.setCycleCount(1);
-            nt.setAutoReverse(false);
-            nt.setToY(-45);
-            nt.setToX(0);
-            nt.setFromY(0);
-            nt.setFromX(0);
-            p.getChildren().add(nt);
+
+                TranslateTransition nt = new TranslateTransition(Duration.millis(700), ns);
+                nt.setCycleCount(1);
+                nt.setAutoReverse(false);
+                nt.setToY(-80);
+                nt.setToX(0);
+                nt.setFromY(0);
+                nt.setFromX(0);
+                p.getChildren().add(nt);
+            }
 
         }
 
         //LEFT
 
         if (areValidCoord(row,col-1)){
-            Sphere ns = new Sphere(7.5);
-            nph = new PhongMaterial(Color.web(currentColorHEX));
-            ns.setMaterial(nph);
-            sp.getChildren().add(ns);
+
+            if (gp.getChildren().size()==151) {
+                Sphere ns = new Sphere(7.5);
+                nph = new PhongMaterial(Color.web(currentColorHEX));
+                ns.setMaterial(nph);
+                sp.getChildren().add(ns);
 
 
-            TranslateTransition nt = new TranslateTransition(Duration.millis(700),ns);
-            nt.setCycleCount(1);
-            nt.setAutoReverse(false);
-            nt.setToY(0);
-            nt.setToX(-45);
-            nt.setFromY(0);
-            nt.setFromX(0);
-            p.getChildren().add(nt);
+                TranslateTransition nt = new TranslateTransition(Duration.millis(700), ns);
+                nt.setCycleCount(1);
+                nt.setAutoReverse(false);
+                nt.setToY(0);
+                nt.setToX(-45);
+                nt.setFromY(0);
+                nt.setFromX(0);
+                p.getChildren().add(nt);
+            }
+            else{
+                Sphere ns = new Sphere(12);
+                nph = new PhongMaterial(Color.web(currentColorHEX));
+                ns.setMaterial(nph);
+                sp.getChildren().add(ns);
+
+
+                TranslateTransition nt = new TranslateTransition(Duration.millis(700), ns);
+                nt.setCycleCount(1);
+                nt.setAutoReverse(false);
+                nt.setToY(0);
+                nt.setToX(-80);
+                nt.setFromY(0);
+                nt.setFromX(0);
+                p.getChildren().add(nt);
+            }
 
         }
 
         //RIGHT
 
         if (areValidCoord(row,col+1)){
-            Sphere ns = new Sphere(7.5);
-            nph = new PhongMaterial(Color.web(currentColorHEX));
-            ns.setMaterial(nph);
-            sp.getChildren().add(ns);
 
-            TranslateTransition nt = new TranslateTransition(Duration.millis(700),ns);
-            nt.setCycleCount(1);
-            nt.setAutoReverse(false);
-            nt.setToY(0);
-            nt.setToX(45);
-            nt.setFromY(0);
-            nt.setFromX(0);
-            p.getChildren().add(nt);
+            if (gp.getChildren().size()==151) {
+                Sphere ns = new Sphere(7.5);
+                nph = new PhongMaterial(Color.web(currentColorHEX));
+                ns.setMaterial(nph);
+                sp.getChildren().add(ns);
+
+                TranslateTransition nt = new TranslateTransition(Duration.millis(700), ns);
+                nt.setCycleCount(1);
+                nt.setAutoReverse(false);
+                nt.setToY(0);
+                nt.setToX(45);
+                nt.setFromY(0);
+                nt.setFromX(0);
+                p.getChildren().add(nt);
+            }
+            else{
+                Sphere ns = new Sphere(12);
+                nph = new PhongMaterial(Color.web(currentColorHEX));
+                ns.setMaterial(nph);
+                sp.getChildren().add(ns);
+
+                TranslateTransition nt = new TranslateTransition(Duration.millis(700), ns);
+                nt.setCycleCount(1);
+                nt.setAutoReverse(false);
+                nt.setToY(0);
+                nt.setToX(80);
+                nt.setFromY(0);
+                nt.setFromX(0);
+                p.getChildren().add(nt);
+            }
 
         }
 
         //BOTTOM
 
         if (areValidCoord(row+1,col)){
-            Sphere ns = new Sphere(7.5);
-            nph = new PhongMaterial(Color.web(currentColorHEX));
-            ns.setMaterial(nph);
-            sp.getChildren().add(ns);
 
-            TranslateTransition nt = new TranslateTransition(Duration.millis(700),ns);
-            nt.setCycleCount(1);
-            nt.setAutoReverse(false);
-            nt.setToY(45);
-            nt.setToX(0);
-            nt.setFromY(0);
-            nt.setFromX(0);
-            p.getChildren().add(nt);
+            if (gp.getChildren().size()==151) {
+                Sphere ns = new Sphere(7.5);
+                nph = new PhongMaterial(Color.web(currentColorHEX));
+                ns.setMaterial(nph);
+                sp.getChildren().add(ns);
+
+                TranslateTransition nt = new TranslateTransition(Duration.millis(700), ns);
+                nt.setCycleCount(1);
+                nt.setAutoReverse(false);
+                nt.setToY(45);
+                nt.setToX(0);
+                nt.setFromY(0);
+                nt.setFromX(0);
+                p.getChildren().add(nt);
+            }
+            else{
+                Sphere ns = new Sphere(12);
+                nph = new PhongMaterial(Color.web(currentColorHEX));
+                ns.setMaterial(nph);
+                sp.getChildren().add(ns);
+
+                TranslateTransition nt = new TranslateTransition(Duration.millis(700), ns);
+                nt.setCycleCount(1);
+                nt.setAutoReverse(false);
+                nt.setToY(80);
+                nt.setToX(0);
+                nt.setFromY(0);
+                nt.setFromX(0);
+                p.getChildren().add(nt);
+            }
 
         }
 

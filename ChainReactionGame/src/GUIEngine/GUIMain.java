@@ -266,16 +266,30 @@ public class GUIMain extends Application {
         root.setVgap(5);
         root.setGridLinesVisible(true);
 
-
-
         RowConstraints rc = new RowConstraints(80);
-        rc.setMaxHeight(45);
-        //rc.setPercentHeight(30);
-        rc.setVgrow(Priority.ALWAYS);
         ColumnConstraints cc = new ColumnConstraints(80);
-        cc.setMaxWidth(45);
-        //cc.setPercentWidth(30);
-        cc.setHgrow(Priority.ALWAYS);
+
+        //System.out.println(" grid SIZE "+root.getChildren().size());
+
+        if (numRows == 9){
+
+            //System.out.println("SIZE IS 55");
+            rc.setMaxHeight(78);
+            //rc.setPercentHeight(30);
+            rc.setVgrow(Priority.ALWAYS);
+            cc.setMaxWidth(78);
+            //cc.setPercentWidth(30);
+            cc.setHgrow(Priority.ALWAYS);
+        }
+        else{
+            rc.setMaxHeight(45);
+            //rc.setPercentHeight(30);
+            rc.setVgrow(Priority.ALWAYS);
+            cc.setMaxWidth(45);
+            //cc.setPercentWidth(30);
+            cc.setHgrow(Priority.ALWAYS);
+        }
+
 
         for(int i=0;i<numRows;i++){
             root.getRowConstraints().add(rc);
@@ -404,51 +418,99 @@ public class GUIMain extends Application {
         smaterial.setDiffuseColor(color);
 
 
+        if (size == 151) {
+            switch (numSpheres) {
+                case 1:
 
-        switch (numSpheres){
-            case 1:
+                    Sphere a = new Sphere(7.5);
+                    a.setMaterial(smaterial);
+                    cell.getChildren().addAll(a);
+                    break;
 
-                Sphere a = new Sphere(7.5);
-                a.setMaterial(smaterial);
-                cell.getChildren().addAll(a);
-                break;
+                case 2:
 
-            case 2:
+                    a = new Sphere(7.5);
+                    Sphere b = new Sphere(7.5);
 
-                a = new Sphere(7.5);
-                Sphere b = new Sphere(7.5);
+                    b.setTranslateX(7.5);
+                    b.setTranslateZ(7.5);
 
-                b.setTranslateX(7.5);
-                b.setTranslateZ(7.5);
+                    a.setMaterial(smaterial);
+                    b.setMaterial(smaterial);
+                    cell.getChildren().addAll(a, b);
 
-                a.setMaterial(smaterial);
-                b.setMaterial(smaterial);
-                cell.getChildren().addAll(a, b);
+                    rotateOrbs(cell);
 
-                rotateOrbs(cell);
+                    break;
 
-                break;
+                case 3:
 
-            case  3:
+                    a = new Sphere(7.5);
+                    b = new Sphere(7.5);
+                    Sphere c = new Sphere(7.5);
 
-                a = new Sphere(7.5);
-                b = new Sphere(7.5);
-                Sphere c = new Sphere(7.5);
+                    b.setTranslateX(7.5);
+                    b.setTranslateZ(7.5);
+                    c.setTranslateX(3.75);
+                    c.setTranslateY(-7.5);
 
-                b.setTranslateX(7.5);
-                b.setTranslateZ(7.5);
-                c.setTranslateX(3.75);
-                c.setTranslateY(-7.5);
+                    a.setMaterial(smaterial);
+                    b.setMaterial(smaterial);
+                    c.setMaterial(smaterial);
+                    cell.getChildren().addAll(a, b, c);
 
-                a.setMaterial(smaterial);
-                b.setMaterial(smaterial);
-                c.setMaterial(smaterial);
-                cell.getChildren().addAll(a, b, c);
-
-                rotateOrbs(cell);
-                break;
+                    rotateOrbs(cell);
+                    break;
 
 
+            }
+        }
+        else{
+            switch (numSpheres) {
+                case 1:
+
+                    Sphere a = new Sphere(12);
+                    a.setMaterial(smaterial);
+                    cell.getChildren().addAll(a);
+                    break;
+
+                case 2:
+
+                    a = new Sphere(12);
+                    Sphere b = new Sphere(12);
+
+                    b.setTranslateX(12);
+                    b.setTranslateZ(12);
+
+                    a.setMaterial(smaterial);
+                    b.setMaterial(smaterial);
+                    cell.getChildren().addAll(a, b);
+
+                    rotateOrbs(cell);
+
+                    break;
+
+                case 3:
+
+                    a = new Sphere(12);
+                    b = new Sphere(12);
+                    Sphere c = new Sphere(12);
+
+                    b.setTranslateX(12);
+                    b.setTranslateZ(12);
+                    c.setTranslateX(6);
+                    c.setTranslateY(-12);
+
+                    a.setMaterial(smaterial);
+                    b.setMaterial(smaterial);
+                    c.setMaterial(smaterial);
+                    cell.getChildren().addAll(a, b, c);
+
+                    rotateOrbs(cell);
+                    break;
+
+
+            }
         }
 
         GridPane.setHalignment(cell, HPos.CENTER);
