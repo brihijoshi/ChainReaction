@@ -20,6 +20,7 @@ import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Sphere;
 import javafx.scene.transform.Rotate;
@@ -293,7 +294,7 @@ public class GUIMain extends Application {
 
         redoButton = new Button();
         ImageUtil img_util = new ImageUtil();
-        Image redo_img = img_util.getImage("/assets/undo.png");
+        Image redo_img = img_util.getImage("assets/undo.png");
         redoButton.setGraphic(new ImageView(redo_img));
         redoButton.setStyle("-fx-background-color: fuchsia; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold;");
         redoButton.setOnAction(new undoButtonGUI());
@@ -586,13 +587,13 @@ public class GUIMain extends Application {
         StackPane settingsButton_sp = new StackPane(settingsButton);
 
         Label title = new Label("Chain Reaction");
-        title.setStyle("-fx-background-color: black; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 100px; -fx-font-weight: bold; -fx-text-fill: red;");
+        title.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Press Start 2P\"; -fx-font-size: 60px; -fx-font-weight: bolder; -fx-text-fill: #f4ab15;");
 
         Label gridstyle_label = new Label("Grid Size:");
-        gridstyle_label.setStyle("-fx-background-color: black; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: red;");
+        gridstyle_label.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Press Start 2P\"; -fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: red;");
 
         Label numplayers_label = new Label("Number of Players:");
-        numplayers_label.setStyle("-fx-background-color: black; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: red;");
+        numplayers_label.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Press Start 2P\"; -fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: red;");
 
         GridPane.setHalignment(startButton_sp, HPos.CENTER);
         GridPane.setHalignment(resumeButton_sp, HPos.CENTER);
@@ -602,6 +603,8 @@ public class GUIMain extends Application {
 
         gridChoiceCB.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
         numPlayersCB.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
+        gridChoiceCB.setVisibleRowCount(3);
+        numPlayersCB.setVisibleRowCount(3);
         home_grid.add(startButton_sp,2,5,2,1);
         home_grid.add(gridstyle_label,5,4,2,1);
         home_grid.add(gridChoiceCB,5,5,2,1);
@@ -609,13 +612,41 @@ public class GUIMain extends Application {
         home_grid.add(numPlayersCB,8,5,2,1);
         home_grid.add(resumeButton_sp,4,7,2,1);
         home_grid.add(settingsButton_sp, 6, 7,2,1);
-        home_grid.setStyle("-fx-background-color: black");
+
+        ImageUtil img_util = new ImageUtil();
+        Image bg_image = img_util.getImage("assets/startpage1.jpg");
+
+        Screen screen = Screen.getPrimary();
+
+        Rectangle2D bounds = screen.getVisualBounds();
+
+        home_grid.setBackground(new Background(new BackgroundImage(bg_image, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, new BackgroundSize(bounds.getWidth(), bounds.getHeight(), false, false, true, true))));
+        //home_grid.setStyle("-fx-background-size: cover");
+       // home_grid.setb
+
+//        String back_image = img_util.getCSSImage("assets/startpage.jpg");
+//        home_grid.setStyle("-fx-background-image: url('" + back_image + "');");
         home_grid.add(title, 1, 1, 10,2);
 
         //home_grid.setGridLinesVisible(true);
         //root.getChildren().add(home_grid);
 
-        return new Scene(home_grid, 1200, 1000, Color.BLACK);
+        Scene scene = new Scene(home_grid, 1200, 1000);
+
+        scene.getStylesheets().add("https://fonts.googleapis.com/css?family=Press+Start+2P");
+        //String css = getClass().getResource("double_slider.css").toExternalForm();
+
+       // File f = new File("stylesheets/startPage.css");
+//        scene.getStylesheets().clear();
+//        scene.getStylesheets().add("file:///" + f.getAbsolutePath().replace("\\", "/"));
+
+//        //Image back_image = img_util.getImage("assets/startpage.jpg");
+//
+//        ImagePattern pattern = new ImagePattern(back_image);
+//        scene.setFill(pattern);
+
+
+        return scene;
 
 
 
