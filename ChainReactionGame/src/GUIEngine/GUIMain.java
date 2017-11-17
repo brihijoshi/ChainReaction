@@ -978,6 +978,24 @@ public class GUIMain extends Application {
 
             }
         });
+        DropShadow shadow = new DropShadow();
+
+
+        restartButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
+                new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent e) {
+                        restartButton.setEffect(shadow);
+                    }
+                });
+
+        restartButton.addEventHandler(MouseEvent.MOUSE_EXITED,
+                new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent e) {
+                        restartButton.setEffect(null);
+                    }
+                });
 
         Button exitButton = new Button("Home Page");
         exitButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -992,6 +1010,22 @@ public class GUIMain extends Application {
                 btn.getScene().getWindow().hide();
             }
         });
+
+        exitButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
+                new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent e) {
+                        exitButton.setEffect(shadow);
+                    }
+                });
+
+        exitButton.addEventHandler(MouseEvent.MOUSE_EXITED,
+                new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent e) {
+                        exitButton.setEffect(null);
+                    }
+                });
 
         ImageUtil endGIFUtil = new ImageUtil();
         Image endGif = endGIFUtil.getImage("assets/firecracker.gif");

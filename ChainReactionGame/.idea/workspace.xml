@@ -68,9 +68,18 @@
       <file leaf-file-name="GUIMain.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GUIEngine/GUIMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="981" column="40" lean-forward="true" selection-start-line="981" selection-start-column="40" selection-end-line="981" selection-end-column="40" />
-              <folding />
+            <state relative-caret-position="335">
+              <caret line="981" column="0" lean-forward="false" selection-start-line="981" selection-start-column="0" selection-end-line="981" selection-end-column="0" />
+              <folding>
+                <element signature="e#32670#32671#0" expanded="true" />
+                <element signature="e#32749#32750#0" expanded="true" />
+                <element signature="e#32967#32968#0" expanded="true" />
+                <element signature="e#33044#33045#0" expanded="true" />
+                <element signature="e#33642#33643#0" expanded="true" />
+                <element signature="e#33718#33719#0" expanded="true" />
+                <element signature="e#33933#33934#0" expanded="true" />
+                <element signature="e#34007#34008#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -89,7 +98,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>spher</find>
       <find>addO</find>
       <find>createE</find>
       <find>endgame</find>
@@ -119,6 +127,7 @@
       <find>Syst</find>
       <find>System</find>
       <find>//</find>
+      <find>startBut</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -574,7 +583,7 @@
       <workItem from="1510854982585" duration="18051000" />
       <workItem from="1510880448203" duration="3392000" />
       <workItem from="1510912835871" duration="4404000" />
-      <workItem from="1510961122927" duration="707000" />
+      <workItem from="1510961122927" duration="1158000" />
     </task>
     <task id="LOCAL-00001" summary="Added classes to the GameEngine pAckage">
       <created>1508931981361</created>
@@ -657,7 +666,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="239796000" />
+    <option name="totallyTimeSpent" value="240247000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="19" y="24" width="1440" height="808" extended-state="0" />
@@ -671,7 +680,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24546553" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12228261" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12228261" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -779,7 +788,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#32670#32671#0" expanded="true" />
+            <element signature="e#32749#32750#0" expanded="true" />
+            <element signature="e#32967#32968#0" expanded="true" />
+            <element signature="e#33044#33045#0" expanded="true" />
+            <element signature="e#33642#33643#0" expanded="true" />
+            <element signature="e#33718#33719#0" expanded="true" />
+            <element signature="e#33933#33934#0" expanded="true" />
+            <element signature="e#34007#34008#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -803,7 +821,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#32670#32671#0" expanded="true" />
+            <element signature="e#32749#32750#0" expanded="true" />
+            <element signature="e#32967#32968#0" expanded="true" />
+            <element signature="e#33044#33045#0" expanded="true" />
+            <element signature="e#33642#33643#0" expanded="true" />
+            <element signature="e#33718#33719#0" expanded="true" />
+            <element signature="e#33933#33934#0" expanded="true" />
+            <element signature="e#34007#34008#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1033,9 +1060,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GUIEngine/GUIMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="981" column="40" lean-forward="true" selection-start-line="981" selection-start-column="40" selection-end-line="981" selection-end-column="40" />
-          <folding />
+        <state relative-caret-position="335">
+          <caret line="981" column="0" lean-forward="false" selection-start-line="981" selection-start-column="0" selection-end-line="981" selection-end-column="0" />
+          <folding>
+            <element signature="e#32670#32671#0" expanded="true" />
+            <element signature="e#32749#32750#0" expanded="true" />
+            <element signature="e#32967#32968#0" expanded="true" />
+            <element signature="e#33044#33045#0" expanded="true" />
+            <element signature="e#33642#33643#0" expanded="true" />
+            <element signature="e#33718#33719#0" expanded="true" />
+            <element signature="e#33933#33934#0" expanded="true" />
+            <element signature="e#34007#34008#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
