@@ -1074,57 +1074,6 @@ public class GUIMain extends Application {
 
                 System.out.println("BUTTON PLAY CLICKED");
 
-//                File file_game = new File("game.ser");
-//                File file_undo = new File("undo.ser");
-//
-//                try {
-//
-//                    if (file_game.delete() && file_undo.delete()) {
-//
-//                        for (int i = 0; i < players.size(); i++) {
-//                            players.get(i).set_isAlive(true);
-//                            players.get(i).set_isKillable(false);
-//                            players.get(i).set_isActive(false);
-//                        }
-//
-//                        players.get(0).set_isActive(true);
-//                        players.get(0).set_isKillable(true);
-//
-//                        Color firstColor = Color.web(players.get(0).get_colour());
-//
-//                        for (int i = 0; i < get_numRows(); i++) {
-//                            for (int j = 0; j < get_numCols(); j++) {
-//
-//                                addOrbAndAnimate(grid, i, j, 0, firstColor);
-//                                get_gameEngine().get_gc().get_grid().get_grid().get(i).get(j).set_currmass(0);
-//
-//
-//                            }
-//                        }
-//
-//                        changeGridColor(grid, firstColor);
-//
-//                        System.out.println("_____ inside restart handler _______");
-//                        System.out.println("color of the guy that goes first" + firstColor);
-//                        System.out.println(" ________ end restart handler ________");
-//
-//                        setCurrentPlayer(ColorUtil.colorToHex(firstColor));
-//                        getRedoButton().setDisable(true);
-//                        getRedoButton().setDisable(true);
-//
-//                        stage.setScene(createGamePage());
-//
-//                        Button btn = (Button) event.getSource();
-//                        btn.getScene().getWindow().hide();
-//
-//
-//
-//
-//                    }
-//                } catch (Exception v) {
-//                    v.printStackTrace();
-//                }
-
 
                 for (int i = 0; i < players.size(); i++) {
                     players.get(i).set_isAlive(true);
@@ -1174,21 +1123,6 @@ public class GUIMain extends Application {
                 System.out.println("BUTTON HOME PAGE CLICKED");
 
 
-//                try {
-//                    File file_game = new File("game.ser");
-//
-//                    File file_undo = new File("undo.ser");
-//
-//                    if (file_game.delete() && file_undo.delete()) {
-//
-//                        stage.setScene(createStartPage());
-//                    }
-//
-//                }
-//                catch (Exception o){
-//                    o.printStackTrace();
-//                }
-
                 stage.setScene(createStartPage());
 
                 Button btn = (Button) event.getSource();
@@ -1196,21 +1130,43 @@ public class GUIMain extends Application {
             }
         });
 
+        restartButton.setStyle("-fx-background-color: #b2d969; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder;");
+        exitButton.setStyle("-fx-background-color: #b2d969; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder;");
+        exitButton.setWrapText(true);
+
         Label winner_label = new Label("Player "+ winner + " won the game!");
+        //winner_label.setPrefHeight(250);
+
+        RowConstraints rc = new RowConstraints(50);
+        rc.setValignment(VPos.CENTER);
+        ColumnConstraints cc = new ColumnConstraints(100);
+        cc.setHalignment(HPos.CENTER);
+
 
 
 
         GridPane endgame_grid=new GridPane();
 
-        endgame_grid.add(restartButton, 4, 12, 2, 2);
-        endgame_grid.add(exitButton, 8, 12, 2, 2);
-        endgame_grid.add(winner_label, 6, 2, 2, 8);
+        //endgame_grid.setGridLinesVisible(true);
+//        endgame_grid.getRowConstraints().add();
+
+        endgame_grid.add(winner_label, 2, 0, 4, 10);
+        endgame_grid.add(restartButton, 0, 12, 2, 2);
+        endgame_grid.add(exitButton, 6, 12, 2, 2);
         endgame_grid.setStyle("-fx-background-color: black;");
         restartButton.setAlignment(Pos.BOTTOM_LEFT);
 
-        winner_label.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Press Start 2P\"; -fx-font-size: 30px; -fx-font-weight: bolder; -fx-text-fill: #f4ab15;");
+        for (int i = 0; i < 15; i++) {
+            endgame_grid.getRowConstraints().add(rc);
+        }
 
-        Scene winnerScene = new Scene(endgame_grid, 500, 500, Color.BLACK);
+        for (int i = 0; i < 8; i++) {
+            endgame_grid.getColumnConstraints().add(cc);
+        }
+
+        winner_label.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Press Start 2P\"; -fx-font-size: 30px; -fx-font-weight: bolder; -fx-text-fill: #f4ab15; -fx-line-spacing: 1em;");
+        winner_label.setWrapText(true);
+        Scene winnerScene = new Scene(endgame_grid, 820, 750, Color.BLACK);
 
         winnerScene.getStylesheets().add("https://fonts.googleapis.com/css?family=Press+Start+2P");
 
@@ -1365,7 +1321,9 @@ public class GUIMain extends Application {
             public void handle(WindowEvent event) {
                 try {
                     if (_gameEngine.get_gc() != null) {
-                        GUIMain.get_gameEngine().get_gc().saveGameState();
+                        if(!checkEndGame()) {
+                            GUIMain.get_gameEngine().get_gc().saveGameState();
+                        }
                     }
 
                 } catch (Exception e2) {

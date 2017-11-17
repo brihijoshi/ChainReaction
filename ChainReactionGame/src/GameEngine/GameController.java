@@ -66,10 +66,9 @@ public class GameController {
 
     public void loadGameState() throws IOException, ClassNotFoundException {
 
-        FileInputStream fis=new FileInputStream("game.ser");
+        FileInputStream fis=new FileInputStream(".states/game.ser");
         ObjectInputStream ois = new ObjectInputStream(fis);
         GameState g= (GameState) ois.readObject();
-        System.out.println("Received the Game State!");
         set_gameState(g);
         set_players(g.get_players());
         set_grid(g.get_grid());
@@ -79,10 +78,9 @@ public class GameController {
     }
 
     public GameState loadUndoState() throws IOException, ClassNotFoundException{
-        FileInputStream fis=new FileInputStream("undo.ser");
+        FileInputStream fis=new FileInputStream(".states/undo.ser");
         ObjectInputStream ois = new ObjectInputStream(fis);
         GameState g= (GameState) ois.readObject();
-        System.out.println("Received the Undo State!");
         set_gameState(g);
         set_players(g.get_players());
         set_grid(g.get_grid());
@@ -97,9 +95,8 @@ public class GameController {
 
         g.set_grid(_grid);
         g.set_players(_players);
-        FileOutputStream fos = new FileOutputStream("game.ser");
+        FileOutputStream fos = new FileOutputStream(".states/game.ser");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
-        System.out.println( "Game state saved!");
         oos.writeObject(g);
         oos.close();
         fos.close();
@@ -111,9 +108,8 @@ public class GameController {
         GameState g = get_gameState();
         g.set_grid(_grid);
         g.set_players(_players);
-        FileOutputStream fos = new FileOutputStream("undo.ser");
+        FileOutputStream fos = new FileOutputStream(".states/undo.ser");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
-        System.out.println( "Undo state saved!");
         oos.writeObject(g);
         oos.close();
         fos.close();
@@ -136,32 +132,6 @@ public class GameController {
         return arr;
     }
 
-
-    // Obtains the index of stackPane of the clicked cell
-    // and outputs the index of the cell in the 2D array
-
-    public void takeTurn(Player p) {
-
-        int[] pos = convert_index(_grid.get_grid().get(0).size());
-        Cell clicked =_grid.get_grid().get(pos[0]).get(pos[1]);
-
-        if (clicked.get_color().equals(p.get_colour())){
-
-            clicked.set_currmass(clicked.get_currmass()+1);
-            //Add in the GUI as well
-            if ( clicked.get_currmass() > clicked.get_CRITMASS() ){
-                clicked.set_currmass(0);
-                explode(pos[0],pos[1]);
-                //Clear the Cell
-
-            }
-
-
-        }
-        else{
-            //Need to make an error "Sound" or no reaction
-        }
-    }
 
 
 
@@ -218,31 +188,7 @@ public class GameController {
         }
     }
 
-    public void handleGame() {
 
-        _endGame = false;
-
-        if(!_resume) {
-
-            while(!is_endGame()) {
-
-
-                for (int i = 0; i < _players.size(); i++) {
-                    Player p = _players.get(i);
-                    if(p.get_isAlive()) {
-                        takeTurn(p);
-                    }
-
-
-                }
-
-            }
-
-        }
-
-
-
-    }
 
 
 }

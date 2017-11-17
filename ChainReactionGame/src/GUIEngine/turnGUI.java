@@ -359,6 +359,9 @@ class turnGUI implements EventHandler<MouseEvent> {
 
 
                 TranslateTransition nt = new TranslateTransition(Duration.millis(700), ns);
+                nt.setOnFinished(e -> {
+                    sp.getChildren().remove(ns);
+                });
                 nt.setCycleCount(1);
                 nt.setAutoReverse(false);
                 nt.setToY(-45);
@@ -375,6 +378,9 @@ class turnGUI implements EventHandler<MouseEvent> {
 
 
                 TranslateTransition nt = new TranslateTransition(Duration.millis(700), ns);
+                nt.setOnFinished(e -> {
+                    sp.getChildren().remove(ns);
+                });
                 nt.setCycleCount(1);
                 nt.setAutoReverse(false);
                 nt.setToY(-80);
@@ -398,6 +404,9 @@ class turnGUI implements EventHandler<MouseEvent> {
 
 
                 TranslateTransition nt = new TranslateTransition(Duration.millis(700), ns);
+                nt.setOnFinished(e -> {
+                    sp.getChildren().remove(ns);
+                });
                 nt.setCycleCount(1);
                 nt.setAutoReverse(false);
                 nt.setToY(0);
@@ -414,6 +423,9 @@ class turnGUI implements EventHandler<MouseEvent> {
 
 
                 TranslateTransition nt = new TranslateTransition(Duration.millis(700), ns);
+                nt.setOnFinished(e -> {
+                    sp.getChildren().remove(ns);
+                });
                 nt.setCycleCount(1);
                 nt.setAutoReverse(false);
                 nt.setToY(0);
@@ -436,6 +448,9 @@ class turnGUI implements EventHandler<MouseEvent> {
                 sp.getChildren().add(ns);
 
                 TranslateTransition nt = new TranslateTransition(Duration.millis(700), ns);
+                nt.setOnFinished(e -> {
+                    sp.getChildren().remove(ns);
+                });
                 nt.setCycleCount(1);
                 nt.setAutoReverse(false);
                 nt.setToY(0);
@@ -451,6 +466,9 @@ class turnGUI implements EventHandler<MouseEvent> {
                 sp.getChildren().add(ns);
 
                 TranslateTransition nt = new TranslateTransition(Duration.millis(700), ns);
+                nt.setOnFinished(e -> {
+                    sp.getChildren().remove(ns);
+                });
                 nt.setCycleCount(1);
                 nt.setAutoReverse(false);
                 nt.setToY(0);
@@ -473,6 +491,9 @@ class turnGUI implements EventHandler<MouseEvent> {
                 sp.getChildren().add(ns);
 
                 TranslateTransition nt = new TranslateTransition(Duration.millis(700), ns);
+                nt.setOnFinished(e -> {
+                    sp.getChildren().remove(ns);
+                });
                 nt.setCycleCount(1);
                 nt.setAutoReverse(false);
                 nt.setToY(45);
@@ -488,6 +509,9 @@ class turnGUI implements EventHandler<MouseEvent> {
                 sp.getChildren().add(ns);
 
                 TranslateTransition nt = new TranslateTransition(Duration.millis(700), ns);
+                nt.setOnFinished(e -> {
+                    sp.getChildren().remove(ns);
+                });
                 nt.setCycleCount(1);
                 nt.setAutoReverse(false);
                 nt.setToY(80);
@@ -499,7 +523,7 @@ class turnGUI implements EventHandler<MouseEvent> {
 
         }
 
-        p.setOnFinished(o->{
+        p.setOnFinished( o->{
 
             //p.getChildren().removeAll();
 
@@ -547,18 +571,11 @@ class turnGUI implements EventHandler<MouseEvent> {
 
             }
 
-            //GridPane grid = (GridPane) sp.getParent();
-//            Stage stage = (Stage) gp.getScene().getWindow();
-//            ArrayList<Player> players = GUIMain.get_gameEngine().get_gc().get_players();
-//            afterAnimation(gp, stage, players);
 
-
-
-            sp.getChildren().remove(1, sp.getChildren().size());
         });
 
         p.play();
-        //p.getChildren().removeAll();
+
 
 
     }

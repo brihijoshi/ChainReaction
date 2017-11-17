@@ -1,12 +1,8 @@
 package GameEngine;
-
-import javafx.scene.layout.StackPane;
-
 import java.io.Serializable;
 
 public class Cell implements Serializable {
 
-    //Changing _TYPE in the original UML with _color
 
     private String _color;
 
