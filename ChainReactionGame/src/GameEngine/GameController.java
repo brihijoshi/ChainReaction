@@ -66,7 +66,7 @@ public class GameController {
 
     public void loadGameState() throws IOException, ClassNotFoundException {
 
-        FileInputStream fis=new FileInputStream(".states/game.ser");
+        FileInputStream fis=new FileInputStream("game.ser");
         ObjectInputStream ois = new ObjectInputStream(fis);
         GameState g= (GameState) ois.readObject();
         set_gameState(g);
@@ -78,7 +78,7 @@ public class GameController {
     }
 
     public GameState loadUndoState() throws IOException, ClassNotFoundException{
-        FileInputStream fis=new FileInputStream(".states/undo.ser");
+        FileInputStream fis=new FileInputStream("undo.ser");
         ObjectInputStream ois = new ObjectInputStream(fis);
         GameState g= (GameState) ois.readObject();
         set_gameState(g);
@@ -95,7 +95,7 @@ public class GameController {
 
         g.set_grid(_grid);
         g.set_players(_players);
-        FileOutputStream fos = new FileOutputStream(".states/game.ser");
+        FileOutputStream fos = new FileOutputStream("game.ser");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(g);
         oos.close();
@@ -108,7 +108,7 @@ public class GameController {
         GameState g = get_gameState();
         g.set_grid(_grid);
         g.set_players(_players);
-        FileOutputStream fos = new FileOutputStream(".states/undo.ser");
+        FileOutputStream fos = new FileOutputStream("undo.ser");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(g);
         oos.close();
