@@ -316,14 +316,15 @@ public class GUIMain extends Application {
 
         bp.setCenter(root);
 
-        MenuButton dd = new MenuButton("Options");
-        dd.getItems().addAll(new MenuItem("Restart"), new MenuItem("Exit"));
-        dd.getItems().get(0).setOnAction(new restartButtonGUI());
-        dd.getItems().get(1).setOnAction(new exitButtonGUI());
-        dd.setStyle("-fx-font-size: 20px; -fx-background-color: whitesmoke; -fx-border-color: white; -fx-text-fill: white;");
-        //dd.se
+        MenuBar mBar = new MenuBar();
+        Menu menu = new Menu("Options");
+        menu.getItems().addAll(new MenuItem("Restart"), new MenuItem("Exit"));
+        menu.getItems().get(0).setOnAction(new restartButtonGUI());
+        menu.getItems().get(1).setOnAction(new exitButtonGUI());
+        mBar.setStyle("-fx-font-size: 15px; -fx-background-color: whitesmoke; -fx-border-color: white; -fx-text-fill: white;");
 
-        bp.setTop(dd);
+        mBar.getMenus().add(menu);
+        bp.setTop(mBar);
 
         redoButton = new Button();
         ImageUtil img_util = new ImageUtil();

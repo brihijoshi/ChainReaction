@@ -40,6 +40,10 @@ public class restartButtonGUI implements EventHandler<ActionEvent> {
 
                 MenuItem source = (MenuItem) e.getSource();
 
+                Stage stage = (Stage) source.getParentPopup().getOwnerWindow();
+                BorderPane bp = (BorderPane) stage.getScene().getRoot();
+                GridPane grid = (GridPane) bp.getCenter();
+
 
                 ArrayList<Player> players = GUIMain.get_gameEngine().get_gc().get_players();
 
@@ -59,9 +63,7 @@ public class restartButtonGUI implements EventHandler<ActionEvent> {
                 players.get(0).set_isActive(true);
                 players.get(0).set_isKillable(true);
 
-                MenuButton parent = (MenuButton) source.getParentPopup().getOwnerNode();
-                BorderPane bp = (BorderPane) parent.getParent();
-                GridPane grid = (GridPane) bp.getCenter();
+
 
                 Color firstColor = Color.web(players.get(0).get_colour());
 

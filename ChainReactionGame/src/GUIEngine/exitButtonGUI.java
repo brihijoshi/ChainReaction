@@ -23,10 +23,7 @@ public class exitButtonGUI implements EventHandler<ActionEvent> {
 
 
         MenuItem source = (MenuItem) e.getSource();
-        MenuButton parent = (MenuButton) source.getParentPopup().getOwnerNode();
-        BorderPane bp = (BorderPane) parent.getParent();
-        Scene sc = bp.getScene();
-        Stage stage = (Stage) sc.getWindow();
+        Stage stage = (Stage) source.getParentPopup().getOwnerWindow();
 
         stage.setScene(GUIMain.createStartPage());
 
