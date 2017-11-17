@@ -328,9 +328,29 @@ public class GUIMain extends Application {
         redoButton = new Button();
         ImageUtil img_util = new ImageUtil();
         Image redo_img = img_util.getImage("assets/undo.png");
-        redoButton.setGraphic(new ImageView(redo_img));
-        redoButton.setStyle("-fx-background-color: fuchsia; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold;");
+
+        ImageView redoimg_view = new ImageView(redo_img);
+        redoimg_view.setFitHeight(80);
+        redoimg_view.setFitWidth(80);
+        redoButton.setGraphic(redoimg_view);
+        redoButton.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold;");
         redoButton.setOnAction(new undoButtonGUI());
+        DropShadow shadow = new DropShadow();
+
+        redoButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
+                new EventHandler<MouseEvent>() {
+                    @Override public void handle(MouseEvent e) {
+                        redoButton.setEffect(shadow);
+                    }
+                });
+        //Removing the shadow when the mouse cursor is off
+        redoButton.addEventHandler(MouseEvent.MOUSE_EXITED,
+                new EventHandler<MouseEvent>() {
+                    @Override public void handle(MouseEvent e) {
+                        redoButton.setEffect(null);
+                    }
+                });
+
 
 //        try {
 //            System.out.println(GameEngine.checkUndo());
@@ -348,8 +368,21 @@ public class GUIMain extends Application {
 
         redoButton.setDisable(true);
 
+
+
         bp.setRight(redoButton);
-        bp.setStyle("-fx-background-color: black;");
+
+
+
+        Image bg_image = img_util.getImage("assets/gamepage.png");
+
+        Screen screen = Screen.getPrimary();
+
+        Rectangle2D bounds = screen.getVisualBounds();
+
+        bp.setBackground(new Background(new BackgroundImage(bg_image, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, new BackgroundSize(bounds.getWidth(), bounds.getHeight(), false, false, true, true))));
+        //home_grid.setStyle("-fx-background-size: cover");
+        //bp.setStyle("-fx-background-color: black;");
         return bp;
 
     }
@@ -1200,6 +1233,8 @@ public class GUIMain extends Application {
         if(_gameEngine.get_choice()==0) {
             GridPane root = new GridPane();
 
+
+
             if (_gameEngine.get_gridSize() == 0) {
                 _numRows = 9;
                 _numCols = 6;
@@ -1214,6 +1249,9 @@ public class GUIMain extends Application {
 
             BorderPane bp = setEmptyGrid(root, _numRows, _numCols, firstplayer);
 
+
+
+
             //addOrbAndAnimate(root, 0, 0 ,1, firstplayer);
             //addOrbAndAnimate(root, 1, 1, 2, firstplayer);
 
@@ -1221,6 +1259,7 @@ public class GUIMain extends Application {
 
             GUIMain.setCurrentPlayer(GUIMain.get_gameEngine().get_gc().get_players().get(0).get_colour());
             System.out.println("First Player: " + GUIMain.getCurrentPlayer());
+
 
             Scene sc = new Scene(bp, 800, 1000, Color.BLACK);
 
@@ -1230,6 +1269,8 @@ public class GUIMain extends Application {
         else {
 
             GridPane root = new GridPane();
+
+
 
             if (_gameEngine.get_gridSize() == 0) {
                 _numRows = 9;
