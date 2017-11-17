@@ -1,5 +1,6 @@
 package GUIEngine;
 
+import Exceptions.InvalidMoveException;
 import GameEngine.GameController;
 import GameEngine.Grid;
 import GameEngine.Player;
@@ -95,32 +96,38 @@ class turnGUI implements EventHandler<MouseEvent> {
 
             String oldColor = clr == null ? null : ColorUtil.colorToHex(clr);
 
-            if (oldColor == null || oldColor.equals(currentColorHEX)) {
+            try {
+                if (oldColor == null || oldColor.equals(currentColorHEX)) {
 
-                GUIMain.getRedoButton().setDisable(false);
-
-
-                players_put = GUIMain.get_gameEngine().get_gc().get_players();
-
-                grid_put = new Grid(GUIMain.get_gameEngine().get_gridSize());
+                    GUIMain.getRedoButton().setDisable(false);
 
 
-                GUIMain.playExplode();
+                    players_put = GUIMain.get_gameEngine().get_gc().get_players();
 
-                handleTurn(index[0], index[1], grid);
+                    grid_put = new Grid(GUIMain.get_gameEngine().get_gridSize());
 
 
-                try {
-                    GUIMain.get_gameEngine().get_gc().saveGameState();
-                } catch (Exception e2) {
-                    e2.printStackTrace();
+                    GUIMain.playExplode();
+
+                    handleTurn(index[0], index[1], grid);
+
+
+                    try {
+                        GUIMain.get_gameEngine().get_gc().saveGameState();
+                    } catch (Exception e2) {
+                        e2.printStackTrace();
+                    }
+
+
                 }
 
+                else{
+                    throw new InvalidMoveException("Wrong move");
 
+                }
 
-
-
-            } else {
+            }
+            catch(InvalidMoveException x) {
                 GUIMain.getRedoButton().setDisable(true);
 
                 GUIMain.playError();

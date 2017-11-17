@@ -1,5 +1,6 @@
 package GUIEngine;
 
+import Exceptions.UnexpectedExitException;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.MenuItem;
@@ -10,22 +11,28 @@ public class exitButtonGUI implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent e) {
 
-        if (!GUIMain.checkEndGame()) {
-
-            try {
-                GUIMain.get_gameEngine().get_gc().saveGameState();
-            } catch (Exception e2) {
-                e2.printStackTrace();
-            }
+        try{
+            throw new UnexpectedExitException("Game exited.");
         }
+        catch (UnexpectedExitException e1){
 
 
-        MenuItem source = (MenuItem) e.getSource();
-        Stage stage = (Stage) source.getParentPopup().getOwnerWindow();
+            if (!GUIMain.checkEndGame()) {
 
-        stage.setScene(GUIMain.createStartPage());
+                try {
+                    GUIMain.get_gameEngine().get_gc().saveGameState();
+                } catch (Exception e2) {
+                    e2.printStackTrace();
+                }
+            }
 
 
+            MenuItem source = (MenuItem) e.getSource();
+            Stage stage = (Stage) source.getParentPopup().getOwnerWindow();
+
+            stage.setScene(GUIMain.createStartPage());
+
+        }
     }
 
 
