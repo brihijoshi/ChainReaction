@@ -417,15 +417,13 @@ public class GUIMain extends Application {
 
     public static void addOrbAndAnimate(GridPane root, int row, int column, int numSpheres, Color color) {
 
-
-        int size = root.getChildren().size();
         int rowsize = 0;
+        double radius;
 
-        if (size == 55) {
-            rowsize = 6;
-        } else {
-            rowsize = 10;
-        }
+        int size = GUIMain.get_gameEngine().get_gridSize();
+
+        rowsize = size == 0 ? 6 : 10;
+        radius  = size == 0 ? 12 : 7.5;
 
         int removal = (row * rowsize) + column + 1;
 
@@ -443,98 +441,54 @@ public class GUIMain extends Application {
         smaterial.setDiffuseColor(color);
 
 
-        if (size == 151) {
-            switch (numSpheres) {
-                case 1:
 
-                    Sphere a = new Sphere(7.5);
-                    a.setMaterial(smaterial);
-                    cell.getChildren().addAll(a);
-                    break;
+        switch (numSpheres) {
 
-                case 2:
+            case 1:
 
-                    a = new Sphere(7.5);
-                    Sphere b = new Sphere(7.5);
+                Sphere a = new Sphere(radius);
+                a.setMaterial(smaterial);
+                cell.getChildren().addAll(a);
+                break;
 
-                    b.setTranslateX(7.5);
-                    b.setTranslateZ(7.5);
+            case 2:
 
-                    a.setMaterial(smaterial);
-                    b.setMaterial(smaterial);
-                    cell.getChildren().addAll(a, b);
+                a = new Sphere(radius);
+                Sphere b = new Sphere(radius);
 
-                    rotateOrbs(cell);
+                b.setTranslateX(7.5);
+                b.setTranslateZ(7.5);
 
-                    break;
+                a.setMaterial(smaterial);
+                b.setMaterial(smaterial);
+                cell.getChildren().addAll(a, b);
 
-                case 3:
+                rotateOrbs(cell);
 
-                    a = new Sphere(7.5);
-                    b = new Sphere(7.5);
-                    Sphere c = new Sphere(7.5);
+                break;
 
-                    b.setTranslateX(7.5);
-                    b.setTranslateZ(7.5);
-                    c.setTranslateX(3.75);
-                    c.setTranslateY(-7.5);
+            case 3:
 
-                    a.setMaterial(smaterial);
-                    b.setMaterial(smaterial);
-                    c.setMaterial(smaterial);
-                    cell.getChildren().addAll(a, b, c);
+                a = new Sphere(radius);
+                b = new Sphere(radius);
+                Sphere c = new Sphere(radius);
 
-                    rotateOrbs(cell);
-                    break;
+                b.setTranslateX(7.5);
+                b.setTranslateZ(7.5);
+                c.setTranslateX(3.75);
+                c.setTranslateY(-7.5);
 
+                a.setMaterial(smaterial);
+                b.setMaterial(smaterial);
+                c.setMaterial(smaterial);
+                cell.getChildren().addAll(a, b, c);
 
-            }
-        } else {
-            switch (numSpheres) {
-                case 1:
-
-                    Sphere a = new Sphere(12);
-                    a.setMaterial(smaterial);
-                    cell.getChildren().addAll(a);
-                    break;
-
-                case 2:
-
-                    a = new Sphere(12);
-                    Sphere b = new Sphere(12);
-
-                    b.setTranslateX(12);
-                    b.setTranslateZ(12);
-
-                    a.setMaterial(smaterial);
-                    b.setMaterial(smaterial);
-                    cell.getChildren().addAll(a, b);
-
-                    rotateOrbs(cell);
-
-                    break;
-
-                case 3:
-
-                    a = new Sphere(12);
-                    b = new Sphere(12);
-                    Sphere c = new Sphere(12);
-
-                    b.setTranslateX(12);
-                    b.setTranslateZ(12);
-                    c.setTranslateX(6);
-                    c.setTranslateY(-12);
-
-                    a.setMaterial(smaterial);
-                    b.setMaterial(smaterial);
-                    c.setMaterial(smaterial);
-                    cell.getChildren().addAll(a, b, c);
-
-                    rotateOrbs(cell);
-                    break;
+                rotateOrbs(cell);
+                break;
 
 
-            }
+
+
         }
 
         GridPane.setHalignment(cell, HPos.CENTER);

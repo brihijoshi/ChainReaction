@@ -50,14 +50,19 @@ public class homeButtonGUI implements EventHandler<ActionEvent> {
     public static boolean duplicates(ArrayList<ColorPicker> x) {
         Set<String> set = new HashSet<String>();
 
+        Iterator iter = x.iterator();
 
-        for (int i = 0; i < x.size(); ++i) {
-            if (set.contains(ColorUtil.colorToHex(x.get(i).getValue()))) {
+        while(iter.hasNext()) {
+
+            ColorPicker c = (ColorPicker) iter.next();
+            if (set.contains(ColorUtil.colorToHex(c.getValue()))) {
                 return true;
             } else {
-                set.add(ColorUtil.colorToHex(x.get(i).getValue()));
+                set.add(ColorUtil.colorToHex(c.getValue()));
             }
+
         }
+
         return false;
     }
 
