@@ -7,13 +7,11 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class undoButtonGUI implements EventHandler<ActionEvent> {
 
 
-    //TODO When we press undo, state of game becomes equal to undo state
 
     @Override
     public void handle(ActionEvent e) {
@@ -22,7 +20,6 @@ public class undoButtonGUI implements EventHandler<ActionEvent> {
 
             if (GameEngine.checkUndo()) {
 
-                System.out.println("Undo Clicked");
 
                 GUIMain.get_gameEngine().set_choice(1);
 
@@ -37,14 +34,8 @@ public class undoButtonGUI implements EventHandler<ActionEvent> {
                     e2.printStackTrace();
                 }
 
-                //solving the TODO in the line below!
                 GUIMain.get_gameEngine().get_gc().saveGameState();
 
-
-                System.out.println("-----------------------");
-                System.out.println(GUIMain.get_gameEngine());
-                System.out.println(gc.get_players());
-                System.out.println("-----------------------");
 
                 GUIMain.get_gameEngine().set_numPlayers(gc.get_players().size());
 
@@ -64,23 +55,14 @@ public class undoButtonGUI implements EventHandler<ActionEvent> {
                 BorderPane gp = (BorderPane) undoButton.getParent();
                 Scene sc = gp.getScene();
                 Stage stage = (Stage) sc.getWindow();
-
                 stage.setScene(GUIMain.createGamePage());
 
-                //stage.show();
+
 
             }
-
-            else{
-                System.out.println( "BRO BUTTON CLICKED. DISABLE NAHI KIYA HAI");
-            }
-        }
-        catch(Exception w){
+        } catch (Exception w) {
             w.printStackTrace();
         }
-
-
-
 
 
     }

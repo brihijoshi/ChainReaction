@@ -23,7 +23,6 @@ public class Grid implements Serializable {
 
             }
 
-            System.out.println("in Grid class now... row - " + grid.size() + " col - " + grid.get(0).size());
 
 
             this._grid = grid;
@@ -44,7 +43,6 @@ public class Grid implements Serializable {
 
             }
 
-            System.out.println("in Grid class now... row - " + grid.size() + " col - " + grid.get(0).size());
 
 
             this._grid = grid;

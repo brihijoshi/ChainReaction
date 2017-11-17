@@ -1,8 +1,6 @@
 package GameEngine;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -54,25 +52,22 @@ public class GameEngine {
         this._gc = _gc;
     }
 
+
+    public Map getPlayer_colors() {
+        return player_colors;
+    }
+
+
     public void setplayer_colors(HashMap p){
         player_colors=p;
     }
 
-    /*
-
-    Will check if "gamestate.ser" is empty or doesn't exist. If it exists, load the state of
-    game and continue, else create a new file
-
-     */
 
     public static boolean checkResume() throws Exception {
 
         File file = new File("game.ser");
 
         boolean empty = !file.exists() || file.length() == 0;
-
-        String checkEmpty = empty ? "Game File is empty or doesn't exist" : "Game File is not empty";
-        System.out.println(checkEmpty);
 
         return !empty;
 
@@ -89,7 +84,7 @@ public class GameEngine {
 
     }
 
-    public void startGame() throws IOException, ClassNotFoundException, Exception {
+    public void startGame() throws IOException, ClassNotFoundException {
 
         if(_choice == 0) {
 
@@ -97,7 +92,6 @@ public class GameEngine {
 
             for (int i = 0; i < _numPlayers; i++) {
                 players.add(new Player(player_colors.get(i+1).toString(), true, false, false));
-                System.out.println(player_colors.get(i+1).toString());
             }
 
             players.get(0).set_isKillable(true);

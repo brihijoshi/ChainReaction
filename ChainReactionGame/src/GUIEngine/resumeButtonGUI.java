@@ -16,7 +16,6 @@ public class resumeButtonGUI implements EventHandler<ActionEvent> {
         GUIMain.get_gameEngine().set_choice(1);
 
 
-
         GameController gc = new GameController();
 
         GUIMain.get_gameEngine().set_gc(gc);
@@ -25,24 +24,21 @@ public class resumeButtonGUI implements EventHandler<ActionEvent> {
         try {
 
             GUIMain.get_gameEngine().get_gc().loadGameState();
-        }
-        catch (Exception e2) {
+        } catch (Exception e2) {
             e2.printStackTrace();
         }
 
         GUIMain.get_gameEngine().set_numPlayers(gc.get_players().size());
 
-        if(GUIMain.get_gameEngine().get_gc().get_grid().get_grid().size() == 9) {
+        if (GUIMain.get_gameEngine().get_gc().get_grid().get_grid().size() == 9) {
             GUIMain.get_gameEngine().set_gridSize(0);
-        }
-        else {
+        } else {
             GUIMain.get_gameEngine().set_gridSize(1);
         }
 
         try {
             GUIMain.get_gameEngine().startGame();
-        }
-        catch (Exception e1) {
+        } catch (Exception e1) {
             e1.printStackTrace();
         }
 
@@ -53,14 +49,8 @@ public class resumeButtonGUI implements EventHandler<ActionEvent> {
 
         stage.setScene(GUIMain.createGamePage());
 
-        //stage.show();
-
-
-
-
 
     }
-
 
 
 }

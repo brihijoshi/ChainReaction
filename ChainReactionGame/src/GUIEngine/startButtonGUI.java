@@ -1,6 +1,5 @@
 package GUIEngine;
 
-import GameEngine.GameEngine;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -8,9 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class startButtonGUI implements EventHandler<ActionEvent> {
@@ -20,14 +17,12 @@ public class startButtonGUI implements EventHandler<ActionEvent> {
 
 
     @Override
-    public void handle(ActionEvent e)
-    {
+    public void handle(ActionEvent e) {
 
         try {
 
             Files.deleteIfExists(Paths.get("game.ser"));
             Files.deleteIfExists(Paths.get("undo.ser"));
-            //System.out.println("INSIDE ---- 4");
 
             GUIMain.setEnd_shown(false);
 
@@ -45,7 +40,6 @@ public class startButtonGUI implements EventHandler<ActionEvent> {
             GUIMain.get_gameEngine().set_numPlayers(numPlayers);
             GUIMain.get_gameEngine().set_gridSize(choiceOfGrid);
 
-            //Populating the HashMap with the default values
 
             GUIMain.getPlayercolor().put(1, ColorUtil.colorToHex(GUIMain.getPlayer_1().getValue()));
             GUIMain.getPlayercolor().put(2, ColorUtil.colorToHex(GUIMain.getPlayer_2().getValue()));
@@ -72,8 +66,7 @@ public class startButtonGUI implements EventHandler<ActionEvent> {
             stage.setScene(GUIMain.createGamePage());
 
 
-        }
-        catch (Exception g){
+        } catch (Exception g) {
             g.printStackTrace();
         }
 

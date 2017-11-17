@@ -22,64 +22,42 @@ import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.ImagePattern;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Sphere;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 import javafx.util.Duration;
-import org.controlsfx.control.cell.ImageGridCell;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.function.DoubleUnaryOperator;
 
 
 public class GUIMain extends Application {
 
 
-    // enable choice in grids and for index conversion
+
     private static int _numRows;
     private static int _numCols;
 
     private static GameEngine _gameEngine;
 
-
     private static Button startButton;
     private static Button resumeButton;
     private static Button settingsButton;
-
     private static Button instructionsButton;
-
-    public static Button getInstructionsButton() {
-        return instructionsButton;
-    }
-
-    public static void setInstructionsButton(Button instructionsButton) {
-        GUIMain.instructionsButton = instructionsButton;
-    }
-
-
+    private static Button redoButton;
+    private static Button homeButton;
 
     private static boolean end_shown = false;
 
-    public static boolean isEnd_shown() {
-        return end_shown;
-    }
-
-    public static void setEnd_shown(boolean end_shown) {
-        GUIMain.end_shown = end_shown;
-    }
-
-    private static Button redoButton;
-
-    private static Button homeButton; //Made it to specifically return to the home page
     private static ComboBox numPlayersCB;
     private static ComboBox gridChoiceCB;
+
+    private static ArrayList<ColorPicker> array_CP = new ArrayList<>(8);
+
 
     private static ColorPicker player_1 = new ColorPicker(Color.RED);
     private static ColorPicker player_2 = new ColorPicker(Color.BLUE);
@@ -90,23 +68,10 @@ public class GUIMain extends Application {
     private static ColorPicker player_7 = new ColorPicker(Color.BROWN);
     private static ColorPicker player_8 = new ColorPicker(Color.PURPLE);
 
-    public static MediaPlayer getMediaPlayer() {
-        return mediaPlayer;
-    }
-
-    public static void setMediaPlayer(MediaPlayer mediaPlayer) {
-        GUIMain.mediaPlayer = mediaPlayer;
-    }
 
     private static MediaPlayer mediaPlayer;
 
-    private static ArrayList<ColorPicker> array_CP = new ArrayList<>(8);
-
-
-
-
     private static String currentPlayer;
-
     private static HashMap<Integer, String> playercolor;
 
 
@@ -114,24 +79,56 @@ public class GUIMain extends Application {
         return _numRows;
     }
 
+    public static void set_numRows(int _numRows) {
+        GUIMain._numRows = _numRows;
+    }
+
     public static int get_numCols() {
         return _numCols;
+    }
+
+    public static void set_numCols(int _numCols) {
+        GUIMain._numCols = _numCols;
+    }
+
+    public static GameEngine get_gameEngine() {
+        return _gameEngine;
+    }
+
+    public static void set_gameEngine(GameEngine _gameEngine) {
+        GUIMain._gameEngine = _gameEngine;
     }
 
     public static Button getStartButton() {
         return startButton;
     }
 
+    public static void setStartButton(Button startButton) {
+        GUIMain.startButton = startButton;
+    }
+
     public static Button getResumeButton() {
         return resumeButton;
+    }
+
+    public static void setResumeButton(Button resumeButton) {
+        GUIMain.resumeButton = resumeButton;
     }
 
     public static Button getSettingsButton() {
         return settingsButton;
     }
 
-    public static Button getHomeButton() {
-        return homeButton;
+    public static void setSettingsButton(Button settingsButton) {
+        GUIMain.settingsButton = settingsButton;
+    }
+
+    public static Button getInstructionsButton() {
+        return instructionsButton;
+    }
+
+    public static void setInstructionsButton(Button instructionsButton) {
+        GUIMain.instructionsButton = instructionsButton;
     }
 
     public static Button getRedoButton() {
@@ -142,17 +139,44 @@ public class GUIMain extends Application {
         GUIMain.redoButton = redoButton;
     }
 
+    public static Button getHomeButton() {
+        return homeButton;
+    }
+
     public static void setHomeButton(Button homeButton) {
         GUIMain.homeButton = homeButton;
     }
 
+    public static boolean isEnd_shown() {
+        return end_shown;
+    }
+
+    public static void setEnd_shown(boolean end_shown) {
+        GUIMain.end_shown = end_shown;
+    }
 
     public static ComboBox getNumPlayersCB() {
         return numPlayersCB;
     }
 
+    public static void setNumPlayersCB(ComboBox numPlayersCB) {
+        GUIMain.numPlayersCB = numPlayersCB;
+    }
+
     public static ComboBox getGridChoiceCB() {
         return gridChoiceCB;
+    }
+
+    public static void setGridChoiceCB(ComboBox gridChoiceCB) {
+        GUIMain.gridChoiceCB = gridChoiceCB;
+    }
+
+    public static ArrayList<ColorPicker> getArray_CP() {
+        return array_CP;
+    }
+
+    public static void setArray_CP(ArrayList<ColorPicker> array_CP) {
+        GUIMain.array_CP = array_CP;
     }
 
     public static ColorPicker getPlayer_1() {
@@ -219,6 +243,13 @@ public class GUIMain extends Application {
         GUIMain.player_8 = player_8;
     }
 
+    public static MediaPlayer getMediaPlayer() {
+        return mediaPlayer;
+    }
+
+    public static void setMediaPlayer(MediaPlayer mediaPlayer) {
+        GUIMain.mediaPlayer = mediaPlayer;
+    }
 
     public static String getCurrentPlayer() {
         return currentPlayer;
@@ -237,28 +268,10 @@ public class GUIMain extends Application {
     }
 
 
-    public static GameEngine get_gameEngine() {
-        return _gameEngine;
-    }
-
-    public static void set_gameEngine(GameEngine gameEngine) {
-        _gameEngine = gameEngine;
-    }
-
-    public static ArrayList<ColorPicker> getArray_CP() {
-        return array_CP;
-    }
-
-    public static void setArray_CP(ArrayList<ColorPicker> array_CP) {
-        GUIMain.array_CP = array_CP;
-    }
 
 
 
-
-    // for help on transitions : https://gist.github.com/jewelsea/1475424
-
-    public static BorderPane setEmptyGrid(GridPane root, int numRows, int numColumns, Color color){
+    public static BorderPane setEmptyGrid(GridPane root, int numRows, int numColumns, Color color) {
 
         BorderPane bp = new BorderPane();
         root.setAlignment(Pos.CENTER);
@@ -269,47 +282,41 @@ public class GUIMain extends Application {
         RowConstraints rc = new RowConstraints(80);
         ColumnConstraints cc = new ColumnConstraints(80);
 
-        //System.out.println(" grid SIZE "+root.getChildren().size());
 
-        if (numRows == 9){
+        if (numRows == 9) {
 
-            //System.out.println("SIZE IS 55");
             rc.setMaxHeight(78);
-            //rc.setPercentHeight(30);
             rc.setVgrow(Priority.ALWAYS);
             cc.setMaxWidth(78);
-            //cc.setPercentWidth(30);
             cc.setHgrow(Priority.ALWAYS);
         }
-        else{
+        else {
             rc.setMaxHeight(45);
-            //rc.setPercentHeight(30);
             rc.setVgrow(Priority.ALWAYS);
             cc.setMaxWidth(45);
-            //cc.setPercentWidth(30);
             cc.setHgrow(Priority.ALWAYS);
         }
 
 
-        for(int i=0;i<numRows;i++){
+        for (int i = 0; i < numRows; i++) {
             root.getRowConstraints().add(rc);
 
         }
 
-        for(int j=0;j<numColumns;j++) {
+        for (int j = 0; j < numColumns; j++) {
             root.getColumnConstraints().add(cc);
         }
-        for(int i=0;i<numRows;i++){
-            for(int j=0;j<numColumns;j++){
+        for (int i = 0; i < numRows; i++) {
+            for (int j = 0; j < numColumns; j++) {
 
                 StackPane cellContainer = new StackPane();
                 cellContainer.setBorder(makeBorder(color));
                 cellContainer.setOnMouseClicked(new turnGUI());
                 Group cell = new Group();
                 cell.setPickOnBounds(false);
-                StackPane.setMargin(cell, new Insets(2,2,2,2));
+                StackPane.setMargin(cell, new Insets(2, 2, 2, 2));
                 cellContainer.getChildren().add(cell);
-                root.add(cellContainer, j,i);
+                root.add(cellContainer, j, i);
 
             }
         }
@@ -340,39 +347,24 @@ public class GUIMain extends Application {
 
         redoButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
                 new EventHandler<MouseEvent>() {
-                    @Override public void handle(MouseEvent e) {
+                    @Override
+                    public void handle(MouseEvent e) {
                         redoButton.setEffect(shadow);
                     }
                 });
-        //Removing the shadow when the mouse cursor is off
+
         redoButton.addEventHandler(MouseEvent.MOUSE_EXITED,
                 new EventHandler<MouseEvent>() {
-                    @Override public void handle(MouseEvent e) {
+                    @Override
+                    public void handle(MouseEvent e) {
                         redoButton.setEffect(null);
                     }
                 });
 
 
-//        try {
-//            System.out.println(GameEngine.checkUndo());
-//            if (!GameEngine.checkUndo()){
-//
-//                redoButton.setDisable(true);
-//            }
-//            else{
-//                redoButton.setDisable(false);
-//            }
-//        }
-//        catch (Exception v){
-//            v.printStackTrace();
-//        }
 
         redoButton.setDisable(true);
-
-
-
         bp.setRight(redoButton);
-
 
 
         Image bg_image = img_util.getImage("assets/gamepage.png");
@@ -381,20 +373,19 @@ public class GUIMain extends Application {
 
         Rectangle2D bounds = screen.getVisualBounds();
 
-        bp.setBackground(new Background(new BackgroundImage(bg_image, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, new BackgroundSize(bounds.getWidth(), bounds.getHeight(), false, false, true, true))));
-        //home_grid.setStyle("-fx-background-size: cover");
-        //bp.setStyle("-fx-background-color: black;");
+        bp.setBackground(new Background(new BackgroundImage(bg_image, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT,
+                BackgroundPosition.CENTER, new BackgroundSize(bounds.getWidth(), bounds.getHeight(), false,
+                false, true, true))));
+
         return bp;
 
     }
 
-    public static Border makeBorder(Color color){
-        // changes colour of the stackpane
+    public static Border makeBorder(Color color) {
         return new Border(new BorderStroke(color, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
     }
 
-    public static void changeGridColor(GridPane grid, Color color){
-        //To be done when we store the Array of the grid objects so that we can retrieve the current orbs and then change the colour
+    public static void changeGridColor(GridPane grid, Color color) {
 
         ObservableList<Node> cells = grid.getChildren();
         for (int i = 1; i < cells.size(); i++) {
@@ -403,40 +394,40 @@ public class GUIMain extends Application {
 
 
     }
-    public static void playExplode(){
-        String musicFile = "assets/explode.mp3";     // For example
+
+    public static void playExplode() {
+
+        String musicFile = "assets/explode.mp3";
 
         Media sound = new Media(new File(musicFile).toURI().toString());
-        //mediaPlayer.setVolume(200);
         mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
     }
 
-    public static void playError(){
-        String musicFile = "assets/error.mp3";     // For example
+    public static void playError() {
+
+        String musicFile = "assets/error.mp3";
 
         Media sound = new Media(new File(musicFile).toURI().toString());
-       // mediaPlayer.setVolume(200);
         mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
 
     }
 
 
-    public static void addOrbAndAnimate(GridPane root, int row, int column, int numSpheres, Color color){
-        //To be done when we store the Array of the grid objects so that we can retrieve the current orbs and then replace it
-        //To test it on the present situation only
+    public static void addOrbAndAnimate(GridPane root, int row, int column, int numSpheres, Color color) {
+
+
         int size = root.getChildren().size();
-        int rowsize=0;
+        int rowsize = 0;
 
-        if ( size == 55 ){
-            rowsize=6;
-        }
-        else{
-            rowsize=10;
+        if (size == 55) {
+            rowsize = 6;
+        } else {
+            rowsize = 10;
         }
 
-        int removal = ( row * rowsize ) + column + 1;
+        int removal = (row * rowsize) + column + 1;
 
         StackPane oldStackPane = (StackPane) root.getChildren().get(removal);
 
@@ -447,7 +438,7 @@ public class GUIMain extends Application {
         cell.setPickOnBounds(false);
 
 
-        //To set the Sphere color
+
         PhongMaterial smaterial = new PhongMaterial();
         smaterial.setDiffuseColor(color);
 
@@ -498,8 +489,7 @@ public class GUIMain extends Application {
 
 
             }
-        }
-        else{
+        } else {
             switch (numSpheres) {
                 case 1:
 
@@ -549,25 +539,21 @@ public class GUIMain extends Application {
 
         GridPane.setHalignment(cell, HPos.CENTER);
         GridPane.setValignment(cell, VPos.CENTER);
-        StackPane.setMargin(cell, new Insets(2,2,2,2));
+        StackPane.setMargin(cell, new Insets(2, 2, 2, 2));
         cellContainer.getChildren().add(cell);
         root.add(cellContainer, column, row);
         root.getChildren().remove(cellContainer);
         root.getChildren().set(removal, cellContainer);
-        //playExplode();
 
-//        System.out.println(removal);
-        //root.getChildren().add(removal,cellContainer);
 
 
     }
 
-    public static void rotateOrbs(Group cell){
+    public static void rotateOrbs(Group cell) {
 
         final Rotate rotationTransform = new Rotate(0, 0, 0);
         cell.getTransforms().add(rotationTransform);
 
-        // rotate a square using timeline attached to the rotation transform's angle property.
         final Timeline rotationAnimation = new Timeline();
         rotationAnimation.getKeyFrames()
                 .add(
@@ -583,45 +569,17 @@ public class GUIMain extends Application {
         rotationAnimation.play();
     }
 
-    public static void transitionOrbs(Node node, Double x, Double y){
 
-        System.out.println("THIS IS INSIDE TRANSITION ORBSSSSS");
 
-        TranslateTransition translateTransition = new TranslateTransition();
+    public static boolean checkEndGame() {
 
-        //Setting the duration of the transition
-        translateTransition.setDuration(Duration.millis(2000));
 
-        //Setting the node for the transition
-        translateTransition.setNode(node);
-
-        //Setting the value of the transition along the x axis.
-        translateTransition.setByX(x);
-
-        translateTransition.setByY(y);
-
-        //Setting the cycle count for the transition
-        translateTransition.setCycleCount(50);
-
-        //Setting auto reverse value to false
-        translateTransition.setAutoReverse(false);
-
-        //Playing the animation
-        translateTransition.play();
-
-    }
-
-    public static boolean checkEndGame(){
-
-        // TODO : remove the .ser files if game ends
-
-        int count=0;
+        int count = 0;
         for (int i = 0; i < get_gameEngine().get_gc().get_players().size(); i++) {
-            if (get_gameEngine().get_gc().get_players().get(i).get_isAlive()){
+            if (get_gameEngine().get_gc().get_players().get(i).get_isAlive()) {
                 count++;
             }
         }
-
 
 
         return (count == 1);
@@ -629,18 +587,14 @@ public class GUIMain extends Application {
 
     public static Scene createStartPage() {
 
-        //In case a person clicks on start, default colours should come.
 
-
-
-        // Instantiating the buttons
         startButton = new Button("  Start  ");
         startButton.setOnAction(new startButtonGUI());
         resumeButton = new Button("Resume");
         resumeButton.setOnAction(new resumeButtonGUI());
         settingsButton = new Button("Settings");
         settingsButton.setOnAction(new settingsButtonGUI());
-        instructionsButton = new Button ("How to Play?");
+        instructionsButton = new Button("How to Play?");
         instructionsButton.setOnAction(new instructionsButtonGUI());
 
 
@@ -648,94 +602,94 @@ public class GUIMain extends Application {
 
 
         try {
-            System.out.println(GameEngine.checkResume());
-            if (!GameEngine.checkResume()){
+            if (!GameEngine.checkResume()) {
 
                 resumeButton.setDisable(true);
-            }
-            else{
+            } else {
                 resumeButton.setDisable(false);
             }
-        }
-        catch (Exception v){
+        } catch (Exception v) {
             v.printStackTrace();
         }
 
 
-        // Customising the buttons
         startButton.setStyle("-fx-background-color: #b2d969; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder;");
 
         startButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
                 new EventHandler<MouseEvent>() {
-                    @Override public void handle(MouseEvent e) {
+                    @Override
+                    public void handle(MouseEvent e) {
                         startButton.setEffect(shadow);
                     }
                 });
-        //Removing the shadow when the mouse cursor is off
+
         startButton.addEventHandler(MouseEvent.MOUSE_EXITED,
                 new EventHandler<MouseEvent>() {
-                    @Override public void handle(MouseEvent e) {
+                    @Override
+                    public void handle(MouseEvent e) {
                         startButton.setEffect(null);
                     }
                 });
-
-
-
 
 
         resumeButton.setStyle("-fx-background-color: #6069a3; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder;");
 
         resumeButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
                 new EventHandler<MouseEvent>() {
-                    @Override public void handle(MouseEvent e) {
-                       resumeButton.setEffect(shadow);
-                    }
-                });
-        //Removing the shadow when the mouse cursor is off
-        resumeButton.addEventHandler(MouseEvent.MOUSE_EXITED,
-                new EventHandler<MouseEvent>() {
-                    @Override public void handle(MouseEvent e) {
-                        resumeButton.setEffect(null);
+                    @Override
+                    public void handle(MouseEvent e) {
+                        resumeButton.setEffect(shadow);
                     }
                 });
 
+        resumeButton.addEventHandler(MouseEvent.MOUSE_EXITED,
+                new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent e) {
+                        resumeButton.setEffect(null);
+                    }
+                });
 
 
         settingsButton.setStyle("-fx-background-color: coral; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder;");
 
         settingsButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
                 new EventHandler<MouseEvent>() {
-                    @Override public void handle(MouseEvent e) {
+                    @Override
+                    public void handle(MouseEvent e) {
                         settingsButton.setEffect(shadow);
                     }
                 });
-        //Removing the shadow when the mouse cursor is off
+
         settingsButton.addEventHandler(MouseEvent.MOUSE_EXITED,
                 new EventHandler<MouseEvent>() {
-                    @Override public void handle(MouseEvent e) {
+                    @Override
+                    public void handle(MouseEvent e) {
                         settingsButton.setEffect(null);
                     }
                 });
         instructionsButton.setStyle("-fx-background-color: #fff587; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder;");
+
         instructionsButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
                 new EventHandler<MouseEvent>() {
-                    @Override public void handle(MouseEvent e) {
+                    @Override
+                    public void handle(MouseEvent e) {
                         instructionsButton.setEffect(shadow);
                     }
                 });
-        //Removing the shadow when the mouse cursor is off
+
         instructionsButton.addEventHandler(MouseEvent.MOUSE_EXITED,
                 new EventHandler<MouseEvent>() {
-                    @Override public void handle(MouseEvent e) {
+                    @Override
+                    public void handle(MouseEvent e) {
                         instructionsButton.setEffect(null);
                     }
                 });
 
         StackPane root = new StackPane();
 
-        //Making the drop down menus
         ObservableList<String> grid_options = FXCollections.observableArrayList("9x6", "15x10");
-        gridChoiceCB=new ComboBox(grid_options);
+        gridChoiceCB = new ComboBox(grid_options);
         String gridChoiceCBValue = GUIMain.get_gameEngine().get_gridSize() == 0 ? "9x6" : "15x10";
         gridChoiceCB.setValue(gridChoiceCBValue);
 
@@ -744,8 +698,7 @@ public class GUIMain extends Application {
         numPlayersCB = new ComboBox<>(player_options);
         numPlayersCB.setValue(GUIMain.get_gameEngine().get_numPlayers());
 
-        //Making the Grid for the home page
-        GridPane home_grid=new GridPane();
+        GridPane homeGrid = new GridPane();
 
         RowConstraints rc = new RowConstraints(70);
         rc.setVgrow(Priority.ALWAYS);
@@ -753,18 +706,20 @@ public class GUIMain extends Application {
         ColumnConstraints cc = new ColumnConstraints(80);
         cc.setHgrow(Priority.ALWAYS);
         cc.setHalignment(HPos.CENTER);
-        root.setAlignment(Pos.CENTER);
-        home_grid.setAlignment(Pos.CENTER);
-        home_grid.setHgap(5);
-        home_grid.setVgap(5);
 
-        for(int i=0;i<10;i++){
-            home_grid.getRowConstraints().add(rc);
+        root.setAlignment(Pos.CENTER);
+
+        homeGrid.setAlignment(Pos.CENTER);
+        homeGrid.setHgap(5);
+        homeGrid.setVgap(5);
+
+        for (int i = 0; i < 10; i++) {
+            homeGrid.getRowConstraints().add(rc);
 
         }
 
-        for(int j=0;j<12;j++) {
-            home_grid.getColumnConstraints().add(cc);
+        for (int j = 0; j < 12; j++) {
+            homeGrid.getColumnConstraints().add(cc);
         }
 
         StackPane startButton_sp = new StackPane(startButton);
@@ -775,11 +730,11 @@ public class GUIMain extends Application {
         Label title = new Label("Chain Reaction");
         title.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Press Start 2P\"; -fx-font-size: 60px; -fx-font-weight: bolder; -fx-text-fill: #f4ab15;");
 
-        Label gridstyle_label = new Label("Grid Size:");
-        gridstyle_label.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder; -fx-text-fill: #ffcbf0;");
+        Label gridstyleLabel = new Label("Grid Size:");
+        gridstyleLabel.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder; -fx-text-fill: #ffcbf0;");
 
-        Label numplayers_label = new Label("Number of Players:");
-        numplayers_label.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder; -fx-text-fill: #ffcbf0;");
+        Label numPlayersLabel = new Label("Number of Players:");
+        numPlayersLabel.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder; -fx-text-fill: #ffcbf0;");
 
         GridPane.setHalignment(startButton_sp, HPos.CENTER);
         GridPane.setHalignment(resumeButton_sp, HPos.CENTER);
@@ -791,60 +746,45 @@ public class GUIMain extends Application {
         numPlayersCB.setStyle("-fx-font-size: 20px; -fx-background-color: #fffded; -fx-border-color: #ffbe6b;");
         gridChoiceCB.setVisibleRowCount(3);
         numPlayersCB.setVisibleRowCount(3);
-        home_grid.add(startButton_sp,2,5,2,1);
-        home_grid.add(gridstyle_label,5,4,2,1);
-        home_grid.add(gridChoiceCB,5,5,2,1);
-        home_grid.add(numplayers_label,8,4,3,1);
-        home_grid.add(numPlayersCB,8,5,2,1);
-        home_grid.add(resumeButton_sp,4,7,2,1);
-        home_grid.add(settingsButton_sp, 6, 7,2,1);
-        home_grid.add(instructionsButton_sp, 4, 8, 4, 1);
 
-        ImageUtil img_util = new ImageUtil();
-        Image bg_image = img_util.getImage("assets/startpage1.jpg");
+
+        homeGrid.add(startButton_sp, 2, 5, 2, 1);
+        homeGrid.add(gridstyleLabel, 5, 4, 2, 1);
+        homeGrid.add(gridChoiceCB, 5, 5, 2, 1);
+        homeGrid.add(numPlayersLabel, 8, 4, 3, 1);
+        homeGrid.add(numPlayersCB, 8, 5, 2, 1);
+        homeGrid.add(resumeButton_sp, 4, 7, 2, 1);
+        homeGrid.add(settingsButton_sp, 6, 7, 2, 1);
+        homeGrid.add(instructionsButton_sp, 4, 8, 4, 1);
+
+        ImageUtil imageUtil = new ImageUtil();
+        Image bgImage = imageUtil.getImage("assets/startpage1.jpg");
 
         Screen screen = Screen.getPrimary();
 
         Rectangle2D bounds = screen.getVisualBounds();
 
-        home_grid.setBackground(new Background(new BackgroundImage(bg_image, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, new BackgroundSize(bounds.getWidth(), bounds.getHeight(), false, false, true, true))));
-        //home_grid.setStyle("-fx-background-size: cover");
-       // home_grid.setb
+        homeGrid.setBackground(new Background(new BackgroundImage(bgImage, BackgroundRepeat.REPEAT,
+                BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, new BackgroundSize(bounds.getWidth(),
+                bounds.getHeight(), false, false, true, true))));
 
-//        String back_image = img_util.getCSSImage("assets/startpage.jpg");
-//        home_grid.setStyle("-fx-background-image: url('" + back_image + "');");
-        home_grid.add(title, 1, 1, 10,2);
+        homeGrid.add(title, 1, 1, 10, 2);
 
-        //home_grid.setGridLinesVisible(true);
-        //root.getChildren().add(home_grid);
-
-        Scene scene = new Scene(home_grid, 1200, 1000);
+        Scene scene = new Scene(homeGrid, 1200, 1000);
 
         scene.getStylesheets().add("https://fonts.googleapis.com/css?family=Press+Start+2P");
         scene.getStylesheets().add("https://fonts.googleapis.com/css?family=Oxygen+Mono");
-        //String css = getClass().getResource("double_slider.css").toExternalForm();
-
-       // File f = new File("stylesheets/startPage.css");
-//        scene.getStylesheets().clear();
-//        scene.getStylesheets().add("file:///" + f.getAbsolutePath().replace("\\", "/"));
-
-//        //Image back_image = img_util.getImage("assets/startpage.jpg");
-//
-//        ImagePattern pattern = new ImagePattern(back_image);
-//        scene.setFill(pattern);
 
 
         return scene;
-
 
 
     }
 
     public static Scene createSettingsPage() {
 
-        //Instantiating the Buttons
-        //saveButton=new Button("Save");
-        homeButton=new Button ();
+
+        homeButton = new Button();
         ImageUtil img_util = new ImageUtil();
         Image back_img = img_util.getImage("assets/back.png");
         ImageView backimg_view = new ImageView(back_img);
@@ -860,14 +800,16 @@ public class GUIMain extends Application {
 
         homeButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
                 new EventHandler<MouseEvent>() {
-                    @Override public void handle(MouseEvent e) {
+                    @Override
+                    public void handle(MouseEvent e) {
                         homeButton.setEffect(shadow);
                     }
                 });
         //Removing the shadow when the mouse cursor is off
         homeButton.addEventHandler(MouseEvent.MOUSE_EXITED,
                 new EventHandler<MouseEvent>() {
-                    @Override public void handle(MouseEvent e) {
+                    @Override
+                    public void handle(MouseEvent e) {
                         homeButton.setEffect(null);
                     }
                 });
@@ -877,31 +819,30 @@ public class GUIMain extends Application {
 
         StackPane root = new StackPane();
 
-        //Making the Player Color pickers
 
 
-        playercolor.put(1,"#" + Integer.toHexString(player_1.getValue().hashCode()));
+
+        playercolor.put(1, "#" + Integer.toHexString(player_1.getValue().hashCode()));
         player_1.setStyle("-fx-background-color: #669999 ;-fx-background-radius: 0 15 15 0;");
-        playercolor.put(2,"#" + Integer.toHexString(player_2.getValue().hashCode()));
+        playercolor.put(2, "#" + Integer.toHexString(player_2.getValue().hashCode()));
         player_2.setStyle("-fx-background-color: #669999 ;-fx-background-radius: 0 15 15 0;");
-        playercolor.put(3,"#" + Integer.toHexString(player_3.getValue().hashCode()));
+        playercolor.put(3, "#" + Integer.toHexString(player_3.getValue().hashCode()));
         player_3.setStyle("-fx-background-color: #669999 ;-fx-background-radius: 0 15 15 0;");
-        playercolor.put(4,"#" + Integer.toHexString(player_4.getValue().hashCode()));
+        playercolor.put(4, "#" + Integer.toHexString(player_4.getValue().hashCode()));
         player_4.setStyle("-fx-background-color: #669999 ;-fx-background-radius: 0 15 15 0;");
-        playercolor.put(5,"#" + Integer.toHexString(player_5.getValue().hashCode()));
+        playercolor.put(5, "#" + Integer.toHexString(player_5.getValue().hashCode()));
         player_5.setStyle("-fx-background-color: #669999 ;-fx-background-radius: 0 15 15 0;");
-        playercolor.put(6,"#" + Integer.toHexString(player_6.getValue().hashCode()));
+        playercolor.put(6, "#" + Integer.toHexString(player_6.getValue().hashCode()));
         player_6.setStyle("-fx-background-color: #669999 ;-fx-background-radius: 0 15 15 0;");
-        playercolor.put(7,"#" + Integer.toHexString(player_7.getValue().hashCode()));
+        playercolor.put(7, "#" + Integer.toHexString(player_7.getValue().hashCode()));
         player_7.setStyle("-fx-background-color: #669999 ;-fx-background-radius: 0 15 15 0;");
-        playercolor.put(8,"#" + Integer.toHexString(player_8.getValue().hashCode()));
+        playercolor.put(8, "#" + Integer.toHexString(player_8.getValue().hashCode()));
         player_8.setStyle("-fx-background-color: #669999 ;-fx-background-radius: 0 15 15 0;");
 
-        _gameEngine.setplayer_colors(playercolor); //-- Giving null pointer error cuz players havent been selected yet
+        _gameEngine.setplayer_colors(playercolor);
 
 
-        //Making the Grid for the settings page
-        GridPane setting_grid=new GridPane();
+        GridPane setting_grid = new GridPane();
 
         RowConstraints rc = new RowConstraints(70);
         rc.setVgrow(Priority.ALWAYS);
@@ -914,16 +855,15 @@ public class GUIMain extends Application {
         setting_grid.setHgap(5);
         setting_grid.setVgap(5);
 
-        for(int i=0;i<12;i++){
+        for (int i = 0; i < 12; i++) {
             setting_grid.getRowConstraints().add(rc);
 
         }
 
-        for(int j=0;j<14;j++) {
+        for (int j = 0; j < 14; j++) {
             setting_grid.getColumnConstraints().add(cc);
         }
 
-        //Adding the Labels and changing the style of the respective players
 
 
 
@@ -931,57 +871,39 @@ public class GUIMain extends Application {
         title.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 70px; -fx-font-weight: bolder; -fx-text-fill: #328009;");
 
 
-       // comboBox_1.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
         Label player1_label = new Label("Player 1:");
         player1_label.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder; -fx-text-fill: #08807b;");
 
-
-       // comboBox_2.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
 
         Label player2_label = new Label("Player 2:");
         player2_label.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder; -fx-text-fill: #08807b;");
 
 
-       // comboBox_3.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
-
         Label player3_label = new Label("Player 3:");
         player3_label.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder; -fx-text-fill: #08807b;");
 
-
-       // comboBox_4.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
 
         Label player4_label = new Label("Player 4:");
         player4_label.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder; -fx-text-fill: #08807b;");
 
 
-       // comboBox_5.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
-
         Label player5_label = new Label("Player 5:");
         player5_label.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder; -fx-text-fill: #08807b;");
 
-
-       // comboBox_6.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
 
         Label player6_label = new Label("Player 6:");
         player6_label.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder; -fx-text-fill: #08807b;");
 
 
-       // comboBox_7.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
-
         Label player7_label = new Label("Player 7:");
         player7_label.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder; -fx-text-fill: #08807b;");
 
-
-       // comboBox_8.setStyle("-fx-font-size: 20px; -fx-background-color: black; -fx-border-color: white;");
 
         Label player8_label = new Label("Player 8:");
         player8_label.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder; -fx-text-fill: #08807b;");
 
 
-        //Adding elements to the grid
-        //setting_grid.setStyle("-fx-background-color: black; -fx-text-alignment: center;");
 
-        //ImageUtil img_util = new ImageUtil();
         Image bg_image = img_util.getImage("assets/settingspage.jpg");
 
         Screen screen = Screen.getPrimary();
@@ -991,37 +913,32 @@ public class GUIMain extends Application {
         setting_grid.setBackground(new Background(new BackgroundImage(bg_image, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, new BackgroundSize(bounds.getWidth(), bounds.getHeight(), false, false, true, true))));
 
 
-        setting_grid.add(title, 2, 1, 10,2);
+        setting_grid.add(title, 2, 1, 10, 2);
 
-        setting_grid.add(player1_label,3,3,2,1);
-        setting_grid.add(player_1,8,3,2,1);
+        setting_grid.add(player1_label, 3, 3, 2, 1);
+        setting_grid.add(player_1, 8, 3, 2, 1);
 
-        setting_grid.add(player2_label,3,4,2,1);
-        setting_grid.add(player_2,8,4,2,1);
+        setting_grid.add(player2_label, 3, 4, 2, 1);
+        setting_grid.add(player_2, 8, 4, 2, 1);
 
-        setting_grid.add(player3_label,3,5,2,1);
-        setting_grid.add(player_3,8,5,2,1);
+        setting_grid.add(player3_label, 3, 5, 2, 1);
+        setting_grid.add(player_3, 8, 5, 2, 1);
 
-        setting_grid.add(player4_label,3,6,2,1);
-        setting_grid.add(player_4,8,6,2,1);
+        setting_grid.add(player4_label, 3, 6, 2, 1);
+        setting_grid.add(player_4, 8, 6, 2, 1);
 
-        setting_grid.add(player5_label,3,7,2,1);
-        setting_grid.add(player_5,8,7,2,1);
+        setting_grid.add(player5_label, 3, 7, 2, 1);
+        setting_grid.add(player_5, 8, 7, 2, 1);
 
-        setting_grid.add(player6_label,3,8,2,1);
-        setting_grid.add(player_6,8,8,2,1);
+        setting_grid.add(player6_label, 3, 8, 2, 1);
+        setting_grid.add(player_6, 8, 8, 2, 1);
 
-        setting_grid.add(player7_label,3,9,2,1);
-        setting_grid.add(player_7,8,9,2,1);
+        setting_grid.add(player7_label, 3, 9, 2, 1);
+        setting_grid.add(player_7, 8, 9, 2, 1);
 
-        setting_grid.add(player8_label,3,10,2,1);
-        setting_grid.add(player_8,8,10,2,1);
+        setting_grid.add(player8_label, 3, 10, 2, 1);
+        setting_grid.add(player_8, 8, 10, 2, 1);
 
-        //saveButton.setStyle("-fx-background-color: lightcoral; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold;");
-
-        //setting_grid.add(saveButton,6,10,2,2);
-
-        //homeButton.setStyle("-fx-background-color: lightcoral; -fx-text-alignment: center; -fx-font-family: \"Helvetica\"; -fx-font-size: 20px; -fx-font-weight: bold;");
 
         setting_grid.add(homeButton_sp, 0, 1, 1, 1);
 
@@ -1035,9 +952,8 @@ public class GUIMain extends Application {
         cp_array.add(player_7);
         cp_array.add(player_8);
 
-        //player_1.setDisable(true);
 
-        for (int i = 7; i > _gameEngine.get_numPlayers()-1; i--) {
+        for (int i = 7; i > _gameEngine.get_numPlayers() - 1; i--) {
             cp_array.get(i).setDisable(true);
         }
 
@@ -1046,11 +962,8 @@ public class GUIMain extends Application {
         }
 
 
-        //Gonna send the player colors to the GameEngine to create new players
-
         Scene scene = new Scene(setting_grid, 1200, 1000);
         scene.getStylesheets().add("https://fonts.googleapis.com/css?family=Oxygen+Mono");
-
 
 
         return scene;
@@ -1058,11 +971,11 @@ public class GUIMain extends Application {
 
     }
 
-    public static void createEndPage(GridPane grid,Stage stage, int winner){
+    public static void createEndPage(GridPane grid, Stage stage, int winner) {
 
         Stage winnerDialog = new Stage();
 
-        String musicFile = "assets/win.mp3";     // For example
+        String musicFile = "assets/win.mp3";
 
         ArrayList<Player> players = get_gameEngine().get_gc().get_players();
 
@@ -1072,7 +985,6 @@ public class GUIMain extends Application {
             @Override
             public void handle(ActionEvent event) {
 
-                System.out.println("BUTTON PLAY CLICKED");
 
 
                 for (int i = 0; i < players.size(); i++) {
@@ -1098,9 +1010,7 @@ public class GUIMain extends Application {
 
                 changeGridColor(grid, firstColor);
 
-                System.out.println("_____ inside restart handler _______");
-                System.out.println("color of the guy that goes first" + firstColor);
-                System.out.println(" ________ end restart handler ________");
+
 
                 setCurrentPlayer(ColorUtil.colorToHex(firstColor));
                 getRedoButton().setDisable(true);
@@ -1120,7 +1030,6 @@ public class GUIMain extends Application {
             @Override
             public void handle(ActionEvent event) {
 
-                System.out.println("BUTTON HOME PAGE CLICKED");
 
 
                 stage.setScene(createStartPage());
@@ -1134,8 +1043,7 @@ public class GUIMain extends Application {
         exitButton.setStyle("-fx-background-color: #b2d969; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder;");
         exitButton.setWrapText(true);
 
-        Label winner_label = new Label("Player "+ winner + " won the game!");
-        //winner_label.setPrefHeight(250);
+        Label winner_label = new Label("Player " + winner + " won the game!");
 
         RowConstraints rc = new RowConstraints(50);
         rc.setValignment(VPos.CENTER);
@@ -1143,12 +1051,9 @@ public class GUIMain extends Application {
         cc.setHalignment(HPos.CENTER);
 
 
+        GridPane endgame_grid = new GridPane();
 
 
-        GridPane endgame_grid=new GridPane();
-
-        //endgame_grid.setGridLinesVisible(true);
-//        endgame_grid.getRowConstraints().add();
 
         endgame_grid.add(winner_label, 2, 0, 4, 10);
         endgame_grid.add(restartButton, 0, 12, 2, 2);
@@ -1170,15 +1075,14 @@ public class GUIMain extends Application {
 
         winnerScene.getStylesheets().add("https://fonts.googleapis.com/css?family=Press+Start+2P");
 
-        //winnerDialog.initStyle(StageStyle.UNDECORATED);
 
         winnerDialog.setScene(winnerScene);
         winnerDialog.initOwner(stage);
 
-        if(!end_shown) {
+        if (!end_shown) {
             winnerDialog.show();
             Media sound = new Media(new File(musicFile).toURI().toString());
-            MediaPlayer mediaPlayer1= new MediaPlayer(sound);
+            MediaPlayer mediaPlayer1 = new MediaPlayer(sound);
             mediaPlayer1.play();
             mediaPlayer.setVolume(0);
             end_shown = true;
@@ -1186,15 +1090,13 @@ public class GUIMain extends Application {
         setEnd_shown(false);
 
 
-
     }
 
 
     public static Scene createGamePage() {
 
-        if(_gameEngine.get_choice()==0) {
+        if (_gameEngine.get_choice() == 0) {
             GridPane root = new GridPane();
-
 
 
             if (_gameEngine.get_gridSize() == 0) {
@@ -1206,32 +1108,20 @@ public class GUIMain extends Application {
             }
 
             Color firstplayer = Color.web(GUIMain.get_gameEngine().get_gc().get_players().get(0).get_colour());
-            //System.out.println(firstplayer);
-            //System.out.println(firstplayer.toString());
+
 
             BorderPane bp = setEmptyGrid(root, _numRows, _numCols, firstplayer);
 
 
-
-
-            //addOrbAndAnimate(root, 0, 0 ,1, firstplayer);
-            //addOrbAndAnimate(root, 1, 1, 2, firstplayer);
-
-            // changeGridColor(root, Color.RED);
-
             GUIMain.setCurrentPlayer(GUIMain.get_gameEngine().get_gc().get_players().get(0).get_colour());
-            System.out.println("First Player: " + GUIMain.getCurrentPlayer());
 
 
             Scene sc = new Scene(bp, 800, 1000, Color.BLACK);
 
             return sc;
-        }
-
-        else {
+        } else {
 
             GridPane root = new GridPane();
-
 
 
             if (_gameEngine.get_gridSize() == 0) {
@@ -1246,7 +1136,7 @@ public class GUIMain extends Application {
 
             int i;
             for (i = 0; i < _gameEngine.get_numPlayers(); i++) {
-                if(_gameEngine.get_gc().get_players().get(i).get_isActive()) {
+                if (_gameEngine.get_gc().get_players().get(i).get_isActive()) {
                     firstplayer = Color.web(_gameEngine.get_gc().get_players().get(i).get_colour());
                     break;
                 }
@@ -1257,12 +1147,10 @@ public class GUIMain extends Application {
             Grid grid = _gameEngine.get_gc().get_grid();
             convertGridToGUI(root, grid);
 
-            changeGridColor(root,firstplayer);
-
+            changeGridColor(root, firstplayer);
 
 
             GUIMain.setCurrentPlayer(_gameEngine.get_gc().get_players().get(i).get_colour());
-            System.out.println("First Player: " + GUIMain.getCurrentPlayer());
 
             Scene sc = new Scene(bp, 800, 1000, Color.BLACK);
 
@@ -1278,7 +1166,7 @@ public class GUIMain extends Application {
     public static void convertGridToGUI(GridPane gp, Grid g) {
         for (int i = 0; i < g.get_grid().size(); i++) {
             for (int j = 0; j < g.get_grid().get(0).size(); j++) {
-                if (g.get_grid().get(i).get(j).get_currmass()!=0) {
+                if (g.get_grid().get(i).get(j).get_currmass() != 0) {
                     Color clr = Color.web(g.get_grid().get(i).get(j).get_color());
                     int currmass = g.get_grid().get(i).get(j).get_currmass();
                     addOrbAndAnimate(gp, i, j, currmass, clr);
@@ -1286,21 +1174,17 @@ public class GUIMain extends Application {
 
             }
         }
-
-
-
-
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
 
-        _gameEngine = new GameEngine(2,0);
+        _gameEngine = new GameEngine(2, 0);
         Screen screen = Screen.getPrimary();
 
         Rectangle2D bounds = screen.getVisualBounds();
 
-        playercolor= new HashMap<Integer, String>();
+        playercolor = new HashMap<Integer, String>();
 
         array_CP.add(player_1);
         array_CP.add(player_2);
@@ -1321,7 +1205,7 @@ public class GUIMain extends Application {
             public void handle(WindowEvent event) {
                 try {
                     if (_gameEngine.get_gc() != null) {
-                        if(!checkEndGame()) {
+                        if (!checkEndGame()) {
                             GUIMain.get_gameEngine().get_gc().saveGameState();
                         }
                     }
@@ -1335,7 +1219,6 @@ public class GUIMain extends Application {
         primaryStage.show();
 
     }
-
 
 
     public static void main(String[] args) {

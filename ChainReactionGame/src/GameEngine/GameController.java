@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 public class GameController {
 
-
     private ArrayList<Player> _players;
     private Grid _grid;
     private GameState _gameState;
@@ -23,6 +22,8 @@ public class GameController {
         this._resume = _resume;
         this._endGame = false;
     }
+
+
 
     public ArrayList<Player> get_players() {
         return _players;
@@ -56,6 +57,15 @@ public class GameController {
         this._resume = _resume;
     }
 
+
+    public static int get_index(){
+        return _index;
+    }
+
+    public static void set_index(int _i){
+        _index=_i;
+    }
+
     public boolean is_endGame() {
         return _endGame;
     }
@@ -63,6 +73,8 @@ public class GameController {
     public void set_endGame(boolean _endGame) {
         this._endGame = _endGame;
     }
+
+
 
     public void loadGameState() throws IOException, ClassNotFoundException {
 
@@ -117,22 +129,13 @@ public class GameController {
     }
 
 
-    public static int get_index(){
-        return _index;
-    }
 
-    public static void set_index(int _i){
-        _index=_i;
-    }
 
     public static int[] convert_index(int numCols){
-        //int numRows = GameEngine.get_gridSize();
 
         int[] arr = {_index/numCols,_index%numCols};
         return arr;
     }
-
-
 
 
     public boolean isValid(int x_index, int y_index){
@@ -142,7 +145,8 @@ public class GameController {
         return false;
     }
 
-    public void explode(int x, int y){
+    public void taketurn(int x, int y){
+
         //Handle Top
         if (isValid(x-1, y)){
             Cell top = _grid.get_grid().get(x-1).get(y);
@@ -150,7 +154,7 @@ public class GameController {
             //Add in the GUI as well
             if (top.get_currmass()>top.get_CRITMASS()){
                 top.set_currmass(0);
-                explode(x-1,y);
+                taketurn(x-1,y);
             }
         }
 
@@ -161,7 +165,7 @@ public class GameController {
             //Add in the GUI as well
             if (left.get_currmass()>left.get_CRITMASS()){
                 left.set_currmass(0);
-                explode(x,y-1);
+                taketurn(x,y-1);
             }
         }
 
@@ -172,7 +176,7 @@ public class GameController {
             //Add in the GUI as well
             if (bottom.get_currmass()>bottom.get_CRITMASS()){
                 bottom.set_currmass(0);
-                explode(x+1,y);
+                taketurn(x+1,y);
             }
         }
 
@@ -183,12 +187,16 @@ public class GameController {
             //Add in the GUI as well
             if (right.get_currmass()>right.get_CRITMASS()){
                 right.set_currmass(0);
-                explode(x,y+1);
+                taketurn(x,y+1);
             }
         }
     }
 
+    public void handleGame() {
 
+        taketurn(0, 0);
+
+    }
 
 
 }

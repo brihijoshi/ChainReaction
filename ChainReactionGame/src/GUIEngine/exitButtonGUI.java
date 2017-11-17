@@ -2,12 +2,7 @@ package GUIEngine;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class exitButtonGUI implements EventHandler<ActionEvent> {
@@ -25,13 +20,11 @@ public class exitButtonGUI implements EventHandler<ActionEvent> {
         }
 
 
-
         MenuItem source = (MenuItem) e.getSource();
         Stage stage = (Stage) source.getParentPopup().getOwnerWindow();
 
         stage.setScene(GUIMain.createStartPage());
 
-        //stage.show();
 
     }
 
