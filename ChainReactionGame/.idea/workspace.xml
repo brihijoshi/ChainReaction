@@ -7,7 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/game.ser" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUIEngine/GUIMain.java" afterPath="$PROJECT_DIR$/src/GUIEngine/GUIMain.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -69,8 +68,8 @@
       <file leaf-file-name="GUIMain.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GUIEngine/GUIMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="1033" column="0" lean-forward="true" selection-start-line="1033" selection-start-column="0" selection-end-line="1033" selection-end-column="0" />
+            <state relative-caret-position="331">
+              <caret line="981" column="40" lean-forward="true" selection-start-line="981" selection-start-column="40" selection-end-line="981" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -575,7 +574,7 @@
       <workItem from="1510854982585" duration="18051000" />
       <workItem from="1510880448203" duration="3392000" />
       <workItem from="1510912835871" duration="4404000" />
-      <workItem from="1510961122927" duration="550000" />
+      <workItem from="1510961122927" duration="707000" />
     </task>
     <task id="LOCAL-00001" summary="Added classes to the GameEngine pAckage">
       <created>1508931981361</created>
@@ -658,7 +657,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="239639000" />
+    <option name="totallyTimeSpent" value="239796000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="19" y="24" width="1440" height="808" extended-state="0" />
@@ -1034,8 +1033,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GUIEngine/GUIMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="1033" column="0" lean-forward="true" selection-start-line="1033" selection-start-column="0" selection-end-line="1033" selection-end-column="0" />
+        <state relative-caret-position="331">
+          <caret line="981" column="40" lean-forward="true" selection-start-line="981" selection-start-column="40" selection-end-line="981" selection-end-column="40" />
           <folding />
         </state>
       </provider>

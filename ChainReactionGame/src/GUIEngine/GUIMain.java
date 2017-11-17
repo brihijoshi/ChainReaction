@@ -979,7 +979,7 @@ public class GUIMain extends Application {
             }
         });
 
-        Button exitButton = new Button("Back to Home Page");
+        Button exitButton = new Button("Home Page");
         exitButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
