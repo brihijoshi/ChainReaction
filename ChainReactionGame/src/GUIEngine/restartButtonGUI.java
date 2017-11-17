@@ -30,13 +30,13 @@ public class restartButtonGUI implements EventHandler<ActionEvent> {
         System.out.println("GUIMain.isEnd_shown()"+GUIMain.isEnd_shown());
         GUIMain.setEnd_shown(false);
         System.out.println("GUIMain.isEnd_shown()" + GUIMain.isEnd_shown());
-
-        File file_game = new File("game.ser");
-        File file_undo = new File("undo.ser");
-
-        try {
-
-            if (file_game.delete() && file_undo.delete()) {
+//
+//        File file_game = new File("game.ser");
+//        File file_undo = new File("undo.ser");
+//
+//        try {
+//
+//            if (file_game.delete() && file_undo.delete()) {
 
                 MenuItem source = (MenuItem) e.getSource();
 
@@ -88,11 +88,11 @@ public class restartButtonGUI implements EventHandler<ActionEvent> {
 
 
 
-            }
+//            }
 
 
-        } catch (Exception v) {
-            v.printStackTrace();
-        }
+//        } catch (Exception v) {
+//            v.printStackTrace();
+//        }
     }
 }

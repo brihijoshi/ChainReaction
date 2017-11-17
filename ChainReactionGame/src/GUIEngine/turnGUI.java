@@ -222,6 +222,7 @@ class turnGUI implements EventHandler<MouseEvent> {
                 }
                 if (count == 0) {
                     if (players.get(i).get_isKillable()) {
+                        System.out.println("PLAYER KILLED" + players.get(i).get_colour());
                         players.get(i).set_isAlive(false);
                     }
                 }
@@ -634,6 +635,7 @@ class turnGUI implements EventHandler<MouseEvent> {
                     if (file_game.delete() && file_undo.delete()){
                         GUIMain.createEndPage(grid, stage, num);
                         GUIMain.getRedoButton().setDisable(true);
+                        //GUIMain.getResumeButton().setDisable(true);
                     }
                 }
                 catch (Exception y){
