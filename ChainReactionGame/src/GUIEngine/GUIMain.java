@@ -993,8 +993,14 @@ public class GUIMain extends Application {
             }
         });
 
-        restartButton.setStyle("-fx-background-color: #b2d969; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder;");
-        exitButton.setStyle("-fx-background-color: #b2d969; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder;");
+        ImageUtil endGIFUtil = new ImageUtil();
+        Image endGif = endGIFUtil.getImage("assets/firecracker.gif");
+        ImageView endGIFView1 = new ImageView(endGif);
+        ImageView endGIFView2 = new ImageView(endGif);
+
+
+        restartButton.setStyle("-fx-background-color: #d96b58; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder;");
+        exitButton.setStyle("-fx-background-color: #d96b58; -fx-text-alignment: center; -fx-font-family: \"Oxygen Mono\"; -fx-font-size: 20px; -fx-font-weight: bolder;");
         exitButton.setWrapText(true);
 
         Label winner_label = new Label("Player " + winner + " won the game!");
@@ -1012,6 +1018,9 @@ public class GUIMain extends Application {
         endgame_grid.add(winner_label, 2, 0, 4, 10);
         endgame_grid.add(restartButton, 0, 12, 2, 2);
         endgame_grid.add(exitButton, 6, 12, 2, 2);
+        endgame_grid.add(endGIFView1, 0 , 8, 2, 2);
+        endgame_grid.add(endGIFView2, 6 , 8, 2, 2);
+
         endgame_grid.setStyle("-fx-background-color: black;");
         restartButton.setAlignment(Pos.BOTTOM_LEFT);
 
@@ -1023,7 +1032,7 @@ public class GUIMain extends Application {
             endgame_grid.getColumnConstraints().add(cc);
         }
 
-        winner_label.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Press Start 2P\"; -fx-font-size: 30px; -fx-font-weight: bolder; -fx-text-fill: #f4ab15; -fx-line-spacing: 1em;");
+        winner_label.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Press Start 2P\"; -fx-font-size: 40px; -fx-font-weight: bolder; -fx-text-fill: #f4ab15; -fx-line-spacing: 1em;");
         winner_label.setWrapText(true);
         Scene winnerScene = new Scene(endgame_grid, 820, 750, Color.BLACK);
 
