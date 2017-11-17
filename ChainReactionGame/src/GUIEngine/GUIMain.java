@@ -1202,18 +1202,23 @@ public class GUIMain extends Application {
 
         GridPane endgame_grid=new GridPane();
 
-        endgame_grid.add(restartButton, 3, 6, 2, 2);
-        endgame_grid.add(exitButton, 9, 6, 2, 2);
-        endgame_grid.add(winner_label, 6, 2, 2, 2);
+        endgame_grid.add(restartButton, 4, 12, 2, 2);
+        endgame_grid.add(exitButton, 8, 12, 2, 2);
+        endgame_grid.add(winner_label, 6, 2, 2, 8);
+        endgame_grid.setStyle("-fx-background-color: black;");
+        restartButton.setAlignment(Pos.BOTTOM_LEFT);
 
+        winner_label.setStyle("-fx-background-color: transparent; -fx-text-alignment: center; -fx-font-family: \"Press Start 2P\"; -fx-font-size: 30px; -fx-font-weight: bolder; -fx-text-fill: #f4ab15;");
 
+        Scene winnerScene = new Scene(endgame_grid, 500, 500, Color.BLACK);
 
+        winnerScene.getStylesheets().add("https://fonts.googleapis.com/css?family=Press+Start+2P");
 
-        Scene winnerScene = new Scene(endgame_grid, 1200, 1000, Color.RED);
         //winnerDialog.initStyle(StageStyle.UNDECORATED);
 
         winnerDialog.setScene(winnerScene);
         winnerDialog.initOwner(stage);
+
         if(!end_shown) {
             winnerDialog.show();
             Media sound = new Media(new File(musicFile).toURI().toString());
