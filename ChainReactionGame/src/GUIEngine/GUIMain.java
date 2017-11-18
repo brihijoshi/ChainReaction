@@ -34,9 +34,17 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * The Main class that coordinates the GUI objects, GUI pages and the linking between the GUI and the backend.
+ *
+ *  @author adsrc
+ *  @author brihijoshi
+ *  @version 1.2
+ *
+ */
+
 
 public class GUIMain extends Application {
-
 
 
     private static int _numRows;
@@ -74,200 +82,456 @@ public class GUIMain extends Application {
     private static String currentPlayer;
     private static HashMap<Integer, String> playercolor;
 
+    /**
+     * @return the number of rows
+     */
 
     public static int get_numRows() {
         return _numRows;
     }
 
+    /**
+     * Sets the number of rows
+     *
+     * @param _numRows the num of rows obtained
+     */
     public static void set_numRows(int _numRows) {
         GUIMain._numRows = _numRows;
     }
+
+    /**
+     * @return the number of columns
+     */
 
     public static int get_numCols() {
         return _numCols;
     }
 
+    /**
+     * Sets the number of columns
+     *
+     * @param _numCols the number of columns obtained
+     */
+
     public static void set_numCols(int _numCols) {
         GUIMain._numCols = _numCols;
     }
+
+    /**
+     * @return the {@link GameEngine} object associated with the GUI
+     */
 
     public static GameEngine get_gameEngine() {
         return _gameEngine;
     }
 
+    /**
+     * Sets the {@link GameEngine} object associated with the GUI
+     *
+     * @param _gameEngine the {@link GameEngine} object associated with the GUI
+     */
+
     public static void set_gameEngine(GameEngine _gameEngine) {
         GUIMain._gameEngine = _gameEngine;
     }
+
+    /**
+     * @return the {@link Button} associated with <code>startButton</code>
+     */
 
     public static Button getStartButton() {
         return startButton;
     }
 
+    /**
+     * Set the {@link Button} associated with <code>startButton</code>
+     * @param startButton the {@link Button} associated starting the game
+     */
+
     public static void setStartButton(Button startButton) {
         GUIMain.startButton = startButton;
     }
+
+    /**
+     *
+     * @return the {@link Button} associated with <code>resumeButton</code>
+     */
 
     public static Button getResumeButton() {
         return resumeButton;
     }
 
+    /**
+     * Set the {@link Button} associated with <code>resumeButton</code>
+     * @param resumeButton the {@link Button} associated with resuming the game
+     */
+
     public static void setResumeButton(Button resumeButton) {
         GUIMain.resumeButton = resumeButton;
     }
+
+    /**
+     *
+     * @return the {@link Button} associated with <code>settingsButton</code>
+     */
 
     public static Button getSettingsButton() {
         return settingsButton;
     }
 
+    /**
+     * Set the {@link Button} associated with <code>settingsButton</code>
+     * @param settingsButton the {@link Button} associated with going to the Settings page
+     */
+
     public static void setSettingsButton(Button settingsButton) {
         GUIMain.settingsButton = settingsButton;
     }
+
+    /**
+     *
+     * @return the {@link Button} associated with <code>instructionsButton</code>
+     */
 
     public static Button getInstructionsButton() {
         return instructionsButton;
     }
 
+    /**
+     * Set the {@link Button} associated with <code>instructionsButton</code>
+     * @param instructionsButton the {@link Button} associated for reading the game instructions
+     */
+
     public static void setInstructionsButton(Button instructionsButton) {
         GUIMain.instructionsButton = instructionsButton;
     }
+
+    /**
+     *
+     * @return the {@link Button} associated with <code>redoButton</code>
+     */
 
     public static Button getRedoButton() {
         return redoButton;
     }
 
+    /**
+     * Set the {@link Button} associated with <code>redoButton</code>
+     * @param redoButton the {@link Button} associated to Undo the last played move
+     */
+
     public static void setRedoButton(Button redoButton) {
         GUIMain.redoButton = redoButton;
     }
+
+    /**
+     *
+     * @return the {@link Button} associated with <code>homeButton</code>
+     */
 
     public static Button getHomeButton() {
         return homeButton;
     }
 
+    /**
+     * Set the {@link Button} associated with <code>homeButton</code>
+
+     * @param homeButton the {@link Button} used to get back to the Home Page from the Setting Page
+
+     */
+
+
     public static void setHomeButton(Button homeButton) {
         GUIMain.homeButton = homeButton;
     }
+
+    /**
+     *
+     * @return a Boolean that checks whether the end game page has been displayed
+     */
 
     public static boolean isEnd_shown() {
         return end_shown;
     }
 
+    /**
+     * Set a Boolean <code>true</code> if the end page has been shown once
+     * @param end_shown a Boolean that checks whether the end game page has been displayed
+     */
+
     public static void setEnd_shown(boolean end_shown) {
         GUIMain.end_shown = end_shown;
     }
+
+    /**
+     *
+     * @return the {@link ComboBox} associated with the Number of Players on the home page
+     */
 
     public static ComboBox getNumPlayersCB() {
         return numPlayersCB;
     }
 
+    /**
+     * Sets the {@link ComboBox} associated with the Number of Players on the home page
+     * @param numPlayersCB the {@link ComboBox} associated with the Number of Players on the home page
+     */
+
     public static void setNumPlayersCB(ComboBox numPlayersCB) {
         GUIMain.numPlayersCB = numPlayersCB;
     }
+
+    /**
+     *
+     * @return the {@link ComboBox} associated with Choice of Grid on the home page
+     */
 
     public static ComboBox getGridChoiceCB() {
         return gridChoiceCB;
     }
 
+    /**
+     * Set the {@link ComboBox} associated with the Choice of Grid on the home page
+     * @param gridChoiceCB the {@link ComboBox} associated with the Choice of Grid on the home page
+     */
+
     public static void setGridChoiceCB(ComboBox gridChoiceCB) {
         GUIMain.gridChoiceCB = gridChoiceCB;
     }
+
+    /**
+     *
+     * @return an {@link ArrayList} of {@link ColorPicker} objects of the players
+     */
 
     public static ArrayList<ColorPicker> getArray_CP() {
         return array_CP;
     }
 
+    /**
+     * Set an {@link ArrayList} of {@link ColorPicker} objects of the players
+     * @param array_CP an {@link ArrayList} of {@link ColorPicker} objects of the players
+     */
+
     public static void setArray_CP(ArrayList<ColorPicker> array_CP) {
         GUIMain.array_CP = array_CP;
     }
+
+    /**
+     *
+     * @return the {@link ColorPicker} object associated with Player 1
+     */
 
     public static ColorPicker getPlayer_1() {
         return player_1;
     }
 
+    /**
+     * Set the {@link ColorPicker} object associated with Player 1
+     * @param player_1 the {@link ColorPicker} object associated with Player 1
+     */
+
     public static void setPlayer_1(ColorPicker player_1) {
         GUIMain.player_1 = player_1;
     }
+
+    /**
+     *
+     * @return the {@link ColorPicker} object associated with Player 2
+     */
 
     public static ColorPicker getPlayer_2() {
         return player_2;
     }
 
+    /**
+     * Set the {@link ColorPicker} object associated with Player 2
+     * @param player_2 the {@link ColorPicker} object associated with Player 2
+     */
+
     public static void setPlayer_2(ColorPicker player_2) {
         GUIMain.player_2 = player_2;
     }
+
+    /**
+     *
+     * @return the {@link ColorPicker} object associated with Player 3
+     */
 
     public static ColorPicker getPlayer_3() {
         return player_3;
     }
 
+    /**
+     * Set the {@link ColorPicker} object associated with Player 3
+     * @param player_3 the {@link ColorPicker} object associated with Player 3
+     */
+
     public static void setPlayer_3(ColorPicker player_3) {
         GUIMain.player_3 = player_3;
     }
+
+    /**
+     *
+     * @return the {@link ColorPicker} object associated with Player 4
+     */
 
     public static ColorPicker getPlayer_4() {
         return player_4;
     }
 
+    /**
+     *
+     * Set the {@link ColorPicker} object associated with Player 4
+     * @param player_4 the {@link ColorPicker} object associated with Player 4
+     */
+
     public static void setPlayer_4(ColorPicker player_4) {
         GUIMain.player_4 = player_4;
     }
+
+    /**
+     *
+     * @return the {@link ColorPicker} object associated with Player 5
+     */
 
     public static ColorPicker getPlayer_5() {
         return player_5;
     }
 
+    /**
+     * Set the {@link ColorPicker} object associated with Player 5
+     * @param player_5 the {@link ColorPicker} object associated with Player 5
+     */
+
     public static void setPlayer_5(ColorPicker player_5) {
         GUIMain.player_5 = player_5;
     }
+
+    /**
+     *
+     * @return the {@link ColorPicker} object associated with Player 6
+     */
 
     public static ColorPicker getPlayer_6() {
         return player_6;
     }
 
+    /**
+     * Set the {@link ColorPicker} object associated with Player 6
+     * @param player_6 the {@link ColorPicker} object associated with Player 6
+     */
+
     public static void setPlayer_6(ColorPicker player_6) {
         GUIMain.player_6 = player_6;
     }
+
+    /**
+     *
+     * @return the {@link ColorPicker} object associated with Player 7
+     */
 
     public static ColorPicker getPlayer_7() {
         return player_7;
     }
 
+    /**
+     * Set the {@link ColorPicker} object associated with Player 7
+     * @param player_7 the {@link ColorPicker} object associated with Player 7
+     */
+
     public static void setPlayer_7(ColorPicker player_7) {
         GUIMain.player_7 = player_7;
     }
+
+    /**
+     *
+     * @return the {@link ColorPicker} object associated with Player 8
+     */
 
     public static ColorPicker getPlayer_8() {
         return player_8;
     }
 
+    /**
+     * Set the the {@link ColorPicker} object associated with Player 8
+     * @param player_8 the {@link ColorPicker} object associated with Player 8
+     */
+
     public static void setPlayer_8(ColorPicker player_8) {
         GUIMain.player_8 = player_8;
     }
+
+    /**
+     *
+     * @return the {@link MediaPlayer} object associated with playing the sounds
+     */
 
     public static MediaPlayer getMediaPlayer() {
         return mediaPlayer;
     }
 
+    /**
+     * Set the {@link MediaPlayer} object associated with playing the sounds
+     * @param mediaPlayer the {@link MediaPlayer} object associated with playing the sounds
+     */
+
     public static void setMediaPlayer(MediaPlayer mediaPlayer) {
         GUIMain.mediaPlayer = mediaPlayer;
     }
+
+    /**
+     *
+     * @return a String that is associated with the color of the current player
+     */
 
     public static String getCurrentPlayer() {
         return currentPlayer;
     }
 
+    /**
+     * Set a String that is associated with the color of the current player
+     * @param currentPlayer a String that is associated with the color of the current player
+     */
+
     public static void setCurrentPlayer(String currentPlayer) {
         GUIMain.currentPlayer = currentPlayer;
     }
 
+    /**
+     *
+     * @return a {@link HashMap} that stores the colors players as key and their color as value
+     */
+
     public static HashMap<Integer, String> getPlayercolor() {
         return playercolor;
     }
+
+    /**
+     * Set a {@link HashMap} that stores the colors players as key and their color as value
+     * @param playercolor a {@link HashMap} that stores the colors players as key and their color as value
+     */
 
     public static void setPlayercolor(HashMap<Integer, String> playercolor) {
         GUIMain.playercolor = playercolor;
     }
 
 
+    /**
+     *
+     * A Function that creates an empty grid for the start page. The {@link GridPane} root is the GUI Grid
+     * where the game takes place. Each index of the {@link GridPane} has a {@link StackPane} which again
+     * contains a {@link Group}. The {@link StackPane} color is changed to the parameter <code>color</code>.
+     * According to the size of the {@link GridPane}, its {@link RowConstraints} and {@link ColumnConstraints} are decided.
+     * The <code>redoButton</code> and the <code>MenuBar</code> is also created.
+     *
+     *
+     * @param root a {@link GridPane} GUI Grid where the game takes place
+     * @param numRows an Integer denoting the number of rows in the grid
+     * @param numColumns an Integer denoting the number of column in the grid
+     * @param color a {@link Color} object which is used to set the color of the {@link StackPane}
+     * @return a {@link BorderPane} object that contains the {@link GridPane}, the Buttons and the MenuBar
+     */
 
 
 
@@ -381,9 +645,24 @@ public class GUIMain extends Application {
 
     }
 
+
+    /**
+     * Create a new {@link Border} object with the {@link Color} <code>color</code>
+     *
+     * @param color the {@link Color} object which is used to set the border
+     * @return a {@link Border} object with the given color
+     */
+
     public static Border makeBorder(Color color) {
         return new Border(new BorderStroke(color, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
     }
+
+    /**
+     * Changes the color of the {@link GridPane} <code>grid</code> to the given {@link Color}
+     *
+     * @param grid the {@link GridPane} to be changed
+     * @param color the {@link Color} to which the <code>grid</code> has to change
+     */
 
     public static void changeGridColor(GridPane grid, Color color) {
 
