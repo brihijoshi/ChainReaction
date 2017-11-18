@@ -17,6 +17,8 @@ public class ColorUtil {
      *
      * @param color The {@link Color} object whose hex-code is to be obtained
      * @return a String containing the hex-code
+     *
+     * @see Color
      */
 
     public static String colorToHex(Color color) {
