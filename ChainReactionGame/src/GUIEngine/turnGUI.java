@@ -22,6 +22,18 @@ import javafx.util.Duration;
 import java.io.File;
 import java.util.ArrayList;
 
+/**
+ * This is the {@link EventHandler} class for each {@link StackPane}
+ * that represents each cell of the GUI Grid.
+ *
+ * The <code>handle(MouseEvent e)</code> method in this class handles
+ * most of the logic of each turn. Later methods help in transitions
+ * and checking the end game condition.
+ *
+ * @author adsrc
+ * @author brihijoshi
+ * @version 1.3
+ */
 class turnGUI implements EventHandler<MouseEvent> {
 
 
@@ -30,32 +42,66 @@ class turnGUI implements EventHandler<MouseEvent> {
     private Grid grid_put;
     private ArrayList<Player> players_put;
 
-
+    /**
+     *
+     * @return String that gives the hex-code of current color in String format
+     */
     public String getCurrentColorHEX() {
         return currentColorHEX;
     }
 
+    /**
+     *
+     * @param currentColorHEX sets the hex-code to be set
+     */
     public void setCurrentColorHEX(String currentColorHEX) {
         this.currentColorHEX = currentColorHEX;
     }
 
+    /**
+     *
+     * @return Obtains a {@link Grid} object for serialization from the GUI grid
+     */
     public Grid getGrid_put() {
         return grid_put;
     }
 
+    /**
+     *
+     * @param grid_put sets the serializable grid
+     */
     public void setGrid_put(Grid grid_put) {
         this.grid_put = grid_put;
     }
 
+    /**
+     *
+     * @return Obtains an ArrayList of {@link Player} objects to serialize
+     */
     public ArrayList<Player> getPlayers_put() {
         return players_put;
     }
 
+    /**
+     *
+     * @param players_put sets the current collection of players to serialize
+     */
     public void setPlayers_put(ArrayList<Player> players_put) {
         this.players_put = players_put;
     }
 
 
+    /**
+     * This function handles each and every turn for the game, in GUI.
+     *
+     * It setsthe current color that is playing, decides whether it is valid
+     * move, and plays the move using the <code>handleTurn</code> method.
+     *
+     * It obtains the clicked, {@link StackPane} and manipulates it's child
+     * sphere objects.
+     *
+     * @param e {@link MouseEvent} that triggers this function
+     */
     @Override
     public void handle(MouseEvent e) {
 
@@ -148,6 +194,13 @@ class turnGUI implements EventHandler<MouseEvent> {
 
     }
 
+    /**
+     * A utility function that converts the {@link GridPane} into a
+     * serializable {@link Grid} object.
+     *
+     * @param gp {@link GridPane} that represents the GUI grid
+     * @param g The {@link Grid} object that we replicate the GUI grid to
+     */
     public void convertGUItoGrid(GridPane gp, Grid g) {
         ObservableList<Node> GUIlist = gp.getChildren();
 
@@ -168,6 +221,17 @@ class turnGUI implements EventHandler<MouseEvent> {
     }
 
 
+    /**
+     * This is a utility function that fetches the next player whose turn is
+     * going to come.
+     *
+     * This function fetches a <code>Player</code> object of the next alive
+     * player from the <code>_players</code> {@link ArrayList} in the
+     * <code>GameController</code> of the <code>GameEngine</code>.
+     *
+     * @param currentColor The hex-code of the color of the current player
+     * @return {@link Player} object denoting the next player
+     */
     public Player fetchNextPlayer(String currentColor) {
 
         ArrayList<Player> players = GUIMain.get_gameEngine().get_gc().get_players();
@@ -192,6 +256,19 @@ class turnGUI implements EventHandler<MouseEvent> {
         return null;
     }
 
+    /**
+     *  This is a utility function that evaluates how many players
+     *  are active in the <code>_players</code> ArrayList of the
+     *  <code>GameController</code> of the <code>GameEngine</code>,
+     *  apart from the passed player.
+     *
+     *  It iterates over the entire {@link GridPane}, and if no occurrences
+     *  of a player's color is found, it sets the <code>_isAlive</code>
+     *  property of the player to <code>false</code>.
+     *
+     *
+     * @param p player who is not to be evaluated to be living
+     */
     public void checkAlivePlayers(Player p) {
         ArrayList<Player> players = GUIMain.get_gameEngine().get_gc().get_players();
 
@@ -218,6 +295,14 @@ class turnGUI implements EventHandler<MouseEvent> {
         }
     }
 
+    /**
+     * Fetches the current player from the <code>_players</code> ArrayList of the
+     *  <code>GameController</code> of the <code>GameEngine</code>.
+     *
+     *  Uses the <code>currentColorHex</code> String to find the current player.
+     *
+     * @return {@link Player} object of the current player
+     */
     public Player fetchCurrentPlayer() {
 
         ArrayList<Player> players = GUIMain.get_gameEngine().get_gc().get_players();
@@ -232,6 +317,16 @@ class turnGUI implements EventHandler<MouseEvent> {
 
     }
 
+    /**
+     *
+     * Function to decide the validity of 2-D coordinates in the {@link GridPane}.
+     *
+     * Used when checking neighbour cells for potential explosions.
+     *
+     * @param row row number of the cell
+     * @param col column number of the cell
+     * @return boolean denoting the validity of the coordinates
+     */
     public boolean areValidCoord(int row, int col) {
         if (row < GUIMain.get_numRows() && row >= 0 && col < GUIMain.get_numCols() && col >= 0) {
             return true;
@@ -239,6 +334,18 @@ class turnGUI implements EventHandler<MouseEvent> {
         return false;
     }
 
+    /**
+     * An adapter which, given a row and column, gives the critical mass of the cell,
+     * on the basis of its coordinates.
+     *
+     * A corner cell has a critical mass of 2, an edge cell of 3 and an
+     * internal cell has a critical mass of 4. The critical mass is the
+     * number of adjacent cells that a cell will have.
+     *
+     * @param row row in which the cell is
+     * @param col column in which the cell is
+     * @return the critical mass calculated on the basis of position
+     */
     public int get_CritMass(int row, int col) {
 
         if ((row == GUIMain.get_numRows() - 1 || row == 0) && (col == GUIMain.get_numCols() - 1 || col == 0)) {
@@ -251,6 +358,23 @@ class turnGUI implements EventHandler<MouseEvent> {
 
     }
 
+    /**
+     * An adapter, which, given 2-D coordinates of a {@link StackPane}, returns the
+     * 1-D coordinate it would have in the <code>children</code> {@link ArrayList} of its
+     * parent {@link GridPane}.
+     *
+     * Used because we did not want to maintain the index of the clicked {@link StackPane} as
+     * a separate variable.
+     *
+     * It was easy to calculate this since we had the access to number of columns in the grid
+     * from <code>GUIMain.get_numCols()</code>. An addition of <code>1</code> needs to be
+     * done to the answer because indexing of <code>StackPanes</code> in the <code>children</code>
+     * ArrayList of the GridPane started from 1, not 0;
+     *
+     * @param row row number of the coordinates to be converted
+     * @param col column number of the coordinates to be converted
+     * @return an integer which gives the 1-D coordinate
+     */
     public int getIndexOfStackPaneFromCoords(int row, int col) {
 
         int ans = 0;
@@ -266,6 +390,20 @@ class turnGUI implements EventHandler<MouseEvent> {
     }
 
 
+    /**
+     * This method handles the manipulation of spheres in the clicked {@link StackPane}.
+     *
+     * First, it obtains the 1-D index of the clicked <code>StackPane</code> and adds an index to it.
+     * Then, it evaluates whether the <code>StackPane</code> has reached its critical mass.
+     *
+     * If yes, it clears the <code>StackPane</code> and calls the <code>handleAnimatio()_</code> function
+     * which handles the explosion animations. If no, then it simply calls the <code>afterTurn()</code>
+     * function.
+     *
+     * @param row row number of the clicked <code>StackPane</code>
+     * @param col column number of the clicked <code>StackPane</code>
+     * @param gp <code>GridPane</code> object that represents the GUI grid
+     */
     public void handleTurn(int row, int col, GridPane gp) {
 
 
@@ -294,12 +432,30 @@ class turnGUI implements EventHandler<MouseEvent> {
             Stage stage = (Stage) gp.getScene().getWindow();
             ArrayList<Player> players = GUIMain.get_gameEngine().get_gc().get_players();
 
-            afterAnimation(gp, stage, players);
+            afterTurn(gp, stage, players);
         }
 
 
     }
 
+    /**
+     * This method handles the explosion animation in the game.
+     *
+     * In case the cell has equalled it's critical mass, it must explode, with
+     * appropriate transitions. This is taken care of by this function.
+     *
+     * It creates four new spheres and adds them to the <code>StackPane</code> that is to explode.
+     * These new <code>Sphere</code> objects have {@link TranslateTransition} attached to them. The
+     * {@link TranslateTransition} objects are also attached to a {@link ParallelTransition} object.
+     * Once these additions are done, it plays the {@link ParallelTransition} object.
+     *
+     * The function also re-calls the <code>handleTurn</code> method on the valid neighbours of the
+     * clicked {@link StackPane}.
+     *
+     * @param row row number of the exploded cell
+     * @param col column number of the exploded cell
+     * @param gp {@link GridPane} representing the GUI grid
+     */
     public void handleAnimation(int row, int col, GridPane gp) {
 
 
@@ -307,11 +463,6 @@ class turnGUI implements EventHandler<MouseEvent> {
 
         StackPane sp = (StackPane) gp.getChildren().get(getIndexOfStackPaneFromCoords(row, col));
         Group cellGroup = (Group) sp.getChildren().get(0);
-
-
-        int currMass = cellGroup.getChildren().size();
-
-        int critMass = get_CritMass(row, col);
 
         PhongMaterial nph;
 
@@ -538,7 +689,19 @@ class turnGUI implements EventHandler<MouseEvent> {
 
     }
 
-    public void afterAnimation(GridPane grid, Stage stage, ArrayList<Player> players) {
+    /**
+     * This method is called when a recursion base case is reached, i.e., a
+     * cell suffers addition but does not explode.
+     *
+     * This function makes the changes that must happen at the end of a turn, such as serializing the
+     * <code>GameState</code>, checking for end game conditions, updating the active and alive statuses
+     * of the players.
+     *
+     * @param grid {@link GridPane} that represents the GUI grid
+     * @param stage {@link Stage} of the application
+     * @param players the list of current players
+     */
+    public void afterTurn(GridPane grid, Stage stage, ArrayList<Player> players) {
 
 
         fetchCurrentPlayer().set_isKillable(true);

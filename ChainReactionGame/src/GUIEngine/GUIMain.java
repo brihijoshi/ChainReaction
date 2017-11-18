@@ -532,9 +532,6 @@ public class GUIMain extends Application {
      * @param color a {@link Color} object which is used to set the color of the {@link StackPane}
      * @return a {@link BorderPane} object that contains the {@link GridPane}, the Buttons and the MenuBar
      */
-
-
-
     public static BorderPane setEmptyGrid(GridPane root, int numRows, int numColumns, Color color) {
 
         BorderPane bp = new BorderPane();
