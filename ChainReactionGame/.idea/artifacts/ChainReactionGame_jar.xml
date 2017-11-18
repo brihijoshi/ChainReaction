@@ -1,7 +1,10 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="ChainReactionGame:jar">
-    <output-path>$PROJECT_DIR$/jar/ChainReactionGame_jar</output-path>
+    <output-path>$PROJECT_DIR$/jar</output-path>
     <root id="archive" name="ChainReactionGame.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/jar/META-INF/MANIFEST.MF" />
+      </element>
       <element id="module-output" name="ChainReactionGame" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/controlsfx/controlsfx/8.40.14/controlsfx-8.40.14.jar" path-in-jar="/" />
     </root>
