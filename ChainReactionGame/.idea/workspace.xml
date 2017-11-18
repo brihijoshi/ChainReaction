@@ -7,8 +7,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/game.ser" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/ColorUtil.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/ColorUtil.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$1.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$10.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$10.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$11.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$11.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$12.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$12.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$13.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$13.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$14.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$14.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$15.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$15.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$16.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$16.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$17.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$17.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$18.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$18.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$19.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$19.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$2.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$3.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$4.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$5.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$6.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$6.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$7.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$7.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$8.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$8.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$9.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$9.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/turnGUI.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/turnGUI.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/builds/macOS/Chain Reaction.app/Contents/assets/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/builds/macOS/Chain Reaction.app/Contents/assets/META-INF/MANIFEST.MF" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -444,6 +466,17 @@
               <item name="ChainReactionGame" type="b2602c69:ProjectViewProjectNode" />
               <item name="ChainReactionGame" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="ChainReactionGame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ChainReactionGame" type="462c0819:PsiDirectoryNode" />
+              <item name="builds" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ChainReactionGame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ChainReactionGame" type="462c0819:PsiDirectoryNode" />
+              <item name="builds" type="462c0819:PsiDirectoryNode" />
+              <item name="macOS" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -860,11 +893,18 @@
       <option name="project" value="LOCAL" />
       <updated>1510999142805</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Added macOS build">
+      <created>1511003471374</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1511003471374</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="268085000" />
+    <option name="totallyTimeSpent" value="268271000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -987,7 +1027,8 @@
     <MESSAGE value="Created javadocs" />
     <MESSAGE value="Created javadocs for exceptions" />
     <MESSAGE value="Added documentation to VCS" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added documentation to VCS" />
+    <MESSAGE value="Added macOS build" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added macOS build" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
