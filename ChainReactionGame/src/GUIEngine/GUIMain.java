@@ -519,11 +519,12 @@ public class GUIMain extends Application {
 
     /**
      *
-     * A Function that creates an empty grid for the start page. The {@link GridPane} root is the GUI Grid
-     * where the game takes place. Each index of the {@link GridPane} has a {@link StackPane} which again
-     * contains a {@link Group}. The {@link StackPane} color is changed to the parameter <code>color</code>.
-     * According to the size of the {@link GridPane}, its {@link RowConstraints} and {@link ColumnConstraints} are decided.
-     * The <code>redoButton</code> and the <code>MenuBar</code> is also created.
+     * A function that creates an empty grid for the start page.
+     *
+     * The {@link GridPane} root is the GUI Grid where the game takes place. Each index of the {@link GridPane}
+     * has a {@link StackPane} which again contains a {@link Group}. The {@link StackPane} color is changed to
+     * the parameter <code>color</code>. According to the size of the {@link GridPane}, its {@link RowConstraints}
+     * and {@link ColumnConstraints} are decided.The <code>redoButton</code> and the <code>MenuBar</code> is also created.
      *
      *
      * @param root a {@link GridPane} GUI Grid where the game takes place
@@ -671,6 +672,9 @@ public class GUIMain extends Application {
 
     }
 
+    /**
+     *  Plays the pop sound effect when a turn is played
+     */
     public static void playExplode() {
 
         String musicFile = "assets/explode.mp3";
@@ -680,6 +684,9 @@ public class GUIMain extends Application {
         mediaPlayer.play();
     }
 
+    /**
+     * Plays the error sound in case of an invalid move
+     */
     public static void playError() {
 
         String musicFile = "assets/error.mp3";
@@ -691,6 +698,22 @@ public class GUIMain extends Application {
     }
 
 
+    /**
+     * This function is used to add specified number of spheres to the cell,
+     * of the specified color.
+     *
+     * Given a row, column this function adds specified number of {@link Sphere} objects
+     * to the {@link StackPane} at the specified position and animates them for rotation.
+     *
+     * Here, we decide the size of the spheres to be added depending upon the size of the
+     * GUI grid.
+     *
+     * @param root {@link GridPane} that represents the GUI grid
+     * @param row  row number to which we have to add
+     * @param column column number to which we have to add
+     * @param numSpheres number of spheres that we have to add
+     * @param color {@link Color} object denoting the color the new spheres have to be
+     */
     public static void addOrbAndAnimate(GridPane root, int row, int column, int numSpheres, Color color) {
 
         int rowsize = 0;
@@ -779,6 +802,12 @@ public class GUIMain extends Application {
 
     }
 
+    /**
+     * A utility function that adds {@link Rotate} transitions to a
+     * specified {@link Group} object.
+     *
+     * @param cell
+     */
     public static void rotateOrbs(Group cell) {
 
         final Rotate rotationTransform = new Rotate(0, 0, 0);
@@ -800,7 +829,17 @@ public class GUIMain extends Application {
     }
 
 
-
+    /**
+     * Checks for the end game condition
+     *
+     * It iterates over the player ArrayList and returns whether
+     * the number of players having their <code>_isAlive</code>
+     * attribute set to <code>true</code> is 1 or not.
+     *
+     * If it is 1, it means game has ended.
+     *
+     * @return boolean indicating if end-game condition is reached
+     */
     public static boolean checkEndGame() {
 
 
@@ -815,6 +854,11 @@ public class GUIMain extends Application {
         return (count == 1);
     }
 
+    /**
+     * Creates a {@link Scene} containing the GUI of the start page
+     *
+     * @return a {@link Scene} object containing the GUI of the Start page
+     */
     public static Scene createStartPage() {
 
 
@@ -1011,6 +1055,11 @@ public class GUIMain extends Application {
 
     }
 
+    /**
+     * Returns a {@link Scene} containing GUI of the Settings page
+     *
+     * @return returns a scene containing GUI of the Settings page
+     */
     public static Scene createSettingsPage() {
 
 
@@ -1201,6 +1250,13 @@ public class GUIMain extends Application {
 
     }
 
+    /**
+     * Returns a {@link Scene} containing GUI of the End page.
+     *
+     * @param grid {@link GridPane} object representing the GUI grid
+     * @param stage {@link Stage} object containing the application
+     * @param winner number of the winner player
+     */
     public static void createEndPage(GridPane grid, Stage stage, int winner) {
 
         Stage winnerDialog = new Stage();
@@ -1366,6 +1422,11 @@ public class GUIMain extends Application {
     }
 
 
+    /**
+     *  Creates a {@link Scene} object containing the Game page
+     *
+     * @return a {@link Scene} object containing the Game page
+     */
     public static Scene createGamePage() {
 
         if (_gameEngine.get_choice() == 0) {
@@ -1436,6 +1497,13 @@ public class GUIMain extends Application {
     }
 
 
+    /**
+     *  A utility function, that, given a serializable {@link Grid}
+     *  object, populates a {@link GridPane} from it.
+     *
+     * @param gp {@link GridPane} object to be populated
+     * @param g {@link Grid} object to be used as source
+     */
     public static void convertGridToGUI(GridPane gp, Grid g) {
         for (int i = 0; i < g.get_grid().size(); i++) {
             for (int j = 0; j < g.get_grid().get(0).size(); j++) {
@@ -1449,6 +1517,18 @@ public class GUIMain extends Application {
         }
     }
 
+    /**
+     * This is the main Start method of the application which is launched
+     * when the application is clicked on.
+     *
+     * It initializes the <code>_gameEngine</code> for the {@link GUIMain}
+     * class with the defaault number of players and grid size. It is also
+     * responsible for initializing the <code>ArrayList</code> of {@link ColorPicker}
+     * objects.
+     *
+     * @param primaryStage Primary {@link Stage} of the application
+     * @throws Exception In case of serialization errors
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -1493,7 +1573,13 @@ public class GUIMain extends Application {
 
     }
 
-
+    /**
+     * The main method which is called at launch.
+     *
+     * It launched the GUI application
+     *
+     * @param args Arguments passed
+     */
     public static void main(String[] args) {
         launch(args);
     }

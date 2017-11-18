@@ -7,42 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game.ser" afterPath="$PROJECT_DIR$/game.ser" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/ColorUtil.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/ColorUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$1.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$10.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$10.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$11.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$11.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$12.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$12.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$13.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$13.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$14.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$14.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$15.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$15.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$16.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$16.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$17.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$17.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$18.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$18.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$19.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$19.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$2.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$3.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$4.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$5.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$6.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$7.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$7.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$8.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$8.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$9.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain$9.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/GUIMain.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/ImageUtil.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/ImageUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/exitButtonGUI.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/exitButtonGUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/homeButtonGUI.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/homeButtonGUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/instructionsButtonGUI.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/instructionsButtonGUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/restartButtonGUI.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/restartButtonGUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/resumeButtonGUI.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/resumeButtonGUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/settingsButtonGUI.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/settingsButtonGUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/startButtonGUI.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/startButtonGUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/undoButtonGUI.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/undoButtonGUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GameEngine/Grid.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GameEngine/Grid.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GameEngine/Player.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GameEngine/Player.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/turnGUI.class" afterPath="$PROJECT_DIR$/out/production/ChainReactionGame/GUIEngine/turnGUI.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUIEngine/GUIMain.java" afterPath="$PROJECT_DIR$/src/GUIEngine/GUIMain.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUIEngine/turnGUI.java" afterPath="$PROJECT_DIR$/src/GUIEngine/turnGUI.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -100,10 +67,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="turnGUI.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="turnGUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUIEngine/turnGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10515">
+            <state relative-caret-position="9259">
               <caret line="701" column="49" lean-forward="false" selection-start-line="701" selection-start-column="49" selection-end-line="701" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -200,11 +167,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GUIMain.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GUIMain.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GUIEngine/GUIMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1494">
-              <caret line="533" column="7" lean-forward="false" selection-start-line="533" selection-start-column="7" selection-end-line="533" selection-end-column="7" />
+            <state relative-caret-position="517">
+              <caret line="1580" column="35" lean-forward="false" selection-start-line="1580" selection-start-column="35" selection-end-line="1580" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2642#2643#0" expanded="true" />
@@ -301,30 +268,30 @@
                 <element signature="e#13216#13217#0" expanded="true" />
                 <element signature="e#13511#13512#0" expanded="true" />
                 <element signature="e#13560#13561#0" expanded="true" />
-                <element signature="e#17377#17378#0" expanded="true" />
-                <element signature="e#17453#17454#0" expanded="true" />
-                <element signature="e#17668#17669#0" expanded="true" />
-                <element signature="e#17742#17743#0" expanded="true" />
-                <marker date="1510992479000" expanded="false" signature="24251:24278" ph=" { " />
-                <marker date="1510992479000" expanded="false" signature="24308:24330" ph=" }" />
-                <marker date="1510992479000" expanded="false" signature="24544:24571" ph=" { " />
-                <marker date="1510992479000" expanded="false" signature="24599:24621" ph=" }" />
-                <marker date="1510992479000" expanded="false" signature="25012:25039" ph=" { " />
-                <marker date="1510992479000" expanded="false" signature="25070:25092" ph=" }" />
-                <marker date="1510992479000" expanded="false" signature="25307:25334" ph=" { " />
-                <marker date="1510992479000" expanded="false" signature="25363:25385" ph=" }" />
-                <marker date="1510992479000" expanded="false" signature="25778:25805" ph=" { " />
-                <marker date="1510992479000" expanded="false" signature="25838:25860" ph=" }" />
-                <marker date="1510992479000" expanded="false" signature="26077:26104" ph=" { " />
-                <marker date="1510992479000" expanded="false" signature="26135:26157" ph=" }" />
-                <marker date="1510992479000" expanded="false" signature="26558:26585" ph=" { " />
-                <marker date="1510992479000" expanded="false" signature="26622:26644" ph=" }" />
-                <marker date="1510992479000" expanded="false" signature="26865:26892" ph=" { " />
-                <marker date="1510992479000" expanded="false" signature="26927:26949" ph=" }" />
-                <marker date="1510992479000" expanded="false" signature="31773:31800" ph=" { " />
-                <marker date="1510992479000" expanded="false" signature="31829:31851" ph=" }" />
-                <marker date="1510992479000" expanded="false" signature="32122:32149" ph=" { " />
-                <marker date="1510992479000" expanded="false" signature="32176:32198" ph=" }" />
+                <element signature="e#17383#17384#0" expanded="true" />
+                <element signature="e#17459#17460#0" expanded="true" />
+                <element signature="e#17674#17675#0" expanded="true" />
+                <element signature="e#17748#17749#0" expanded="true" />
+                <marker date="1510998288000" expanded="false" signature="25848:25875" ph=" { " />
+                <marker date="1510998288000" expanded="false" signature="25905:25927" ph=" }" />
+                <marker date="1510998288000" expanded="false" signature="26141:26168" ph=" { " />
+                <marker date="1510998288000" expanded="false" signature="26196:26218" ph=" }" />
+                <marker date="1510998288000" expanded="false" signature="26609:26636" ph=" { " />
+                <marker date="1510998288000" expanded="false" signature="26667:26689" ph=" }" />
+                <marker date="1510998288000" expanded="false" signature="26904:26931" ph=" { " />
+                <marker date="1510998288000" expanded="false" signature="26960:26982" ph=" }" />
+                <marker date="1510998288000" expanded="false" signature="27375:27402" ph=" { " />
+                <marker date="1510998288000" expanded="false" signature="27435:27457" ph=" }" />
+                <marker date="1510998288000" expanded="false" signature="27674:27701" ph=" { " />
+                <marker date="1510998288000" expanded="false" signature="27732:27754" ph=" }" />
+                <marker date="1510998288000" expanded="false" signature="28155:28182" ph=" { " />
+                <marker date="1510998288000" expanded="false" signature="28219:28241" ph=" }" />
+                <marker date="1510998288000" expanded="false" signature="28462:28489" ph=" { " />
+                <marker date="1510998288000" expanded="false" signature="28524:28546" ph=" }" />
+                <marker date="1510998288000" expanded="false" signature="33527:33554" ph=" { " />
+                <marker date="1510998288000" expanded="false" signature="33583:33605" ph=" }" />
+                <marker date="1510998288000" expanded="false" signature="33876:33903" ph=" { " />
+                <marker date="1510998288000" expanded="false" signature="33930:33952" ph=" }" />
               </folding>
             </state>
           </provider>
@@ -457,8 +424,8 @@
         <option value="$PROJECT_DIR$/src/GUIEngine/settingsButtonGUI.java" />
         <option value="$PROJECT_DIR$/src/GUIEngine/startButtonGUI.java" />
         <option value="$PROJECT_DIR$/src/GUIEngine/undoButtonGUI.java" />
-        <option value="$PROJECT_DIR$/src/GUIEngine/GUIMain.java" />
         <option value="$PROJECT_DIR$/src/GUIEngine/turnGUI.java" />
+        <option value="$PROJECT_DIR$/src/GUIEngine/GUIMain.java" />
       </list>
     </option>
   </component>
@@ -915,11 +882,18 @@
       <option name="project" value="LOCAL" />
       <updated>1510968058717</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Completed documentation of turnGUI">
+      <created>1510995982849</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1510995982849</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="263016000" />
+    <option name="totallyTimeSpent" value="265055000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1038,7 +1012,8 @@
     <MESSAGE value="Fixed serialization logic" />
     <MESSAGE value="Completed documentation for the GameEngine Package" />
     <MESSAGE value="Merged feat/docs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merged feat/docs" />
+    <MESSAGE value="Completed documentation of turnGUI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Completed documentation of turnGUI" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1167,30 +1142,30 @@
             <element signature="e#13216#13217#0" expanded="true" />
             <element signature="e#13511#13512#0" expanded="true" />
             <element signature="e#13560#13561#0" expanded="true" />
-            <element signature="e#17377#17378#0" expanded="true" />
-            <element signature="e#17453#17454#0" expanded="true" />
-            <element signature="e#17668#17669#0" expanded="true" />
-            <element signature="e#17742#17743#0" expanded="true" />
-            <marker date="1510992479000" expanded="false" signature="24251:24278" ph=" { " />
-            <marker date="1510992479000" expanded="false" signature="24308:24330" ph=" }" />
-            <marker date="1510992479000" expanded="false" signature="24544:24571" ph=" { " />
-            <marker date="1510992479000" expanded="false" signature="24599:24621" ph=" }" />
-            <marker date="1510992479000" expanded="false" signature="25012:25039" ph=" { " />
-            <marker date="1510992479000" expanded="false" signature="25070:25092" ph=" }" />
-            <marker date="1510992479000" expanded="false" signature="25307:25334" ph=" { " />
-            <marker date="1510992479000" expanded="false" signature="25363:25385" ph=" }" />
-            <marker date="1510992479000" expanded="false" signature="25778:25805" ph=" { " />
-            <marker date="1510992479000" expanded="false" signature="25838:25860" ph=" }" />
-            <marker date="1510992479000" expanded="false" signature="26077:26104" ph=" { " />
-            <marker date="1510992479000" expanded="false" signature="26135:26157" ph=" }" />
-            <marker date="1510992479000" expanded="false" signature="26558:26585" ph=" { " />
-            <marker date="1510992479000" expanded="false" signature="26622:26644" ph=" }" />
-            <marker date="1510992479000" expanded="false" signature="26865:26892" ph=" { " />
-            <marker date="1510992479000" expanded="false" signature="26927:26949" ph=" }" />
-            <marker date="1510992479000" expanded="false" signature="31773:31800" ph=" { " />
-            <marker date="1510992479000" expanded="false" signature="31829:31851" ph=" }" />
-            <marker date="1510992479000" expanded="false" signature="32122:32149" ph=" { " />
-            <marker date="1510992479000" expanded="false" signature="32176:32198" ph=" }" />
+            <element signature="e#17383#17384#0" expanded="true" />
+            <element signature="e#17459#17460#0" expanded="true" />
+            <element signature="e#17674#17675#0" expanded="true" />
+            <element signature="e#17748#17749#0" expanded="true" />
+            <marker date="1510998288000" expanded="false" signature="25848:25875" ph=" { " />
+            <marker date="1510998288000" expanded="false" signature="25905:25927" ph=" }" />
+            <marker date="1510998288000" expanded="false" signature="26141:26168" ph=" { " />
+            <marker date="1510998288000" expanded="false" signature="26196:26218" ph=" }" />
+            <marker date="1510998288000" expanded="false" signature="26609:26636" ph=" { " />
+            <marker date="1510998288000" expanded="false" signature="26667:26689" ph=" }" />
+            <marker date="1510998288000" expanded="false" signature="26904:26931" ph=" { " />
+            <marker date="1510998288000" expanded="false" signature="26960:26982" ph=" }" />
+            <marker date="1510998288000" expanded="false" signature="27375:27402" ph=" { " />
+            <marker date="1510998288000" expanded="false" signature="27435:27457" ph=" }" />
+            <marker date="1510998288000" expanded="false" signature="27674:27701" ph=" { " />
+            <marker date="1510998288000" expanded="false" signature="27732:27754" ph=" }" />
+            <marker date="1510998288000" expanded="false" signature="28155:28182" ph=" { " />
+            <marker date="1510998288000" expanded="false" signature="28219:28241" ph=" }" />
+            <marker date="1510998288000" expanded="false" signature="28462:28489" ph=" { " />
+            <marker date="1510998288000" expanded="false" signature="28524:28546" ph=" }" />
+            <marker date="1510998288000" expanded="false" signature="33527:33554" ph=" { " />
+            <marker date="1510998288000" expanded="false" signature="33583:33605" ph=" }" />
+            <marker date="1510998288000" expanded="false" signature="33876:33903" ph=" { " />
+            <marker date="1510998288000" expanded="false" signature="33930:33952" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -1410,10 +1385,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUIEngine/turnGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9259">
+          <caret line="701" column="49" lean-forward="false" selection-start-line="701" selection-start-column="49" selection-end-line="701" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1357#1358#0" expanded="true" />
+            <element signature="e#1395#1396#0" expanded="true" />
+            <element signature="e#1538#1539#0" expanded="true" />
+            <element signature="e#1592#1593#0" expanded="true" />
+            <element signature="e#1729#1730#0" expanded="true" />
+            <element signature="e#1760#1761#0" expanded="true" />
+            <element signature="e#1879#1880#0" expanded="true" />
+            <element signature="e#1919#1920#0" expanded="true" />
+            <element signature="e#2066#2067#0" expanded="true" />
+            <element signature="e#2100#2101#0" expanded="true" />
+            <element signature="e#2266#2267#0" expanded="true" />
+            <element signature="e#2312#2313#0" expanded="true" />
+            <marker date="1510995957000" expanded="true" signature="5009:5319" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUIEngine/GUIMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1494">
-          <caret line="533" column="7" lean-forward="false" selection-start-line="533" selection-start-column="7" selection-end-line="533" selection-end-column="7" />
+        <state relative-caret-position="517">
+          <caret line="1580" column="35" lean-forward="false" selection-start-line="1580" selection-start-column="35" selection-end-line="1580" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2642#2643#0" expanded="true" />
@@ -1510,53 +1508,30 @@
             <element signature="e#13216#13217#0" expanded="true" />
             <element signature="e#13511#13512#0" expanded="true" />
             <element signature="e#13560#13561#0" expanded="true" />
-            <element signature="e#17377#17378#0" expanded="true" />
-            <element signature="e#17453#17454#0" expanded="true" />
-            <element signature="e#17668#17669#0" expanded="true" />
-            <element signature="e#17742#17743#0" expanded="true" />
-            <marker date="1510992479000" expanded="false" signature="24251:24278" ph=" { " />
-            <marker date="1510992479000" expanded="false" signature="24308:24330" ph=" }" />
-            <marker date="1510992479000" expanded="false" signature="24544:24571" ph=" { " />
-            <marker date="1510992479000" expanded="false" signature="24599:24621" ph=" }" />
-            <marker date="1510992479000" expanded="false" signature="25012:25039" ph=" { " />
-            <marker date="1510992479000" expanded="false" signature="25070:25092" ph=" }" />
-            <marker date="1510992479000" expanded="false" signature="25307:25334" ph=" { " />
-            <marker date="1510992479000" expanded="false" signature="25363:25385" ph=" }" />
-            <marker date="1510992479000" expanded="false" signature="25778:25805" ph=" { " />
-            <marker date="1510992479000" expanded="false" signature="25838:25860" ph=" }" />
-            <marker date="1510992479000" expanded="false" signature="26077:26104" ph=" { " />
-            <marker date="1510992479000" expanded="false" signature="26135:26157" ph=" }" />
-            <marker date="1510992479000" expanded="false" signature="26558:26585" ph=" { " />
-            <marker date="1510992479000" expanded="false" signature="26622:26644" ph=" }" />
-            <marker date="1510992479000" expanded="false" signature="26865:26892" ph=" { " />
-            <marker date="1510992479000" expanded="false" signature="26927:26949" ph=" }" />
-            <marker date="1510992479000" expanded="false" signature="31773:31800" ph=" { " />
-            <marker date="1510992479000" expanded="false" signature="31829:31851" ph=" }" />
-            <marker date="1510992479000" expanded="false" signature="32122:32149" ph=" { " />
-            <marker date="1510992479000" expanded="false" signature="32176:32198" ph=" }" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUIEngine/turnGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10515">
-          <caret line="701" column="49" lean-forward="false" selection-start-line="701" selection-start-column="49" selection-end-line="701" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1357#1358#0" expanded="true" />
-            <element signature="e#1395#1396#0" expanded="true" />
-            <element signature="e#1538#1539#0" expanded="true" />
-            <element signature="e#1592#1593#0" expanded="true" />
-            <element signature="e#1729#1730#0" expanded="true" />
-            <element signature="e#1760#1761#0" expanded="true" />
-            <element signature="e#1879#1880#0" expanded="true" />
-            <element signature="e#1919#1920#0" expanded="true" />
-            <element signature="e#2066#2067#0" expanded="true" />
-            <element signature="e#2100#2101#0" expanded="true" />
-            <element signature="e#2266#2267#0" expanded="true" />
-            <element signature="e#2312#2313#0" expanded="true" />
-            <marker date="1510995957000" expanded="true" signature="5009:5319" ph="{...}" />
+            <element signature="e#17383#17384#0" expanded="true" />
+            <element signature="e#17459#17460#0" expanded="true" />
+            <element signature="e#17674#17675#0" expanded="true" />
+            <element signature="e#17748#17749#0" expanded="true" />
+            <marker date="1510998288000" expanded="false" signature="25848:25875" ph=" { " />
+            <marker date="1510998288000" expanded="false" signature="25905:25927" ph=" }" />
+            <marker date="1510998288000" expanded="false" signature="26141:26168" ph=" { " />
+            <marker date="1510998288000" expanded="false" signature="26196:26218" ph=" }" />
+            <marker date="1510998288000" expanded="false" signature="26609:26636" ph=" { " />
+            <marker date="1510998288000" expanded="false" signature="26667:26689" ph=" }" />
+            <marker date="1510998288000" expanded="false" signature="26904:26931" ph=" { " />
+            <marker date="1510998288000" expanded="false" signature="26960:26982" ph=" }" />
+            <marker date="1510998288000" expanded="false" signature="27375:27402" ph=" { " />
+            <marker date="1510998288000" expanded="false" signature="27435:27457" ph=" }" />
+            <marker date="1510998288000" expanded="false" signature="27674:27701" ph=" { " />
+            <marker date="1510998288000" expanded="false" signature="27732:27754" ph=" }" />
+            <marker date="1510998288000" expanded="false" signature="28155:28182" ph=" { " />
+            <marker date="1510998288000" expanded="false" signature="28219:28241" ph=" }" />
+            <marker date="1510998288000" expanded="false" signature="28462:28489" ph=" { " />
+            <marker date="1510998288000" expanded="false" signature="28524:28546" ph=" }" />
+            <marker date="1510998288000" expanded="false" signature="33527:33554" ph=" { " />
+            <marker date="1510998288000" expanded="false" signature="33583:33605" ph=" }" />
+            <marker date="1510998288000" expanded="false" signature="33876:33903" ph=" { " />
+            <marker date="1510998288000" expanded="false" signature="33930:33952" ph=" }" />
           </folding>
         </state>
       </provider>
