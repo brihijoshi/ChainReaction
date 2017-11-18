@@ -806,7 +806,7 @@ public class GUIMain extends Application {
      * A utility function that adds {@link Rotate} transitions to a
      * specified {@link Group} object.
      *
-     * @param cell
+     * @param cell {@link Group} object to be animated
      */
     public static void rotateOrbs(Group cell) {
 
