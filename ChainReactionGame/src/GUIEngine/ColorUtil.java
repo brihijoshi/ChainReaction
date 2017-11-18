@@ -16,10 +16,13 @@ public class ColorUtil {
      * object to a String containing the hex-code
      *
      * @param color The {@link Color} object whose hex-code is to be obtained
-     * @return a String containg the hex-code
+     * @return a String containing the hex-code
      */
+
     public static String colorToHex(Color color) {
+
         return "#" + color.toString().substring(2);
+
     }
 
 }

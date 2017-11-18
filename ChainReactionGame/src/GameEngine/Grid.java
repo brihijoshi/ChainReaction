@@ -32,6 +32,7 @@ public class Grid implements Serializable {
      *
      * @param choiceOfGrid indicates the player's choice of grid size
      */
+
     public Grid(int choiceOfGrid) {
         if(choiceOfGrid == 0) {
 

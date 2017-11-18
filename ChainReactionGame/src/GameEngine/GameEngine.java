@@ -70,7 +70,7 @@ public class GameEngine {
 
     /**
      *
-     * @param _gs cuurent grid size indicator to be set
+     * @param _gs current grid size indicator to be set
      */
     public void set_gridSize(int _gs) {
         _gridSize = _gs;

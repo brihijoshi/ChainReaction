@@ -2,6 +2,7 @@ package GUIEngine;
 
 import GameEngine.GameController;
 import GameEngine.GameEngine;
+import GameEngine.GameState;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -9,7 +10,27 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+/**
+ * An {@link EventHandler} class associated with the Undo button in the game page
+ *
+ * @author adsrc
+ * @author brihijoshi
+ * @version 1.0
+ *
+ */
+
 public class undoButtonGUI implements EventHandler<ActionEvent> {
+
+    /**
+     * A function that restores the state of the last move in the game by deserialising
+     * the {@link GameState} object.
+     *
+     * Sets the <code>_gridSize</code> of the {@link GameEngine} to <code>0</code> if the grid
+     * is 9x6 and to <code>1</code> if the grid if 15x10. Sets the <code>_numPlayers</code> to number
+     * of players extracted from the saved state.
+     *
+     * @param e the {@link ActionEvent} of the Undo button clicked
+     */
 
 
 

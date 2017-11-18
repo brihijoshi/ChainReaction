@@ -8,7 +8,21 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.StackPane;
 import org.controlsfx.control.PopOver;
 
+/**
+ *  An {@link EventHandler} class associated with the How to Play button in the home page
+ *
+ *  @author brihijoshi
+ *  @version 1.0
+ */
+
 public class instructionsButtonGUI implements EventHandler<ActionEvent> {
+
+    /**
+     * A function that displays the instructions for playing the game by showing
+     * a {@link PopOver} with the text
+     *
+     * @param e the {@link ActionEvent} of the instruction button clicked
+     */
 
     @Override
     public void handle(ActionEvent e) {

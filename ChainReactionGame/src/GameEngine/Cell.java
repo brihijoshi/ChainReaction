@@ -55,7 +55,7 @@ public class Cell implements Serializable {
 
     /**
      *
-     * @return current critical mass of the cell
+     * @return critical mass of the cell
      */
     public int get_CRITMASS() {
         return _CRITMASS;

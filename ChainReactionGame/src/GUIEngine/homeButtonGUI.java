@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import org.controlsfx.control.PopOver;
 
@@ -15,8 +16,21 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+/**
+ *  An {@link EventHandler} class associated with the Home button in the Settings page
+ *
+ *  @author brihijoshi
+ *  @version 1.0
+ */
 
 public class homeButtonGUI implements EventHandler<ActionEvent> {
+
+    /**
+     * A function that shows a {@link PopOver} if the same {@link Color} is chosen for different players and does not
+     * allow the exit of the page in that case
+     *
+     * @param e the {@link ActionEvent} of the home button clicked
+     */
 
     @Override
     public void handle(ActionEvent e) {
@@ -46,6 +60,14 @@ public class homeButtonGUI implements EventHandler<ActionEvent> {
         }
 
     }
+
+    /**
+     * A function that makes use of a {@link HashSet} to store the unique values of the {@link ColorPicker} while iterating
+     * over the {@link ArrayList} of {@link ColorPicker}. If a repetition occurs, exits the function returning <code>true</code>
+     *
+     * @param x an {@link ArrayList} of the {@link ColorPicker} representing the color of each player
+     * @return a Boolean indicating whether the same color has been selected in any {@link ColorPicker}
+     */
 
     public static boolean duplicates(ArrayList<ColorPicker> x) {
         Set<String> set = new HashSet<String>();

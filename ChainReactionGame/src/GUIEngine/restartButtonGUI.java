@@ -11,8 +11,28 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
+/**
+ * An {@link EventHandler} class associated with the Restart button
+ *
+ *  @author adsrc
+ *  @author brihijoshi
+ *  @version 1.0
+ *
+ */
 
 public class restartButtonGUI implements EventHandler<ActionEvent> {
+
+    /**
+     *
+     * A function that takes the {@link ArrayList} of {@link Player} from the {@link GameEngine}
+     * and refreshes it by setting every player as alive and not killable and not active.
+     * It then sets the first player as the current player which is active and killable along with
+     * creating the GUI grid with the color of the first player.
+     *
+     * It also disables the Undo button
+     *
+     * @param e the {@link ActionEvent} of the Restart button clicked
+     */
 
     @Override
     public void handle(ActionEvent e) {

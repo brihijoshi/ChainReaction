@@ -4,16 +4,41 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+
+/**
+ * An {@link EventHandler} class associated with the Start Game button in the home page
+ *
+ *  @author adsrc
+ *  @author brihijoshi
+ *  @version 1.0
+ *
+ */
 
 public class startButtonGUI implements EventHandler<ActionEvent> {
 
     private int numPlayers = 2;
     private int choiceOfGrid = 0;
+
+    /**
+     * A function that starts the game. If the previous saved states exist, they are deleted.
+     * The <code>_numPlayers</code> and the <code>_gridSize</code> is kept at read from the
+     * {@link ComboBox} in the home page. In case no option is selected, a default value
+     * of <code>0</code> is kept for <code>_gridSize</code> and <code>2</code> is kept for
+     * <code>_numPlayers</code>.
+     *
+     * Each player color is added to the <code>player_colors</code> {@link ArrayList} along with their color.
+     *
+     *
+     *
+     * @param e the {@link ActionEvent} of the Start Game button clicked
+     */
 
 
     @Override
