@@ -3,11 +3,35 @@ package GameEngine;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Grid implements Serializable {
 
+/**
+ *  A serializable representation of the GUI grid.
+ *
+ *  This class gives a serializable representation of
+ *  the GUI grid. It contains a 2-D {@link ArrayList} of
+ *  {@link Cell} objects that store the Grid status.
+ *
+ *  @author adsrc
+ *  @version 1.2
+ */
+
+public class Grid implements Serializable {
 
     private ArrayList<ArrayList<Cell>> _grid;
 
+    /**
+     *  Parametrised constructor
+     *
+     *  This constructor uses the <code>_gridSize</code> attribute of the
+     *  {@link GameEngine} class to return a 2-D {@link ArrayList} of the
+     *  appropriate size.
+     *
+     *  If <code>choiceOfGrid = 0</code>, the <code>_grid</code> is set to
+     *  a <code>9 x 6</code> 2-D ArrayList. Else, if <code>choiceOfGrid = 1</code>,
+     *  it is set to a <code>15 x 10</code> 2-D ArrayList.
+     *
+     * @param choiceOfGrid indicates the player's choice of grid size
+     */
     public Grid(int choiceOfGrid) {
         if(choiceOfGrid == 0) {
 
@@ -50,6 +74,10 @@ public class Grid implements Serializable {
         }
     }
 
+    /**
+     *
+     * @return the current 2-D ArrayList which _grid is set to
+     */
     public ArrayList<ArrayList<Cell>> get_grid() {
         return _grid;
     }
