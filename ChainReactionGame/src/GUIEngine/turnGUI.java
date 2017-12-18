@@ -436,6 +436,8 @@ class turnGUI implements EventHandler<MouseEvent> {
         }
 
 
+
+
     }
 
     /**
@@ -714,6 +716,7 @@ class turnGUI implements EventHandler<MouseEvent> {
 
         if (!GUIMain.checkEndGame()) {
             fetchCurrentPlayer().set_isActive(false);
+            checkAlivePlayers(fetchCurrentPlayer());
             Player nextPlayer = fetchNextPlayer(currentColorHEX);
 
             GUIMain.changeGridColor(grid, Color.web(nextPlayer.get_colour()));

@@ -1470,7 +1470,7 @@ public class GUIMain extends Application {
 
             int i;
             for (i = 0; i < _gameEngine.get_numPlayers(); i++) {
-                if (_gameEngine.get_gc().get_players().get(i).get_isActive()) {
+                if (_gameEngine.get_gc().get_players().get(i).get_isActive() && _gameEngine.get_gc().get_players().get(i).get_isAlive()) {
                     firstplayer = Color.web(_gameEngine.get_gc().get_players().get(i).get_colour());
                     break;
                 }
